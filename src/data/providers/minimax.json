@@ -1,0 +1,171 @@
+{
+  "id": "minimax",
+  "name": "MiniMax",
+  "display_name": "MiniMax",
+  "website": "https://www.minimaxi.com",
+  "pricing_url": "https://platform.minimaxi.com/document/pricing",
+  "description": "MiniMax is a Chinese AI research company offering large language models with exceptional long-context capabilities. Their MiniMax-Text-01 model supports up to 1 million token context. API-first platform; no subscription — pay-per-token via the MiniMax platform.",
+  "logo_slug": "minimax",
+  "category": "ai_lab",
+  "headquarters_country": "CN",
+  "founded_year": 2021,
+  "last_verified": "2026-06-14",
+  "provenance": {
+    "url": "https://platform.minimaxi.com/document/pricing",
+    "accessed_date": "2026-06-14",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "MiniMax provides API access via platform.minimaxi.com. Pricing is per-token; no subscription tiers. USD pricing for international users may differ from CNY domestic pricing."
+  },
+  "models": [
+    {
+      "id": "minimax-text-01",
+      "provider_id": "minimax",
+      "display_name": "MiniMax-Text-01",
+      "family": "minimax-text",
+      "context_length_k": 1000,
+      "strengths": ["long-context", "document-analysis", "reasoning", "code-generation"],
+      "released_date": "2025-01-15",
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://www.minimaxi.com/en/news/minimax-text-01",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed",
+        "notes": "MiniMax-Text-01 supports 1M token context. One of the longest context windows commercially available. Coding benchmarks not independently verified here."
+      }
+    },
+    {
+      "id": "minimax-m1",
+      "provider_id": "minimax",
+      "display_name": "MiniMax-M1",
+      "family": "minimax-m1",
+      "context_length_k": 1000,
+      "strengths": ["reasoning", "coding", "math", "long-context", "chain-of-thought"],
+      "released_date": "2025-05-22",
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://www.minimaxi.com",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed",
+        "notes": "MiniMax-M1 is MiniMax's reasoning-focused model. Supports 1M token context with reasoning capabilities."
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "minimax-free-api",
+      "provider_id": "minimax",
+      "name": "MiniMax Free API",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free trial credits for new accounts. After credits exhausted, pay-per-token billing.",
+        "provenance": {
+          "url": "https://platform.minimaxi.com/document/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "minimax-text-01", "access_type": "limited", "is_default": true },
+        { "model_id": "minimax-m1", "access_type": "limited" }
+      ],
+      "usage_limits": [
+        {
+          "type": "tokens_per_month",
+          "value": null,
+          "unit": "tokens",
+          "applies_to": "free trial credits",
+          "notes": "Trial credit amount varies; consumed by API requests.",
+          "provenance": {
+            "url": "https://platform.minimaxi.com/document/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 1000,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "API-only access. Standout feature is 1M token context window — useful for large codebase analysis. No web IDE or chat UI for coding workflow."
+      },
+      "target_personas": ["developer needing long-context analysis", "AI researcher", "application builder"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://platform.minimaxi.com/document/pricing"
+    },
+    {
+      "id": "minimax-paid-api",
+      "provider_id": "minimax",
+      "name": "MiniMax Pay-per-Token",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": null,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Pay-per-token pricing. Rates per million tokens vary by model. Check platform.minimaxi.com/document/pricing for current USD rates.",
+        "provenance": {
+          "url": "https://platform.minimaxi.com/document/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "minimax-text-01", "access_type": "full", "is_default": true },
+        { "model_id": "minimax-m1", "access_type": "full" }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all API calls",
+          "notes": "No hard cap — billed per million tokens. 1M token context available on all paid requests.",
+          "provenance": {
+            "url": "https://platform.minimaxi.com/document/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 1000,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Full API access. 1M token context is the key differentiator — suited for analyzing very large codebases in a single request."
+      },
+      "target_personas": ["developer needing maximum context", "AI application builder", "production codebase analysis"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://platform.minimaxi.com/document/pricing"
+    }
+  ]
+}

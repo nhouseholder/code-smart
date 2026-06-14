@@ -19,6 +19,10 @@ npm-debug.log*
 # Build artifacts
 *.tsbuildinfo
 
+# Local fetch pipeline output (Playwright screenshots + diff reports)
+scripts/screenshots/
+scripts/reports/
+
 # Editor
 .vscode/
 .idea/

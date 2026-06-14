@@ -1,0 +1,96 @@
+{
+  "id": "opencode",
+  "name": "OpenCode",
+  "display_name": "OpenCode",
+  "website": "https://opencode.ai",
+  "pricing_url": "https://opencode.ai",
+  "description": "OpenCode is a free, open-source AI coding agent for the terminal. MIT-licensed and BYOK (bring your own key) — connects to any OpenAI-compatible API including Claude, GPT-4o, Gemini, and local models. No subscription required.",
+  "logo_slug": "opencode",
+  "category": "open_source",
+  "headquarters_country": "US",
+  "founded_year": 2025,
+  "last_verified": "2026-06-14",
+  "provenance": {
+    "url": "https://opencode.ai",
+    "accessed_date": "2026-06-14",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "OpenCode is MIT-licensed open-source software. Free to use; cost depends on which LLM API keys you supply. No subscription or pricing page — cost is entirely pass-through to your chosen model provider."
+  },
+  "models": [
+    {
+      "id": "byok",
+      "provider_id": "opencode",
+      "display_name": "BYOK — Your Choice of Model",
+      "family": "byok",
+      "context_length_k": null,
+      "strengths": ["model-agnostic", "local-models", "openai-compatible", "any-provider"],
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://opencode.ai",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed",
+        "notes": "OpenCode is model-agnostic. Context length, quality, and benchmarks depend entirely on the model API you configure (e.g. Claude Sonnet, GPT-4o, Gemini, or a local Ollama model)."
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "opencode-free",
+      "provider_id": "opencode",
+      "name": "OpenCode Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free and open-source (MIT). You pay only for the LLM API keys you configure — OpenCode itself is always $0.",
+        "provenance": {
+          "url": "https://opencode.ai",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "observed",
+          "notes": "MIT license confirmed at github.com/sst/opencode. No pricing model for the tool itself."
+        }
+      },
+      "models": [
+        { "model_id": "byok", "access_type": "full", "is_default": true, "notes": "Bring your own API key — Claude, GPT-4o, Gemini, Ollama, or any OpenAI-compatible provider." }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "tool itself",
+          "notes": "No usage limits imposed by OpenCode — limits are set by your chosen LLM provider and API key quota.",
+          "provenance": {
+            "url": "https://opencode.ai",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "observed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "Terminal-native agentic coding agent. Supports file edits, shell commands, multi-step reasoning. Context window depends on your configured model. No built-in IDE integration — runs in any terminal."
+      },
+      "target_personas": ["backend developer", "DevOps engineer", "power user preferring CLI", "developer who wants BYOK", "local model enthusiast"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://opencode.ai"
+    }
+  ]
+}

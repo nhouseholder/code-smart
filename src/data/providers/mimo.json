@@ -1,0 +1,150 @@
+{
+  "id": "mimo",
+  "name": "Mimo",
+  "display_name": "Mimo",
+  "website": "https://mimo.org",
+  "pricing_url": "https://mimo.org/pro",
+  "description": "Mimo is an AI-powered coding education app that teaches programming through bite-sized, gamified lessons. NOT a professional AI coding assistant — it is a structured learning platform for beginners and career-changers learning to code. AI features assist with explanations and exercises rather than autonomous code generation.",
+  "logo_slug": "mimo",
+  "category": "platform",
+  "headquarters_country": "AT",
+  "founded_year": 2015,
+  "last_verified": "2026-06-14",
+  "provenance": {
+    "url": "https://mimo.org/pro",
+    "accessed_date": "2026-06-14",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "Mimo is an educational platform, not an AI coding assistant for production developers. Plans listed here describe the learning subscription tiers. Headquarters in Vienna, Austria."
+  },
+  "models": [
+    {
+      "id": "mimo-ai-tutor",
+      "provider_id": "mimo",
+      "display_name": "Mimo AI Tutor",
+      "family": "mimo-internal",
+      "context_length_k": null,
+      "strengths": ["coding-education", "guided-exercises", "beginner-friendly", "explanation"],
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://mimo.org",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed",
+        "notes": "Mimo AI Tutor is an educational assistant built into the platform. Underlying model not publicly disclosed."
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "mimo-free",
+      "provider_id": "mimo",
+      "name": "Mimo Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free access to a limited set of courses and exercises.",
+        "provenance": {
+          "url": "https://mimo.org",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "mimo-ai-tutor", "access_type": "limited", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "courses and lessons",
+          "notes": "Free tier limits access to introductory content only.",
+          "provenance": {
+            "url": "https://mimo.org",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Educational platform only. Not suitable for professional coding work. Features are gamified lessons, progress tracking, and basic AI-powered explanations."
+      },
+      "target_personas": ["coding student", "beginner developer", "career-changer", "self-taught programmer"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://mimo.org"
+    },
+    {
+      "id": "mimo-pro",
+      "provider_id": "mimo",
+      "name": "Mimo Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 14.99,
+        "annual_monthly_usd": 9.99,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$14.99/mo or ~$9.99/mo billed annually (~$119.99/yr). Verify at mimo.org/pro for current pricing.",
+        "provenance": {
+          "url": "https://mimo.org/pro",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "mimo-ai-tutor", "access_type": "full", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all courses and AI explanations",
+          "notes": "Unlimited access to the full course catalog, AI tutor explanations, and certificate programs.",
+          "provenance": {
+            "url": "https://mimo.org/pro",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Full course library, AI explanations, offline access, certificates of completion. Educational platform — not for production code generation."
+      },
+      "target_personas": ["coding student", "career-changer into tech", "self-taught developer", "beginner learning Python or JavaScript"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://mimo.org/pro"
+    }
+  ]
+}

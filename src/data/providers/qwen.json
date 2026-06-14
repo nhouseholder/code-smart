@@ -1,0 +1,170 @@
+{
+  "id": "qwen",
+  "name": "Qwen",
+  "display_name": "Qwen / Alibaba Cloud",
+  "website": "https://qwenlm.ai",
+  "pricing_url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+  "description": "Qwen is Alibaba Cloud's family of large language models, including the Qwen2.5-Coder series designed for code generation and completion. Accessed via the DashScope API. No subscription plans — API is pay-per-token with free trial credits.",
+  "logo_slug": "qwen",
+  "category": "ai_lab",
+  "headquarters_country": "CN",
+  "founded_year": 2023,
+  "last_verified": "2026-06-14",
+  "provenance": {
+    "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+    "accessed_date": "2026-06-14",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "Qwen models accessed via DashScope API (dashscope.aliyuncs.com). Pricing is per-token; free trial credits available. No traditional subscription model."
+  },
+  "models": [
+    {
+      "id": "qwen2-5-coder-32b",
+      "provider_id": "qwen",
+      "display_name": "Qwen2.5-Coder-32B-Instruct",
+      "family": "qwen2.5-coder",
+      "context_length_k": 128,
+      "strengths": ["code-generation", "code-completion", "debugging", "multi-language"],
+      "released_date": "2024-11-12",
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://qwenlm.github.io/blog/qwen2.5-coder/",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed",
+        "notes": "Qwen2.5-Coder-32B reported strong performance on HumanEval and SWE-bench but exact verified scores not confirmed here."
+      }
+    },
+    {
+      "id": "qwq-32b",
+      "provider_id": "qwen",
+      "display_name": "QwQ-32B",
+      "family": "qwq",
+      "context_length_k": 32,
+      "strengths": ["reasoning", "coding", "math", "chain-of-thought"],
+      "released_date": "2025-03-06",
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://qwenlm.github.io/blog/qwq-32b/",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed"
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "qwen-free-api",
+      "provider_id": "qwen",
+      "name": "Qwen Free API",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free trial credits for new DashScope accounts. After credits are exhausted, pay-per-token billing begins.",
+        "provenance": {
+          "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "qwen2-5-coder-32b", "access_type": "limited", "is_default": true },
+        { "model_id": "qwq-32b", "access_type": "limited" }
+      ],
+      "usage_limits": [
+        {
+          "type": "tokens_per_month",
+          "value": null,
+          "unit": "tokens",
+          "applies_to": "free trial credits only",
+          "notes": "Free trial credit amount varies by region and promotion. Consumed by API calls.",
+          "provenance": {
+            "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 128,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "API-only access. No web UI for coding workflow. Integrate into your own tooling or IDE via OpenAI-compatible endpoints."
+      },
+      "target_personas": ["developer building AI tools", "researcher", "startup integrating LLM coding"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen"
+    },
+    {
+      "id": "qwen-paid-api",
+      "provider_id": "qwen",
+      "name": "Qwen Pay-per-Token",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": null,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Pay-per-token pricing. Costs vary by model; Qwen2.5-Coder models priced in USD per million tokens. Check dashscope.aliyuncs.com for current rates.",
+        "provenance": {
+          "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "qwen2-5-coder-32b", "access_type": "full", "is_default": true },
+        { "model_id": "qwq-32b", "access_type": "full" }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all API calls",
+          "notes": "No hard usage cap; billed per token consumed.",
+          "provenance": {
+            "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 128,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Full API access with no monthly commitment. OpenAI-compatible endpoint available for easy integration."
+      },
+      "target_personas": ["developer building AI tools", "production application", "high-volume coder tooling"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen"
+    }
+  ]
+}

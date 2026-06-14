@@ -1,0 +1,216 @@
+{
+  "id": "copilot-xcode",
+  "name": "Copilot for Xcode",
+  "display_name": "GitHub Copilot for Xcode",
+  "website": "https://github.com/github/CopilotForXcode",
+  "pricing_url": "https://github.com/features/copilot#pricing",
+  "description": "GitHub Copilot for Xcode is the official Apple IDE extension bringing Copilot's AI code completion and chat directly into Xcode. Supports Swift, Objective-C, and Swift Playgrounds. Requires a GitHub Copilot subscription — same pricing as standard Copilot plans.",
+  "logo_slug": "github",
+  "category": "ide_tool",
+  "headquarters_country": "US",
+  "founded_year": 2024,
+  "last_verified": "2026-06-14",
+  "provenance": {
+    "url": "https://github.com/github/CopilotForXcode",
+    "accessed_date": "2026-06-14",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "Copilot for Xcode is an official GitHub extension (OSS, MIT-licensed at github.com/github/CopilotForXcode). Pricing mirrors GitHub Copilot plans — no separate subscription."
+  },
+  "models": [
+    {
+      "id": "copilot-xcode-base",
+      "provider_id": "copilot-xcode",
+      "display_name": "Copilot Base Model (Xcode)",
+      "family": "copilot",
+      "context_length_k": 64,
+      "strengths": ["swift", "objective-c", "xcode-integration", "autocomplete", "ios-development", "macos-development"],
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://github.com/github/CopilotForXcode",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed",
+        "notes": "Uses the same underlying Copilot models (GPT-4o, Claude, Gemini) as the main Copilot product."
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "copilot-xcode-free",
+      "provider_id": "copilot-xcode",
+      "name": "Copilot for Xcode Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free for all GitHub users. Requires installing the Copilot for Xcode extension from GitHub.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "copilot-xcode-base", "access_type": "limited", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "completions_per_month",
+          "value": 2000,
+          "unit": "code completions",
+          "applies_to": "autocomplete in Xcode",
+          "notes": "Same monthly completion allowance as GitHub Copilot Free.",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "messages_per_month",
+          "value": 50,
+          "unit": "chat messages",
+          "applies_to": "Copilot Chat in Xcode (premium models)",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": ["Xcode"],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Xcode-only integration. Swift, Objective-C, and C/C++ code completion. Chat panel within Xcode."
+      },
+      "target_personas": ["iOS developer", "macOS developer", "Apple platform developer", "student learning Swift"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing"
+    },
+    {
+      "id": "copilot-xcode-individual",
+      "provider_id": "copilot-xcode",
+      "name": "Copilot for Xcode Individual",
+      "tier": "individual",
+      "pricing": {
+        "monthly_usd": 10,
+        "annual_monthly_usd": 8.33,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$10/mo or $100/yr. Shared GitHub Copilot Individual subscription — also unlocks Copilot in VS Code, JetBrains, etc.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "copilot-xcode-base", "access_type": "full", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat in Xcode",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": ["Xcode", "VS Code", "JetBrains", "Visual Studio", "Vim/Neovim"],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "Subscription covers all Copilot integrations. Xcode support is one of several IDE options."
+      },
+      "target_personas": ["professional iOS developer", "Apple platform engineer", "freelance Swift developer"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing"
+    },
+    {
+      "id": "copilot-xcode-business",
+      "provider_id": "copilot-xcode",
+      "name": "Copilot for Xcode Business",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 19,
+        "annual_monthly_usd": 19,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "$19/seat/month. Admin controls apply across all Copilot integrations including Xcode.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "copilot-xcode-base", "access_type": "full", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat across all IDEs",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": ["Xcode", "VS Code", "JetBrains", "Visual Studio", "Vim/Neovim", "Azure Data Studio"],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Admin policy controls; IP indemnification; no training on code. Xcode integration included alongside all other IDE support."
+      },
+      "target_personas": ["iOS engineering team", "Apple platform company", "mobile-first startup"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing"
+    }
+  ]
+}

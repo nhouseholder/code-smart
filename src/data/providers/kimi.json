@@ -1,0 +1,222 @@
+{
+  "id": "kimi",
+  "name": "Kimi",
+  "display_name": "Kimi (Moonshot AI)",
+  "website": "https://kimi.ai",
+  "pricing_url": "https://kimi.ai/pricing",
+  "description": "Kimi is Moonshot AI's long-context conversational AI assistant with strong coding capabilities. Known for its 128K+ context window, code generation, and document analysis. Primarily serves Chinese and global markets.",
+  "logo_slug": "kimi",
+  "category": "ai_lab",
+  "headquarters_country": "CN",
+  "founded_year": 2023,
+  "last_verified": "2026-06-14",
+  "provenance": {
+    "url": "https://kimi.ai/pricing",
+    "accessed_date": "2026-06-14",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "Pricing primarily in CNY; USD equivalents estimated at ~7.27 CNY/USD as of June 2026. Verify at kimi.ai/pricing for current USD pricing for international users."
+  },
+  "models": [
+    {
+      "id": "moonshot-v1-128k",
+      "provider_id": "kimi",
+      "display_name": "Moonshot v1 (128K)",
+      "family": "moonshot-v1",
+      "context_length_k": 128,
+      "strengths": ["long-context", "code-generation", "document-analysis", "chinese-language"],
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://platform.moonshot.cn/docs",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed",
+        "notes": "Moonshot v1 series supports 8K, 32K, and 128K context variants."
+      }
+    },
+    {
+      "id": "kimi-k1-5",
+      "provider_id": "kimi",
+      "display_name": "Kimi k1.5",
+      "family": "kimi-k1",
+      "context_length_k": 128,
+      "strengths": ["reasoning", "coding", "math", "long-context"],
+      "released_date": "2025-01-22",
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://kimi.ai",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed",
+        "notes": "Kimi k1.5 is a multimodal reasoning model. Benchmark scores not publicly disclosed at benchmark standard sites as of this writing."
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "kimi-free",
+      "provider_id": "kimi",
+      "name": "Kimi Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free tier with daily message limits.",
+        "provenance": {
+          "url": "https://kimi.ai/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "moonshot-v1-128k", "access_type": "limited", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "messages_per_day",
+          "value": 20,
+          "unit": "messages",
+          "applies_to": "long-context and k1.5 models",
+          "notes": "Daily limit estimated; actual limit varies by model and may change.",
+          "provenance": {
+            "url": "https://kimi.ai/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["casual user", "student", "hobbyist"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://kimi.ai/pricing"
+    },
+    {
+      "id": "kimi-plus",
+      "provider_id": "kimi",
+      "name": "Kimi Plus",
+      "tier": "individual",
+      "pricing": {
+        "monthly_usd": 8,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "CNY",
+        "notes": "¥59/mo. USD equivalent ~$8/mo at ~7.27 CNY/USD as of June 2026; actual USD price for international users may differ. Verify at kimi.ai/pricing.",
+        "provenance": {
+          "url": "https://kimi.ai/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "moonshot-v1-128k", "access_type": "full", "is_default": true },
+        { "model_id": "kimi-k1-5", "access_type": "full" }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "standard messages",
+          "notes": "Higher daily limit than free; k1.5 usage may still be capped.",
+          "provenance": {
+            "url": "https://kimi.ai/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["professional developer", "researcher", "power user"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://kimi.ai/pricing"
+    },
+    {
+      "id": "kimi-pro",
+      "provider_id": "kimi",
+      "name": "Kimi Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 27,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "CNY",
+        "notes": "¥199/mo. USD equivalent ~$27/mo at ~7.27 CNY/USD as of June 2026. Verify at kimi.ai/pricing.",
+        "provenance": {
+          "url": "https://kimi.ai/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "moonshot-v1-128k", "access_type": "full", "is_default": true },
+        { "model_id": "kimi-k1-5", "access_type": "full" }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all models",
+          "notes": "Higher or unlimited usage across all Kimi models.",
+          "provenance": {
+            "url": "https://kimi.ai/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["power user", "professional developer", "AI researcher"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://kimi.ai/pricing"
+    }
+  ]
+}

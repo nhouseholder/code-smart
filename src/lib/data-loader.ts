@@ -8,6 +8,12 @@ import openaiData from "@/data/providers/openai.json";
 import githubCopilotData from "@/data/providers/github-copilot.json";
 import cursorData from "@/data/providers/cursor.json";
 import googleData from "@/data/providers/google.json";
+import kimiData from "@/data/providers/kimi.json";
+import qwenData from "@/data/providers/qwen.json";
+import copilotXcodeData from "@/data/providers/copilot-xcode.json";
+import opencodeData from "@/data/providers/opencode.json";
+import mimoData from "@/data/providers/mimo.json";
+import minimaxData from "@/data/providers/minimax.json";
 
 const PROVIDER_FILES = [
   anthropicData,
@@ -15,6 +21,12 @@ const PROVIDER_FILES = [
   githubCopilotData,
   cursorData,
   googleData,
+  kimiData,
+  qwenData,
+  copilotXcodeData,
+  opencodeData,
+  mimoData,
+  minimaxData,
 ];
 
 let _cachedProviders: Provider[] | null = null;
