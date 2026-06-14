@@ -1,0 +1,301 @@
+{
+  "id": "openai",
+  "name": "OpenAI",
+  "display_name": "ChatGPT (OpenAI)",
+  "website": "https://chatgpt.com",
+  "pricing_url": "https://openai.com/chatgpt/pricing",
+  "description": "OpenAI's ChatGPT offers access to GPT-4o, o3, and o4-mini models for coding, reasoning, and general tasks. Codex CLI provides terminal-native AI coding. The Pro plan unlocks the most powerful models with expanded limits.",
+  "logo_slug": "openai",
+  "category": "ai_lab",
+  "headquarters_country": "US",
+  "founded_year": 2015,
+  "last_verified": "2026-06-14",
+  "provenance": {
+    "url": "https://openai.com/chatgpt/pricing",
+    "accessed_date": "2026-06-14",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "Prices from model knowledge; verify at openai.com/chatgpt/pricing before publishing."
+  },
+  "models": [
+    {
+      "id": "gpt-4o",
+      "provider_id": "openai",
+      "display_name": "GPT-4o",
+      "family": "gpt-4o",
+      "context_length_k": 128,
+      "strengths": ["coding", "vision", "speed", "multimodal"],
+      "benchmarks": [
+        {
+          "name": "HumanEval",
+          "score": 90.2,
+          "unit": "percent",
+          "higher_is_better": true,
+          "notes": "Approximate; varies by prompt format",
+          "provenance": {
+            "url": "https://openai.com/research",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "name": "SWE-bench-verified",
+          "score": 38.8,
+          "unit": "percent",
+          "higher_is_better": true,
+          "notes": "gpt-4o single-attempt pass rate; verify against OpenAI evals",
+          "provenance": {
+            "url": "https://openai.com/index/introducing-swe-bench-verified",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://platform.openai.com/docs/models",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed"
+      }
+    },
+    {
+      "id": "o3",
+      "provider_id": "openai",
+      "display_name": "o3",
+      "family": "o-series",
+      "context_length_k": 200,
+      "strengths": ["complex-reasoning", "math", "coding", "agentic"],
+      "benchmarks": [
+        {
+          "name": "SWE-bench-verified",
+          "score": 69.1,
+          "unit": "percent",
+          "higher_is_better": true,
+          "notes": "o3 high-compute setting; verify against OpenAI published evals",
+          "provenance": {
+            "url": "https://openai.com/o3",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "name": "HumanEval",
+          "score": 97.9,
+          "unit": "percent",
+          "higher_is_better": true,
+          "notes": "Approximate; varies by compute budget",
+          "provenance": {
+            "url": "https://openai.com/o3",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://platform.openai.com/docs/models",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed"
+      }
+    },
+    {
+      "id": "o4-mini",
+      "provider_id": "openai",
+      "display_name": "o4-mini",
+      "family": "o-series",
+      "context_length_k": 200,
+      "strengths": ["fast-reasoning", "coding", "cost-efficient"],
+      "benchmarks": [
+        {
+          "name": "SWE-bench-verified",
+          "score": 68.1,
+          "unit": "percent",
+          "higher_is_better": true,
+          "notes": "Approximate; verify against OpenAI evals page",
+          "provenance": {
+            "url": "https://openai.com/index/openai-o4-mini-system-card",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://platform.openai.com/docs/models",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed"
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "openai-free",
+      "provider_id": "openai",
+      "name": "ChatGPT Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "provenance": {
+          "url": "https://openai.com/chatgpt/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "gpt-4o", "access_type": "limited", "is_default": true, "notes": "Limited daily messages on GPT-4o; falls back to GPT-3.5 when limit hit" }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "GPT-4o messages",
+          "notes": "Unofficial reports suggest ~10–30 GPT-4o messages per day. Not officially stated.",
+          "provenance": {
+            "url": "https://openai.com/chatgpt",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "unknown"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["casual user", "student"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://openai.com/chatgpt"
+    },
+    {
+      "id": "openai-plus",
+      "provider_id": "openai",
+      "name": "ChatGPT Plus",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 20,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "provenance": {
+          "url": "https://openai.com/chatgpt/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "gpt-4o", "access_type": "full", "is_default": true },
+        { "model_id": "o4-mini", "access_type": "full" },
+        { "model_id": "o3", "access_type": "limited", "notes": "Limited messages per day on o3" }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "o3 messages",
+          "notes": "GPT-4o is generous; o3 has a smaller daily allotment. Exact limits dynamic.",
+          "provenance": {
+            "url": "https://openai.com/chatgpt/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": ["VS Code (Copilot mode requires separate plan)"],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["developer", "analyst", "content creator"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://openai.com/chatgpt/pricing"
+    },
+    {
+      "id": "openai-pro",
+      "provider_id": "openai",
+      "name": "ChatGPT Pro",
+      "tier": "enterprise",
+      "pricing": {
+        "monthly_usd": 200,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Includes o1 Pro mode and extended o3 access.",
+        "provenance": {
+          "url": "https://openai.com/chatgpt/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "gpt-4o", "access_type": "full" },
+        { "model_id": "o3", "access_type": "full", "is_default": true },
+        { "model_id": "o4-mini", "access_type": "full" }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "most models",
+          "notes": "Marketed as 'unlimited' for most models; fair-use policy applies.",
+          "provenance": {
+            "url": "https://openai.com/chatgpt/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["power user", "researcher", "AI-heavy professional"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://openai.com/chatgpt/pricing"
+    }
+  ]
+}

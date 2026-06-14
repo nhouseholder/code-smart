@@ -1,0 +1,268 @@
+{
+  "id": "github-copilot",
+  "name": "GitHub Copilot",
+  "display_name": "GitHub Copilot",
+  "website": "https://github.com/features/copilot",
+  "pricing_url": "https://github.com/features/copilot#pricing",
+  "description": "GitHub Copilot is an AI pair programmer deeply integrated into VS Code, JetBrains, and other IDEs. Provides inline code completions, chat, PR reviews, and CLI assistance. Powered by OpenAI models with GitHub-specific fine-tuning.",
+  "logo_slug": "github",
+  "category": "ide_tool",
+  "headquarters_country": "US",
+  "last_verified": "2026-06-14",
+  "provenance": {
+    "url": "https://github.com/features/copilot",
+    "accessed_date": "2026-06-14",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "Pricing from model knowledge; GitHub frequently updates plans — verify at github.com/features/copilot#pricing."
+  },
+  "models": [
+    {
+      "id": "copilot-base",
+      "provider_id": "github-copilot",
+      "display_name": "Copilot Base Model (GPT-4o / Claude / Gemini)",
+      "family": "copilot",
+      "context_length_k": 64,
+      "strengths": ["autocomplete", "ide-integration", "code-chat", "pr-review"],
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://github.com/features/copilot",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed",
+        "notes": "Copilot uses multiple underlying models (GPT-4o, Claude, Gemini) depending on task and user selection."
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "copilot-free",
+      "provider_id": "github-copilot",
+      "name": "Copilot Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free for all GitHub users as of late 2024.",
+        "provenance": {
+          "url": "https://github.com/features/copilot",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "copilot-base", "access_type": "limited", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "completions_per_month",
+          "value": 2000,
+          "unit": "code completions",
+          "applies_to": "autocomplete",
+          "provenance": {
+            "url": "https://github.com/features/copilot",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "messages_per_month",
+          "value": 50,
+          "unit": "chat messages",
+          "applies_to": "Copilot Chat (premium models)",
+          "notes": "50 premium model chat messages per month on free tier.",
+          "provenance": {
+            "url": "https://github.com/features/copilot",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": ["VS Code", "JetBrains", "Visual Studio", "Vim/Neovim", "Xcode"],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["open-source developer", "student", "hobbyist"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot"
+    },
+    {
+      "id": "copilot-individual",
+      "provider_id": "github-copilot",
+      "name": "Copilot Individual",
+      "tier": "individual",
+      "pricing": {
+        "monthly_usd": 10,
+        "annual_monthly_usd": 8.33,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$10/mo or $100/yr. Annual saves ~$20/yr.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "copilot-base", "access_type": "full", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "code completions",
+          "notes": "Unlimited completions; chat messages have a higher allowance than free tier.",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": ["VS Code", "JetBrains", "Visual Studio", "Vim/Neovim", "Xcode", "Azure Data Studio"],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["professional developer", "freelancer"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing"
+    },
+    {
+      "id": "copilot-business",
+      "provider_id": "github-copilot",
+      "name": "Copilot Business",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 19,
+        "annual_monthly_usd": 19,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "Per seat, billed monthly. Minimum 1 seat.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "copilot-base", "access_type": "full", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": ["VS Code", "JetBrains", "Visual Studio", "Vim/Neovim", "Xcode", "Azure Data Studio"],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Admin policy controls; IP indemnification; no training on code."
+      },
+      "target_personas": ["engineering team", "startup", "enterprise developer"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing"
+    },
+    {
+      "id": "copilot-enterprise",
+      "provider_id": "github-copilot",
+      "name": "Copilot Enterprise",
+      "tier": "enterprise",
+      "pricing": {
+        "monthly_usd": 39,
+        "annual_monthly_usd": 39,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "Requires GitHub Enterprise Cloud. Per seat/month.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "copilot-base", "access_type": "full", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": ["VS Code", "JetBrains", "Visual Studio", "Vim/Neovim", "Xcode", "Azure Data Studio"],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Codebase-aware chat (indexes your org's repos); PR summaries; fine-tuned models."
+      },
+      "target_personas": ["large enterprise", "regulated industry", "org with private codebase"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing"
+    }
+  ]
+}

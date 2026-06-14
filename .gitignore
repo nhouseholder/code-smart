@@ -1,0 +1,24 @@
+# Next.js
+.next/
+out/
+.open-next/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+*.pem
+
+# Build artifacts
+*.tsbuildinfo
+
+# Editor
+.vscode/
+.idea/

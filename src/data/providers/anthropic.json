@@ -1,0 +1,332 @@
+{
+  "id": "anthropic",
+  "name": "Anthropic",
+  "display_name": "Claude (Anthropic)",
+  "website": "https://claude.ai",
+  "pricing_url": "https://claude.ai/upgrade",
+  "description": "Anthropic's Claude models are designed for safety and helpfulness. Claude excels at coding, analysis, and long-context reasoning. Available via claude.ai subscriptions and the Anthropic API.",
+  "logo_slug": "anthropic",
+  "category": "ai_lab",
+  "headquarters_country": "US",
+  "founded_year": 2021,
+  "last_verified": "2026-06-14",
+  "provenance": {
+    "url": "https://claude.ai/upgrade",
+    "accessed_date": "2026-06-14",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "Prices and limits sourced from model knowledge; verify against live pricing page before publishing."
+  },
+  "models": [
+    {
+      "id": "claude-haiku-4-5",
+      "provider_id": "anthropic",
+      "display_name": "Claude Haiku 4.5",
+      "family": "claude-4",
+      "context_length_k": 200,
+      "strengths": ["fast", "cost-efficient", "coding-assistance", "chat"],
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed"
+      }
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "provider_id": "anthropic",
+      "display_name": "Claude Sonnet 4.6",
+      "family": "claude-4",
+      "context_length_k": 200,
+      "strengths": ["coding", "reasoning", "analysis", "long-context"],
+      "released_date": "2025-07-01",
+      "benchmarks": [
+        {
+          "name": "SWE-bench-verified",
+          "score": 72.7,
+          "unit": "percent",
+          "higher_is_better": true,
+          "notes": "claude-3.7-sonnet approximate; verify for 4.6",
+          "provenance": {
+            "url": "https://www.anthropic.com/research/swe-bench-sonnet",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "name": "HumanEval",
+          "score": 93.0,
+          "unit": "percent",
+          "higher_is_better": true,
+          "notes": "Approximate; verify against Anthropic model card",
+          "provenance": {
+            "url": "https://www.anthropic.com/claude/sonnet",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed"
+      }
+    },
+    {
+      "id": "claude-opus-4-8",
+      "provider_id": "anthropic",
+      "display_name": "Claude Opus 4.8",
+      "family": "claude-4",
+      "context_length_k": 200,
+      "strengths": ["complex-reasoning", "research", "coding", "agentic-tasks"],
+      "benchmarks": [
+        {
+          "name": "SWE-bench-verified",
+          "score": 79.4,
+          "unit": "percent",
+          "higher_is_better": true,
+          "notes": "Approximate; verify against Anthropic's published evals",
+          "provenance": {
+            "url": "https://www.anthropic.com/claude/opus",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed"
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "anthropic-free",
+      "provider_id": "anthropic",
+      "name": "Claude Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free tier; rate-limited. Exact daily limits not publicly documented.",
+        "provenance": {
+          "url": "https://claude.ai",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "claude-haiku-4-5", "access_type": "full", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "all messages",
+          "notes": "Daily rate limits apply; exact count not publicly stated. Throttled during peak.",
+          "provenance": {
+            "url": "https://claude.ai",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "unknown"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["hobbyist", "student", "occasional user"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai"
+    },
+    {
+      "id": "anthropic-pro",
+      "provider_id": "anthropic",
+      "name": "Claude Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 20,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "No annual discount as of last check.",
+        "provenance": {
+          "url": "https://claude.ai/upgrade",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "claude-haiku-4-5", "access_type": "full" },
+        { "model_id": "claude-sonnet-4-6", "access_type": "full", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "Sonnet / Opus messages",
+          "notes": "~5x more usage than Free tier per Anthropic docs. Exact limit not published as a hard number; varies by model and context length.",
+          "provenance": {
+            "url": "https://support.anthropic.com/en/articles/8325612-does-claude-ai-have-usage-limits",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": ["VS Code (via API)"],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["solo developer", "researcher", "writer"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai/upgrade"
+    },
+    {
+      "id": "anthropic-max",
+      "provider_id": "anthropic",
+      "name": "Claude Max",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 100,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Max plan: ~5x usage vs Pro. A $200/mo tier (20x Pro) was also advertised.",
+        "provenance": {
+          "url": "https://claude.ai/upgrade",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "claude-haiku-4-5", "access_type": "full" },
+        { "model_id": "claude-sonnet-4-6", "access_type": "full", "is_default": true },
+        { "model_id": "claude-opus-4-8", "access_type": "full" }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "all models",
+          "notes": "~5x Pro usage at $100/mo tier; ~20x Pro at $200/mo tier. No hard token cap published.",
+          "provenance": {
+            "url": "https://claude.ai/upgrade",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": ["VS Code (via Claude.ai)", "JetBrains (via Claude.ai)"],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["power user", "senior developer", "AI-heavy researcher"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai/upgrade"
+    },
+    {
+      "id": "anthropic-team",
+      "provider_id": "anthropic",
+      "name": "Claude Team",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 30,
+        "annual_monthly_usd": 25,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "Minimum 5 seats. Annual billing saves ~$5/seat/mo.",
+        "provenance": {
+          "url": "https://claude.ai/upgrade",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "claude-haiku-4-5", "access_type": "full" },
+        { "model_id": "claude-sonnet-4-6", "access_type": "full", "is_default": true },
+        { "model_id": "claude-opus-4-8", "access_type": "limited" }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "per seat",
+          "notes": "Usage pooled across team. Exact limit not published.",
+          "provenance": {
+            "url": "https://claude.ai/upgrade",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": false
+      },
+      "target_personas": ["engineering team", "startup", "small company"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai/upgrade"
+    }
+  ]
+}

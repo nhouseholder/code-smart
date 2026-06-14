@@ -1,0 +1,249 @@
+{
+  "id": "cursor",
+  "name": "Cursor",
+  "display_name": "Cursor",
+  "website": "https://cursor.com",
+  "pricing_url": "https://cursor.com/pricing",
+  "description": "Cursor is an AI-native IDE (VS Code fork) with deep codebase context. Supports multi-file edits, AI terminal, agent mode, and lets you bring your own API key. Uses Claude, GPT-4o, and o-series models.",
+  "logo_slug": "cursor",
+  "category": "ide_tool",
+  "headquarters_country": "US",
+  "founded_year": 2023,
+  "last_verified": "2026-06-14",
+  "provenance": {
+    "url": "https://cursor.com/pricing",
+    "accessed_date": "2026-06-14",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "Cursor frequently updates pricing and fast-request limits — verify at cursor.com/pricing."
+  },
+  "models": [
+    {
+      "id": "cursor-claude-sonnet",
+      "provider_id": "cursor",
+      "display_name": "Claude Sonnet (via Cursor)",
+      "family": "claude-4",
+      "context_length_k": 200,
+      "strengths": ["agentic-coding", "multi-file-edit", "codebase-context"],
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://cursor.com",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed",
+        "notes": "Cursor proxies Anthropic Claude — benchmark scores are equivalent to claude-sonnet-4-6."
+      }
+    },
+    {
+      "id": "cursor-gpt-4o",
+      "provider_id": "cursor",
+      "display_name": "GPT-4o (via Cursor)",
+      "family": "gpt-4o",
+      "context_length_k": 128,
+      "strengths": ["speed", "coding", "multimodal"],
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://cursor.com",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed"
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "cursor-hobby",
+      "provider_id": "cursor",
+      "name": "Cursor Hobby",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free tier. 2-week Pro trial for new users.",
+        "provenance": {
+          "url": "https://cursor.com/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "cursor-claude-sonnet", "access_type": "limited", "notes": "50 slow-request premium model uses/mo" },
+        { "model_id": "cursor-gpt-4o", "access_type": "limited" }
+      ],
+      "usage_limits": [
+        {
+          "type": "completions_per_month",
+          "value": 2000,
+          "unit": "code completions (tab)",
+          "applies_to": "autocomplete",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "requests_per_month",
+          "value": 50,
+          "unit": "premium model slow requests",
+          "applies_to": "Claude Sonnet, GPT-4o (chat + composer)",
+          "notes": "After 50, must upgrade or use own API key.",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": ["Cursor (built-in)", "VS Code extensions compatible"],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "Can use own API key (BYOK) to bypass request limits."
+      },
+      "target_personas": ["hobbyist", "student", "occasional coder"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://cursor.com/pricing"
+    },
+    {
+      "id": "cursor-pro",
+      "provider_id": "cursor",
+      "name": "Cursor Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 20,
+        "annual_monthly_usd": 16,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$20/mo or $192/yr ($16/mo). Annual saves $48/yr.",
+        "provenance": {
+          "url": "https://cursor.com/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "cursor-claude-sonnet", "access_type": "full", "is_default": true },
+        { "model_id": "cursor-gpt-4o", "access_type": "full" }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "autocomplete",
+          "notes": "Unlimited tab completions.",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "requests_per_month",
+          "value": 500,
+          "unit": "fast premium model requests",
+          "applies_to": "Claude Sonnet, GPT-4o (chat + composer)",
+          "notes": "500 fast requests; additional slow requests available after. Resets monthly.",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": ["Cursor (built-in)", "VS Code extensions compatible"],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "BYOK supported for additional capacity."
+      },
+      "target_personas": ["professional developer", "AI-first coder", "solo founder"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://cursor.com/pricing"
+    },
+    {
+      "id": "cursor-business",
+      "provider_id": "cursor",
+      "name": "Cursor Business",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 40,
+        "annual_monthly_usd": 40,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "$40/seat/month. Minimum seats may apply.",
+        "provenance": {
+          "url": "https://cursor.com/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "cursor-claude-sonnet", "access_type": "full", "is_default": true },
+        { "model_id": "cursor-gpt-4o", "access_type": "full" }
+      ],
+      "usage_limits": [
+        {
+          "type": "requests_per_month",
+          "value": 500,
+          "unit": "fast premium model requests per seat",
+          "applies_to": "per seat",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": ["Cursor (built-in)"],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Centralized billing; privacy mode; no training on code."
+      },
+      "target_personas": ["engineering team", "startup"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://cursor.com/pricing"
+    }
+  ]
+}

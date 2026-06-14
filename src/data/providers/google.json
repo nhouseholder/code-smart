@@ -1,0 +1,248 @@
+{
+  "id": "google",
+  "name": "Google",
+  "display_name": "Gemini (Google)",
+  "website": "https://gemini.google.com",
+  "pricing_url": "https://gemini.google.com/advanced",
+  "description": "Google's Gemini models power Google's AI assistant and API. Gemini Advanced provides the most capable models for coding and reasoning. Google AI Studio offers free API access for development. Gemini Code Assist provides IDE integration.",
+  "logo_slug": "google",
+  "category": "ai_lab",
+  "headquarters_country": "US",
+  "founded_year": 1998,
+  "last_verified": "2026-06-14",
+  "provenance": {
+    "url": "https://gemini.google.com/advanced",
+    "accessed_date": "2026-06-14",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "Google frequently rebrands and restructures plans; verify at one.google.com/intl/en/about/plans for Google One / Gemini Advanced pricing."
+  },
+  "models": [
+    {
+      "id": "gemini-2-5-pro",
+      "provider_id": "google",
+      "display_name": "Gemini 2.5 Pro",
+      "family": "gemini-2.5",
+      "context_length_k": 1000,
+      "strengths": ["coding", "long-context", "reasoning", "multimodal", "deep-research"],
+      "benchmarks": [
+        {
+          "name": "SWE-bench-verified",
+          "score": 63.8,
+          "unit": "percent",
+          "higher_is_better": true,
+          "notes": "Gemini 2.5 Pro; verify against Google DeepMind published evals",
+          "provenance": {
+            "url": "https://deepmind.google/technologies/gemini/pro/",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "name": "HumanEval",
+          "score": 87.0,
+          "unit": "percent",
+          "higher_is_better": true,
+          "notes": "Approximate; verify against official model card",
+          "provenance": {
+            "url": "https://deepmind.google/technologies/gemini/",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://deepmind.google/technologies/gemini/pro/",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed"
+      }
+    },
+    {
+      "id": "gemini-2-5-flash",
+      "provider_id": "google",
+      "display_name": "Gemini 2.5 Flash",
+      "family": "gemini-2.5",
+      "context_length_k": 1000,
+      "strengths": ["speed", "cost-efficient", "coding", "multimodal"],
+      "benchmarks": [],
+      "provenance": {
+        "url": "https://deepmind.google/technologies/gemini/flash/",
+        "accessed_date": "2026-06-14",
+        "method": "manual",
+        "confidence": "assumed"
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "google-gemini-free",
+      "provider_id": "google",
+      "name": "Gemini Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free access via gemini.google.com. Uses Gemini 2.0 Flash or 2.5 Flash.",
+        "provenance": {
+          "url": "https://gemini.google.com",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "gemini-2-5-flash", "access_type": "full", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "all messages",
+          "notes": "Daily rate limits apply; exact limit not published. Gemini Pro access limited on free tier.",
+          "provenance": {
+            "url": "https://gemini.google.com",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "unknown"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 1000,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": ["casual user", "student"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://gemini.google.com"
+    },
+    {
+      "id": "google-gemini-advanced",
+      "provider_id": "google",
+      "name": "Gemini Advanced (Google One AI Premium)",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 19.99,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Part of Google One AI Premium. Includes 2TB storage and other Google benefits.",
+        "provenance": {
+          "url": "https://gemini.google.com/advanced",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "gemini-2-5-flash", "access_type": "full" },
+        { "model_id": "gemini-2-5-pro", "access_type": "full", "is_default": true }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "Gemini 2.5 Pro messages",
+          "notes": "No hard limit published. Subject to fair-use rate limits. Gemini 2.5 Pro has larger daily allowance than free.",
+          "provenance": {
+            "url": "https://gemini.google.com/advanced",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 1000,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": ["VS Code (Gemini Code Assist)", "JetBrains (Gemini Code Assist)"],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Includes Deep Research agent, extended Gems, Google Workspace integration."
+      },
+      "target_personas": ["professional", "researcher", "developer in Google ecosystem"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://gemini.google.com/advanced"
+    },
+    {
+      "id": "google-ai-studio-free",
+      "provider_id": "google",
+      "name": "Google AI Studio (Free)",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free API access for development and experimentation. Rate-limited.",
+        "provenance": {
+          "url": "https://aistudio.google.com",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        { "model_id": "gemini-2-5-flash", "access_type": "full", "is_default": true },
+        { "model_id": "gemini-2-5-pro", "access_type": "limited", "notes": "RPM limited on free tier" }
+      ],
+      "usage_limits": [
+        {
+          "type": "requests_per_minute",
+          "value": 15,
+          "unit": "RPM",
+          "applies_to": "Gemini 2.5 Pro",
+          "notes": "Free-tier API: 15 RPM, 1M tokens/day for Gemini 2.5 Pro. Verify at ai.google.dev/gemini-api/docs/rate-limits.",
+          "provenance": {
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 1000,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "API-based access, not a consumer product. Useful for developers building on Gemini."
+      },
+      "target_personas": ["developer", "researcher", "prototype builder"],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://aistudio.google.com"
+    }
+  ]
+}
