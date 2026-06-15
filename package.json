@@ -11,6 +11,7 @@
     "stale-check": "npx tsx scripts/stale-check.ts",
     "fetch": "npx tsx scripts/fetch-provider.ts",
 "scrape:providers": "npx tsx scripts/scrape-providers.ts",
+    "normalize:usage": "npx tsx scripts/normalize-usage.ts",
     "test": "npx vitest run",
     "test:watch": "npx vitest",
     "db:generate": "drizzle-kit generate",

@@ -99,30 +99,49 @@ Reference points:
 
 ## 5. Estimated Monthly Tokens
 
-Most plans do not publish token counts directly. Code Smart derives a monthly token estimate from each plan's publicly stated usage limits using the following rules, applied in priority order:
+Token estimation is now performed by the **normalization engine** (`src/lib/normalization/engine.ts`, methodology v1.0.0). See `src/lib/normalization/config.ts` for the full assumption table. This engine replaces the simplified priority table used in earlier versions.
 
-| Priority | Limit Type | Estimation Formula | Confidence |
-|----------|-----------|-------------------|------------|
-| 1 | `tokens_per_month` | Use stated value directly | observed |
-| 2 | `tokens_per_day` | `value × 20 working days` | inferred |
-| 3 | `messages_per_month` | `value × 2,000 tokens/message` | inferred |
-| 4 | `messages_per_day` | `value × 20 days × 2,000 tokens/message` | inferred |
-| 5 | `requests_per_month` | `value × 4,000 tokens/request` | assumed |
-| 6 | `credits_per_month` | `value × 500 tokens/credit` | assumed |
-| 7 | `unlimited` | 200,000 tokens/month (developer profile baseline) | assumed |
-| 8 | `unknown` | null — no estimate possible | unknown |
+### 5.1 Normalization Engine
 
-The first matching rule in this list is used. If multiple limit types are present in a plan's data, only the highest-priority matching rule applies.
+The engine converts heterogeneous `usage_limits` rows (scraped from provider pricing pages) into per-window token estimates using an 8-layer priority dispatch. The first matching layer wins.
 
-**Derived estimates from monthly total:**
+| Layer | Trigger | Method | Confidence |
+|-------|---------|--------|------------|
+| 1. Direct tokens | `limitUnit = "tokens"` | Use value directly; apply model multiplier if configured | observed |
+| 2. Unlimited/Fair use | `limitType = "fair_use"` or text contains "unlimited" | `sessionsPerMonth × tokensPerAgenticRequest.base` | assumed |
+| 3. Message limits | `limitUnit = "messages"` | Monthly messages × `tokensPerCodingMessage` (low/base/high range) | inferred |
+| 4. Request limits | `limitUnit = "requests"` or `"calls"` | Monthly requests × `tokensPerAgenticRequest` (low/base/high range) | inferred |
+| 5. Credit limits | `limitType = "credits"` | Credits × provider-specific or default credit-to-token mapping | inferred (mapped) / assumed (default) |
+| 6. Compute units | `limitType = "compute_units"` | Units × provider-specific or default compute-unit-to-token mapping | inferred (mapped) / assumed (default) |
+| 7. Time-window catch-all | Numeric value with reset window | Extrapolate proportionally; apply model multiplier if configured | window-dependent |
+| 8. Unknown/Vague | Catch-all | All estimates null | unknown |
 
-| Period | Formula | Basis |
-|--------|---------|-------|
-| 5-hour session | `monthly ÷ 80` | 80 sessions/month (4/day × 20 working days) |
-| Daily | `monthly ÷ 20` | 20 working days/month |
-| Weekly | `monthly ÷ 4` | 4 weeks/month |
+**Per-window estimates** are generated for 4 target time windows (5h, 24h, 1w, 1mo) using proportional extrapolation with confidence decay:
 
-All derivations carry the same confidence level as the monthly estimate. Every displayed estimate includes its confidence badge and a human-readable explanation of how it was computed.
+| Extrapolation Ratio | Confidence |
+|---------------------|------------|
+| 1× (same window) | observed |
+| 0.2×–5× | inferred |
+| 5×–50× | assumed |
+| 50×+ | unknown |
+
+Each estimate includes uncertainty ranges (low/high) derived from the assumption range or provider-specific mappings, a full conversion audit trail, and a methodology version tag. All displayed estimates carry a confidence badge matching the window with the highest-quality source data.
+
+**Model-specific multipliers** are applied when a plan's model family has a configured multiplier (e.g., `claude-sonnet-4-6` matches family `claude-4` with a 2.5× factor). Multipliers are documented in the config and displayed in the estimate notes.
+
+**Key config values** (from `config.ts` v1.0.0):
+
+| Assumption | Base | Range |
+|-----------|------|-------|
+| Tokens per coding message | 2,000 | 1,000–5,000 |
+| Tokens per agentic request | 5,000 | 3,000–12,000 |
+| Tokens per autocomplete | 150 | 50–400 |
+| Tokens per credit | 500 | — |
+| Tokens per compute unit | 1,000 | — |
+| Sessions per month (developer) | 80 | — |
+| Working days per month | 20 | — |
+| Weeks per month | 4 | — |
+| Hours per session | 5 | — |
 
 ---
 
@@ -222,5 +241,6 @@ The feature completeness score (used in the legacy formula) continues to be comp
 
 | Version | Date | Change |
 |---------|------|--------|
+| v3.0 | 2026-06-15 | Normalization engine v1.0.0 replaces simplified estimation table; per-window estimates with uncertainty ranges; model multipliers |
 | v2.0 | 2026-06-14 | New WMQ + QAMU formula; AA indices replace internal benchmarks; tier normalization; Uncertainty Score |
 | v1.0 | 2026-05-01 | Initial formula: 35% cost + 40% benchmark + 25% feature completeness |
