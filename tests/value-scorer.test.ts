@@ -147,3 +147,51 @@ describe("scorePlan", () => {
     expect(cost + benchmark + feature).toBeCloseTo(1.0, 5);
   });
 });
+
+describe("scorePlan — QAMU path", () => {
+  it("plan with token limits scores higher than plan with no limits (same price, same benchmarks)", () => {
+    const withTokens = mockPlan({
+      id: "has-tokens",
+      usage_limits: [{
+        type: "tokens_per_month",
+        value: 5_000_000,
+        unit: "tokens",
+        provenance: FAKE_PROV,
+      }],
+    });
+    const noLimits = mockPlan({ id: "no-limits", usage_limits: [] });
+    const provider: Provider = { ...mockProvider(), plans: [withTokens, noLimits] };
+
+    expect(scorePlan(withTokens, provider).overall_value_score)
+      .toBeGreaterThan(scorePlan(noLimits, provider).overall_value_score);
+  });
+
+  it("unlimited plan produces a score in [0, 100]", () => {
+    const plan = mockPlan({
+      id: "unlimited",
+      usage_limits: [{ type: "unlimited", value: null, provenance: FAKE_PROV }],
+    });
+    const provider: Provider = { ...mockProvider(), plans: [plan] };
+    const score = scorePlan(plan, provider);
+
+    expect(score.overall_value_score).toBeGreaterThanOrEqual(0);
+    expect(score.overall_value_score).toBeLessThanOrEqual(100);
+  });
+
+  it("score_breakdown exposes qamu_estimated_tokens_1mo for plans with known limits", () => {
+    const plan = mockPlan({
+      id: "tokens-breakdown",
+      usage_limits: [{
+        type: "tokens_per_month",
+        value: 2_000_000,
+        unit: "tokens",
+        provenance: FAKE_PROV,
+      }],
+    });
+    const provider: Provider = { ...mockProvider(), plans: [plan] };
+    const score = scorePlan(plan, provider);
+
+    expect(score.score_breakdown).toHaveProperty("qamu_estimated_tokens_1mo");
+    expect(score.score_breakdown.qamu_estimated_tokens_1mo).toBeGreaterThan(0);
+  });
+});

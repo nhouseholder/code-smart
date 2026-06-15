@@ -1,5 +1,8 @@
-import type { Provider, Plan, Model, ValueScore } from "@/types";
+import type { Provider, Plan, Model, ValueScore, UsageLimit } from "@/types";
 import { effectiveMonthlyPrice } from "./data-loader";
+import { normalizeLimit } from "./normalization/engine";
+import { DEFAULT_CONFIG } from "./normalization/config";
+import type { UsageLimitRow } from "./normalization/types";
 
 // ─── Weights ─────────────────────────────────────────────────────────────────
 // Adjustable without changing scoring logic.
@@ -106,6 +109,8 @@ function featureCompletenessScore(plan: Plan): number {
 
 // Reference: what's a "fair" monthly price for a professional coding assistant.
 const COST_REFERENCE_USD = 20;
+// Reference QAMU for a "perfect score": 1M tokens/mo at 80% WMQ quality for $20.
+const QAMU_REFERENCE = (1_000_000 * 0.8) / COST_REFERENCE_USD; // 40_000
 
 /**
  * Maps monthly price → cost score 0–100.
@@ -142,25 +147,105 @@ function estimateCostPerMessage(plan: Plan): number | null {
   return Math.round((price / monthly) * 10000) / 10000; // 4 decimal places
 }
 
+// ─── JSON → Engine Adapter ────────────────────────────────────────────────────
+
+const RESET_WINDOW: Partial<Record<string, string>> = {
+  "_per_minute": "1h",
+  "_per_day":    "1d",
+  "_per_week":   "1w",
+  "_per_month":  "1mo",
+};
+
+function usageLimitToRow(limit: UsageLimit, planId: string, idx: number): UsageLimitRow {
+  const resetWindow =
+    Object.entries(RESET_WINDOW).find(([k]) => limit.type.endsWith(k))?.[1] ?? null;
+
+  let limitUnit: string | null = null;
+  if (limit.type.startsWith("tokens_"))        limitUnit = "tokens";
+  else if (limit.type.startsWith("messages_")) limitUnit = "messages";
+  else if (limit.type.startsWith("requests_")) limitUnit = "requests";
+  else if (limit.type.startsWith("completions_")) limitUnit = limit.unit ?? null;
+
+  let limitType = limit.type as string;
+  if (limit.type === "credits_per_month")            limitType = "credits";
+  else if (limit.type === "compute_units_per_month") limitType = "compute_units";
+  else if (limit.type === "unlimited")               limitType = "fair_use";
+
+  return {
+    id: idx,
+    planId,
+    modelId: null,
+    observedAt: new Date().toISOString(),
+    rawLimitText: limit.notes ?? limit.type,
+    limitType,
+    limitValue: limit.value,
+    limitUnit,
+    resetWindow,
+    confidence: limit.provenance.confidence,
+    notes: null,
+  };
+}
+
+/**
+ * Run the normalization engine over every usage_limit on the plan.
+ * Returns the highest estimatedTokens1mo across all limits (most generous non-null).
+ * Returns null when all limits produce null (all "unknown" with no value).
+ */
+function getBestEstimatedTokens1mo(plan: Plan): number | null {
+  let best: number | null = null;
+
+  plan.usage_limits.forEach((limit, idx) => {
+    if (limit.type === "unknown" && limit.value === null) return;
+
+    const row = usageLimitToRow(limit, plan.id, idx);
+    const { estimatedTokens1mo } = normalizeLimit(row, DEFAULT_CONFIG);
+
+    if (estimatedTokens1mo !== null && (best === null || estimatedTokens1mo > best)) {
+      best = estimatedTokens1mo;
+    }
+  });
+
+  return best;
+}
+
 // ─── Main Scorer ──────────────────────────────────────────────────────────────
 
 export function scorePlan(plan: Plan, provider: Provider): ValueScore {
-  const benchmarkScore = planBenchmarkIndex(plan, provider.models) ?? 0;
-  const featureScore = featureCompletenessScore(plan);
-  const cScore = costScore(plan);
+  const benchmarkScore      = planBenchmarkIndex(plan, provider.models) ?? 0;
+  const featureScore        = featureCompletenessScore(plan);
+  const cScore              = costScore(plan);
+  const price               = effectiveMonthlyPrice(plan);
+  const estimatedTokens1mo  = getBestEstimatedTokens1mo(plan);
 
-  const overall = Math.round(
-    cScore * WEIGHTS.cost +
-    benchmarkScore * WEIGHTS.benchmark +
-    featureScore * WEIGHTS.feature
-  );
+  // WMQ: use benchmark composite as proxy until AA indices are integrated.
+  const wmq  = benchmarkScore; // 0–100
+  const qamu = estimatedTokens1mo !== null ? estimatedTokens1mo * (wmq / 100) : null;
+
+  let overall: number;
+  if (qamu !== null && price !== null && price > 0) {
+    // QAMU formula: normalize against reference point (capped at 100)
+    overall = Math.min(100, Math.round((qamu / price / QAMU_REFERENCE) * 100));
+  } else if (price === 0 && qamu !== null) {
+    // Free plans with QAMU: score on quality + features (no price to divide by)
+    overall = Math.min(100, Math.round(wmq * 0.6 + featureScore * 0.4));
+  } else {
+    // Fallback: legacy 3-weight formula when QAMU cannot be computed
+    overall = Math.round(
+      cScore * WEIGHTS.cost +
+      benchmarkScore * WEIGHTS.benchmark +
+      featureScore * WEIGHTS.feature
+    );
+  }
 
   const notes: string[] = [];
   if (planBenchmarkIndex(plan, provider.models) === null) {
     notes.push("Benchmark index defaulted to 0 — no coding benchmark data available for included models.");
   }
-  if (effectiveMonthlyPrice(plan) === null) {
-    notes.push("Pricing unknown or contact-sales — cost score uses 50/100 neutral default.");
+  if (price === null) {
+    notes.push("Pricing unknown — QAMU requires a price; fell back to legacy score.");
+  }
+  if (estimatedTokens1mo === null) {
+    notes.push("Usage limits unknown — QAMU cannot be computed; fell back to legacy score.");
   }
 
   return {
@@ -174,6 +259,7 @@ export function scorePlan(plan: Plan, provider: Provider): ValueScore {
       benchmark_score: benchmarkScore,
       feature_score: featureScore,
       weights: { ...WEIGHTS },
+      qamu_estimated_tokens_1mo: estimatedTokens1mo,
     },
     notes,
     computed_at: new Date().toISOString(),

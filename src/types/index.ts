@@ -166,6 +166,7 @@ export interface ValueScore {
     benchmark_score: number;
     feature_score: number;
     weights: { cost: number; benchmark: number; feature: number };
+    qamu_estimated_tokens_1mo: number | null;
   };
   notes: string[];
   computed_at: string;
