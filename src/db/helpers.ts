@@ -1,0 +1,243 @@
+import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
+import { eq, desc, and, gte, ne, sql } from "drizzle-orm";
+import {
+  sourceSnapshots,
+  planSnapshots,
+  artificialAnalysisModelScores,
+  providers,
+  plans,
+  rankings,
+  scrapeRuns,
+} from "./schema";
+
+// ── Type helpers ───────────────────────────────────────────────────
+
+type SourceSnapshot = typeof sourceSnapshots.$inferSelect;
+type PlanSnapshot = typeof planSnapshots.$inferSelect;
+type AAScore = typeof artificialAnalysisModelScores.$inferSelect;
+type Ranking = typeof rankings.$inferSelect;
+type Provider = typeof providers.$inferSelect;
+type Plan = typeof plans.$inferSelect;
+
+export interface ProviderWithPlans extends Provider {
+  plans: Plan[];
+}
+
+// ── Source Snapshots ───────────────────────────────────────────────
+
+/**
+ * Get the most recent source snapshot for a provider.
+ */
+export function getLatestSourceSnapshot(
+  db: BetterSQLite3Database,
+  providerId: string,
+): SourceSnapshot | null {
+  const result = db
+    .select()
+    .from(sourceSnapshots)
+    .where(eq(sourceSnapshots.providerId, providerId))
+    .orderBy(desc(sourceSnapshots.observedAt))
+    .limit(1)
+    .all();
+
+  return result[0] ?? null;
+}
+
+/**
+ * Get all source snapshots for a provider older than `since`, ordered newest-first.
+ */
+export function getSourceSnapshotsSince(
+  db: BetterSQLite3Database,
+  providerId: string,
+  since: string,
+): SourceSnapshot[] {
+  return db
+    .select()
+    .from(sourceSnapshots)
+    .where(
+      and(
+        eq(sourceSnapshots.providerId, providerId),
+        gte(sourceSnapshots.observedAt, since),
+      ),
+    )
+    .orderBy(desc(sourceSnapshots.observedAt))
+    .all();
+}
+
+// ── Plan Snapshots ─────────────────────────────────────────────────
+
+/**
+ * Get the most recent plan snapshot for a plan.
+ */
+export function getLatestPlanSnapshot(
+  db: BetterSQLite3Database,
+  planId: string,
+): PlanSnapshot | null {
+  const result = db
+    .select()
+    .from(planSnapshots)
+    .where(eq(planSnapshots.planId, planId))
+    .orderBy(desc(planSnapshots.observedAt))
+    .limit(1)
+    .all();
+
+  return result[0] ?? null;
+}
+
+/**
+ * Get all plan snapshots for a plan within a date range (for sparklines).
+ */
+export function getPlanSnapshotHistory(
+  db: BetterSQLite3Database,
+  planId: string,
+  since: string,
+): PlanSnapshot[] {
+  return db
+    .select()
+    .from(planSnapshots)
+    .where(
+      and(
+        eq(planSnapshots.planId, planId),
+        gte(planSnapshots.observedAt, since),
+      ),
+    )
+    .orderBy(desc(planSnapshots.observedAt))
+    .all();
+}
+
+// ── AA Model Scores ────────────────────────────────────────────────
+
+/**
+ * Get the most recent AA scores for all models that have them.
+ * Returns a Map keyed by modelId.
+ *
+ * Uses a single subquery join (ROW_NUMBER / MAX per model_id) — no N+1.
+ */
+export function getLatestAAScores(
+  db: BetterSQLite3Database,
+): Map<string, AAScore> {
+  // Single query: find latest observed_at per model_id via tuple comparison
+  const results = db
+    .select()
+    .from(artificialAnalysisModelScores)
+    .where(
+      sql`(${artificialAnalysisModelScores.modelId}, ${artificialAnalysisModelScores.observedAt}) IN (
+        SELECT model_id, MAX(observed_at)
+        FROM artificial_analysis_model_scores
+        GROUP BY model_id
+      )`,
+    )
+    .all();
+
+  const map = new Map<string, AAScore>();
+  for (const row of results) {
+    map.set(row.modelId, row);
+  }
+  return map;
+}
+
+// ── Providers & Plans ──────────────────────────────────────────────
+
+/**
+ * Get all active providers with their active plans.
+ *
+ * Uses a single LEFT JOIN query (no N+1), then groups in JS.
+ * Callers should wrap in try/catch for safety.
+ */
+export function getActiveProvidersWithPlans(
+  db: BetterSQLite3Database,
+): ProviderWithPlans[] {
+  const rows = db
+    .select()
+    .from(providers)
+    .leftJoin(plans, and(eq(providers.id, plans.providerId), eq(plans.status, "active")))
+    .where(eq(providers.status, "active"))
+    .all();
+
+  const providerMap = new Map<string, ProviderWithPlans>();
+
+  for (const row of rows) {
+    const p = row.providers as Provider;
+    if (!providerMap.has(p.id)) {
+      providerMap.set(p.id, { ...p, plans: [] });
+    }
+    const plan = row.plans as Plan | null;
+    if (plan) {
+      providerMap.get(p.id)!.plans.push(plan);
+    }
+  }
+
+  return Array.from(providerMap.values());
+}
+
+// ── Rankings ───────────────────────────────────────────────────────
+
+/**
+ * Get the latest ranking by type.
+ */
+export function getLatestRanking(
+  db: BetterSQLite3Database,
+  rankingType: string,
+): Ranking | null {
+  const result = db
+    .select()
+    .from(rankings)
+    .where(eq(rankings.rankingType, rankingType))
+    .orderBy(desc(rankings.observedAt))
+    .limit(1)
+    .all();
+
+  return result[0] ?? null;
+}
+
+// ── Content Change Detection ───────────────────────────────────────
+
+/**
+ * Check if a content_hash has changed since the last scrape.
+ * Returns true if the hash differs or no previous scrape exists.
+ */
+export function hasContentChanged(
+  db: BetterSQLite3Database,
+  providerId: string,
+  sourceUrl: string,
+  newHash: string,
+): boolean {
+  const lastSnapshot = db
+    .select()
+    .from(sourceSnapshots)
+    .where(
+      and(
+        eq(sourceSnapshots.providerId, providerId),
+        eq(sourceSnapshots.sourceUrl, sourceUrl),
+      ),
+    )
+    .orderBy(desc(sourceSnapshots.observedAt))
+    .limit(1)
+    .all();
+
+  if (!lastSnapshot[0]) return true; // no previous snapshot → changed
+  return lastSnapshot[0].contentHash !== newHash;
+}
+
+/**
+ * Get the latest completed scrape run for a provider.
+ */
+export function getLatestScrapeRun(
+  db: BetterSQLite3Database,
+  providerId: string,
+) {
+  const result = db
+    .select()
+    .from(scrapeRuns)
+    .where(
+      and(
+        eq(scrapeRuns.providerId, providerId),
+        ne(scrapeRuns.status, "running"),
+      ),
+    )
+    .orderBy(desc(scrapeRuns.startedAt))
+    .limit(1)
+    .all();
+
+  return result[0] ?? null;
+}

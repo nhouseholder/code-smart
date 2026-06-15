@@ -6,13 +6,22 @@ on:
   workflow_dispatch:      # allow manual trigger from Actions tab
 
 permissions:
+  contents: read          # required for actions/checkout
   issues: write           # required for gh issue create
+  actions: write          # required for artifact upload
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Restore DB from previous run
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: code-smart-db
+          path: data/
 
       - uses: actions/setup-node@v4
         with:
@@ -24,6 +33,12 @@ jobs:
 
       - name: Validate provider data (schema check)
         run: npm run validate
+
+      - name: Run DB migrations
+        run: npm run db:migrate
+
+      - name: Seed database
+        run: npm run db:seed
 
       - name: Check for stale pricing data
         id: stale
@@ -54,3 +69,11 @@ jobs:
 
       - name: Build site (verify it compiles)
         run: npm run build
+
+      - name: Persist DB for next run
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-smart-db
+          path: data/code-smart.db
+          if-no-files-found: ignore

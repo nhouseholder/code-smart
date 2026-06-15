@@ -26,3 +26,6 @@ scripts/reports/
 # Editor
 .vscode/
 .idea/
+
+# SQLite database (build artifact, not source)
+/data/
