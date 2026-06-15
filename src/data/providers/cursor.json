@@ -4,6 +4,7 @@
   "display_name": "Cursor",
   "website": "https://cursor.com",
   "pricing_url": "https://cursor.com/pricing",
+  "docs_url": "https://docs.cursor.com",
   "description": "Cursor is an AI-native IDE (VS Code fork) with deep codebase context. Supports multi-file edits, AI terminal, agent mode, and lets you bring your own API key. Uses Claude, GPT-4o, and o-series models.",
   "logo_slug": "cursor",
   "category": "ide_tool",

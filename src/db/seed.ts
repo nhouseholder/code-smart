@@ -25,6 +25,7 @@ interface ProviderJSON {
   display_name: string;
   website: string;
   pricing_url: string;
+  docs_url?: string;
   description: string;
   logo_slug: string;
   category: string;
@@ -124,7 +125,7 @@ export function seed(): void {
         updatedAt: now,
       }).run();
 
-      // ── Insert provider_source_pages ─────────────────────────────
+      // ── Insert provider_source_pages: pricing ─────────────
       tx.insert(providerSourcePages).values({
         providerId,
         url: raw.pricing_url,
@@ -135,6 +136,20 @@ export function seed(): void {
         notes: null,
         createdAt: now,
       }).run();
+
+      // ── Insert provider_source_pages: docs (if available) ─
+      if (raw.docs_url) {
+        tx.insert(providerSourcePages).values({
+          providerId,
+          url: raw.docs_url,
+          pageType: "docs",
+          scrapeStrategy: "playwright",
+          enabled: true,
+          expectedUpdateFrequency: "weekly",
+          notes: null,
+          createdAt: now,
+        }).run();
+      }
 
       // ── Insert models (deduplicated across provider and plans) ──
       const seenModelIds = new Set<string>();

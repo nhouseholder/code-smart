@@ -49,6 +49,7 @@ export const scrapeRuns = sqliteTable(
   {
     id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
     providerId: text("provider_id").notNull().references(() => providers.id),
+    sourcePageId: integer("source_page_id", { mode: "number" }).references(() => providerSourcePages.id),
     startedAt: text("started_at").notNull(),
     finishedAt: text("finished_at"),
     status: text("status").notNull(), // "success" | "error" | "running"
@@ -58,6 +59,7 @@ export const scrapeRuns = sqliteTable(
   },
   (table) => ({
     providerIdx: index("idx_scrape_runs_provider").on(table.providerId, table.startedAt),
+    sourcePageIdx: index("idx_scrape_runs_source_page").on(table.sourcePageId),
   }),
 );
 
@@ -75,6 +77,7 @@ export const sourceSnapshots = sqliteTable(
     contentHash: text("content_hash"),
     extractedText: text("extracted_text"),
     parserVersion: text("parser_version"),
+    notes: text("notes"),
   },
   (table) => ({
     providerDateIdx: index("idx_snapshots_provider_date").on(table.providerId, table.observedAt),

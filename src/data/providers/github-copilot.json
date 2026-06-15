@@ -4,6 +4,7 @@
   "display_name": "GitHub Copilot",
   "website": "https://github.com/features/copilot",
   "pricing_url": "https://github.com/features/copilot#pricing",
+  "docs_url": "https://docs.github.com/en/copilot/about-github-copilot",
   "description": "GitHub Copilot is an AI pair programmer deeply integrated into VS Code, JetBrains, and other IDEs. Provides inline code completions, chat, PR reviews, and CLI assistance. Powered by OpenAI models with GitHub-specific fine-tuning.",
   "logo_slug": "github",
   "category": "ide_tool",

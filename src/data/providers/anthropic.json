@@ -4,6 +4,7 @@
   "display_name": "Claude (Anthropic)",
   "website": "https://claude.ai",
   "pricing_url": "https://claude.ai/upgrade",
+  "docs_url": "https://docs.anthropic.com/en/docs/about-claude/models",
   "description": "Anthropic's Claude models are designed for safety and helpfulness. Claude excels at coding, analysis, and long-context reasoning. Available via claude.ai subscriptions and the Anthropic API.",
   "logo_slug": "anthropic",
   "category": "ai_lab",

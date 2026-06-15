@@ -4,6 +4,7 @@
   "display_name": "ChatGPT (OpenAI)",
   "website": "https://chatgpt.com",
   "pricing_url": "https://openai.com/chatgpt/pricing",
+  "docs_url": "https://platform.openai.com/docs/models",
   "description": "OpenAI's ChatGPT offers access to GPT-4o, o3, and o4-mini models for coding, reasoning, and general tasks. Codex CLI provides terminal-native AI coding. The Pro plan unlocks the most powerful models with expanded limits.",
   "logo_slug": "openai",
   "category": "ai_lab",

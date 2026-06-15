@@ -4,6 +4,7 @@
   "display_name": "Gemini (Google)",
   "website": "https://gemini.google.com",
   "pricing_url": "https://gemini.google.com/advanced",
+  "docs_url": "https://ai.google.dev/gemini-api/docs/models",
   "description": "Google's Gemini models power Google's AI assistant and API. Gemini Advanced provides the most capable models for coding and reasoning. Google AI Studio offers free API access for development. Gemini Code Assist provides IDE integration.",
   "logo_slug": "google",
   "category": "ai_lab",

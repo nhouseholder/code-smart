@@ -8,6 +8,7 @@ import {
   plans,
   rankings,
   scrapeRuns,
+  providerSourcePages,
 } from "./schema";
 
 // ── Type helpers ───────────────────────────────────────────────────
@@ -240,4 +241,131 @@ export function getLatestScrapeRun(
     .all();
 
   return result[0] ?? null;
+}
+
+// ── Scraper Pipeline ────────────────────────────────────────────────
+
+interface SourcePageWithProvider {
+  id: number;
+  providerId: string;
+  url: string;
+  pageType: string;
+  scrapeStrategy: string;
+  enabled: boolean;
+  providerName: string;
+  websiteUrl: string;
+}
+
+/**
+ * Get all enabled provider source pages with provider metadata.
+ */
+export function getEnabledSourcePages(
+  db: BetterSQLite3Database,
+): SourcePageWithProvider[] {
+  const rows = db
+    .select({
+      id: providerSourcePages.id,
+      providerId: providerSourcePages.providerId,
+      url: providerSourcePages.url,
+      pageType: providerSourcePages.pageType,
+      scrapeStrategy: providerSourcePages.scrapeStrategy,
+      enabled: providerSourcePages.enabled,
+      providerName: providers.name,
+      websiteUrl: providers.websiteUrl,
+    })
+    .from(providerSourcePages)
+    .innerJoin(providers, eq(providerSourcePages.providerId, providers.id))
+    .where(eq(providerSourcePages.enabled, true))
+    .all();
+
+  return rows as SourcePageWithProvider[];
+}
+
+/**
+ * Get the last completed (non-running) scrape run for a source page.
+ */
+export function getLastCompletedScrapeRun(
+  db: BetterSQLite3Database,
+  sourcePageId: number,
+) {
+  const result = db
+    .select()
+    .from(scrapeRuns)
+    .where(
+      and(
+        eq(scrapeRuns.sourcePageId, sourcePageId),
+        ne(scrapeRuns.status, "running"),
+      ),
+    )
+    .orderBy(desc(scrapeRuns.startedAt))
+    .limit(1)
+    .all();
+
+  return result[0] ?? null;
+}
+
+/**
+ * Create a new scrape run and return its auto-increment ID.
+ */
+export function createScrapeRun(
+  db: BetterSQLite3Database,
+  data: {
+    providerId: string;
+    sourcePageId?: number | null;
+    startedAt: string;
+    status: string;
+  },
+): number {
+  const result = db
+    .insert(scrapeRuns)
+    .values(data)
+    .returning({ id: scrapeRuns.id })
+    .get();
+
+  return result!.id;
+}
+
+/**
+ * Update a scrape run with completion data.
+ */
+export function completeScrapeRun(
+  db: BetterSQLite3Database,
+  id: number,
+  data: {
+    finishedAt: string;
+    status: string;
+    contentHash?: string | null;
+    changeDetected?: boolean | null;
+    errorMessage?: string | null;
+  },
+): void {
+  db.update(scrapeRuns)
+    .set(data)
+    .where(eq(scrapeRuns.id, id))
+    .run();
+}
+
+/**
+ * Insert a source snapshot row and return its ID.
+ */
+export function insertSourceSnapshot(
+  db: BetterSQLite3Database,
+  data: {
+    providerId: string;
+    sourceUrl: string;
+    observedAt: string;
+    rawHtmlOrTextReference?: string | null;
+    contentHash?: string | null;
+    extractedText?: string | null;
+    parserVersion?: string | null;
+    notes?: string | null;
+  },
+): number {
+  const result = db
+    .insert(sourceSnapshots)
+    .values(data)
+    .returning({ id: sourceSnapshots.id })
+    .get();
+
+  return result!.id;
 }
