@@ -1,4 +1,4 @@
-import type { Provider, Plan } from "@/types";
+import type { Provider, Plan, ModelValueEstimate } from "@/types";
 import type { ValueScore } from "@/types";
 import { formatPrice, cn } from "@/lib/utils";
 import { effectiveMonthlyPrice } from "@/lib/data-loader";
@@ -8,6 +8,7 @@ interface Entry {
   provider: Provider;
   plan: Plan;
   score: ValueScore;
+  engineBest?: ModelValueEstimate | null;
 }
 
 interface Props {
@@ -67,6 +68,36 @@ const ROWS: FeatureRow[] = [
     render: ({ score }) => score.benchmark_quality_index !== null
       ? <span className="text-sm tabular-nums text-gray-700">{score.benchmark_quality_index}/100</span>
       : <Minus size={14} className="text-gray-300 mx-auto" />,
+  },
+  {
+    kind: "feature", label: "WMQ score",
+    render: ({ engineBest }) => {
+      const wmq = engineBest?.weighted_model_quality ?? null;
+      if (wmq === null) return <Minus size={14} className="text-gray-300 mx-auto" />;
+      return (
+        <span className={cn("font-semibold text-sm tabular-nums",
+          wmq >= 55 ? "text-green-600" :
+          wmq >= 40 ? "text-blue-600" :
+          wmq >= 25 ? "text-amber-600" : "text-red-500")}>
+          {wmq}/100
+        </span>
+      );
+    },
+  },
+  {
+    kind: "feature", label: "QAMU value score",
+    render: ({ engineBest }) => {
+      const vs = engineBest?.value_score ?? null;
+      if (vs === null) return <Minus size={14} className="text-gray-300 mx-auto" />;
+      return (
+        <span className={cn("font-bold text-sm tabular-nums",
+          vs >= 75 ? "text-green-600" :
+          vs >= 50 ? "text-blue-600" :
+          vs >= 25 ? "text-amber-600" : "text-red-500")}>
+          {vs}/100
+        </span>
+      );
+    },
   },
   { kind: "section", label: "Usage Limits" },
   {

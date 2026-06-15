@@ -1,8 +1,9 @@
-import type { Provider, Plan, Model, ValueScore, UsageLimit } from "@/types";
+import type { Provider, Plan, Model, ValueScore, UsageLimit, AAModelScore } from "@/types";
 import { effectiveMonthlyPrice } from "./data-loader";
 import { normalizeLimit } from "./normalization/engine";
 import { DEFAULT_CONFIG } from "./normalization/config";
 import type { UsageLimitRow } from "./normalization/types";
+import { computeWMQ } from "./model-value-engine";
 
 // ─── Weights ─────────────────────────────────────────────────────────────────
 // Adjustable without changing scoring logic.
@@ -210,15 +211,31 @@ function getBestEstimatedTokens1mo(plan: Plan): number | null {
 
 // ─── Main Scorer ──────────────────────────────────────────────────────────────
 
-export function scorePlan(plan: Plan, provider: Provider): ValueScore {
+/** Best WMQ across active models in a plan, or null when no AA data is available. */
+function getPlanWmq(plan: Plan, aaScores: Map<string, AAModelScore>): number | null {
+  let best: number | null = null;
+  for (const ref of plan.models) {
+    if (ref.access_type === "legacy") continue;
+    const aa = aaScores.get(ref.model_id) ?? null;
+    const { wmq } = computeWMQ(aa);
+    if (wmq !== null && (best === null || wmq > best)) best = wmq;
+  }
+  return best;
+}
+
+export function scorePlan(
+  plan: Plan,
+  provider: Provider,
+  aaScores?: Map<string, AAModelScore>,
+): ValueScore {
   const benchmarkScore      = planBenchmarkIndex(plan, provider.models) ?? 0;
   const featureScore        = featureCompletenessScore(plan);
   const cScore              = costScore(plan);
   const price               = effectiveMonthlyPrice(plan);
   const estimatedTokens1mo  = getBestEstimatedTokens1mo(plan);
 
-  // WMQ: use benchmark composite as proxy until AA indices are integrated.
-  const wmq  = benchmarkScore; // 0–100
+  // WMQ: use AA indices when available; fall back to benchmark composite.
+  const wmq  = (aaScores ? getPlanWmq(plan, aaScores) : null) ?? benchmarkScore;
   const qamu = estimatedTokens1mo !== null ? estimatedTokens1mo * (wmq / 100) : null;
 
   let overall: number;
@@ -268,9 +285,10 @@ export function scorePlan(plan: Plan, provider: Provider): ValueScore {
 
 /** Score all plans across all providers. Returns sorted by overall score desc. */
 export function scoreAllPlans(
-  plans: Array<{ provider: Provider; plan: Plan }>
+  plans: Array<{ provider: Provider; plan: Plan }>,
+  aaScores?: Map<string, AAModelScore>,
 ): Array<{ provider: Provider; plan: Plan; score: ValueScore }> {
   return plans
-    .map(({ provider, plan }) => ({ provider, plan, score: scorePlan(plan, provider) }))
+    .map(({ provider, plan }) => ({ provider, plan, score: scorePlan(plan, provider, aaScores) }))
     .sort((a, b) => b.score.overall_value_score - a.score.overall_value_score);
 }
