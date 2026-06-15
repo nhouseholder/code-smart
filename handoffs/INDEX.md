@@ -5,3 +5,4 @@
 - **[2026-06-14]** [2026-06-14_v1.0.3_session2-audit-fixes.md](2026-06-14_v1.0.3_session2-audit-fixes.md) — v1.0.3 — Session 2 audit fixes: 15 findings across 8 plan steps (CI, migration, seed, helpers, schema)
 - **[2026-06-14]** [2026-06-14_v1.0.5_session4-fix-warnings-critical.md](2026-06-14_v1.0.5_session4-fix-warnings-critical.md) — v1.0.5 — Session 4: fix seed FK warnings, extract test helpers, polish CLI, docs
 - **[2026-06-15]** [2026-06-15_v1.0.6_normalization-engine.md](2026-06-15_v1.0.6_normalization-engine.md) — v1.0.6 — Usage Normalization Engine (8-layer dispatch, 4-window estimates, 43 tests)
+- **[2026-06-15]** [2026-06-15_v1.0.7_model-value-engine.md](2026-06-15_v1.0.7_model-value-engine.md) — v1.0.7 — Model Value Engine (WMQ, quality-adjusted + cost-adjusted usage, 24 tests)
