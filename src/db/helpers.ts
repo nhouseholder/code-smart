@@ -30,7 +30,7 @@ export interface ProviderWithPlans extends Provider {
  * Get the most recent source snapshot for a provider.
  */
 export function getLatestSourceSnapshot(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
   providerId: string,
 ): SourceSnapshot | null {
   const result = db
@@ -48,7 +48,7 @@ export function getLatestSourceSnapshot(
  * Get all source snapshots for a provider older than `since`, ordered newest-first.
  */
 export function getSourceSnapshotsSince(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
   providerId: string,
   since: string,
 ): SourceSnapshot[] {
@@ -71,7 +71,7 @@ export function getSourceSnapshotsSince(
  * Get the most recent plan snapshot for a plan.
  */
 export function getLatestPlanSnapshot(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
   planId: string,
 ): PlanSnapshot | null {
   const result = db
@@ -89,7 +89,7 @@ export function getLatestPlanSnapshot(
  * Get all plan snapshots for a plan within a date range (for sparklines).
  */
 export function getPlanSnapshotHistory(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
   planId: string,
   since: string,
 ): PlanSnapshot[] {
@@ -115,7 +115,7 @@ export function getPlanSnapshotHistory(
  * Uses a single subquery join (ROW_NUMBER / MAX per model_id) — no N+1.
  */
 export function getLatestAAScores(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
 ): Map<string, AAScore> {
   // Single query: find latest observed_at per model_id via tuple comparison
   const results = db
@@ -146,7 +146,7 @@ export function getLatestAAScores(
  * Callers should wrap in try/catch for safety.
  */
 export function getActiveProvidersWithPlans(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
 ): ProviderWithPlans[] {
   const rows = db
     .select()
@@ -177,7 +177,7 @@ export function getActiveProvidersWithPlans(
  * Get the latest ranking by type.
  */
 export function getLatestRanking(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
   rankingType: string,
 ): Ranking | null {
   const result = db
@@ -198,7 +198,7 @@ export function getLatestRanking(
  * Returns true if the hash differs or no previous scrape exists.
  */
 export function hasContentChanged(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
   providerId: string,
   sourceUrl: string,
   newHash: string,
@@ -224,7 +224,7 @@ export function hasContentChanged(
  * Get the latest completed scrape run for a provider.
  */
 export function getLatestScrapeRun(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
   providerId: string,
 ) {
   const result = db
@@ -260,7 +260,7 @@ interface SourcePageWithProvider {
  * Get all enabled provider source pages with provider metadata.
  */
 export function getEnabledSourcePages(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
 ): SourcePageWithProvider[] {
   const rows = db
     .select({
@@ -285,7 +285,7 @@ export function getEnabledSourcePages(
  * Get the last completed (non-running) scrape run for a source page.
  */
 export function getLastCompletedScrapeRun(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
   sourcePageId: number,
 ) {
   const result = db
@@ -308,7 +308,7 @@ export function getLastCompletedScrapeRun(
  * Create a new scrape run and return its auto-increment ID.
  */
 export function createScrapeRun(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
   data: {
     providerId: string;
     sourcePageId?: number | null;
@@ -329,7 +329,7 @@ export function createScrapeRun(
  * Update a scrape run with completion data.
  */
 export function completeScrapeRun(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
   id: number,
   data: {
     finishedAt: string;
@@ -349,7 +349,7 @@ export function completeScrapeRun(
  * Insert a source snapshot row and return its ID.
  */
 export function insertSourceSnapshot(
-  db: BetterSQLite3Database,
+  db: BetterSQLite3Database<any>,
   data: {
     providerId: string;
     sourceUrl: string;

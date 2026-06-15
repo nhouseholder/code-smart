@@ -85,7 +85,6 @@ async function main(): Promise<void> {
   const result = await runScrapePipeline(db, {
     provider: args.provider,
     force: args.force,
-    dryRun: false,
   });
 
   console.log("\n" + "=".repeat(60));
@@ -94,6 +93,7 @@ async function main(): Promise<void> {
   console.log(`  Errors:           ${result.errors}`);
   console.log(`  Prices extracted: ${result.prices}`);
   console.log(`  Limits extracted: ${result.limits}`);
+  console.log(`  Models mentioned: ${result.modelMentions}`);
   console.log("=".repeat(60));
 
   process.exit(result.errors > 0 ? 1 : 0);

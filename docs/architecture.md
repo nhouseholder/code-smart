@@ -261,8 +261,11 @@ code-smart/
 │   └── data-model.md               # Data types, JSON formats, relationships
 ├── scripts/
 │   ├── fetch-aa-indices.ts         # Fetch AA API → write snapshot file
+│   ├── fetch-provider.ts           # One-off provider page fetch for debugging
 │   ├── recompute-scores.ts         # providers + snapshot → computed-scores.json
-│   └── stale-check.ts              # Detect 90-day stale provenance records
+│   ├── scrape-providers.ts         # CLI: run scraper pipeline (--provider, --dry-run, --force)
+│   ├── stale-check.ts              # Detect 90-day stale provenance records
+│   └── validate-data.ts            # Validate provider JSON files against Zod schemas
 ├── src/
 │   ├── app/                        # Next.js App Router pages + layouts
 │   ├── components/                 # React components
@@ -272,10 +275,30 @@ code-smart/
 │   │   ├── aa-model-slugs.json     # Model ID → AA slug mapping
 │   │   ├── aa-indices-override.json # Manual fallback for AA fetch failures
 │   │   └── computed-scores.json    # Regenerated at each build (never edit manually)
-│   ├── lib/                        # Utility functions, data loaders
+│   ├── db/                         # SQLite persistence layer (Sessions 2–3)
+│   │   ├── index.ts                # getDb(), runMigrations() — entry point
+│   │   ├── schema.ts               # Drizzle table definitions (12 tables)
+│   │   ├── helpers.ts              # Query helper functions (getLatestSnapshot etc.)
+│   │   ├── seed.ts                 # Seed provider JSON → SQLite; inserts sentinel rows
+│   │   └── migrations/             # Drizzle-managed SQL migration files
+│   ├── lib/
+│   │   ├── scraper/                # Scraping pipeline modules (Session 2)
+│   │   │   ├── types.ts            # Shared types (Confidence, ExtractedPrice, etc.)
+│   │   │   ├── fetcher.ts          # HTTP fetch + DOM parse via htmlparser2
+│   │   │   ├── text-extractor.ts   # HTML → clean plaintext
+│   │   │   ├── price-extractor.ts  # Regex price extraction → ExtractedPrice[]
+│   │   │   ├── limit-extractor.ts  # Regex usage-limit extraction → ExtractedLimit[]
+│   │   │   ├── model-extractor.ts  # Longest-match model-name scanning → ExtractedModelMention[]
+│   │   │   ├── annotation-scanner.ts # Footnote + assumption extraction → notes JSON
+│   │   │   └── pipeline.ts         # Orchestrates all stages, writes to DB
+│   │   └── ...                     # Other utility modules
 │   └── types/
 │       └── index.ts                # All TypeScript types (canonical)
-├── tests/                          # Vitest test suite
+├── tests/
+│   ├── helpers/
+│   │   └── db.ts                   # Shared test utilities: runMigrations(), createTestDb()
+│   ├── db/                         # DB layer tests (helpers, schema, seed)
+│   └── scraper/                    # Scraper pipeline tests
 ├── dns-fix.mjs                     # Node.js DNS workaround for wrangler on this machine
 ├── next.config.ts
 ├── package.json
@@ -284,3 +307,51 @@ code-smart/
 ├── vitest.config.ts
 └── wrangler.jsonc
 ```
+
+## 11. SQLite Scraper Layer
+
+Added in Sessions 2–3. Provides an immutable audit trail of all scraped pricing data alongside the existing JSON provider registry.
+
+### src/db/
+
+| File | Purpose |
+|------|---------|
+| `index.ts` | `getDb()` (opens/creates the DB), `runMigrations()` (applies SQL files in order) |
+| `schema.ts` | Drizzle-ORM table definitions — 12 tables (see `docs/data-model.md` §8) |
+| `helpers.ts` | Type-safe query helpers: `getLatestSourceSnapshot`, `hasContentChanged`, `getActiveProvidersWithPlans`, etc. |
+| `seed.ts` | Seeds provider JSON files into SQLite; inserts sentinel rows before the guard; idempotent |
+| `migrations/` | Drizzle-managed `.sql` files applied in lexicographic order |
+
+### Scraper Pipeline (src/lib/scraper/)
+
+Seven-stage pipeline per provider source page:
+
+1. **fetcher** — HTTP GET + htmlparser2 DOM parse
+2. **text-extractor** — strips tags → clean plaintext
+3. **price-extractor** — regex extraction → `ExtractedPrice[]`
+4. **limit-extractor** — regex extraction → `ExtractedLimit[]`
+5. **model-extractor** — longest-match, word-bounded scan against known model display names → `ExtractedModelMention[]`
+6. **annotation-scanner** — `scanFootnotes()` + `recordAssumptions()` → `{ footnotes, assumptions }` stored in `source_snapshots.notes`
+7. **pipeline** — orchestrates stages 1–6, writes all rows to DB in a single transaction
+
+### Sentinel Rows
+
+Two sentinel FK targets exist in every DB state so the pipeline can write candidate rows before plan matching runs:
+
+| Table | Sentinel value | Purpose |
+|-------|---------------|---------|
+| `plans` | `id = ""` | All `planSnapshots`, `usageLimits`, and `planModelAccess` rows written before plan resolution link here |
+| `models` | `id = "unknown"` | Model mentions that matched a display name but no DB model record link here |
+| `providers` | `id = "__sentinel__"` | FK parent of the sentinel plan row |
+
+Sentinel rows are inserted by `seed.ts` using `onConflictDoNothing()` — idempotent across any number of re-runs.
+
+### CLI
+
+```bash
+pnpm exec tsx scripts/scrape-providers.ts [--provider <id>] [--dry-run] [--force]
+```
+
+- `--provider <id>` — restrict to one provider's source pages
+- `--dry-run` — print banner and exit without writing to DB
+- `--force` — skip content-hash deduplication check (always scrapes)

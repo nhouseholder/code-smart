@@ -1,12 +1,11 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
 import fs from "fs";
 import path from "path";
 import os from "os";
-import { fileURLToPath } from "url";
 
 import * as schema from "../../src/db/schema";
+import { runMigrations, createTestDb } from "../helpers/db";
 import {
   providers,
   plans,
@@ -34,46 +33,10 @@ let dbPath: string;
 let _sqlite: Database.Database | null = null;
 
 /**
- * Create a test DB connection by applying migration SQL directly.
- * Returns the drizzle instance for queries.
- */
-function createTestDb() {
-  _sqlite = new Database(dbPath);
-  _sqlite.pragma("journal_mode = WAL");
-  _sqlite.pragma("foreign_keys = ON");
-  return drizzle(_sqlite, { schema });
-}
-
-function runMigrations(): void {
-  const sqlite = new Database(dbPath);
-  sqlite.pragma("foreign_keys = ON");
-
-  const migrationsDir = path.join(
-    path.dirname(fileURLToPath(import.meta.url)),
-    "..",
-    "..",
-    "src",
-    "db",
-    "migrations",
-  );
-
-  const files = fs
-    .readdirSync(migrationsDir)
-    .filter((f) => f.endsWith(".sql"))
-    .sort();
-
-  for (const file of files) {
-    const content = fs.readFileSync(path.join(migrationsDir, file), "utf-8");
-    sqlite.exec(content);
-  }
-  sqlite.close();
-}
-
-/**
  * Seed baseline test data matching helper function expectations.
  * All FK references are valid; dates are chosen for deterministic ordering.
  */
-function seedTestData(db: ReturnType<typeof drizzle>): void {
+function seedTestData(db: ReturnType<typeof createTestDb>["db"]): void {
   // ── Providers ─────────────────────────────────────────────────
   db.insert(providers).values({
     id: "provider-a",
@@ -282,13 +245,15 @@ function seedTestData(db: ReturnType<typeof drizzle>): void {
 }
 
 // ── Globals (shared temp DB + seeded data) ───────────────────────────
-let db: ReturnType<typeof drizzle>;
+let db: ReturnType<typeof createTestDb>["db"];
 
 beforeAll(() => {
   dbDir = fs.mkdtempSync(path.join(os.tmpdir(), "cs-helpers-test-"));
   dbPath = path.join(dbDir, "test.db");
-  runMigrations();
-  db = createTestDb();
+  runMigrations(dbPath);
+  const result = createTestDb(dbPath);
+  db = result.db;
+  _sqlite = result.sqlite;
   seedTestData(db);
 });
 

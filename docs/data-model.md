@@ -384,3 +384,61 @@ Existing Zod schemas (in `src/lib/validate.ts` or equivalent) validate the provi
 | `computed-scores.json` | `ComputedScoresFileSchema` | `computed_at` is valid ISO 8601; `formula_version` is non-empty string; every `scores[]` entry has valid `plan_id`, `model_id`, and `tier`; `value_score_normalized` is null or 0–100; `uncertainty_score` is 0–100 |
 
 These schemas run as part of `npm run validate` and exit non-zero on any failure, blocking the build.
+
+## 8. SQLite Schema
+
+Added in Sessions 2–3. All 12 tables live in `src/db/schema.ts` (Drizzle ORM). The JSON provider registry (`src/data/providers/*.json`) remains the source of truth for static data; the SQLite layer stores scraped observations and derived scores.
+
+### Table Summary
+
+| Table | Purpose |
+|-------|---------|
+| `providers` | One row per provider — mirrors provider JSON, plus `status`, `notes` |
+| `provider_source_pages` | URLs to scrape per provider (`pageType`: pricing/docs, `scrapeStrategy`: static/playwright) |
+| `scrape_runs` | Audit log of every scrape attempt — status, content hash, `changeDetected` flag |
+| `source_snapshots` | Immutable snapshot of raw HTML/text per scrape, with `contentHash`, `extractedText`, `notes` |
+| `plans` | One row per pricing plan — `listedPrice`, `effectiveMonthlyPrice`, billing interval |
+| `plan_snapshots` | Price observation per plan per scrape — enables price history |
+| `models` | Known AI models — `canonicalModelId`, `displayName`, aliases |
+| `plan_model_access` | Which models are accessible on which plans (`accessLevel`, `confidence`) |
+| `usage_limits` | Per-plan usage constraints extracted from pricing pages |
+| `usage_estimates` | Derived usage estimates (computed from limits + assumptions) |
+| `artificial_analysis_model_scores` | Weekly AA intelligence/coding/speed index snapshots per model |
+| `rankings` | Computed ranked model lists (type: `overall`, `coding`, etc.) stored as JSON payloads |
+
+### `source_snapshots.notes` JSON
+
+`notes TEXT` stores structured extraction metadata as a JSON string:
+
+```json
+{
+  "footnotes": ["string", "..."],
+  "assumptions": ["string", "..."]
+}
+```
+
+Written by `annotation-scanner.ts` (`scanFootnotes()` + `recordAssumptions()`). Both arrays may be empty `[]`; field is `null` when the scraper ran before Session 3.
+
+### Sentinel Rows
+
+Two FK sentinel rows satisfy `NOT NULL REFERENCES` constraints for pipeline-stage candidates:
+
+| Row | Table | Sentinel value |
+|-----|-------|---------------|
+| Unresolved plan candidate | `plans` | `id = ""` (FK parent `providers.id = "__sentinel__"`) |
+| Unknown model mention | `models` | `id = "unknown"` |
+
+Any `planSnapshots`, `usageLimits`, or `planModelAccess` row written before plan matching resolves references `plans.id = ""`. Any model mention that matched a display name but not a DB record references `models.id = "unknown"`. Both sentinels are inserted by `seed.ts` before the seeding guard.
+
+### `ExtractedModelMention` Type
+
+```typescript
+// src/lib/scraper/model-extractor.ts
+export interface ExtractedModelMention {
+  modelId: string | null;      // DB model ID (null if no DB record matched)
+  rawText: string;             // Raw text that matched in the source
+  displayName: string;         // Display name that was matched
+  confidence: Confidence;      // "high" | "medium" | "low"
+  contextSnippet: string;      // ~120-char window around the match
+}
+```

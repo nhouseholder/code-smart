@@ -1,12 +1,11 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
 import { eq, desc } from "drizzle-orm";
 import fs from "fs";
 import path from "path";
 import os from "os";
-import { fileURLToPath } from "url";
 import http from "http";
+import { runMigrations, createTestDb } from "../helpers/db";
 
 import * as schema from "../../src/db/schema";
 import {
@@ -27,35 +26,7 @@ let dbDir: string;
 let dbPath: string;
 let _sqlite: Database.Database | null = null;
 
-function createTestDb() {
-  _sqlite = new Database(dbPath);
-  _sqlite.pragma("journal_mode = WAL");
-  _sqlite.pragma("foreign_keys = ON");
-  return drizzle(_sqlite, { schema });
-}
-
-function runMigrations(): void {
-  const sqlite = new Database(dbPath);
-  sqlite.pragma("foreign_keys = ON");
-  const migrationsDir = path.join(
-    path.dirname(fileURLToPath(import.meta.url)),
-    "..",
-    "..",
-    "src",
-    "db",
-    "migrations",
-  );
-  const files = fs
-    .readdirSync(migrationsDir)
-    .filter((f) => f.endsWith(".sql"))
-    .sort();
-  for (const file of files) {
-    sqlite.exec(fs.readFileSync(path.join(migrationsDir, file), "utf-8"));
-  }
-  sqlite.close();
-}
-
-function seedProviderAndPage(db: ReturnType<typeof drizzle>, url: string): number {
+function seedProviderAndPage(db: ReturnType<typeof createTestDb>["db"], url: string): number {
   db.insert(providers)
     .values({
       id: "test-provider",
@@ -189,14 +160,16 @@ function stopServer(): Promise<void> {
 
 // ── Globals ──────────────────────────────────────────────────────────
 
-let db: ReturnType<typeof drizzle>;
+let db: ReturnType<typeof createTestDb>["db"];
 let sourcePageId: number;
 
 beforeAll(async () => {
   dbDir = fs.mkdtempSync(path.join(os.tmpdir(), "cs-pipeline-test-"));
   dbPath = path.join(dbDir, "test.db");
-  runMigrations();
-  db = createTestDb();
+  runMigrations(dbPath);
+  const result = createTestDb(dbPath);
+  db = result.db;
+  _sqlite = result.sqlite;
 
   await startServer(PRICING_HTML);
   sourcePageId = seedProviderAndPage(db, serverUrl);
@@ -369,7 +342,7 @@ describe("runScrapePipeline — content changed", () => {
       .orderBy(desc(planSnapshots.observedAt))
       .limit(5)
       .all();
-    const amounts = snaps.map((s) => s.price).sort((a, b) => a - b);
+    const amounts = snaps.map((s) => s.price).sort((a, b) => (a ?? 0) - (b ?? 0));
     expect(amounts).toContain(20);
     expect(amounts).toContain(200);
 

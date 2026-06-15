@@ -1,12 +1,11 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from "vitest";
 import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
 import { eq } from "drizzle-orm";
 import fs from "fs";
 import path from "path";
 import os from "os";
-import { fileURLToPath } from "url";
 import * as schema from "../../src/db/schema";
+import { runMigrations, createTestDb } from "../helpers/db";
 import {
   insertProviderSchema,
   insertPlanSchema,
@@ -21,59 +20,32 @@ import {
 
 let dbDir: string;
 let dbPath: string;
-
-function createTestDb() {
-  const sqlite = new Database(dbPath);
-  sqlite.pragma("journal_mode = WAL");
-  sqlite.pragma("foreign_keys = ON");
-  return drizzle(sqlite, { schema });
-}
-
-function runMigrations(): void {
-  const sqlite = new Database(dbPath);
-
-  // Read and apply migration files from src/db/migrations/
-  const migrationsDir = path.join(
-    path.dirname(fileURLToPath(import.meta.url)),
-    "..",
-    "..",
-    "src",
-    "db",
-    "migrations",
-  );
-
-  const files = fs
-    .readdirSync(migrationsDir)
-    .filter((f) => f.endsWith(".sql"))
-    .sort();
-
-  for (const file of files) {
-    const content = fs.readFileSync(path.join(migrationsDir, file), "utf-8");
-    sqlite.exec(content);
-  }
-  sqlite.close();
-}
+let _sqlite: Database.Database | null = null;
 
 beforeAll(() => {
   dbDir = fs.mkdtempSync(path.join(os.tmpdir(), "cs-schema-test-"));
   dbPath = path.join(dbDir, "test.db");
-  runMigrations();
+  runMigrations(dbPath);
 });
 
 afterAll(() => {
+  if (_sqlite) { _sqlite.close(); _sqlite = null; }
   fs.rmSync(dbDir, { recursive: true, force: true });
 });
 
 describe("schema validation", () => {
-  let db: ReturnType<typeof createTestDb>;
+  let db: ReturnType<typeof createTestDb>["db"];
 
   beforeEach(() => {
     // Fresh DB for each test
+    if (_sqlite) { _sqlite.close(); _sqlite = null; }
     try { fs.unlinkSync(dbPath); } catch { /* ok */ }
     try { fs.unlinkSync(dbPath + "-wal"); } catch { /* ok */ }
     try { fs.unlinkSync(dbPath + "-shm"); } catch { /* ok */ }
-    runMigrations();
-    db = createTestDb();
+    runMigrations(dbPath);
+    const result = createTestDb(dbPath);
+    db = result.db;
+    _sqlite = result.sqlite;
   });
 
   it("insertProviderSchema rejects missing required fields", () => {
@@ -231,14 +203,18 @@ describe("partial/passthrough on scrape tables", () => {
 });
 
 describe("insert and select round-trip", () => {
-  let db: ReturnType<typeof createTestDb>;
+  let db: ReturnType<typeof createTestDb>["db"];
+  let roundtripSqlite: Database.Database | null = null;
 
   beforeEach(() => {
+    if (roundtripSqlite) { roundtripSqlite.close(); roundtripSqlite = null; }
     try { fs.unlinkSync(dbPath); } catch { /* ok */ }
     try { fs.unlinkSync(dbPath + "-wal"); } catch { /* ok */ }
     try { fs.unlinkSync(dbPath + "-shm"); } catch { /* ok */ }
-    runMigrations();
-    db = createTestDb();
+    runMigrations(dbPath);
+    const result = createTestDb(dbPath);
+    db = result.db;
+    roundtripSqlite = result.sqlite;
   });
 
   it("inserts and selects a provider", () => {
@@ -296,5 +272,9 @@ describe("insert and select round-trip", () => {
         billingInterval: "monthly",
       }).run(),
     ).toThrow();
+  });
+
+  afterAll(() => {
+    if (roundtripSqlite) { roundtripSqlite.close(); roundtripSqlite = null; }
   });
 });

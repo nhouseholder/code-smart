@@ -80,6 +80,47 @@ export function seed(): void {
   const db = getDb();
   const now = new Date().toISOString().split("T")[0]; // "2026-06-14"
 
+  // ── Sentinel rows (idempotent) ────────────────────────────────────────
+  // Pipeline writes planId:"" and modelId:"unknown" for all extracted
+  // candidates before plan matching. These FK targets must exist in every
+  // DB state — not just test fixtures — or the first live scrape crashes.
+  db.insert(providers).values({
+    id: "__sentinel__",
+    slug: "__sentinel__",
+    name: "Sentinel (Internal)",
+    websiteUrl: "https://internal.code-smart",
+    pricingUrl: "https://internal.code-smart/pricing",
+    docsUrl: null,
+    status: "inactive",
+    notes: "Synthetic provider for unresolved scraper candidates. Do not edit.",
+    createdAt: now,
+    updatedAt: now,
+  }).onConflictDoNothing().run();
+
+  db.insert(models).values({
+    id: "unknown",
+    canonicalModelId: "unknown",
+    displayName: "Unknown Model",
+    providerModelFamily: null,
+    releaseDate: null,
+    status: "inactive",
+    aliases: null,
+  }).onConflictDoNothing().run();
+
+  db.insert(plans).values({
+    id: "",
+    providerId: "__sentinel__",
+    slug: "candidate",
+    planName: "Unresolved Candidate",
+    billingInterval: "monthly",
+    listedPrice: null,
+    effectiveMonthlyPrice: null,
+    currency: "USD",
+    annualDiscountNotes: null,
+    planUrl: null,
+    status: "inactive",
+  }).onConflictDoNothing().run();
+
   // Read all provider JSON files
   const files = fs
     .readdirSync(PROVIDERS_DIR)
@@ -91,8 +132,11 @@ export function seed(): void {
     return;
   }
 
-  // Check if seed already applied by looking for existing providers
-  const existing = db.select({ count: sql<number>`count(*)` }).from(providers).get();
+  // Check if seed already applied (exclude sentinel from count)
+  const existing = db.select({ count: sql<number>`count(*)` })
+    .from(providers)
+    .where(sql`id != '__sentinel__'`)
+    .get();
   if (existing && existing.count > 0) {
     console.log(`DB already seeded with ${existing.count} providers — skipping.`);
     return;
