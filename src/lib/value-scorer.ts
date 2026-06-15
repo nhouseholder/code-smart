@@ -156,7 +156,7 @@ const RESET_WINDOW: Partial<Record<string, string>> = {
   "_per_month":  "1mo",
 };
 
-function usageLimitToRow(limit: UsageLimit, planId: string, idx: number): UsageLimitRow {
+export function usageLimitToRow(limit: UsageLimit, planId: string, idx: number): UsageLimitRow {
   const resetWindow =
     Object.entries(RESET_WINDOW).find(([k]) => limit.type.endsWith(k))?.[1] ?? null;
 

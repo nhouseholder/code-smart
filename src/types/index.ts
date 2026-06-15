@@ -172,6 +172,56 @@ export interface ValueScore {
   computed_at: string;
 }
 
+// ─── Artificial Analysis Scores ────────────────────────────────────────────────
+
+export interface AAModelScore {
+  modelId: string;
+  observedAt: string;               // ISO date of snapshot
+  agenticIndex: number | null;      // 0–100
+  codingIndex: number | null;       // 0–100
+  speedScore: number | null;        // 0–100 pre-normalized (NOT raw TPS)
+  intelligenceIndex: number | null; // 0–100, display only — NOT used in WMQ
+  inputPrice: number | null;        // USD per 1M input tokens
+  outputPrice: number | null;       // USD per 1M output tokens
+  confidence: Confidence;
+  source: string;
+}
+
+// ─── Model Value Engine Output ─────────────────────────────────────────────────
+
+export interface ModelValueEstimate {
+  modelId: string;
+  planId: string;
+
+  // WMQ = 50% agentic + 40% coding + 10% speed
+  weighted_model_quality: number | null;
+
+  // Pass-through: raw token estimates from normalization engine
+  estimated_tokens_5h: number | null;
+  estimated_tokens_24h: number | null;
+  estimated_tokens_1w: number | null;
+  estimated_tokens_1mo: number | null;
+
+  // A: Quality-adjusted (tokens × WMQ/100)
+  quality_adjusted_tokens_5h: number | null;
+  quality_adjusted_tokens_24h: number | null;
+  quality_adjusted_tokens_1w: number | null;
+  quality_adjusted_tokens_1mo: number | null;
+
+  // B: Model-cost-adjusted (non-null only for credit-based limits with AA pricing)
+  model_adjusted_tokens_5h: number | null;
+  model_adjusted_tokens_24h: number | null;
+  model_adjusted_tokens_1w: number | null;
+  model_adjusted_tokens_1mo: number | null;
+
+  // value_score = quality_adjusted_monthly / price, normalized 0–100 (null for free plans)
+  value_score: number | null;
+
+  confidence: Confidence;
+  calculation_methodology_version: string;
+  notes: string[];
+}
+
 // ─── Comparison State (UI) ─────────────────────────────────────────────────
 
 export type SortKey = "price" | "value_score" | "benchmark" | "provider";
