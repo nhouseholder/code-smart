@@ -27,18 +27,20 @@ Session 7 — Backend API, Daily Pipeline, Admin Debug:
 - `GET /data/api/methodology.json`
 - `GET /data/api/pipeline-status.json` (written by `pipeline:daily`)
 
+**Production:** https://code-smart.pages.dev (Cloudflare Pages, static export) — deployed + verified 2026-06-15
+
 ## What's next
 
-1. Deploy v1.0.10 to production (wrangler split-deploy)
+1. Wire `/data/api/rankings.json` into frontend (rankings page or sidebar widget)
 2. Real AA coding/agentic indices — replace proxied values in DB (confidence="assumed") when subscription available
 3. Improve usage limit coverage for Anthropic/Google (currently WMQ ✓ but null QAMU)
 4. Add WMQ badge to `PlanCard` component
-5. Wire `/data/api/rankings.json` into frontend (rankings page or sidebar widget)
 
 ## Architecture notes
 
 - Pipeline order: `stale-check → scrape (hash-skip) → normalize → seed-aa (7d cache) → value-estimates → static-api → validate`
-- All API responses are pre-built static JSON — no runtime DB; works on CF Workers
+- All API responses are pre-built static JSON — no runtime DB
+- Deploy: `next build` (`output: "export"`) → static `out/` → `wrangler pages deploy out --project-name=code-smart`. No OpenNext/Workers — app is 100% static.
 - Lock file: `data/.pipeline.lock` (PID-based, stale lock auto-cleared)
 - Atomic status write: `pipeline-status.json.tmp` → rename (never corrupt mid-run)
 - Admin view: `pnpm pipeline:status` prints formatted last-run report to console
