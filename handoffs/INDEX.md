@@ -9,3 +9,5 @@
 - **[2026-06-15]** [2026-06-15_v1.0.8_aa-seed-wmq-ui.md](2026-06-15_v1.0.8_aa-seed-wmq-ui.md) — v1.0.8 — AA seed (10 model rows) + generate-model-value-estimates + WMQ/QAMU columns in ComparisonTable
 - **[2026-06-15]** [2026-06-15_v1.0.10_session7-pipeline-api-rankings.md](2026-06-15_v1.0.10_session7-pipeline-api-rankings.md) — v1.0.10 — Session 7: static API (5 endpoints), pipeline:daily orchestrator, rankings engine, 213 tests
 - **[2026-06-16]** [2026-06-16_v1.0.11_ranking-engine.md](2026-06-16_v1.0.11_ranking-engine.md) — v1.0.11 — Session 8: 10-ranking engine (computeAllRankings, 8 views), DB persistence (methodology 1.0.0), rankings.json API, 228 tests
+- **[2026-06-16]** [2026-06-16_frontend-website-ship.md](2026-06-16_frontend-website-ship.md) — v1.1.0 — Session 9: user-facing website (8 pages, ~20 components, uncertainty/provenance UX, Framer Motion), 240 tests, shipped to Pages c59ad6a9
+- **[2026-06-16]** [2026-06-16_data-api-transform-investigation.md](2026-06-16_data-api-transform-investigation.md) — v1.1.0 — `/data/api/*.json` "transform" investigated → false alarm (RTK Bash-channel artifact, not a bug); record corrected, guard memory saved

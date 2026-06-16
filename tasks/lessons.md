@@ -1,0 +1,3 @@
+# Lessons Learned — code-smart
+
+[2026-06-16] A reported `/data/api/*.json` "edge schema-transform bug" was not real — the RTK token-compression hook rewrote my `curl …json`/`cat …json` Bash commands into `rtk curl`/`rtk read`, which emit a type-schema summary instead of the raw body. | Root cause: RTK runs in the Bash output channel only; `head`/`python`/`jq`/WebFetch are not rewritten, so the same file looked raw via `head` but "transformed" via `curl` — the contradiction that should have pointed at the channel, not the server. | Guard: to verify a JSON endpoint/file, use WebFetch (external egress) or bypass RTK (`command curl`, `rtk read --raw`, `head`, `jq`); never diagnose a "transform" from `curl …json` output alone.
