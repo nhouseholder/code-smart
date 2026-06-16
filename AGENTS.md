@@ -123,14 +123,13 @@ pnpm db:generate            # Regenerate migration files after schema changes (d
 pnpm test                   # Run all 157 tests via Vitest (in-process, no browser)
 pnpm test:watch             # Watch mode
 
-# Deploy (manual — split upload+deploy required)
+# Deploy (static export → Cloudflare Pages)
+pnpm build                  # output:"export" → out/ (15 static pages + /data/api/*.json)
 source ~/.claude/credentials/master.env && \
   CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN \
-  NODE_OPTIONS='--import ./dns-fix.mjs' \
-  NODE_TLS_REJECT_UNAUTHORIZED=0 \
-  npx wrangler versions upload --config wrangler.jsonc
-# Capture UUID from output, then:
-npx wrangler versions deploy <UUID>@100% --config wrangler.jsonc --yes
+  CLOUDFLARE_ACCOUNT_ID=$CLOUDFLARE_ACCOUNT_ID \
+  ./node_modules/.bin/wrangler pages deploy out --project-name=code-smart --branch=main
+# App is 100% static — no OpenNext/Workers, no dns-fix needed (Pages upload avoids the LibreSSL TLS bug)
 ```
 
 ---

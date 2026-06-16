@@ -204,28 +204,21 @@ npm run stale-check       # 90-day provenance check; exits non-zero on stale rec
 # Step 1 — Regenerate computed scores
 npm run recompute-scores  # Reads providers/*.json + latest aa-snapshot → writes computed-scores.json
 
-# Step 2 — Build
-npx opennextjs-cloudflare build   # Produces .open-next/ directory
+# Step 2 — Build static export
+pnpm build                # output:"export" → out/ (15 static pages + /data/api/*.json)
 
-# Step 3 — Upload worker version (captures UUID in output)
+# Step 3 — Deploy out/ to Cloudflare Pages
 source ~/.claude/credentials/master.env && \
   CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN \
-  NODE_OPTIONS='--import ./dns-fix.mjs' \
-  NODE_TLS_REJECT_UNAUTHORIZED=0 \
-  npx wrangler versions upload --config wrangler.jsonc
+  CLOUDFLARE_ACCOUNT_ID=$CLOUDFLARE_ACCOUNT_ID \
+  ./node_modules/.bin/wrangler pages deploy out --project-name=code-smart --branch=main
 
-# Step 4 — Deploy uploaded version to 100% traffic
-source ~/.claude/credentials/master.env && \
-  CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN \
-  NODE_OPTIONS='--import ./dns-fix.mjs' \
-  NODE_TLS_REJECT_UNAUTHORIZED=0 \
-  npx wrangler versions deploy <UUID>@100% --config wrangler.jsonc --yes
-
-# Step 5 — Verify live version
-curl https://code-smart.nicholashouseholder.com/api/health
+# Step 4 — Verify live
+curl -s -o /dev/null -w "%{http_code}\n" https://code-smart.pages.dev/
+curl -s https://code-smart.pages.dev/data/api/providers.json | head -c 80
 ```
 
-**Why the split upload+deploy?** The combined `wrangler deploy` command fails on this machine due to a LibreSSL TLS 1.3 handshake bug with `api.cloudflare.com`. The split `versions upload` + `versions deploy` uses a different internal code path that succeeds. Full root-cause detail: `~/.kimi/WRANGLER_NOTES.md`.
+**Why Pages, not OpenNext/Workers?** The app is 100% static (`output: "export"`, `generateStaticParams`, build-time JSON, no route handlers), so a static export → Pages is the correct target — simpler than OpenNext/Workers and the Pages upload path avoids the LibreSSL TLS 1.3 bug that breaks `wrangler deploy` on this machine (no `dns-fix.mjs` needed).
 
 ### GitHub Actions Deploy (automated, via weekly-aa-fetch.yml)
 The GitHub Actions workflow uses the same split strategy via shell script. It does NOT run `npm run stale-check` as a blocking gate — stale check runs separately in `daily-check.yml` and opens issues rather than blocking deploys.
@@ -299,7 +292,6 @@ code-smart/
 │   │   └── db.ts                   # Shared test utilities: runMigrations(), createTestDb()
 │   ├── db/                         # DB layer tests (helpers, schema, seed)
 │   └── scraper/                    # Scraper pipeline tests
-├── dns-fix.mjs                     # Node.js DNS workaround for wrangler on this machine
 ├── next.config.ts
 ├── package.json
 ├── tailwind.config.ts
