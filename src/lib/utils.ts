@@ -1,9 +1,19 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import type { Confidence } from "@/types";
+import type { Confidence, Plan } from "@/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
+}
+
+/** Effective monthly price (prefer annual if cheaper). Pure — client-safe. */
+export function effectiveMonthlyPrice(plan: Plan): number | null {
+  const monthly = plan.pricing.monthly_usd;
+  const annual = plan.pricing.annual_monthly_usd;
+
+  if (monthly === null && annual === null) return null;
+  if (annual !== null && monthly !== null) return Math.min(monthly, annual);
+  return monthly ?? annual;
 }
 
 export function formatPrice(usd: number | null): string {
@@ -63,4 +73,25 @@ export function daysAgo(dateStr: string): number {
   const d = new Date(dateStr);
   const now = new Date();
   return Math.floor((now.getTime() - d.getTime()) / (1000 * 60 * 60 * 24));
+}
+
+/** Compact token count: null → "—" (never "0"); 1_250_000 → "1.25M"; 2_500 → "2.5K". */
+export function formatTokens(n: number | null | undefined): string {
+  if (n === null || n === undefined) return "—";
+  if (n === 0) return "0";
+  const abs = Math.abs(n);
+  if (abs >= 1_000_000) return `${(n / 1_000_000).toFixed(n % 1_000_000 === 0 ? 0 : 2)}M`;
+  if (abs >= 1_000) return `${(n / 1_000).toFixed(n % 1_000 === 0 ? 0 : 1)}K`;
+  return `${n}`;
+}
+
+/** §9 uncertainty tiers. Render the UncertaintyScore badge ONLY when > 50. */
+export function uncertaintyTier(
+  score: number | null | undefined,
+): "none" | "low" | "elevated" | "high" {
+  if (score === null || score === undefined) return "none";
+  if (score >= 75) return "high"; // red ⚠
+  if (score >= 50) return "elevated"; // orange — threshold for rendering
+  if (score > 0) return "low";
+  return "none";
 }

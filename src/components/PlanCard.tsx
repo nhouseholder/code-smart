@@ -1,9 +1,10 @@
 import type { Provider, Plan } from "@/types";
 import type { ValueScore } from "@/types";
-import { formatPrice, cn } from "@/lib/utils";
+import { formatPrice, cn, effectiveMonthlyPrice } from "@/lib/utils";
 import { ProvenanceBadge } from "./ProvenanceBadge";
+import { ProviderBadge } from "./ProviderBadge";
+import { ModelBadge } from "./ModelBadge";
 import { ValueScoreBar } from "./ValueScoreBar";
-import { effectiveMonthlyPrice } from "@/lib/data-loader";
 import { Check, X, Minus, ExternalLink, Zap } from "lucide-react";
 
 interface Props {
@@ -21,14 +22,6 @@ const TIER_COLORS: Record<Plan["tier"], string> = {
   team:       "bg-emerald-50 text-emerald-700",
   enterprise: "bg-amber-50 text-amber-700",
   api:        "bg-orange-50 text-orange-700",
-};
-
-const PROVIDER_BADGE: Record<string, { bg: string; text: string }> = {
-  anthropic:       { bg: "bg-[#d97757]",  text: "text-white" },
-  openai:          { bg: "bg-[#10a37f]",  text: "text-white" },
-  "github-copilot":{ bg: "bg-[#1f2328]",  text: "text-white" },
-  cursor:          { bg: "bg-[#000000]",  text: "text-white" },
-  google:          { bg: "bg-[#4285f4]",  text: "text-white" },
 };
 
 function FeatureChip({ enabled, label }: { enabled: boolean | null; label: string }) {
@@ -53,7 +46,6 @@ function FeatureChip({ enabled, label }: { enabled: boolean | null; label: strin
 
 export function PlanCard({ provider, plan, score, featured = false, compact = false }: Props) {
   const price = effectiveMonthlyPrice(plan);
-  const badge = PROVIDER_BADGE[provider.id] ?? { bg: "bg-gray-800", text: "text-white" };
   const isFree = price === 0;
 
   const topModels = plan.models
@@ -85,9 +77,7 @@ export function PlanCard({ provider, plan, score, featured = false, compact = fa
       <div className="flex items-start justify-between gap-3 mb-4">
         <div className="min-w-0">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
-            <span className={cn("inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold", badge.bg, badge.text)}>
-              {provider.name}
-            </span>
+            <ProviderBadge providerId={provider.id} name={provider.name} href={`/providers/${provider.id}`} />
             <span className={cn("inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium", TIER_COLORS[plan.tier])}>
               {plan.tier.charAt(0).toUpperCase() + plan.tier.slice(1)}
             </span>
@@ -148,18 +138,14 @@ export function PlanCard({ provider, plan, score, featured = false, compact = fa
             {topModels.map((mRef) => {
               const model = provider.models.find((m) => m.id === mRef.model_id);
               return (
-                <span
+                <ModelBadge
                   key={mRef.model_id}
-                  className={cn(
-                    "inline-flex items-center px-2 py-0.5 rounded text-[11px] border",
-                    mRef.is_default
-                      ? "bg-brand-50 border-brand-200 text-brand-700 font-medium"
-                      : "bg-gray-50 border-gray-200 text-gray-600",
-                  )}
-                >
-                  {model?.display_name ?? mRef.model_id}
-                  {mRef.access_type === "limited" && <span className="ml-1 text-[9px] opacity-60">limited</span>}
-                </span>
+                  modelId={mRef.model_id}
+                  displayName={model?.display_name ?? mRef.model_id}
+                  isDefault={mRef.is_default}
+                  accessNote={mRef.access_type === "limited" ? "limited" : undefined}
+                  href={`/models/${mRef.model_id}`}
+                />
               );
             })}
             {plan.models.length > 2 && (

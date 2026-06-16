@@ -133,3 +133,177 @@ export const ProviderSchema = z.object({
 
 export type ProviderInput = z.input<typeof ProviderSchema>;
 export type ProviderOutput = z.output<typeof ProviderSchema>;
+
+// ─── Built API artifacts (public/data/api/*.json) ─────────────────────────────
+// Validated at build time by data-loader readers. A partial/corrupt write fails
+// the build rather than rendering garbage. Rows use .passthrough() so additive
+// generator fields never break the build, while required keys stay enforced.
+
+const ConfidenceSchema = z.enum(["observed", "inferred", "assumed", "stale", "unknown"]);
+const PriceBandSchema = z.enum(["free", "low", "mid", "high"]);
+
+const RankingSourceDatesSchema = z.object({
+  aa: z.string().nullable(),
+  pricing: z.string().nullable(),
+  usage: z.string().nullable(),
+});
+
+const PlanModelRowSchema = z
+  .object({
+    rank: z.number(),
+    providerId: z.string(),
+    providerName: z.string(),
+    planId: z.string(),
+    planName: z.string(),
+    modelId: z.string(),
+    modelDisplayName: z.string(),
+    monthlyPriceUsd: z.number().nullable(),
+    priceBand: PriceBandSchema,
+    weightedModelQuality: z.number().nullable(),
+    estimatedMonthlyTokens: z.number().nullable(),
+    modelAdjustedMonthlyTokens: z.number().nullable(),
+    qualityAdjustedMonthlyUsage: z.number().nullable(),
+    valueScoreRaw: z.number().nullable(),
+    valueScore: z.number().nullable(),
+    confidence: ConfidenceSchema,
+    caveats: z.array(z.string()),
+    sourceDates: RankingSourceDatesSchema,
+  })
+  .passthrough();
+
+const ModelRowSchema = z
+  .object({
+    rank: z.number(),
+    providerId: z.string(),
+    providerName: z.string(),
+    modelId: z.string(),
+    modelDisplayName: z.string(),
+    metric: z.enum(["intelligence", "coding", "agentic", "wmq"]),
+    metricValue: z.number(),
+    confidence: ConfidenceSchema,
+    caveats: z.array(z.string()),
+    sourceDates: RankingSourceDatesSchema,
+  })
+  .passthrough();
+
+const ProviderRowSchema = z
+  .object({
+    rank: z.number(),
+    providerId: z.string(),
+    providerName: z.string(),
+    codingValuePeak: z.number(),
+    bestPlanId: z.string(),
+    bestModelId: z.string(),
+    confidence: ConfidenceSchema,
+    caveats: z.array(z.string()),
+    sourceDates: RankingSourceDatesSchema,
+  })
+  .passthrough();
+
+const TransparencyRowSchema = z
+  .object({
+    rank: z.number(),
+    providerId: z.string(),
+    providerName: z.string(),
+    planId: z.string(),
+    planName: z.string(),
+    uncertaintyScore: z.number(),
+    transparencyScore: z.number(),
+    confidence: ConfidenceSchema,
+    caveats: z.array(z.string()),
+    sourceDates: RankingSourceDatesSchema,
+  })
+  .passthrough();
+
+const BestPlansForModelSchema = z
+  .object({
+    modelId: z.string(),
+    modelDisplayName: z.string(),
+    weightedModelQuality: z.number().nullable(),
+    bestLowCost: PlanModelRowSchema.nullable(),
+    bestMidCost: PlanModelRowSchema.nullable(),
+    bestHighCost: PlanModelRowSchema.nullable(),
+    caveats: z.array(z.string()),
+  })
+  .passthrough();
+
+export const RankingSetSchema = z.object({
+  generatedAt: z.string(),
+  methodologyVersion: z.string(),
+  rankings: z.object({
+    byPriceBand: z.object({
+      low: z.array(PlanModelRowSchema),
+      mid: z.array(PlanModelRowSchema),
+      high: z.array(PlanModelRowSchema),
+    }),
+    byIntelligence: z.array(ModelRowSchema),
+    byCoding: z.array(ModelRowSchema),
+    byAgentic: z.array(ModelRowSchema),
+    byWeightedQuality: z.array(ModelRowSchema),
+    bestPlansPerModel: z.array(BestPlansForModelSchema),
+    byProviderCodingValue: z.array(ProviderRowSchema),
+    byTransparency: z.array(TransparencyRowSchema),
+  }),
+});
+
+export const MethodologyMetaSchema = z
+  .object({
+    version: z.string(),
+    formula: z.string().optional(),
+    weights: z
+      .object({
+        cost: z.number(),
+        benchmark: z.number(),
+        feature: z.number(),
+      })
+      .partial()
+      .optional(),
+    wmq: z
+      .object({
+        agentic: z.number(),
+        coding: z.number(),
+        speed: z.number(),
+      })
+      .partial()
+      .optional(),
+    priceBands: z.record(z.string(), z.unknown()).optional(),
+    rankings_methodology_version: z.string().optional(),
+    reference: z.unknown().optional(),
+    generated_at: z.string(),
+  })
+  .passthrough();
+
+// models.json is a flat array; plans.json is { plans, bySlug }. Both carry
+// appended providerId/providerName fields. Validate the envelope + key fields;
+// pass through the rich domain fields already validated upstream by the pipeline.
+export const ModelsApiSchema = z.array(
+  z
+    .object({
+      id: z.string(),
+      provider_id: z.string(),
+      display_name: z.string(),
+      providerId: z.string(),
+      providerName: z.string(),
+    })
+    .passthrough(),
+);
+
+export const PlansApiSchema = z.object({
+  plans: z.array(
+    z
+      .object({
+        id: z.string(),
+        provider_id: z.string(),
+        name: z.string(),
+        providerId: z.string(),
+        providerName: z.string(),
+      })
+      .passthrough(),
+  ),
+  bySlug: z.record(z.string(), z.unknown()).optional(),
+});
+
+export type RankingSetArtifact = z.output<typeof RankingSetSchema>;
+export type MethodologyMeta = z.output<typeof MethodologyMetaSchema>;
+export type ModelsApi = z.output<typeof ModelsApiSchema>;
+export type PlansApi = z.output<typeof PlansApiSchema>;

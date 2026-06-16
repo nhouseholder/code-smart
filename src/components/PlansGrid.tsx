@@ -5,7 +5,7 @@ import type { Provider, Plan, ComparisonFilter } from "@/types";
 import type { ValueScore } from "@/types";
 import { PlanCard } from "./PlanCard";
 import { FilterBar } from "./FilterBar";
-import { effectiveMonthlyPrice } from "@/lib/data-loader";
+import { effectiveMonthlyPrice } from "@/lib/utils";
 
 interface PlanEntry {
   provider: Provider;

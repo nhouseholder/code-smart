@@ -1,4 +1,17 @@
-import { ProviderSchema } from "./schema";
+import * as fs from "node:fs";
+import * as path from "node:path";
+import { z } from "zod";
+import {
+  ProviderSchema,
+  RankingSetSchema,
+  MethodologyMetaSchema,
+  ModelsApiSchema,
+  PlansApiSchema,
+  type RankingSetArtifact,
+  type MethodologyMeta,
+  type ModelsApi,
+  type PlansApi,
+} from "./schema";
 import type { Provider, Plan } from "@/types";
 
 // Static imports of all provider JSON files.
@@ -91,12 +104,116 @@ export function getCheapestPaidPlan(providerId: string): Plan | null {
   return paid[0] ?? null;
 }
 
-/** Effective monthly price (prefer annual if cheaper). */
-export function effectiveMonthlyPrice(plan: Plan): number | null {
-  const monthly = plan.pricing.monthly_usd;
-  const annual = plan.pricing.annual_monthly_usd;
+// effectiveMonthlyPrice now lives in client-safe utils.ts (this module is
+// server-only via `fs`). Re-exported here for back-compat with server callers.
+export { effectiveMonthlyPrice } from "./utils";
 
-  if (monthly === null && annual === null) return null;
-  if (annual !== null && monthly !== null) return Math.min(monthly, annual);
-  return monthly ?? annual;
+// ─── Built API artifact readers (public/data/api/*.json) ──────────────────────
+// Server-only (uses `fs`). NEVER import these from a "use client" file.
+// Build-integrity policy (DeepSeek council): a required artifact that is missing,
+// empty, or schema-invalid FAILS the production build — an empty/garbage site can
+// never deploy. In dev (NODE_ENV !== "production") a missing/empty artifact yields
+// a typed empty fallback for convenience; a schema-invalid artifact still throws.
+
+const API_DIR = path.join(process.cwd(), "public", "data", "api");
+const isProd = () => process.env.NODE_ENV === "production";
+
+/** Read + JSON-parse an artifact. Returns null if missing or empty. */
+function readArtifactRaw(filename: string): unknown | null {
+  let text: string;
+  try {
+    text = fs.readFileSync(path.join(API_DIR, filename), "utf8");
+  } catch {
+    return null; // missing / unreadable
+  }
+  const trimmed = text.trim();
+  if (!trimmed) return null; // empty file
+  return JSON.parse(trimmed) as unknown;
+}
+
+function validateOrThrow<T>(filename: string, raw: unknown, schema: z.ZodType<T>): T {
+  const result = schema.safeParse(raw);
+  if (!result.success) {
+    throw new Error(`Artifact "${filename}" failed schema validation:\n${result.error.message}`);
+  }
+  return result.data;
+}
+
+function missingRequired(filename: string): never {
+  throw new Error(
+    `Required artifact ${filename} is missing or empty — refusing to build an empty site. ` +
+      `Run \`pnpm generate:rankings && pnpm generate:static-api\` first.`,
+  );
+}
+
+const EMPTY_RANKINGS: RankingSetArtifact = {
+  generatedAt: "1970-01-01",
+  methodologyVersion: "0.0.0-dev",
+  rankings: {
+    byPriceBand: { low: [], mid: [], high: [] },
+    byIntelligence: [],
+    byCoding: [],
+    byAgentic: [],
+    byWeightedQuality: [],
+    bestPlansPerModel: [],
+    byProviderCodingValue: [],
+    byTransparency: [],
+  },
+};
+
+const EMPTY_METHODOLOGY: MethodologyMeta = {
+  version: "0.0.0-dev",
+  generated_at: "1970-01-01",
+};
+
+let _rankings: RankingSetArtifact | null = null;
+/** Full 8-view RankingSet from rankings.json. */
+export function getRankings(): RankingSetArtifact {
+  if (_rankings) return _rankings;
+  const raw = readArtifactRaw("rankings.json");
+  if (raw === null) {
+    if (isProd()) missingRequired("rankings.json");
+    return EMPTY_RANKINGS;
+  }
+  _rankings = validateOrThrow("rankings.json", raw, RankingSetSchema);
+  return _rankings;
+}
+
+let _methodology: MethodologyMeta | null = null;
+/** Methodology metadata (formula, weights, bands, generated_at) from methodology.json. */
+export function getMethodologyMeta(): MethodologyMeta {
+  if (_methodology) return _methodology;
+  const raw = readArtifactRaw("methodology.json");
+  if (raw === null) {
+    if (isProd()) missingRequired("methodology.json");
+    return EMPTY_METHODOLOGY;
+  }
+  _methodology = validateOrThrow("methodology.json", raw, MethodologyMetaSchema);
+  return _methodology;
+}
+
+let _modelsApi: ModelsApi | null = null;
+/** Flat array of all models (with appended providerId/providerName) from models.json. */
+export function getModelsApi(): ModelsApi {
+  if (_modelsApi) return _modelsApi;
+  const raw = readArtifactRaw("models.json");
+  if (raw === null) {
+    if (isProd()) missingRequired("models.json");
+    return [];
+  }
+  _modelsApi = validateOrThrow("models.json", raw, ModelsApiSchema);
+  return _modelsApi;
+}
+
+let _plansApi: PlansApi | null = null;
+/** { plans, bySlug } envelope (plans carry appended providerId/providerName) from plans.json. */
+export function getPlansApi(): PlansApi {
+  if (_plansApi) return _plansApi;
+  const raw = readArtifactRaw("plans.json");
+  if (raw === null) {
+    if (isProd()) missingRequired("plans.json");
+    return { plans: [], bySlug: {} };
+  }
+  _plansApi = validateOrThrow("plans.json", raw, PlansApiSchema);
+  return _plansApi;
 }

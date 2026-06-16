@@ -1,10 +1,9 @@
 import type { Provider, Plan, ModelValueEstimate } from "@/types";
 import type { ValueScore } from "@/types";
-import { formatPrice, cn } from "@/lib/utils";
-import { effectiveMonthlyPrice } from "@/lib/data-loader";
+import { formatPrice, cn, effectiveMonthlyPrice } from "@/lib/utils";
 import { Check, X, Minus } from "lucide-react";
 
-interface Entry {
+export interface Entry {
   provider: Provider;
   plan: Plan;
   score: ValueScore;
@@ -15,7 +14,7 @@ interface Props {
   entries: Entry[];
 }
 
-type FeatureRow =
+export type FeatureRow =
   | { kind: "section"; label: string }
   | { kind: "feature"; label: string; render: (entry: Entry) => React.ReactNode };
 
@@ -30,7 +29,7 @@ function Maybe({ value }: { value: boolean | null | undefined }) {
   return <Bool value={value} />;
 }
 
-const ROWS: FeatureRow[] = [
+export const COMPARISON_ROWS: FeatureRow[] = [
   { kind: "section", label: "Pricing" },
   {
     kind: "feature", label: "Monthly price",
@@ -191,7 +190,7 @@ export function ComparisonTable({ entries }: Props) {
             </tr>
           </thead>
           <tbody>
-            {ROWS.map((row, i) => {
+            {COMPARISON_ROWS.map((row, i) => {
               if (row.kind === "section") {
                 return (
                   <tr key={`section-${i}`} className="bg-gray-50/50">
