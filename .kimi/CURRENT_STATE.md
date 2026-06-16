@@ -1,6 +1,6 @@
 # code-smart — Current State
 
-**Version:** 1.0.11
+**Version:** 1.1.0
 **Updated:** 2026-06-16
 **Branch:** main
 
@@ -8,7 +8,15 @@
 
 ## What just shipped
 
-Session 8 — Ranking Engine: replaced the placeholder single-list ranking with the **10 required rankings**, persisted to DB with a methodology version and exposed via `rankings.json`.
+Session 9 — User-facing website (v1.1.0, live at code-smart.pages.dev, deploy c59ad6a9). 8 pages over the data engine, ~20 components, uncertainty/provenance UX, Framer Motion. 240 tests, 70 static pages. **Post-ship investigation:** the reported `/data/api/*.json` "schema-shape transform" was a **false alarm** — a local RTK token-compression artifact (`rtk rewrite` summarizes `curl …json`/`cat …json` in the Bash channel). Origin serves correct raw JSON (confirmed via WebFetch). No bug, no redeploy.
+
+**Next 3:** (1) 375px mobile pass · (2) wire BenchmarkSparkline AA-snapshot history · (3) `/compare` diff-highlight + filter polish.
+
+---
+
+## Prior — Session 8 — Ranking Engine
+
+Replaced the placeholder single-list ranking with the **10 required rankings**, persisted to DB with a methodology version and exposed via `rankings.json`.
 
 - `src/lib/rankings.ts` — rewrote core: `computeAllRankings()` (pure/deterministic) produces the 8-view `RankingSet`; `getPriceBand()` switched to §8 bands (free / low $0.01–30 / mid $30.01–80 / high >$80); new `RANKINGS_METHODOLOGY_VERSION = "1.0.0"`; removed the `computeRankings` placeholder.
 - `src/db/helpers.ts` — added `insertRanking()` + `getAllLatestRankings()` (latest row per ranking type).
