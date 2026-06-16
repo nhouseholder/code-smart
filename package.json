@@ -1,10 +1,10 @@
 {
   "name": "code-smart",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "pnpm generate:static-api && next build",
     "start": "next start",
     "lint": "next lint",
     "validate": "npx tsx scripts/validate-data.ts",
@@ -19,6 +19,9 @@
     "db:seed": "npx tsx src/db/seed.ts",
     "db:seed-aa": "npx tsx scripts/seed-aa-scores.ts",
     "generate:value-estimates": "npx tsx scripts/generate-model-value-estimates.ts",
+    "generate:static-api": "npx tsx scripts/generate-static-api.ts",
+    "pipeline:daily": "npx tsx scripts/pipeline-daily.ts",
+    "pipeline:status": "npx tsx scripts/pipeline-daily.ts --status-only",
     "db:reset": "rm -f data/code-smart.db && npm run db:migrate && npm run db:seed",
     "db:pull-artifact": "gh run download --name code-smart-db --dir data/ || true",
     "db:push-artifact": "gh run upload --name code-smart-db data/code-smart.db || true"

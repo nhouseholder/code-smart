@@ -1,0 +1,595 @@
+[
+  {
+    "id": "claude-haiku-4-5",
+    "provider_id": "anthropic",
+    "display_name": "Claude Haiku 4.5",
+    "family": "claude-4",
+    "context_length_k": 200,
+    "strengths": [
+      "fast",
+      "cost-efficient",
+      "coding-assistance",
+      "chat"
+    ],
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed"
+    },
+    "providerId": "anthropic",
+    "providerName": "Anthropic"
+  },
+  {
+    "id": "claude-sonnet-4-6",
+    "provider_id": "anthropic",
+    "display_name": "Claude Sonnet 4.6",
+    "family": "claude-4",
+    "context_length_k": 200,
+    "strengths": [
+      "coding",
+      "reasoning",
+      "analysis",
+      "long-context"
+    ],
+    "released_date": "2025-07-01",
+    "benchmarks": [
+      {
+        "name": "SWE-bench-verified",
+        "score": 72.7,
+        "unit": "percent",
+        "higher_is_better": true,
+        "notes": "claude-3.7-sonnet approximate; verify for 4.6",
+        "provenance": {
+          "url": "https://www.anthropic.com/research/swe-bench-sonnet",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      {
+        "name": "HumanEval",
+        "score": 93,
+        "unit": "percent",
+        "higher_is_better": true,
+        "notes": "Approximate; verify against Anthropic model card",
+        "provenance": {
+          "url": "https://www.anthropic.com/claude/sonnet",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      }
+    ],
+    "provenance": {
+      "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed"
+    },
+    "providerId": "anthropic",
+    "providerName": "Anthropic"
+  },
+  {
+    "id": "claude-opus-4-8",
+    "provider_id": "anthropic",
+    "display_name": "Claude Opus 4.8",
+    "family": "claude-4",
+    "context_length_k": 200,
+    "strengths": [
+      "complex-reasoning",
+      "research",
+      "coding",
+      "agentic-tasks"
+    ],
+    "benchmarks": [
+      {
+        "name": "SWE-bench-verified",
+        "score": 79.4,
+        "unit": "percent",
+        "higher_is_better": true,
+        "notes": "Approximate; verify against Anthropic's published evals",
+        "provenance": {
+          "url": "https://www.anthropic.com/claude/opus",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      }
+    ],
+    "provenance": {
+      "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed"
+    },
+    "providerId": "anthropic",
+    "providerName": "Anthropic"
+  },
+  {
+    "id": "gpt-4o",
+    "provider_id": "openai",
+    "display_name": "GPT-4o",
+    "family": "gpt-4o",
+    "context_length_k": 128,
+    "strengths": [
+      "coding",
+      "vision",
+      "speed",
+      "multimodal"
+    ],
+    "benchmarks": [
+      {
+        "name": "HumanEval",
+        "score": 90.2,
+        "unit": "percent",
+        "higher_is_better": true,
+        "notes": "Approximate; varies by prompt format",
+        "provenance": {
+          "url": "https://openai.com/research",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      {
+        "name": "SWE-bench-verified",
+        "score": 38.8,
+        "unit": "percent",
+        "higher_is_better": true,
+        "notes": "gpt-4o single-attempt pass rate; verify against OpenAI evals",
+        "provenance": {
+          "url": "https://openai.com/index/introducing-swe-bench-verified",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      }
+    ],
+    "provenance": {
+      "url": "https://platform.openai.com/docs/models",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed"
+    },
+    "providerId": "openai",
+    "providerName": "OpenAI"
+  },
+  {
+    "id": "o3",
+    "provider_id": "openai",
+    "display_name": "o3",
+    "family": "o-series",
+    "context_length_k": 200,
+    "strengths": [
+      "complex-reasoning",
+      "math",
+      "coding",
+      "agentic"
+    ],
+    "benchmarks": [
+      {
+        "name": "SWE-bench-verified",
+        "score": 69.1,
+        "unit": "percent",
+        "higher_is_better": true,
+        "notes": "o3 high-compute setting; verify against OpenAI published evals",
+        "provenance": {
+          "url": "https://openai.com/o3",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      {
+        "name": "HumanEval",
+        "score": 97.9,
+        "unit": "percent",
+        "higher_is_better": true,
+        "notes": "Approximate; varies by compute budget",
+        "provenance": {
+          "url": "https://openai.com/o3",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      }
+    ],
+    "provenance": {
+      "url": "https://platform.openai.com/docs/models",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed"
+    },
+    "providerId": "openai",
+    "providerName": "OpenAI"
+  },
+  {
+    "id": "o4-mini",
+    "provider_id": "openai",
+    "display_name": "o4-mini",
+    "family": "o-series",
+    "context_length_k": 200,
+    "strengths": [
+      "fast-reasoning",
+      "coding",
+      "cost-efficient"
+    ],
+    "benchmarks": [
+      {
+        "name": "SWE-bench-verified",
+        "score": 68.1,
+        "unit": "percent",
+        "higher_is_better": true,
+        "notes": "Approximate; verify against OpenAI evals page",
+        "provenance": {
+          "url": "https://openai.com/index/openai-o4-mini-system-card",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      }
+    ],
+    "provenance": {
+      "url": "https://platform.openai.com/docs/models",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed"
+    },
+    "providerId": "openai",
+    "providerName": "OpenAI"
+  },
+  {
+    "id": "copilot-base",
+    "provider_id": "github-copilot",
+    "display_name": "Copilot Base Model (GPT-4o / Claude / Gemini)",
+    "family": "copilot",
+    "context_length_k": 64,
+    "strengths": [
+      "autocomplete",
+      "ide-integration",
+      "code-chat",
+      "pr-review"
+    ],
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://github.com/features/copilot",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "Copilot uses multiple underlying models (GPT-4o, Claude, Gemini) depending on task and user selection."
+    },
+    "providerId": "github-copilot",
+    "providerName": "GitHub Copilot"
+  },
+  {
+    "id": "cursor-claude-sonnet",
+    "provider_id": "cursor",
+    "display_name": "Claude Sonnet (via Cursor)",
+    "family": "claude-4",
+    "context_length_k": 200,
+    "strengths": [
+      "agentic-coding",
+      "multi-file-edit",
+      "codebase-context"
+    ],
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://cursor.com",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "Cursor proxies Anthropic Claude — benchmark scores are equivalent to claude-sonnet-4-6."
+    },
+    "providerId": "cursor",
+    "providerName": "Cursor"
+  },
+  {
+    "id": "cursor-gpt-4o",
+    "provider_id": "cursor",
+    "display_name": "GPT-4o (via Cursor)",
+    "family": "gpt-4o",
+    "context_length_k": 128,
+    "strengths": [
+      "speed",
+      "coding",
+      "multimodal"
+    ],
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://cursor.com",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed"
+    },
+    "providerId": "cursor",
+    "providerName": "Cursor"
+  },
+  {
+    "id": "gemini-2-5-pro",
+    "provider_id": "google",
+    "display_name": "Gemini 2.5 Pro",
+    "family": "gemini-2.5",
+    "context_length_k": 1000,
+    "strengths": [
+      "coding",
+      "long-context",
+      "reasoning",
+      "multimodal",
+      "deep-research"
+    ],
+    "benchmarks": [
+      {
+        "name": "SWE-bench-verified",
+        "score": 63.8,
+        "unit": "percent",
+        "higher_is_better": true,
+        "notes": "Gemini 2.5 Pro; verify against Google DeepMind published evals",
+        "provenance": {
+          "url": "https://deepmind.google/technologies/gemini/pro/",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      {
+        "name": "HumanEval",
+        "score": 87,
+        "unit": "percent",
+        "higher_is_better": true,
+        "notes": "Approximate; verify against official model card",
+        "provenance": {
+          "url": "https://deepmind.google/technologies/gemini/",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      }
+    ],
+    "provenance": {
+      "url": "https://deepmind.google/technologies/gemini/pro/",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed"
+    },
+    "providerId": "google",
+    "providerName": "Google"
+  },
+  {
+    "id": "gemini-2-5-flash",
+    "provider_id": "google",
+    "display_name": "Gemini 2.5 Flash",
+    "family": "gemini-2.5",
+    "context_length_k": 1000,
+    "strengths": [
+      "speed",
+      "cost-efficient",
+      "coding",
+      "multimodal"
+    ],
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://deepmind.google/technologies/gemini/flash/",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed"
+    },
+    "providerId": "google",
+    "providerName": "Google"
+  },
+  {
+    "id": "moonshot-v1-128k",
+    "provider_id": "kimi",
+    "display_name": "Moonshot v1 (128K)",
+    "family": "moonshot-v1",
+    "context_length_k": 128,
+    "strengths": [
+      "long-context",
+      "code-generation",
+      "document-analysis",
+      "chinese-language"
+    ],
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://platform.moonshot.cn/docs",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "Moonshot v1 series supports 8K, 32K, and 128K context variants."
+    },
+    "providerId": "kimi",
+    "providerName": "Kimi"
+  },
+  {
+    "id": "kimi-k1-5",
+    "provider_id": "kimi",
+    "display_name": "Kimi k1.5",
+    "family": "kimi-k1",
+    "context_length_k": 128,
+    "strengths": [
+      "reasoning",
+      "coding",
+      "math",
+      "long-context"
+    ],
+    "released_date": "2025-01-22",
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://kimi.ai",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "Kimi k1.5 is a multimodal reasoning model. Benchmark scores not publicly disclosed at benchmark standard sites as of this writing."
+    },
+    "providerId": "kimi",
+    "providerName": "Kimi"
+  },
+  {
+    "id": "qwen2-5-coder-32b",
+    "provider_id": "qwen",
+    "display_name": "Qwen2.5-Coder-32B-Instruct",
+    "family": "qwen2.5-coder",
+    "context_length_k": 128,
+    "strengths": [
+      "code-generation",
+      "code-completion",
+      "debugging",
+      "multi-language"
+    ],
+    "released_date": "2024-11-12",
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://qwenlm.github.io/blog/qwen2.5-coder/",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "Qwen2.5-Coder-32B reported strong performance on HumanEval and SWE-bench but exact verified scores not confirmed here."
+    },
+    "providerId": "qwen",
+    "providerName": "Qwen"
+  },
+  {
+    "id": "qwq-32b",
+    "provider_id": "qwen",
+    "display_name": "QwQ-32B",
+    "family": "qwq",
+    "context_length_k": 32,
+    "strengths": [
+      "reasoning",
+      "coding",
+      "math",
+      "chain-of-thought"
+    ],
+    "released_date": "2025-03-06",
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://qwenlm.github.io/blog/qwq-32b/",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed"
+    },
+    "providerId": "qwen",
+    "providerName": "Qwen"
+  },
+  {
+    "id": "copilot-xcode-base",
+    "provider_id": "copilot-xcode",
+    "display_name": "Copilot Base Model (Xcode)",
+    "family": "copilot",
+    "context_length_k": 64,
+    "strengths": [
+      "swift",
+      "objective-c",
+      "xcode-integration",
+      "autocomplete",
+      "ios-development",
+      "macos-development"
+    ],
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://github.com/github/CopilotForXcode",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "Uses the same underlying Copilot models (GPT-4o, Claude, Gemini) as the main Copilot product."
+    },
+    "providerId": "copilot-xcode",
+    "providerName": "Copilot for Xcode"
+  },
+  {
+    "id": "byok",
+    "provider_id": "opencode",
+    "display_name": "BYOK — Your Choice of Model",
+    "family": "byok",
+    "context_length_k": null,
+    "strengths": [
+      "model-agnostic",
+      "local-models",
+      "openai-compatible",
+      "any-provider"
+    ],
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://opencode.ai",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "OpenCode is model-agnostic. Context length, quality, and benchmarks depend entirely on the model API you configure (e.g. Claude Sonnet, GPT-4o, Gemini, or a local Ollama model)."
+    },
+    "providerId": "opencode",
+    "providerName": "OpenCode"
+  },
+  {
+    "id": "mimo-ai-tutor",
+    "provider_id": "mimo",
+    "display_name": "Mimo AI Tutor",
+    "family": "mimo-internal",
+    "context_length_k": null,
+    "strengths": [
+      "coding-education",
+      "guided-exercises",
+      "beginner-friendly",
+      "explanation"
+    ],
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://mimo.org",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "Mimo AI Tutor is an educational assistant built into the platform. Underlying model not publicly disclosed."
+    },
+    "providerId": "mimo",
+    "providerName": "Mimo"
+  },
+  {
+    "id": "minimax-text-01",
+    "provider_id": "minimax",
+    "display_name": "MiniMax-Text-01",
+    "family": "minimax-text",
+    "context_length_k": 1000,
+    "strengths": [
+      "long-context",
+      "document-analysis",
+      "reasoning",
+      "code-generation"
+    ],
+    "released_date": "2025-01-15",
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://www.minimaxi.com/en/news/minimax-text-01",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "MiniMax-Text-01 supports 1M token context. One of the longest context windows commercially available. Coding benchmarks not independently verified here."
+    },
+    "providerId": "minimax",
+    "providerName": "MiniMax"
+  },
+  {
+    "id": "minimax-m1",
+    "provider_id": "minimax",
+    "display_name": "MiniMax-M1",
+    "family": "minimax-m1",
+    "context_length_k": 1000,
+    "strengths": [
+      "reasoning",
+      "coding",
+      "math",
+      "long-context",
+      "chain-of-thought"
+    ],
+    "released_date": "2025-05-22",
+    "benchmarks": [],
+    "provenance": {
+      "url": "https://www.minimaxi.com",
+      "accessed_date": "2026-06-14",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "MiniMax-M1 is MiniMax's reasoning-focused model. Supports 1M token context with reasoning capabilities."
+    },
+    "providerId": "minimax",
+    "providerName": "MiniMax"
+  }
+]

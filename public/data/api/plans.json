@@ -1,0 +1,4332 @@
+{
+  "plans": [
+    {
+      "id": "anthropic-free",
+      "provider_id": "anthropic",
+      "name": "Claude Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free tier; rate-limited. Exact daily limits not publicly documented.",
+        "provenance": {
+          "url": "https://claude.ai",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "claude-haiku-4-5",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "all messages",
+          "notes": "Daily rate limits apply; exact count not publicly stated. Throttled during peak.",
+          "provenance": {
+            "url": "https://claude.ai",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "unknown"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "hobbyist",
+        "student",
+        "occasional user"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai",
+      "providerId": "anthropic",
+      "providerName": "Anthropic",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "anthropic-pro",
+      "provider_id": "anthropic",
+      "name": "Claude Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 20,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "No annual discount as of last check.",
+        "provenance": {
+          "url": "https://claude.ai/upgrade",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "claude-haiku-4-5",
+          "access_type": "full"
+        },
+        {
+          "model_id": "claude-sonnet-4-6",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "Sonnet / Opus messages",
+          "notes": "~5x more usage than Free tier per Anthropic docs. Exact limit not published as a hard number; varies by model and context length.",
+          "provenance": {
+            "url": "https://support.anthropic.com/en/articles/8325612-does-claude-ai-have-usage-limits",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code (via API)"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "solo developer",
+        "researcher",
+        "writer"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai/upgrade",
+      "providerId": "anthropic",
+      "providerName": "Anthropic",
+      "effectiveMonthlyUsd": 20
+    },
+    {
+      "id": "anthropic-max",
+      "provider_id": "anthropic",
+      "name": "Claude Max",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 100,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Max plan: ~5x usage vs Pro. A $200/mo tier (20x Pro) was also advertised.",
+        "provenance": {
+          "url": "https://claude.ai/upgrade",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "claude-haiku-4-5",
+          "access_type": "full"
+        },
+        {
+          "model_id": "claude-sonnet-4-6",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "all models",
+          "notes": "~5x Pro usage at $100/mo tier; ~20x Pro at $200/mo tier. No hard token cap published.",
+          "provenance": {
+            "url": "https://claude.ai/upgrade",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code (via Claude.ai)",
+          "JetBrains (via Claude.ai)"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "power user",
+        "senior developer",
+        "AI-heavy researcher"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai/upgrade",
+      "providerId": "anthropic",
+      "providerName": "Anthropic",
+      "effectiveMonthlyUsd": 100
+    },
+    {
+      "id": "anthropic-team",
+      "provider_id": "anthropic",
+      "name": "Claude Team",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 30,
+        "annual_monthly_usd": 25,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "Minimum 5 seats. Annual billing saves ~$5/seat/mo.",
+        "provenance": {
+          "url": "https://claude.ai/upgrade",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "claude-haiku-4-5",
+          "access_type": "full"
+        },
+        {
+          "model_id": "claude-sonnet-4-6",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "limited"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "per seat",
+          "notes": "Usage pooled across team. Exact limit not published.",
+          "provenance": {
+            "url": "https://claude.ai/upgrade",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": false
+      },
+      "target_personas": [
+        "engineering team",
+        "startup",
+        "small company"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai/upgrade",
+      "providerId": "anthropic",
+      "providerName": "Anthropic",
+      "effectiveMonthlyUsd": 25
+    },
+    {
+      "id": "openai-free",
+      "provider_id": "openai",
+      "name": "ChatGPT Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "provenance": {
+          "url": "https://openai.com/chatgpt/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gpt-4o",
+          "access_type": "limited",
+          "is_default": true,
+          "notes": "Limited daily messages on GPT-4o; falls back to GPT-3.5 when limit hit"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "GPT-4o messages",
+          "notes": "Unofficial reports suggest ~10–30 GPT-4o messages per day. Not officially stated.",
+          "provenance": {
+            "url": "https://openai.com/chatgpt",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "unknown"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "casual user",
+        "student"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://openai.com/chatgpt",
+      "providerId": "openai",
+      "providerName": "OpenAI",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "openai-plus",
+      "provider_id": "openai",
+      "name": "ChatGPT Plus",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 20,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "provenance": {
+          "url": "https://openai.com/chatgpt/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gpt-4o",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "o4-mini",
+          "access_type": "full"
+        },
+        {
+          "model_id": "o3",
+          "access_type": "limited",
+          "notes": "Limited messages per day on o3"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "o3 messages",
+          "notes": "GPT-4o is generous; o3 has a smaller daily allotment. Exact limits dynamic.",
+          "provenance": {
+            "url": "https://openai.com/chatgpt/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [
+          "VS Code (Copilot mode requires separate plan)"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "developer",
+        "analyst",
+        "content creator"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://openai.com/chatgpt/pricing",
+      "providerId": "openai",
+      "providerName": "OpenAI",
+      "effectiveMonthlyUsd": 20
+    },
+    {
+      "id": "openai-pro",
+      "provider_id": "openai",
+      "name": "ChatGPT Pro",
+      "tier": "enterprise",
+      "pricing": {
+        "monthly_usd": 200,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Includes o1 Pro mode and extended o3 access.",
+        "provenance": {
+          "url": "https://openai.com/chatgpt/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gpt-4o",
+          "access_type": "full"
+        },
+        {
+          "model_id": "o3",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "o4-mini",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "most models",
+          "notes": "Marketed as 'unlimited' for most models; fair-use policy applies.",
+          "provenance": {
+            "url": "https://openai.com/chatgpt/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "power user",
+        "researcher",
+        "AI-heavy professional"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://openai.com/chatgpt/pricing",
+      "providerId": "openai",
+      "providerName": "OpenAI",
+      "effectiveMonthlyUsd": 200
+    },
+    {
+      "id": "copilot-free",
+      "provider_id": "github-copilot",
+      "name": "Copilot Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free for all GitHub users as of late 2024.",
+        "provenance": {
+          "url": "https://github.com/features/copilot",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-base",
+          "access_type": "limited",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "completions_per_month",
+          "value": 2000,
+          "unit": "code completions",
+          "applies_to": "autocomplete",
+          "provenance": {
+            "url": "https://github.com/features/copilot",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "messages_per_month",
+          "value": 50,
+          "unit": "chat messages",
+          "applies_to": "Copilot Chat (premium models)",
+          "notes": "50 premium model chat messages per month on free tier.",
+          "provenance": {
+            "url": "https://github.com/features/copilot",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "open-source developer",
+        "student",
+        "hobbyist"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot",
+      "providerId": "github-copilot",
+      "providerName": "GitHub Copilot",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "copilot-individual",
+      "provider_id": "github-copilot",
+      "name": "Copilot Individual",
+      "tier": "individual",
+      "pricing": {
+        "monthly_usd": 10,
+        "annual_monthly_usd": 8.33,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$10/mo or $100/yr. Annual saves ~$20/yr.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-base",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "code completions",
+          "notes": "Unlimited completions; chat messages have a higher allowance than free tier.",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode",
+          "Azure Data Studio"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "professional developer",
+        "freelancer"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "github-copilot",
+      "providerName": "GitHub Copilot",
+      "effectiveMonthlyUsd": 8.33
+    },
+    {
+      "id": "copilot-business",
+      "provider_id": "github-copilot",
+      "name": "Copilot Business",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 19,
+        "annual_monthly_usd": 19,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "Per seat, billed monthly. Minimum 1 seat.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-base",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode",
+          "Azure Data Studio"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Admin policy controls; IP indemnification; no training on code."
+      },
+      "target_personas": [
+        "engineering team",
+        "startup",
+        "enterprise developer"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "github-copilot",
+      "providerName": "GitHub Copilot",
+      "effectiveMonthlyUsd": 19
+    },
+    {
+      "id": "copilot-enterprise",
+      "provider_id": "github-copilot",
+      "name": "Copilot Enterprise",
+      "tier": "enterprise",
+      "pricing": {
+        "monthly_usd": 39,
+        "annual_monthly_usd": 39,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "Requires GitHub Enterprise Cloud. Per seat/month.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-base",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode",
+          "Azure Data Studio"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Codebase-aware chat (indexes your org's repos); PR summaries; fine-tuned models."
+      },
+      "target_personas": [
+        "large enterprise",
+        "regulated industry",
+        "org with private codebase"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "github-copilot",
+      "providerName": "GitHub Copilot",
+      "effectiveMonthlyUsd": 39
+    },
+    {
+      "id": "cursor-hobby",
+      "provider_id": "cursor",
+      "name": "Cursor Hobby",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free tier. 2-week Pro trial for new users.",
+        "provenance": {
+          "url": "https://cursor.com/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "cursor-claude-sonnet",
+          "access_type": "limited",
+          "notes": "50 slow-request premium model uses/mo"
+        },
+        {
+          "model_id": "cursor-gpt-4o",
+          "access_type": "limited"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "completions_per_month",
+          "value": 2000,
+          "unit": "code completions (tab)",
+          "applies_to": "autocomplete",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "requests_per_month",
+          "value": 50,
+          "unit": "premium model slow requests",
+          "applies_to": "Claude Sonnet, GPT-4o (chat + composer)",
+          "notes": "After 50, must upgrade or use own API key.",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "Cursor (built-in)",
+          "VS Code extensions compatible"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "Can use own API key (BYOK) to bypass request limits."
+      },
+      "target_personas": [
+        "hobbyist",
+        "student",
+        "occasional coder"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://cursor.com/pricing",
+      "providerId": "cursor",
+      "providerName": "Cursor",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "cursor-pro",
+      "provider_id": "cursor",
+      "name": "Cursor Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 20,
+        "annual_monthly_usd": 16,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$20/mo or $192/yr ($16/mo). Annual saves $48/yr.",
+        "provenance": {
+          "url": "https://cursor.com/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "cursor-claude-sonnet",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "cursor-gpt-4o",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "autocomplete",
+          "notes": "Unlimited tab completions.",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "requests_per_month",
+          "value": 500,
+          "unit": "fast premium model requests",
+          "applies_to": "Claude Sonnet, GPT-4o (chat + composer)",
+          "notes": "500 fast requests; additional slow requests available after. Resets monthly.",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "Cursor (built-in)",
+          "VS Code extensions compatible"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "BYOK supported for additional capacity."
+      },
+      "target_personas": [
+        "professional developer",
+        "AI-first coder",
+        "solo founder"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://cursor.com/pricing",
+      "providerId": "cursor",
+      "providerName": "Cursor",
+      "effectiveMonthlyUsd": 16
+    },
+    {
+      "id": "cursor-business",
+      "provider_id": "cursor",
+      "name": "Cursor Business",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 40,
+        "annual_monthly_usd": 40,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "$40/seat/month. Minimum seats may apply.",
+        "provenance": {
+          "url": "https://cursor.com/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "cursor-claude-sonnet",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "cursor-gpt-4o",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "requests_per_month",
+          "value": 500,
+          "unit": "fast premium model requests per seat",
+          "applies_to": "per seat",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "Cursor (built-in)"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Centralized billing; privacy mode; no training on code."
+      },
+      "target_personas": [
+        "engineering team",
+        "startup"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://cursor.com/pricing",
+      "providerId": "cursor",
+      "providerName": "Cursor",
+      "effectiveMonthlyUsd": 40
+    },
+    {
+      "id": "google-gemini-free",
+      "provider_id": "google",
+      "name": "Gemini Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free access via gemini.google.com. Uses Gemini 2.0 Flash or 2.5 Flash.",
+        "provenance": {
+          "url": "https://gemini.google.com",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gemini-2-5-flash",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "all messages",
+          "notes": "Daily rate limits apply; exact limit not published. Gemini Pro access limited on free tier.",
+          "provenance": {
+            "url": "https://gemini.google.com",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "unknown"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 1000,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "casual user",
+        "student"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://gemini.google.com",
+      "providerId": "google",
+      "providerName": "Google",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "google-gemini-advanced",
+      "provider_id": "google",
+      "name": "Gemini Advanced (Google One AI Premium)",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 19.99,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Part of Google One AI Premium. Includes 2TB storage and other Google benefits.",
+        "provenance": {
+          "url": "https://gemini.google.com/advanced",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gemini-2-5-flash",
+          "access_type": "full"
+        },
+        {
+          "model_id": "gemini-2-5-pro",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "Gemini 2.5 Pro messages",
+          "notes": "No hard limit published. Subject to fair-use rate limits. Gemini 2.5 Pro has larger daily allowance than free.",
+          "provenance": {
+            "url": "https://gemini.google.com/advanced",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 1000,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [
+          "VS Code (Gemini Code Assist)",
+          "JetBrains (Gemini Code Assist)"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Includes Deep Research agent, extended Gems, Google Workspace integration."
+      },
+      "target_personas": [
+        "professional",
+        "researcher",
+        "developer in Google ecosystem"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://gemini.google.com/advanced",
+      "providerId": "google",
+      "providerName": "Google",
+      "effectiveMonthlyUsd": 19.99
+    },
+    {
+      "id": "google-ai-studio-free",
+      "provider_id": "google",
+      "name": "Google AI Studio (Free)",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free API access for development and experimentation. Rate-limited.",
+        "provenance": {
+          "url": "https://aistudio.google.com",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gemini-2-5-flash",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "gemini-2-5-pro",
+          "access_type": "limited",
+          "notes": "RPM limited on free tier"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "requests_per_minute",
+          "value": 15,
+          "unit": "RPM",
+          "applies_to": "Gemini 2.5 Pro",
+          "notes": "Free-tier API: 15 RPM, 1M tokens/day for Gemini 2.5 Pro. Verify at ai.google.dev/gemini-api/docs/rate-limits.",
+          "provenance": {
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 1000,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "API-based access, not a consumer product. Useful for developers building on Gemini."
+      },
+      "target_personas": [
+        "developer",
+        "researcher",
+        "prototype builder"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://aistudio.google.com",
+      "providerId": "google",
+      "providerName": "Google",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "kimi-free",
+      "provider_id": "kimi",
+      "name": "Kimi Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free tier with daily message limits.",
+        "provenance": {
+          "url": "https://kimi.ai/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "moonshot-v1-128k",
+          "access_type": "limited",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "messages_per_day",
+          "value": 20,
+          "unit": "messages",
+          "applies_to": "long-context and k1.5 models",
+          "notes": "Daily limit estimated; actual limit varies by model and may change.",
+          "provenance": {
+            "url": "https://kimi.ai/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "casual user",
+        "student",
+        "hobbyist"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://kimi.ai/pricing",
+      "providerId": "kimi",
+      "providerName": "Kimi",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "kimi-plus",
+      "provider_id": "kimi",
+      "name": "Kimi Plus",
+      "tier": "individual",
+      "pricing": {
+        "monthly_usd": 8,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "CNY",
+        "notes": "¥59/mo. USD equivalent ~$8/mo at ~7.27 CNY/USD as of June 2026; actual USD price for international users may differ. Verify at kimi.ai/pricing.",
+        "provenance": {
+          "url": "https://kimi.ai/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "moonshot-v1-128k",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "kimi-k1-5",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "standard messages",
+          "notes": "Higher daily limit than free; k1.5 usage may still be capped.",
+          "provenance": {
+            "url": "https://kimi.ai/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "professional developer",
+        "researcher",
+        "power user"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://kimi.ai/pricing",
+      "providerId": "kimi",
+      "providerName": "Kimi",
+      "effectiveMonthlyUsd": 8
+    },
+    {
+      "id": "kimi-pro",
+      "provider_id": "kimi",
+      "name": "Kimi Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 27,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "CNY",
+        "notes": "¥199/mo. USD equivalent ~$27/mo at ~7.27 CNY/USD as of June 2026. Verify at kimi.ai/pricing.",
+        "provenance": {
+          "url": "https://kimi.ai/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "moonshot-v1-128k",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "kimi-k1-5",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all models",
+          "notes": "Higher or unlimited usage across all Kimi models.",
+          "provenance": {
+            "url": "https://kimi.ai/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "power user",
+        "professional developer",
+        "AI researcher"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://kimi.ai/pricing",
+      "providerId": "kimi",
+      "providerName": "Kimi",
+      "effectiveMonthlyUsd": 27
+    },
+    {
+      "id": "qwen-free-api",
+      "provider_id": "qwen",
+      "name": "Qwen Free API",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free trial credits for new DashScope accounts. After credits are exhausted, pay-per-token billing begins.",
+        "provenance": {
+          "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "qwen2-5-coder-32b",
+          "access_type": "limited",
+          "is_default": true
+        },
+        {
+          "model_id": "qwq-32b",
+          "access_type": "limited"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "tokens_per_month",
+          "value": null,
+          "unit": "tokens",
+          "applies_to": "free trial credits only",
+          "notes": "Free trial credit amount varies by region and promotion. Consumed by API calls.",
+          "provenance": {
+            "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 128,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "API-only access. No web UI for coding workflow. Integrate into your own tooling or IDE via OpenAI-compatible endpoints."
+      },
+      "target_personas": [
+        "developer building AI tools",
+        "researcher",
+        "startup integrating LLM coding"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+      "providerId": "qwen",
+      "providerName": "Qwen",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "qwen-paid-api",
+      "provider_id": "qwen",
+      "name": "Qwen Pay-per-Token",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": null,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Pay-per-token pricing. Costs vary by model; Qwen2.5-Coder models priced in USD per million tokens. Check dashscope.aliyuncs.com for current rates.",
+        "provenance": {
+          "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "qwen2-5-coder-32b",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "qwq-32b",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all API calls",
+          "notes": "No hard usage cap; billed per token consumed.",
+          "provenance": {
+            "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 128,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Full API access with no monthly commitment. OpenAI-compatible endpoint available for easy integration."
+      },
+      "target_personas": [
+        "developer building AI tools",
+        "production application",
+        "high-volume coder tooling"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+      "providerId": "qwen",
+      "providerName": "Qwen",
+      "effectiveMonthlyUsd": null
+    },
+    {
+      "id": "copilot-xcode-free",
+      "provider_id": "copilot-xcode",
+      "name": "Copilot for Xcode Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free for all GitHub users. Requires installing the Copilot for Xcode extension from GitHub.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-xcode-base",
+          "access_type": "limited",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "completions_per_month",
+          "value": 2000,
+          "unit": "code completions",
+          "applies_to": "autocomplete in Xcode",
+          "notes": "Same monthly completion allowance as GitHub Copilot Free.",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "messages_per_month",
+          "value": 50,
+          "unit": "chat messages",
+          "applies_to": "Copilot Chat in Xcode (premium models)",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [
+          "Xcode"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Xcode-only integration. Swift, Objective-C, and C/C++ code completion. Chat panel within Xcode."
+      },
+      "target_personas": [
+        "iOS developer",
+        "macOS developer",
+        "Apple platform developer",
+        "student learning Swift"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "copilot-xcode",
+      "providerName": "Copilot for Xcode",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "copilot-xcode-individual",
+      "provider_id": "copilot-xcode",
+      "name": "Copilot for Xcode Individual",
+      "tier": "individual",
+      "pricing": {
+        "monthly_usd": 10,
+        "annual_monthly_usd": 8.33,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$10/mo or $100/yr. Shared GitHub Copilot Individual subscription — also unlocks Copilot in VS Code, JetBrains, etc.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-xcode-base",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat in Xcode",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "Xcode",
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "Subscription covers all Copilot integrations. Xcode support is one of several IDE options."
+      },
+      "target_personas": [
+        "professional iOS developer",
+        "Apple platform engineer",
+        "freelance Swift developer"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "copilot-xcode",
+      "providerName": "Copilot for Xcode",
+      "effectiveMonthlyUsd": 8.33
+    },
+    {
+      "id": "copilot-xcode-business",
+      "provider_id": "copilot-xcode",
+      "name": "Copilot for Xcode Business",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 19,
+        "annual_monthly_usd": 19,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "$19/seat/month. Admin controls apply across all Copilot integrations including Xcode.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-xcode-base",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat across all IDEs",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "Xcode",
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Azure Data Studio"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Admin policy controls; IP indemnification; no training on code. Xcode integration included alongside all other IDE support."
+      },
+      "target_personas": [
+        "iOS engineering team",
+        "Apple platform company",
+        "mobile-first startup"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "copilot-xcode",
+      "providerName": "Copilot for Xcode",
+      "effectiveMonthlyUsd": 19
+    },
+    {
+      "id": "opencode-free",
+      "provider_id": "opencode",
+      "name": "OpenCode Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free and open-source (MIT). You pay only for the LLM API keys you configure — OpenCode itself is always $0.",
+        "provenance": {
+          "url": "https://opencode.ai",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "observed",
+          "notes": "MIT license confirmed at github.com/sst/opencode. No pricing model for the tool itself."
+        }
+      },
+      "models": [
+        {
+          "model_id": "byok",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "Bring your own API key — Claude, GPT-4o, Gemini, Ollama, or any OpenAI-compatible provider."
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "tool itself",
+          "notes": "No usage limits imposed by OpenCode — limits are set by your chosen LLM provider and API key quota.",
+          "provenance": {
+            "url": "https://opencode.ai",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "observed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "Terminal-native agentic coding agent. Supports file edits, shell commands, multi-step reasoning. Context window depends on your configured model. No built-in IDE integration — runs in any terminal."
+      },
+      "target_personas": [
+        "backend developer",
+        "DevOps engineer",
+        "power user preferring CLI",
+        "developer who wants BYOK",
+        "local model enthusiast"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://opencode.ai",
+      "providerId": "opencode",
+      "providerName": "OpenCode",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "mimo-free",
+      "provider_id": "mimo",
+      "name": "Mimo Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free access to a limited set of courses and exercises.",
+        "provenance": {
+          "url": "https://mimo.org",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "mimo-ai-tutor",
+          "access_type": "limited",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "courses and lessons",
+          "notes": "Free tier limits access to introductory content only.",
+          "provenance": {
+            "url": "https://mimo.org",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Educational platform only. Not suitable for professional coding work. Features are gamified lessons, progress tracking, and basic AI-powered explanations."
+      },
+      "target_personas": [
+        "coding student",
+        "beginner developer",
+        "career-changer",
+        "self-taught programmer"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://mimo.org",
+      "providerId": "mimo",
+      "providerName": "Mimo",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "mimo-pro",
+      "provider_id": "mimo",
+      "name": "Mimo Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 14.99,
+        "annual_monthly_usd": 9.99,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$14.99/mo or ~$9.99/mo billed annually (~$119.99/yr). Verify at mimo.org/pro for current pricing.",
+        "provenance": {
+          "url": "https://mimo.org/pro",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "mimo-ai-tutor",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all courses and AI explanations",
+          "notes": "Unlimited access to the full course catalog, AI tutor explanations, and certificate programs.",
+          "provenance": {
+            "url": "https://mimo.org/pro",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Full course library, AI explanations, offline access, certificates of completion. Educational platform — not for production code generation."
+      },
+      "target_personas": [
+        "coding student",
+        "career-changer into tech",
+        "self-taught developer",
+        "beginner learning Python or JavaScript"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://mimo.org/pro",
+      "providerId": "mimo",
+      "providerName": "Mimo",
+      "effectiveMonthlyUsd": 9.99
+    },
+    {
+      "id": "minimax-free-api",
+      "provider_id": "minimax",
+      "name": "MiniMax Free API",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free trial credits for new accounts. After credits exhausted, pay-per-token billing.",
+        "provenance": {
+          "url": "https://platform.minimaxi.com/document/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "minimax-text-01",
+          "access_type": "limited",
+          "is_default": true
+        },
+        {
+          "model_id": "minimax-m1",
+          "access_type": "limited"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "tokens_per_month",
+          "value": null,
+          "unit": "tokens",
+          "applies_to": "free trial credits",
+          "notes": "Trial credit amount varies; consumed by API requests.",
+          "provenance": {
+            "url": "https://platform.minimaxi.com/document/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 1000,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "API-only access. Standout feature is 1M token context window — useful for large codebase analysis. No web IDE or chat UI for coding workflow."
+      },
+      "target_personas": [
+        "developer needing long-context analysis",
+        "AI researcher",
+        "application builder"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://platform.minimaxi.com/document/pricing",
+      "providerId": "minimax",
+      "providerName": "MiniMax",
+      "effectiveMonthlyUsd": 0
+    },
+    {
+      "id": "minimax-paid-api",
+      "provider_id": "minimax",
+      "name": "MiniMax Pay-per-Token",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": null,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Pay-per-token pricing. Rates per million tokens vary by model. Check platform.minimaxi.com/document/pricing for current USD rates.",
+        "provenance": {
+          "url": "https://platform.minimaxi.com/document/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "minimax-text-01",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "minimax-m1",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all API calls",
+          "notes": "No hard cap — billed per million tokens. 1M token context available on all paid requests.",
+          "provenance": {
+            "url": "https://platform.minimaxi.com/document/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 1000,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Full API access. 1M token context is the key differentiator — suited for analyzing very large codebases in a single request."
+      },
+      "target_personas": [
+        "developer needing maximum context",
+        "AI application builder",
+        "production codebase analysis"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://platform.minimaxi.com/document/pricing",
+      "providerId": "minimax",
+      "providerName": "MiniMax",
+      "effectiveMonthlyUsd": null
+    }
+  ],
+  "bySlug": {
+    "anthropic-free": {
+      "id": "anthropic-free",
+      "provider_id": "anthropic",
+      "name": "Claude Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free tier; rate-limited. Exact daily limits not publicly documented.",
+        "provenance": {
+          "url": "https://claude.ai",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "claude-haiku-4-5",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "all messages",
+          "notes": "Daily rate limits apply; exact count not publicly stated. Throttled during peak.",
+          "provenance": {
+            "url": "https://claude.ai",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "unknown"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "hobbyist",
+        "student",
+        "occasional user"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai",
+      "providerId": "anthropic",
+      "providerName": "Anthropic",
+      "effectiveMonthlyUsd": 0
+    },
+    "anthropic-pro": {
+      "id": "anthropic-pro",
+      "provider_id": "anthropic",
+      "name": "Claude Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 20,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "No annual discount as of last check.",
+        "provenance": {
+          "url": "https://claude.ai/upgrade",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "claude-haiku-4-5",
+          "access_type": "full"
+        },
+        {
+          "model_id": "claude-sonnet-4-6",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "Sonnet / Opus messages",
+          "notes": "~5x more usage than Free tier per Anthropic docs. Exact limit not published as a hard number; varies by model and context length.",
+          "provenance": {
+            "url": "https://support.anthropic.com/en/articles/8325612-does-claude-ai-have-usage-limits",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code (via API)"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "solo developer",
+        "researcher",
+        "writer"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai/upgrade",
+      "providerId": "anthropic",
+      "providerName": "Anthropic",
+      "effectiveMonthlyUsd": 20
+    },
+    "anthropic-max": {
+      "id": "anthropic-max",
+      "provider_id": "anthropic",
+      "name": "Claude Max",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 100,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Max plan: ~5x usage vs Pro. A $200/mo tier (20x Pro) was also advertised.",
+        "provenance": {
+          "url": "https://claude.ai/upgrade",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "claude-haiku-4-5",
+          "access_type": "full"
+        },
+        {
+          "model_id": "claude-sonnet-4-6",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "all models",
+          "notes": "~5x Pro usage at $100/mo tier; ~20x Pro at $200/mo tier. No hard token cap published.",
+          "provenance": {
+            "url": "https://claude.ai/upgrade",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code (via Claude.ai)",
+          "JetBrains (via Claude.ai)"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "power user",
+        "senior developer",
+        "AI-heavy researcher"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai/upgrade",
+      "providerId": "anthropic",
+      "providerName": "Anthropic",
+      "effectiveMonthlyUsd": 100
+    },
+    "anthropic-team": {
+      "id": "anthropic-team",
+      "provider_id": "anthropic",
+      "name": "Claude Team",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 30,
+        "annual_monthly_usd": 25,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "Minimum 5 seats. Annual billing saves ~$5/seat/mo.",
+        "provenance": {
+          "url": "https://claude.ai/upgrade",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "claude-haiku-4-5",
+          "access_type": "full"
+        },
+        {
+          "model_id": "claude-sonnet-4-6",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "limited"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "per seat",
+          "notes": "Usage pooled across team. Exact limit not published.",
+          "provenance": {
+            "url": "https://claude.ai/upgrade",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": false
+      },
+      "target_personas": [
+        "engineering team",
+        "startup",
+        "small company"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://claude.ai/upgrade",
+      "providerId": "anthropic",
+      "providerName": "Anthropic",
+      "effectiveMonthlyUsd": 25
+    },
+    "openai-free": {
+      "id": "openai-free",
+      "provider_id": "openai",
+      "name": "ChatGPT Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "provenance": {
+          "url": "https://openai.com/chatgpt/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gpt-4o",
+          "access_type": "limited",
+          "is_default": true,
+          "notes": "Limited daily messages on GPT-4o; falls back to GPT-3.5 when limit hit"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "GPT-4o messages",
+          "notes": "Unofficial reports suggest ~10–30 GPT-4o messages per day. Not officially stated.",
+          "provenance": {
+            "url": "https://openai.com/chatgpt",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "unknown"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "casual user",
+        "student"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://openai.com/chatgpt",
+      "providerId": "openai",
+      "providerName": "OpenAI",
+      "effectiveMonthlyUsd": 0
+    },
+    "openai-plus": {
+      "id": "openai-plus",
+      "provider_id": "openai",
+      "name": "ChatGPT Plus",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 20,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "provenance": {
+          "url": "https://openai.com/chatgpt/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gpt-4o",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "o4-mini",
+          "access_type": "full"
+        },
+        {
+          "model_id": "o3",
+          "access_type": "limited",
+          "notes": "Limited messages per day on o3"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "o3 messages",
+          "notes": "GPT-4o is generous; o3 has a smaller daily allotment. Exact limits dynamic.",
+          "provenance": {
+            "url": "https://openai.com/chatgpt/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [
+          "VS Code (Copilot mode requires separate plan)"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "developer",
+        "analyst",
+        "content creator"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://openai.com/chatgpt/pricing",
+      "providerId": "openai",
+      "providerName": "OpenAI",
+      "effectiveMonthlyUsd": 20
+    },
+    "openai-pro": {
+      "id": "openai-pro",
+      "provider_id": "openai",
+      "name": "ChatGPT Pro",
+      "tier": "enterprise",
+      "pricing": {
+        "monthly_usd": 200,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Includes o1 Pro mode and extended o3 access.",
+        "provenance": {
+          "url": "https://openai.com/chatgpt/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gpt-4o",
+          "access_type": "full"
+        },
+        {
+          "model_id": "o3",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "o4-mini",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "most models",
+          "notes": "Marketed as 'unlimited' for most models; fair-use policy applies.",
+          "provenance": {
+            "url": "https://openai.com/chatgpt/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "power user",
+        "researcher",
+        "AI-heavy professional"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://openai.com/chatgpt/pricing",
+      "providerId": "openai",
+      "providerName": "OpenAI",
+      "effectiveMonthlyUsd": 200
+    },
+    "copilot-free": {
+      "id": "copilot-free",
+      "provider_id": "github-copilot",
+      "name": "Copilot Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free for all GitHub users as of late 2024.",
+        "provenance": {
+          "url": "https://github.com/features/copilot",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-base",
+          "access_type": "limited",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "completions_per_month",
+          "value": 2000,
+          "unit": "code completions",
+          "applies_to": "autocomplete",
+          "provenance": {
+            "url": "https://github.com/features/copilot",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "messages_per_month",
+          "value": 50,
+          "unit": "chat messages",
+          "applies_to": "Copilot Chat (premium models)",
+          "notes": "50 premium model chat messages per month on free tier.",
+          "provenance": {
+            "url": "https://github.com/features/copilot",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "open-source developer",
+        "student",
+        "hobbyist"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot",
+      "providerId": "github-copilot",
+      "providerName": "GitHub Copilot",
+      "effectiveMonthlyUsd": 0
+    },
+    "copilot-individual": {
+      "id": "copilot-individual",
+      "provider_id": "github-copilot",
+      "name": "Copilot Individual",
+      "tier": "individual",
+      "pricing": {
+        "monthly_usd": 10,
+        "annual_monthly_usd": 8.33,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$10/mo or $100/yr. Annual saves ~$20/yr.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-base",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "code completions",
+          "notes": "Unlimited completions; chat messages have a higher allowance than free tier.",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode",
+          "Azure Data Studio"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "professional developer",
+        "freelancer"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "github-copilot",
+      "providerName": "GitHub Copilot",
+      "effectiveMonthlyUsd": 8.33
+    },
+    "copilot-business": {
+      "id": "copilot-business",
+      "provider_id": "github-copilot",
+      "name": "Copilot Business",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 19,
+        "annual_monthly_usd": 19,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "Per seat, billed monthly. Minimum 1 seat.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-base",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode",
+          "Azure Data Studio"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Admin policy controls; IP indemnification; no training on code."
+      },
+      "target_personas": [
+        "engineering team",
+        "startup",
+        "enterprise developer"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "github-copilot",
+      "providerName": "GitHub Copilot",
+      "effectiveMonthlyUsd": 19
+    },
+    "copilot-enterprise": {
+      "id": "copilot-enterprise",
+      "provider_id": "github-copilot",
+      "name": "Copilot Enterprise",
+      "tier": "enterprise",
+      "pricing": {
+        "monthly_usd": 39,
+        "annual_monthly_usd": 39,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "Requires GitHub Enterprise Cloud. Per seat/month.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-base",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode",
+          "Azure Data Studio"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Codebase-aware chat (indexes your org's repos); PR summaries; fine-tuned models."
+      },
+      "target_personas": [
+        "large enterprise",
+        "regulated industry",
+        "org with private codebase"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "github-copilot",
+      "providerName": "GitHub Copilot",
+      "effectiveMonthlyUsd": 39
+    },
+    "cursor-hobby": {
+      "id": "cursor-hobby",
+      "provider_id": "cursor",
+      "name": "Cursor Hobby",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free tier. 2-week Pro trial for new users.",
+        "provenance": {
+          "url": "https://cursor.com/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "cursor-claude-sonnet",
+          "access_type": "limited",
+          "notes": "50 slow-request premium model uses/mo"
+        },
+        {
+          "model_id": "cursor-gpt-4o",
+          "access_type": "limited"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "completions_per_month",
+          "value": 2000,
+          "unit": "code completions (tab)",
+          "applies_to": "autocomplete",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "requests_per_month",
+          "value": 50,
+          "unit": "premium model slow requests",
+          "applies_to": "Claude Sonnet, GPT-4o (chat + composer)",
+          "notes": "After 50, must upgrade or use own API key.",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "Cursor (built-in)",
+          "VS Code extensions compatible"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "Can use own API key (BYOK) to bypass request limits."
+      },
+      "target_personas": [
+        "hobbyist",
+        "student",
+        "occasional coder"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://cursor.com/pricing",
+      "providerId": "cursor",
+      "providerName": "Cursor",
+      "effectiveMonthlyUsd": 0
+    },
+    "cursor-pro": {
+      "id": "cursor-pro",
+      "provider_id": "cursor",
+      "name": "Cursor Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 20,
+        "annual_monthly_usd": 16,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$20/mo or $192/yr ($16/mo). Annual saves $48/yr.",
+        "provenance": {
+          "url": "https://cursor.com/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "cursor-claude-sonnet",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "cursor-gpt-4o",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "autocomplete",
+          "notes": "Unlimited tab completions.",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "requests_per_month",
+          "value": 500,
+          "unit": "fast premium model requests",
+          "applies_to": "Claude Sonnet, GPT-4o (chat + composer)",
+          "notes": "500 fast requests; additional slow requests available after. Resets monthly.",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "Cursor (built-in)",
+          "VS Code extensions compatible"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "BYOK supported for additional capacity."
+      },
+      "target_personas": [
+        "professional developer",
+        "AI-first coder",
+        "solo founder"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://cursor.com/pricing",
+      "providerId": "cursor",
+      "providerName": "Cursor",
+      "effectiveMonthlyUsd": 16
+    },
+    "cursor-business": {
+      "id": "cursor-business",
+      "provider_id": "cursor",
+      "name": "Cursor Business",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 40,
+        "annual_monthly_usd": 40,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "$40/seat/month. Minimum seats may apply.",
+        "provenance": {
+          "url": "https://cursor.com/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "cursor-claude-sonnet",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "cursor-gpt-4o",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "requests_per_month",
+          "value": 500,
+          "unit": "fast premium model requests per seat",
+          "applies_to": "per seat",
+          "provenance": {
+            "url": "https://cursor.com/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 200,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "Cursor (built-in)"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Centralized billing; privacy mode; no training on code."
+      },
+      "target_personas": [
+        "engineering team",
+        "startup"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://cursor.com/pricing",
+      "providerId": "cursor",
+      "providerName": "Cursor",
+      "effectiveMonthlyUsd": 40
+    },
+    "google-gemini-free": {
+      "id": "google-gemini-free",
+      "provider_id": "google",
+      "name": "Gemini Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free access via gemini.google.com. Uses Gemini 2.0 Flash or 2.5 Flash.",
+        "provenance": {
+          "url": "https://gemini.google.com",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gemini-2-5-flash",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "all messages",
+          "notes": "Daily rate limits apply; exact limit not published. Gemini Pro access limited on free tier.",
+          "provenance": {
+            "url": "https://gemini.google.com",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "unknown"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 1000,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "casual user",
+        "student"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://gemini.google.com",
+      "providerId": "google",
+      "providerName": "Google",
+      "effectiveMonthlyUsd": 0
+    },
+    "google-gemini-advanced": {
+      "id": "google-gemini-advanced",
+      "provider_id": "google",
+      "name": "Gemini Advanced (Google One AI Premium)",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 19.99,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Part of Google One AI Premium. Includes 2TB storage and other Google benefits.",
+        "provenance": {
+          "url": "https://gemini.google.com/advanced",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gemini-2-5-flash",
+          "access_type": "full"
+        },
+        {
+          "model_id": "gemini-2-5-pro",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "Gemini 2.5 Pro messages",
+          "notes": "No hard limit published. Subject to fair-use rate limits. Gemini 2.5 Pro has larger daily allowance than free.",
+          "provenance": {
+            "url": "https://gemini.google.com/advanced",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": true,
+        "code_context_length_k": 1000,
+        "file_uploads": true,
+        "voice_input": true,
+        "ide_integrations": [
+          "VS Code (Gemini Code Assist)",
+          "JetBrains (Gemini Code Assist)"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Includes Deep Research agent, extended Gems, Google Workspace integration."
+      },
+      "target_personas": [
+        "professional",
+        "researcher",
+        "developer in Google ecosystem"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://gemini.google.com/advanced",
+      "providerId": "google",
+      "providerName": "Google",
+      "effectiveMonthlyUsd": 19.99
+    },
+    "google-ai-studio-free": {
+      "id": "google-ai-studio-free",
+      "provider_id": "google",
+      "name": "Google AI Studio (Free)",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free API access for development and experimentation. Rate-limited.",
+        "provenance": {
+          "url": "https://aistudio.google.com",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "gemini-2-5-flash",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "gemini-2-5-pro",
+          "access_type": "limited",
+          "notes": "RPM limited on free tier"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "requests_per_minute",
+          "value": 15,
+          "unit": "RPM",
+          "applies_to": "Gemini 2.5 Pro",
+          "notes": "Free-tier API: 15 RPM, 1M tokens/day for Gemini 2.5 Pro. Verify at ai.google.dev/gemini-api/docs/rate-limits.",
+          "provenance": {
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 1000,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "API-based access, not a consumer product. Useful for developers building on Gemini."
+      },
+      "target_personas": [
+        "developer",
+        "researcher",
+        "prototype builder"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://aistudio.google.com",
+      "providerId": "google",
+      "providerName": "Google",
+      "effectiveMonthlyUsd": 0
+    },
+    "kimi-free": {
+      "id": "kimi-free",
+      "provider_id": "kimi",
+      "name": "Kimi Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free tier with daily message limits.",
+        "provenance": {
+          "url": "https://kimi.ai/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "moonshot-v1-128k",
+          "access_type": "limited",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "messages_per_day",
+          "value": 20,
+          "unit": "messages",
+          "applies_to": "long-context and k1.5 models",
+          "notes": "Daily limit estimated; actual limit varies by model and may change.",
+          "provenance": {
+            "url": "https://kimi.ai/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "casual user",
+        "student",
+        "hobbyist"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://kimi.ai/pricing",
+      "providerId": "kimi",
+      "providerName": "Kimi",
+      "effectiveMonthlyUsd": 0
+    },
+    "kimi-plus": {
+      "id": "kimi-plus",
+      "provider_id": "kimi",
+      "name": "Kimi Plus",
+      "tier": "individual",
+      "pricing": {
+        "monthly_usd": 8,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "CNY",
+        "notes": "¥59/mo. USD equivalent ~$8/mo at ~7.27 CNY/USD as of June 2026; actual USD price for international users may differ. Verify at kimi.ai/pricing.",
+        "provenance": {
+          "url": "https://kimi.ai/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "moonshot-v1-128k",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "kimi-k1-5",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "standard messages",
+          "notes": "Higher daily limit than free; k1.5 usage may still be capped.",
+          "provenance": {
+            "url": "https://kimi.ai/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "professional developer",
+        "researcher",
+        "power user"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://kimi.ai/pricing",
+      "providerId": "kimi",
+      "providerName": "Kimi",
+      "effectiveMonthlyUsd": 8
+    },
+    "kimi-pro": {
+      "id": "kimi-pro",
+      "provider_id": "kimi",
+      "name": "Kimi Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 27,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "CNY",
+        "notes": "¥199/mo. USD equivalent ~$27/mo at ~7.27 CNY/USD as of June 2026. Verify at kimi.ai/pricing.",
+        "provenance": {
+          "url": "https://kimi.ai/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "moonshot-v1-128k",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "kimi-k1-5",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all models",
+          "notes": "Higher or unlimited usage across all Kimi models.",
+          "provenance": {
+            "url": "https://kimi.ai/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": true,
+        "code_context_length_k": 128,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false
+      },
+      "target_personas": [
+        "power user",
+        "professional developer",
+        "AI researcher"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://kimi.ai/pricing",
+      "providerId": "kimi",
+      "providerName": "Kimi",
+      "effectiveMonthlyUsd": 27
+    },
+    "qwen-free-api": {
+      "id": "qwen-free-api",
+      "provider_id": "qwen",
+      "name": "Qwen Free API",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free trial credits for new DashScope accounts. After credits are exhausted, pay-per-token billing begins.",
+        "provenance": {
+          "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "qwen2-5-coder-32b",
+          "access_type": "limited",
+          "is_default": true
+        },
+        {
+          "model_id": "qwq-32b",
+          "access_type": "limited"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "tokens_per_month",
+          "value": null,
+          "unit": "tokens",
+          "applies_to": "free trial credits only",
+          "notes": "Free trial credit amount varies by region and promotion. Consumed by API calls.",
+          "provenance": {
+            "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 128,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "API-only access. No web UI for coding workflow. Integrate into your own tooling or IDE via OpenAI-compatible endpoints."
+      },
+      "target_personas": [
+        "developer building AI tools",
+        "researcher",
+        "startup integrating LLM coding"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+      "providerId": "qwen",
+      "providerName": "Qwen",
+      "effectiveMonthlyUsd": 0
+    },
+    "qwen-paid-api": {
+      "id": "qwen-paid-api",
+      "provider_id": "qwen",
+      "name": "Qwen Pay-per-Token",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": null,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Pay-per-token pricing. Costs vary by model; Qwen2.5-Coder models priced in USD per million tokens. Check dashscope.aliyuncs.com for current rates.",
+        "provenance": {
+          "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "qwen2-5-coder-32b",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "qwq-32b",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all API calls",
+          "notes": "No hard usage cap; billed per token consumed.",
+          "provenance": {
+            "url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 128,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Full API access with no monthly commitment. OpenAI-compatible endpoint available for easy integration."
+      },
+      "target_personas": [
+        "developer building AI tools",
+        "production application",
+        "high-volume coder tooling"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
+      "providerId": "qwen",
+      "providerName": "Qwen",
+      "effectiveMonthlyUsd": null
+    },
+    "copilot-xcode-free": {
+      "id": "copilot-xcode-free",
+      "provider_id": "copilot-xcode",
+      "name": "Copilot for Xcode Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free for all GitHub users. Requires installing the Copilot for Xcode extension from GitHub.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-xcode-base",
+          "access_type": "limited",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "completions_per_month",
+          "value": 2000,
+          "unit": "code completions",
+          "applies_to": "autocomplete in Xcode",
+          "notes": "Same monthly completion allowance as GitHub Copilot Free.",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
+          "type": "messages_per_month",
+          "value": 50,
+          "unit": "chat messages",
+          "applies_to": "Copilot Chat in Xcode (premium models)",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [
+          "Xcode"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Xcode-only integration. Swift, Objective-C, and C/C++ code completion. Chat panel within Xcode."
+      },
+      "target_personas": [
+        "iOS developer",
+        "macOS developer",
+        "Apple platform developer",
+        "student learning Swift"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "copilot-xcode",
+      "providerName": "Copilot for Xcode",
+      "effectiveMonthlyUsd": 0
+    },
+    "copilot-xcode-individual": {
+      "id": "copilot-xcode-individual",
+      "provider_id": "copilot-xcode",
+      "name": "Copilot for Xcode Individual",
+      "tier": "individual",
+      "pricing": {
+        "monthly_usd": 10,
+        "annual_monthly_usd": 8.33,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$10/mo or $100/yr. Shared GitHub Copilot Individual subscription — also unlocks Copilot in VS Code, JetBrains, etc.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-xcode-base",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat in Xcode",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "Xcode",
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "Subscription covers all Copilot integrations. Xcode support is one of several IDE options."
+      },
+      "target_personas": [
+        "professional iOS developer",
+        "Apple platform engineer",
+        "freelance Swift developer"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "copilot-xcode",
+      "providerName": "Copilot for Xcode",
+      "effectiveMonthlyUsd": 8.33
+    },
+    "copilot-xcode-business": {
+      "id": "copilot-xcode-business",
+      "provider_id": "copilot-xcode",
+      "name": "Copilot for Xcode Business",
+      "tier": "team",
+      "pricing": {
+        "monthly_usd": 19,
+        "annual_monthly_usd": 19,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "$19/seat/month. Admin controls apply across all Copilot integrations including Xcode.",
+        "provenance": {
+          "url": "https://github.com/features/copilot#pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "copilot-xcode-base",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "completions and chat across all IDEs",
+          "provenance": {
+            "url": "https://github.com/features/copilot#pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": 64,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [
+          "Xcode",
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Azure Data Studio"
+        ],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": true,
+        "sso": true,
+        "notes": "Admin policy controls; IP indemnification; no training on code. Xcode integration included alongside all other IDE support."
+      },
+      "target_personas": [
+        "iOS engineering team",
+        "Apple platform company",
+        "mobile-first startup"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://github.com/features/copilot#pricing",
+      "providerId": "copilot-xcode",
+      "providerName": "Copilot for Xcode",
+      "effectiveMonthlyUsd": 19
+    },
+    "opencode-free": {
+      "id": "opencode-free",
+      "provider_id": "opencode",
+      "name": "OpenCode Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free and open-source (MIT). You pay only for the LLM API keys you configure — OpenCode itself is always $0.",
+        "provenance": {
+          "url": "https://opencode.ai",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "observed",
+          "notes": "MIT license confirmed at github.com/sst/opencode. No pricing model for the tool itself."
+        }
+      },
+      "models": [
+        {
+          "model_id": "byok",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "Bring your own API key — Claude, GPT-4o, Gemini, Ollama, or any OpenAI-compatible provider."
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "tool itself",
+          "notes": "No usage limits imposed by OpenCode — limits are set by your chosen LLM provider and API key quota.",
+          "provenance": {
+            "url": "https://opencode.ai",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "observed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": true,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": true,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": true,
+        "team_features": false,
+        "sso": false,
+        "notes": "Terminal-native agentic coding agent. Supports file edits, shell commands, multi-step reasoning. Context window depends on your configured model. No built-in IDE integration — runs in any terminal."
+      },
+      "target_personas": [
+        "backend developer",
+        "DevOps engineer",
+        "power user preferring CLI",
+        "developer who wants BYOK",
+        "local model enthusiast"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://opencode.ai",
+      "providerId": "opencode",
+      "providerName": "OpenCode",
+      "effectiveMonthlyUsd": 0
+    },
+    "mimo-free": {
+      "id": "mimo-free",
+      "provider_id": "mimo",
+      "name": "Mimo Free",
+      "tier": "free",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": 0,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free access to a limited set of courses and exercises.",
+        "provenance": {
+          "url": "https://mimo.org",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "mimo-ai-tutor",
+          "access_type": "limited",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unknown",
+          "value": null,
+          "applies_to": "courses and lessons",
+          "notes": "Free tier limits access to introductory content only.",
+          "provenance": {
+            "url": "https://mimo.org",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Educational platform only. Not suitable for professional coding work. Features are gamified lessons, progress tracking, and basic AI-powered explanations."
+      },
+      "target_personas": [
+        "coding student",
+        "beginner developer",
+        "career-changer",
+        "self-taught programmer"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://mimo.org",
+      "providerId": "mimo",
+      "providerName": "Mimo",
+      "effectiveMonthlyUsd": 0
+    },
+    "mimo-pro": {
+      "id": "mimo-pro",
+      "provider_id": "mimo",
+      "name": "Mimo Pro",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 14.99,
+        "annual_monthly_usd": 9.99,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "$14.99/mo or ~$9.99/mo billed annually (~$119.99/yr). Verify at mimo.org/pro for current pricing.",
+        "provenance": {
+          "url": "https://mimo.org/pro",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "mimo-ai-tutor",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all courses and AI explanations",
+          "notes": "Unlimited access to the full course catalog, AI tutor explanations, and certificate programs.",
+          "provenance": {
+            "url": "https://mimo.org/pro",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Full course library, AI explanations, offline access, certificates of completion. Educational platform — not for production code generation."
+      },
+      "target_personas": [
+        "coding student",
+        "career-changer into tech",
+        "self-taught developer",
+        "beginner learning Python or JavaScript"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://mimo.org/pro",
+      "providerId": "mimo",
+      "providerName": "Mimo",
+      "effectiveMonthlyUsd": 9.99
+    },
+    "minimax-free-api": {
+      "id": "minimax-free-api",
+      "provider_id": "minimax",
+      "name": "MiniMax Free API",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": 0,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Free trial credits for new accounts. After credits exhausted, pay-per-token billing.",
+        "provenance": {
+          "url": "https://platform.minimaxi.com/document/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "minimax-text-01",
+          "access_type": "limited",
+          "is_default": true
+        },
+        {
+          "model_id": "minimax-m1",
+          "access_type": "limited"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "tokens_per_month",
+          "value": null,
+          "unit": "tokens",
+          "applies_to": "free trial credits",
+          "notes": "Trial credit amount varies; consumed by API requests.",
+          "provenance": {
+            "url": "https://platform.minimaxi.com/document/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 1000,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "API-only access. Standout feature is 1M token context window — useful for large codebase analysis. No web IDE or chat UI for coding workflow."
+      },
+      "target_personas": [
+        "developer needing long-context analysis",
+        "AI researcher",
+        "application builder"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://platform.minimaxi.com/document/pricing",
+      "providerId": "minimax",
+      "providerName": "MiniMax",
+      "effectiveMonthlyUsd": 0
+    },
+    "minimax-paid-api": {
+      "id": "minimax-paid-api",
+      "provider_id": "minimax",
+      "name": "MiniMax Pay-per-Token",
+      "tier": "api",
+      "pricing": {
+        "monthly_usd": null,
+        "annual_monthly_usd": null,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "Pay-per-token pricing. Rates per million tokens vary by model. Check platform.minimaxi.com/document/pricing for current USD rates.",
+        "provenance": {
+          "url": "https://platform.minimaxi.com/document/pricing",
+          "accessed_date": "2026-06-14",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "minimax-text-01",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "minimax-m1",
+          "access_type": "full"
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "unlimited",
+          "value": null,
+          "applies_to": "all API calls",
+          "notes": "No hard cap — billed per million tokens. 1M token context available on all paid requests.",
+          "provenance": {
+            "url": "https://platform.minimaxi.com/document/pricing",
+            "accessed_date": "2026-06-14",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": false,
+        "web_search": false,
+        "code_context_length_k": 1000,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [],
+        "cli_access": false,
+        "api_access": true,
+        "priority_access": false,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Full API access. 1M token context is the key differentiator — suited for analyzing very large codebases in a single request."
+      },
+      "target_personas": [
+        "developer needing maximum context",
+        "AI application builder",
+        "production codebase analysis"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-14",
+      "source_url": "https://platform.minimaxi.com/document/pricing",
+      "providerId": "minimax",
+      "providerName": "MiniMax",
+      "effectiveMonthlyUsd": null
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # code-smart — Current State
 
-**Version:** 1.0.7
+**Version:** 1.0.9
 **Updated:** 2026-06-15
 **Branch:** main
 
@@ -8,22 +8,37 @@
 
 ## What just shipped
 
-- `src/lib/model-value-engine.ts` — WMQ engine (50% agentic + 40% coding + 10% speed), quality-adjusted token estimates (tokens × WMQ/100), model-cost-adjusted estimates for credit-based plans, value_score 0–100
-- `src/types/index.ts` — `AAModelScore` and `ModelValueEstimate` interfaces
-- `tests/model-value-engine.test.ts` — 24 tests, all passing (184 total)
-- `src/lib/value-scorer.ts` — exported `usageLimitToRow()` for engine import
+Session 7 — Backend API, Daily Pipeline, Admin Debug:
+
+- `src/types/pipeline.ts` — `PipelineRun`, `PipelineStatus`, `ProviderStatus` types
+- `src/lib/pipeline-schema.ts` — Zod schemas for runtime validation + test assertions
+- `src/lib/rankings.ts` — `computeRankings()` + `getPriceBand()` with 4 price bands
+- `scripts/generate-static-api.ts` — atomic write (staging→rename); generates 5 API JSONs to `public/data/api/`
+- `scripts/pipeline-daily.ts` — full pipeline orchestrator; lock file, atomic status write, AA cache (7d), dry-run support
+- Tests: 3 new test files, 29 new tests → 213 total, all passing
+- `package.json`: new scripts `generate:static-api`, `pipeline:daily`, `pipeline:status`; build now runs `generate:static-api && next build`
+
+## API endpoints (static JSON, served by Next.js from /public)
+
+- `GET /data/api/providers.json`
+- `GET /data/api/plans.json` (includes `bySlug` map)
+- `GET /data/api/models.json`
+- `GET /data/api/rankings.json` (includes `byBand` for 4 price bands)
+- `GET /data/api/methodology.json`
+- `GET /data/api/pipeline-status.json` (written by `pipeline:daily`)
 
 ## What's next
 
-1. Wire AA data from `artificial_analysis_model_scores` DB table into `computePlanValueEstimates` caller (Session 7)
-2. Replace benchmark proxy WMQ in `value-scorer.ts` with real `computeWMQ()` from engine
-3. Build the static-generation step that runs `computePlanValueEstimates` for all plans → writes `public/data/model-value-estimates.json`
-4. Add `AAModelScore` rows to DB for real providers (Anthropic, OpenAI, Google, Cursor)
-5. Surface `ModelValueEstimate` data in the comparison UI (value_score column + quality-adjusted tooltip)
+1. Deploy v1.0.9 to production (wrangler split-deploy)
+2. Real AA coding/agentic indices — replace proxied values in DB (confidence="assumed") when subscription available
+3. Improve usage limit coverage for Anthropic/Google (currently WMQ ✓ but null QAMU)
+4. Add WMQ badge to `PlanCard` component
+5. Wire `/data/api/rankings.json` into frontend (rankings page or sidebar widget)
 
 ## Architecture notes
 
-- Normalization engine: `src/lib/normalization/engine.ts` — converts usage limits to per-window token estimates
-- Value engine: `src/lib/model-value-engine.ts` — quality-adjusted + cost-adjusted on top of normalization
-- Static JSON data: `src/data/providers/*.json` — no AA data here; AA lives in DB only
-- No runtime DB in production — all data must be pre-generated to `public/data/`
+- Pipeline order: `stale-check → scrape (hash-skip) → normalize → seed-aa (7d cache) → value-estimates → static-api → validate`
+- All API responses are pre-built static JSON — no runtime DB; works on CF Workers
+- Lock file: `data/.pipeline.lock` (PID-based, stale lock auto-cleared)
+- Atomic status write: `pipeline-status.json.tmp` → rename (never corrupt mid-run)
+- Admin view: `pnpm pipeline:status` prints formatted last-run report to console
