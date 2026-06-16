@@ -9,6 +9,7 @@ import {
   rankings,
   scrapeRuns,
   providerSourcePages,
+  insertRankingSchema,
 } from "./schema";
 
 // ── Type helpers ───────────────────────────────────────────────────
@@ -189,6 +190,61 @@ export function getLatestRanking(
     .all();
 
   return result[0] ?? null;
+}
+
+/**
+ * Get the latest ranking row for every ranking type.
+ * Returns a Map keyed by rankingType.
+ *
+ * Single query via tuple comparison (latest observed_at per ranking_type) — no N+1.
+ * Satisfies the "frontend APIs retrieve the latest rankings" acceptance at the DB layer.
+ */
+export function getAllLatestRankings(
+  db: BetterSQLite3Database<any>,
+): Map<string, Ranking> {
+  const results = db
+    .select()
+    .from(rankings)
+    .where(
+      sql`(${rankings.rankingType}, ${rankings.observedAt}) IN (
+        SELECT ranking_type, MAX(observed_at)
+        FROM rankings
+        GROUP BY ranking_type
+      )`,
+    )
+    .all();
+
+  const map = new Map<string, Ranking>();
+  for (const row of results) {
+    map.set(row.rankingType, row);
+  }
+  return map;
+}
+
+/**
+ * Insert a ranking row and return its auto-increment ID.
+ */
+export function insertRanking(
+  db: BetterSQLite3Database<any>,
+  data: {
+    rankingType: string;
+    priceBand?: string | null;
+    observedAt: string;
+    payloadJson: string;
+    methodologyVersion?: string | null;
+  },
+): number {
+  // Runtime guard: reject malformed/typo'd keys and rankingType > 50 chars
+  // (.strict() rejects unknown keys) before touching the DB.
+  insertRankingSchema.parse(data);
+
+  const result = db
+    .insert(rankings)
+    .values(data)
+    .returning({ id: rankings.id })
+    .get();
+
+  return result!.id;
 }
 
 // ── Content Change Detection ───────────────────────────────────────

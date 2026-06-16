@@ -13,7 +13,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { getAllProviders, getAllPlans, effectiveMonthlyPrice } from "@/lib/data-loader";
-import { computeRankings } from "@/lib/rankings";
+import { RANKINGS_METHODOLOGY_VERSION } from "@/lib/rankings";
 
 const OUT_DIR     = path.join(process.cwd(), "public", "data", "api");
 const STAGING_DIR = path.join(OUT_DIR, ".staging");
@@ -72,13 +72,12 @@ function generate(): void {
   );
   writeStaging("models.json", models);
 
-  // rankings.json
-  const rankings = computeRankings(allPlans);
-  writeStaging("rankings.json", rankings);
+  // rankings.json is produced upstream by scripts/generate-rankings.ts
+  // (commitStaging only renames staged files, so that artifact is left intact).
 
   // methodology.json — formula constants
   writeStaging("methodology.json", {
-    version: "3.0",
+    version: "3.1",
     formula: "QAMU = estimatedTokens1mo × (WMQ / 100); score = QAMU / price → 0–100",
     weights: {
       cost: 0.35,
@@ -91,11 +90,12 @@ function generate(): void {
       speed: 0.10,
     },
     priceBands: {
-      free:      "$0/mo",
-      "under-20": "$1–$19.99/mo",
-      "under-40": "$20–$39.99/mo",
-      "40-plus":  "$40+/mo",
+      free: "$0/mo",
+      low:  "$0.01–$30/mo",
+      mid:  "$30.01–$80/mo",
+      high: "$80.01+/mo",
     },
+    rankings_methodology_version: RANKINGS_METHODOLOGY_VERSION,
     reference: "docs/calculation-methodology.md",
     generated_at: new Date().toISOString().slice(0, 10),
   });
@@ -103,14 +103,14 @@ function generate(): void {
   // Commit all staged files atomically
   commitStaging();
 
-  const fileCount = 5;
+  const fileCount = 4;
   console.log(`\nGenerated ${fileCount} API JSON files → ${OUT_DIR}`);
   console.log("Endpoints (served by Next.js from /public):");
   console.log("  GET /data/api/providers.json");
   console.log("  GET /data/api/plans.json");
   console.log("  GET /data/api/models.json");
-  console.log("  GET /data/api/rankings.json");
   console.log("  GET /data/api/methodology.json");
+  console.log("  GET /data/api/rankings.json         (written by generate:rankings)");
   console.log("  GET /data/api/pipeline-status.json  (written by pipeline:daily)");
 }
 

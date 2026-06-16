@@ -1,10 +1,10 @@
 {
   "name": "code-smart",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "pnpm generate:static-api && next build",
+    "build": "pnpm generate:rankings && pnpm generate:static-api && next build",
     "start": "next start",
     "lint": "next lint",
     "validate": "npx tsx scripts/validate-data.ts",
@@ -19,6 +19,7 @@
     "db:seed": "npx tsx src/db/seed.ts",
     "db:seed-aa": "npx tsx scripts/seed-aa-scores.ts",
     "generate:value-estimates": "npx tsx scripts/generate-model-value-estimates.ts",
+    "generate:rankings": "npx tsx scripts/generate-rankings.ts",
     "generate:static-api": "npx tsx scripts/generate-static-api.ts",
     "pipeline:daily": "npx tsx scripts/pipeline-daily.ts",
     "pipeline:status": "npx tsx scripts/pipeline-daily.ts --status-only",

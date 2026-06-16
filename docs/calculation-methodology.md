@@ -241,6 +241,73 @@ The feature completeness score (used in the legacy formula) continues to be comp
 
 | Version | Date | Change |
 |---------|------|--------|
+| v3.1 | 2026-06-15 | Rankings layer (`RANKINGS_METHODOLOGY_VERSION` 1.0.0): 10 persisted rankings — 3 price bands, 4 model-metric lists, best-plans-per-model, provider coding-value, transparency. No formula change. See §12. |
 | v3.0 | 2026-06-15 | Normalization engine v1.0.0 replaces simplified estimation table; per-window estimates with uncertainty ranges; model multipliers |
 | v2.0 | 2026-06-14 | New WMQ + QAMU formula; AA indices replace internal benchmarks; tier normalization; Uncertainty Score |
 | v1.0 | 2026-05-01 | Initial formula: 35% cost + 40% benchmark + 25% feature completeness |
+
+---
+
+## 12. Rankings
+
+Rankings aggregate the per-plan and per-model figures above into the ten ordered lists the site publishes. The ranking layer adds **no new formula** — it filters, sorts, and groups the existing WMQ / QAMU / Value Score / Uncertainty outputs, then persists each list with its own methodology version.
+
+**Methodology version:** `RANKINGS_METHODOLOGY_VERSION = "1.0.0"` (defined in `src/lib/rankings.ts`, an axis independent of the engine's `ENGINE_VERSION`). It bumps when the *aggregation* rules change — band semantics, sort keys, the ranking-set shape — not when the underlying math does. Every persisted ranking row and the `rankings.json` payload is stamped with this version so any stored ranking remains reproducible against the methodology that produced it.
+
+**Computation split:** `computeAllRankings()` in `src/lib/rankings.ts` is pure and deterministic — no clock, no IO, no randomness. `scripts/generate-rankings.ts` performs the IO: it loads the latest AA scores (`getLatestAAScores`) and provider plans (`getAllPlans`), recomputes per-plan value estimates in-process (via `computePlanValueEstimates`, so rankings never depend on a possibly-stale `model-value-estimates.json`), calls `computeAllRankings({ plans, estimatesByPlan, aaScores, observedAt })`, then writes one row per ranking type to the `rankings` DB table and the full set to `public/data/api/rankings.json`.
+
+### 12.1 The Ten Rankings
+
+| # | `rankingType` | View key | Source metric | Sort (desc) |
+|---|---------------|----------|---------------|-------------|
+| 1 | `price-band-low` | `byPriceBand.low` | plan×model Value Score, low band | Value Score |
+| 2 | `price-band-mid` | `byPriceBand.mid` | plan×model Value Score, mid band | Value Score |
+| 3 | `price-band-high` | `byPriceBand.high` | plan×model Value Score, high band | Value Score |
+| 4 | `model-intelligence` | `byIntelligence` | AA Intelligence Index | index |
+| 5 | `model-coding` | `byCoding` | AA Coding Index | index |
+| 6 | `model-agentic` | `byAgentic` | AA Agentic Index | index |
+| 7 | `model-wmq` | `byWeightedQuality` | WMQ (§2 Step 1) | WMQ |
+| 8 | `best-plans-per-model` | `bestPlansPerModel` | per model: best plan in each band by Value Score | WMQ (model order) |
+| 9 | `provider-coding-value` | `byProviderCodingValue` | peak coding-weighted value across a provider's plans/models | coding value |
+| 10 | `transparency` | `byTransparency` | Transparency = 100 − Uncertainty (§9) | transparency |
+
+- **Bands (#1–3):** top 10 plan×model combos each. Free / null-price plans are excluded — they carry no Value Score (§7).
+- **Model rankings (#4–7):** top 10 models each, one row per model (deduped — these metrics are plan-independent). A model with a null metric is excluded. #4–6 use the AA snapshot's own confidence; #7 uses the confidence `computeWMQ` returns (which may differ when speed is defaulted).
+- **#8 best-plans-per-model:** for every model with ≥1 confidence-passing plan estimate (output WMQ-sorted, nulls last), `{ bestLowCost, bestMidCost, bestHighCost }` — each the top-Value-Score plan in that band, or `null` plus an explanation caveat when the model has no plan in that band.
+- **#9 provider-coding-value:** per (plan, model), `codingValue = (estimatedMonthlyTokens × CodingIndex/100) / effectiveMonthlyPrice`; a provider's score (`codingValuePeak`) is the **maximum** codingValue across all its plans and models — its single best usable coding-value offering — with `bestPlanId` / `bestModelId` recording where the peak occurs.
+- **#10 transparency:** all plans, scored `100 − UncertaintyScore`. The plan's representative model for the AA-confidence term is its highest-WMQ estimate.
+
+### 12.2 Price Bands
+
+Bands match the §8 tier boundaries (by effective monthly price):
+
+| Band | Price Range |
+|------|------------|
+| Free | $0 / null |
+| Low  | $0.01–$30/month |
+| Mid  | $30.01–$80/month |
+| High | Greater than $80/month |
+
+`getPriceBand(price)` returns `"free"` for null or ≤ 0, `"low"` for ≤ 30, `"mid"` for ≤ 80, else `"high"`. Free-band plans never appear in the value-ranked bands (#1–3) because they have no Value Score.
+
+### 12.3 Raw vs Normalized Value Score
+
+Plan×model rows expose **both** value scores from §2 Step 3:
+- `valueScoreRaw` — unnormalized `QAMU(1mo) / Effective Monthly Price`. Comparable across the whole dataset; it is the sort key within a band.
+- `valueScore` — the §8 tier-normalized 0–100 score. Comparable within a tier; the human-facing figure.
+
+Exposing both lets the frontend rank within a band by the raw ratio while still showing the friendly 0–100 number. A row with a null raw or normalized score sorts to the bottom.
+
+### 12.4 Confidence Inclusion Policy
+
+Default `minConfidence = "assumed"`: a row is ranked when its governing confidence is `observed`, `inferred`, or `assumed`; `unknown` and null-metric rows are dropped. The governing confidence is the estimate's confidence for plan×model rows (#1–3, #8, #9), the AA snapshot's for #4–6, and `computeWMQ`'s for #7. Every included row below `observed` carries a caveat string naming the confidence level. #8 additionally emits an explicit per-band null-reason caveat. A `RankingConfig.minConfidence` override can tighten any run to observed-only.
+
+**Exception — transparency (#10):** the transparency ranking intentionally includes **all** plans regardless of confidence; suppressing low-confidence plans would defeat the purpose of a list whose job is to surface how opaque each plan's data is. Opaque plans simply rank low (high uncertainty → low transparency).
+
+### 12.5 Determinism (acceptance a)
+
+Every list carries a **total order**: primary metric desc → `monthlyPriceUsd` asc (null last) → `planId` asc → `modelId` asc (provider lists tie-break on `providerId` asc; model lists on `modelId` asc). Because `observedAt` is injected as the only clock read, identical DB state yields byte-identical `payloadJson` and `rankings.json` on re-run — Map iteration order cannot affect output.
+
+### 12.6 Output Fields
+
+Each row carries the spec-required provenance: `rank, providerId, providerName, confidence, caveats[], sourceDates{aa, pricing, usage}`. Plan×model rows add `planId, planName, modelId, modelDisplayName, monthlyPriceUsd, priceBand, weightedModelQuality, estimatedMonthlyTokens, modelAdjustedMonthlyTokens, qualityAdjustedMonthlyUsage (QAMU), valueScoreRaw, valueScore`. The full set is wrapped as `{ generatedAt, methodologyVersion, rankings: { … } }`.

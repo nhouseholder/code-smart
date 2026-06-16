@@ -50,22 +50,8 @@ describe("generate-static-api output shape", () => {
     expect(data[0]).toHaveProperty("providerId");
   });
 
-  it("rankings.json has all and byBand with 4 bands", () => {
-    const data = readJson("rankings.json") as {
-      all: unknown[];
-      byBand: Record<string, unknown[]>;
-    };
-    expect(Array.isArray(data.all)).toBe(true);
-    expect(data.all.length).toBeGreaterThan(0);
-    expect(data.byBand).toHaveProperty("free");
-    expect(data.byBand).toHaveProperty("under-20");
-    expect(data.byBand).toHaveProperty("under-40");
-    expect(data.byBand).toHaveProperty("40-plus");
-    // all ranked plans have rank field
-    for (const entry of data.all as Array<{ rank: number }>) {
-      expect(typeof entry.rank).toBe("number");
-    }
-  });
+  // Note: rankings.json is produced by generate-rankings.ts (not this script);
+  // its shape is covered by tests/rankings.test.ts (computeAllRankings).
 
   it("methodology.json has required formula fields", () => {
     const data = readJson("methodology.json") as {
@@ -74,7 +60,7 @@ describe("generate-static-api output shape", () => {
       weights: Record<string, number>;
       wmq: Record<string, number>;
     };
-    expect(data.version).toBe("3.0");
+    expect(data.version).toBe("3.1");
     expect(typeof data.formula).toBe("string");
     expect(data.weights).toHaveProperty("cost");
     expect(data.weights).toHaveProperty("benchmark");

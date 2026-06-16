@@ -24,6 +24,8 @@ import {
   getLatestAAScores,
   getActiveProvidersWithPlans,
   getLatestRanking,
+  getAllLatestRankings,
+  insertRanking,
   hasContentChanged,
   getLatestScrapeRun,
 } from "../../src/db/helpers";
@@ -404,6 +406,44 @@ describe("getLatestRanking", () => {
   it("returns null for unknown ranking type", () => {
     const result = getLatestRanking(db, "nonexistent");
     expect(result).toBeNull();
+  });
+});
+
+describe("getAllLatestRankings", () => {
+  it("returns the latest row per ranking type", () => {
+    const map = getAllLatestRankings(db);
+    expect(map.has("overall")).toBe(true);
+    expect(map.has("coding")).toBe(true);
+    // "overall" was seeded at 2026-06-10 (v1.0) and 2026-06-14 (v1.1) → latest wins.
+    expect(map.get("overall")!.observedAt).toBe("2026-06-14");
+    expect(map.get("overall")!.methodologyVersion).toBe("1.1");
+    expect(map.get("coding")!.observedAt).toBe("2026-06-14");
+  });
+});
+
+describe("insertRanking", () => {
+  it("inserts a ranking row and round-trips via getLatestRanking", () => {
+    const id = insertRanking(db, {
+      rankingType: "price-band-low",
+      priceBand: "low",
+      observedAt: "2026-06-15",
+      payloadJson: JSON.stringify([{ rank: 1, planId: "p-low20" }]),
+      methodologyVersion: "1.0.0",
+    });
+    expect(typeof id).toBe("number");
+
+    const latest = getLatestRanking(db, "price-band-low");
+    expect(latest).not.toBeNull();
+    expect(latest!.priceBand).toBe("low");
+    expect(latest!.observedAt).toBe("2026-06-15");
+    expect(latest!.methodologyVersion).toBe("1.0.0");
+    expect(JSON.parse(latest!.payloadJson)).toEqual([{ rank: 1, planId: "p-low20" }]);
+  });
+
+  it("surfaces the newly inserted type in getAllLatestRankings", () => {
+    const map = getAllLatestRankings(db);
+    expect(map.has("price-band-low")).toBe(true);
+    expect(map.get("price-band-low")!.priceBand).toBe("low");
   });
 });
 

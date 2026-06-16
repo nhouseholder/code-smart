@@ -1,5 +1,5 @@
 {
-  "version": "3.0",
+  "version": "3.1",
   "formula": "QAMU = estimatedTokens1mo × (WMQ / 100); score = QAMU / price → 0–100",
   "weights": {
     "cost": 0.35,
@@ -13,10 +13,11 @@
   },
   "priceBands": {
     "free": "$0/mo",
-    "under-20": "$1–$19.99/mo",
-    "under-40": "$20–$39.99/mo",
-    "40-plus": "$40+/mo"
+    "low": "$0.01–$30/mo",
+    "mid": "$30.01–$80/mo",
+    "high": "$80.01+/mo"
   },
+  "rankings_methodology_version": "1.0.0",
   "reference": "docs/calculation-methodology.md",
   "generated_at": "2026-06-16"
 }

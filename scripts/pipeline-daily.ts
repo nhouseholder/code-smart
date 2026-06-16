@@ -4,7 +4,7 @@
  *
  * Orchestrates the full data update pipeline:
  *   stale-check → scrape → normalize → aa-cache → value-estimates →
- *   static-api → validate → write pipeline-status
+ *   rankings → static-api → validate → write pipeline-status
  *
  * Usage:
  *   pnpm pipeline:daily                   # full run
@@ -283,7 +283,25 @@ function main(): void {
       }
     }
 
-    // Step 6: generate static API
+    // Step 6: generate rankings
+    if (success) {
+      console.log("\n▶ generate:rankings");
+      if (!DRY_RUN) {
+        const rankResult = spawnSync("npx", ["tsx", "scripts/generate-rankings.ts"], {
+          stdio: "inherit", cwd: ROOT, env: { ...process.env },
+        });
+        stepsRun.push("rankings");
+        if (rankResult.status !== 0) {
+          success = false;
+          errorMessage = "generate-rankings step failed";
+        }
+      } else {
+        console.log("  [dry-run] would generate rankings");
+        stepsRun.push("rankings");
+      }
+    }
+
+    // Step 7: generate static API
     if (success) {
       console.log("\n▶ generate:static-api");
       if (!DRY_RUN) {
@@ -301,7 +319,7 @@ function main(): void {
       }
     }
 
-    // Step 7: validate
+    // Step 8: validate
     if (success) {
       const validateOk = run("validate-data", "scripts/validate-data.ts", []);
       stepsRun.push("validate");

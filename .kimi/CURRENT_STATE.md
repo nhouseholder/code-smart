@@ -1,6 +1,6 @@
 # code-smart — Current State
 
-**Version:** 1.0.10
+**Version:** 1.0.11
 **Updated:** 2026-06-15
 **Branch:** main
 
@@ -8,39 +8,41 @@
 
 ## What just shipped
 
-Session 7 — Backend API, Daily Pipeline, Admin Debug:
+Session 8 — Ranking Engine: replaced the placeholder single-list ranking with the **10 required rankings**, persisted to DB with a methodology version and exposed via `rankings.json`.
 
-- `src/types/pipeline.ts` — `PipelineRun`, `PipelineStatus`, `ProviderStatus` types
-- `src/lib/pipeline-schema.ts` — Zod schemas for runtime validation + test assertions
-- `src/lib/rankings.ts` — `computeRankings()` + `getPriceBand()` with 4 price bands
-- `scripts/generate-static-api.ts` — atomic write (staging→rename); generates 5 API JSONs to `public/data/api/`
-- `scripts/pipeline-daily.ts` — full pipeline orchestrator; lock file, atomic status write, AA cache (7d), dry-run support
-- Tests: 3 new test files, 29 new tests → 213 total, all passing
-- `package.json`: new scripts `generate:static-api`, `pipeline:daily`, `pipeline:status`; build now runs `generate:static-api && next build`
+- `src/lib/rankings.ts` — rewrote core: `computeAllRankings()` (pure/deterministic) produces the 8-view `RankingSet`; `getPriceBand()` switched to §8 bands (free / low $0.01–30 / mid $30.01–80 / high >$80); new `RANKINGS_METHODOLOGY_VERSION = "1.0.0"`; removed the `computeRankings` placeholder.
+- `src/db/helpers.ts` — added `insertRanking()` + `getAllLatestRankings()` (latest row per ranking type).
+- `scripts/generate-rankings.ts` (new) — recomputes plan×model estimates in-process, runs `computeAllRankings`, persists 10 DB rows (idempotent per `observedAt`), writes `public/data/api/rankings.json`.
+- `scripts/generate-static-api.ts` — dropped the rankings block (now owned by generate-rankings); `methodology.json` v3.0→3.1 with §8 bands + `rankings_methodology_version`.
+- `scripts/pipeline-daily.ts` + `package.json` — wired `generate:rankings` between value-estimates and static-api; `build` now runs `generate:rankings && generate:static-api && next build`.
+- `docs/calculation-methodology.md` — new §12 Rankings (10 types, bands, raw-vs-normalized, confidence policy, determinism) + changelog v3.1.
+- Tests: rewrote `tests/rankings.test.ts` (computeAllRankings + §8 bands), added helpers round-trip tests, fixed static-api shape test → 228 passing.
+
+## The 10 rankings (view keys in rankings.json)
+
+`byPriceBand.{low,mid,high}` · `byIntelligence` · `byCoding` · `byAgentic` · `byWeightedQuality` · `bestPlansPerModel` · `byProviderCodingValue` · `byTransparency`
 
 ## API endpoints (static JSON, served by Next.js from /public)
 
 - `GET /data/api/providers.json`
 - `GET /data/api/plans.json` (includes `bySlug` map)
 - `GET /data/api/models.json`
-- `GET /data/api/rankings.json` (includes `byBand` for 4 price bands)
-- `GET /data/api/methodology.json`
+- `GET /data/api/rankings.json` (full `RankingSet`: `{generatedAt, methodologyVersion, rankings:{8 views}}`)
+- `GET /data/api/methodology.json` (v3.1)
 - `GET /data/api/pipeline-status.json` (written by `pipeline:daily`)
 
 **Production:** https://code-smart.pages.dev (Cloudflare Pages, static export) — deployed + verified 2026-06-15
 
 ## What's next
 
-1. Wire `/data/api/rankings.json` into frontend (rankings page or sidebar widget)
-2. Real AA coding/agentic indices — replace proxied values in DB (confidence="assumed") when subscription available
-3. Improve usage limit coverage for Anthropic/Google (currently WMQ ✓ but null QAMU)
-4. Add WMQ badge to `PlanCard` component
+1. Wire `rankings.json` into the frontend — render a rankings page / sidebar widget (data is produced & retrievable; rendering is the open piece).
+2. Real AA coding/agentic indices — replace proxied values in DB (confidence="assumed"); just re-run the pipeline, no code change. Rankings surface the proxy via caveats today.
+3. Improve usage-limit coverage for Anthropic/Google (currently WMQ ✓ but null QAMU → those plan×model rows drop from value bands).
 
 ## Architecture notes
 
-- Pipeline order: `stale-check → scrape (hash-skip) → normalize → seed-aa (7d cache) → value-estimates → static-api → validate`
-- All API responses are pre-built static JSON — no runtime DB
+- Pipeline order: `stale-check → scrape (hash-skip) → normalize → seed-aa (7d cache) → value-estimates → generate:rankings → static-api → validate`
+- `computeAllRankings` is pure (no clock/random; `observedAt` injected) → byte-identical output for identical DB state + date. Total order: primary metric desc → price asc (null last) → planId asc → modelId asc.
+- All API responses are pre-built static JSON — no runtime DB.
 - Deploy: `next build` (`output: "export"`) → static `out/` → `wrangler pages deploy out --project-name=code-smart`. No OpenNext/Workers — app is 100% static.
-- Lock file: `data/.pipeline.lock` (PID-based, stale lock auto-cleared)
-- Atomic status write: `pipeline-status.json.tmp` → rename (never corrupt mid-run)
-- Admin view: `pnpm pipeline:status` prints formatted last-run report to console
+- DB rankings rows: one per ranking type per `observedAt`, `methodologyVersion` stamped; 3 band rows carry `priceBand`, the rest null. Idempotent: re-running same day deletes that day's rows first.
