@@ -29,7 +29,7 @@ Session 7 — Backend API, Daily Pipeline, Admin Debug:
 
 ## What's next
 
-1. Deploy v1.0.9 to production (wrangler split-deploy)
+1. Deploy v1.0.10 to production (wrangler split-deploy)
 2. Real AA coding/agentic indices — replace proxied values in DB (confidence="assumed") when subscription available
 3. Improve usage limit coverage for Anthropic/Google (currently WMQ ✓ but null QAMU)
 4. Add WMQ badge to `PlanCard` component
