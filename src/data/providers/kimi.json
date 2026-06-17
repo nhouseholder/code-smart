@@ -132,15 +132,15 @@
       ],
       "usage_limits": [
         {
-          "type": "unlimited",
+          "type": "unknown",
           "value": null,
-          "applies_to": "standard messages",
-          "notes": "Higher daily limit than free; k1.5 usage may still be capped.",
+          "applies_to": "agentic coding (Kimi Code)",
+          "notes": "Kimi Code quota refreshes every 7 days from the subscription date (unused quota does not carry over) and is rate-limited within a rolling 5-hour window (~300–1,200 requests/window across tiers, up to 30 concurrent), sharing the monthly Kimi membership quota. Per-tier exact allotment is not publicly disclosed; coding usage is never unlimited.",
           "provenance": {
-            "url": "https://kimi.ai/pricing",
-            "accessed_date": "2026-06-14",
+            "url": "https://www.kimi.com/code/docs/en/",
+            "accessed_date": "2026-06-17",
             "method": "manual",
-            "confidence": "assumed"
+            "confidence": "unknown"
           }
         }
       ],
@@ -187,15 +187,15 @@
       ],
       "usage_limits": [
         {
-          "type": "unlimited",
+          "type": "unknown",
           "value": null,
-          "applies_to": "all models",
-          "notes": "Higher or unlimited usage across all Kimi models.",
+          "applies_to": "agentic coding (Kimi Code)",
+          "notes": "Kimi Code quota refreshes every 7 days from the subscription date (unused quota does not carry over) and is rate-limited within a rolling 5-hour window (~300–1,200 requests/window across tiers, up to 30 concurrent), sharing the monthly Kimi membership quota. Per-tier exact allotment is not publicly disclosed; coding usage is never unlimited.",
           "provenance": {
-            "url": "https://kimi.ai/pricing",
-            "accessed_date": "2026-06-14",
+            "url": "https://www.kimi.com/code/docs/en/",
+            "accessed_date": "2026-06-17",
             "method": "manual",
-            "confidence": "assumed"
+            "confidence": "unknown"
           }
         }
       ],

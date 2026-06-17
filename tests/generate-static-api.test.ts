@@ -60,7 +60,7 @@ describe("generate-static-api output shape", () => {
       weights: Record<string, number>;
       wmq: Record<string, number>;
     };
-    expect(data.version).toBe("3.1");
+    expect(data.version).toBe("3.2");
     expect(typeof data.formula).toBe("string");
     expect(data.weights).toHaveProperty("cost");
     expect(data.weights).toHaveProperty("benchmark");
@@ -68,6 +68,7 @@ describe("generate-static-api output shape", () => {
     expect(data.wmq).toHaveProperty("agentic");
     expect(data.wmq).toHaveProperty("coding");
     expect(data.wmq).toHaveProperty("speed");
+    expect(data).toHaveProperty("efficiency");
   });
 
   it("staging directory is cleaned up", () => {

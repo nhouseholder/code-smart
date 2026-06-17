@@ -2,7 +2,7 @@
 /**
  * data-quality-check.ts
  *
- * Runs 9 data quality checks against provider JSON files, the DB,
+ * Runs 10 data quality checks against provider JSON files, the DB,
  * and API artifacts. Prints results and exits 0/1.
  *
  * Usage:
@@ -42,6 +42,7 @@ export interface ProviderJson {
   }>;
   plans?: Array<{
     id: string;
+    tier?: string;
     pricing: {
       monthly_usd: number | null;
       currency?: string;
@@ -113,10 +114,9 @@ export function checkPlanHasNoPrice(
     if (!p.plans) continue;
     for (const plan of p.plans) {
       if (plan.pricing.monthly_usd === null || plan.pricing.monthly_usd === undefined) {
-        // Pay-per-token plans (usage_limits includes "unlimited" type) have
-        // no monthly flat fee — null is semantically correct here.
-        const usageTypes = plan.usage_limits?.map((l) => l.type) ?? [];
-        if (usageTypes.includes("unlimited")) continue;
+        // Pay-per-token API plans (tier "api") have no monthly flat fee —
+        // null is semantically correct here.
+        if (plan.tier === "api") continue;
 
         // Determine severity: if provider has pricing_url, treat as error
         const severity = p.pricing_url ? "error" : "warning";
@@ -189,6 +189,39 @@ export function checkPlanHasNoUsageEstimate(
 }
 
 /**
+ * Check 3b: no "unlimited"/fair-use coding limit anywhere.
+ * "Unlimited" is never a real coding/agentic limit (it describes chat, not
+ * coding usage, which is always capped). Banned at the schema layer; this is
+ * the belt-and-suspenders guard so a future hand-edit can't reintroduce it.
+ */
+export function checkNoUnlimitedCodingLimit(
+  providers: ProviderJson[],
+): DataQualityIssue[] {
+  const issues: DataQualityIssue[] = [];
+  const BANNED = new Set(["unlimited", "fair_use", "fair-use"]);
+
+  for (const p of providers) {
+    if (!p.plans) continue;
+    for (const plan of p.plans) {
+      for (const l of plan.usage_limits ?? []) {
+        if (BANNED.has(l.type)) {
+          issues.push({
+            checkId: "unlimited-coding-limit",
+            severity: "error",
+            providerId: p.id,
+            planId: plan.id,
+            field: "usage_limits.type",
+            message: `Plan "${plan.id}" declares a banned "${l.type}" coding limit — replace with a real published limit or "unknown".`,
+            value: l.type,
+          });
+        }
+      }
+    }
+  }
+  return issues;
+}
+
+/**
  * Check 4: model has no AA mapping in the DB.
  */
 export function checkModelHasNoAAMapping(): DataQualityIssue[] {
@@ -228,6 +261,85 @@ export function checkModelHasNoAAMapping(): DataQualityIssue[] {
       severity: "warning",
       providerId: "system",
       message: `Could not query DB for AA mappings: ${err instanceof Error ? err.message : String(err)}`,
+    });
+  }
+
+  return issues;
+}
+
+/**
+ * Check 4b: AA cost-per-task sanity — staleness (>90d) + bounds ($0.0001–$1000).
+ * Reads price_efficiency_metrics_json; skips cleanly when cost-per-task is null
+ * (the seeded state until real AA values land), so it is a no-op today.
+ */
+export function checkAaCostPerTask(): DataQualityIssue[] {
+  const issues: DataQualityIssue[] = [];
+  const STALE_DAYS = 90;
+  const MIN_USD = 0.0001;
+  const MAX_USD = 1000;
+
+  try {
+    const db = getDb();
+    const rows = db
+      .select({
+        modelId: artificialAnalysisModelScores.modelId,
+        json: artificialAnalysisModelScores.priceEfficiencyMetricsJson,
+      })
+      .from(artificialAnalysisModelScores)
+      .all();
+
+    const now = new Date();
+    for (const row of rows) {
+      if (!row.json) continue;
+      let parsed: { costPerTaskUsd?: number | null; accessedDate?: string | null };
+      try {
+        parsed = JSON.parse(row.json);
+      } catch {
+        issues.push({
+          checkId: "aa-cost-per-task-malformed",
+          severity: "warning",
+          providerId: "unknown",
+          modelId: row.modelId,
+          message: `Model "${row.modelId}" price_efficiency_metrics_json is not valid JSON`,
+        });
+        continue;
+      }
+
+      const cpt = parsed.costPerTaskUsd ?? null;
+      if (cpt === null) continue; // no data yet — neutral, nothing to check
+
+      if (!Number.isFinite(cpt) || cpt < MIN_USD || cpt > MAX_USD) {
+        issues.push({
+          checkId: "aa-cost-per-task-bounds",
+          severity: "error",
+          providerId: "unknown",
+          modelId: row.modelId,
+          message: `Model "${row.modelId}" cost-per-task $${cpt} out of bounds [$${MIN_USD}, $${MAX_USD}]`,
+          value: cpt,
+        });
+      }
+
+      const accessed = parsed.accessedDate ?? null;
+      if (accessed) {
+        const ageDays = Math.floor((now.getTime() - new Date(accessed).getTime()) / 86_400_000);
+        if (ageDays > STALE_DAYS) {
+          issues.push({
+            checkId: "aa-cost-per-task-stale",
+            severity: "warning",
+            providerId: "unknown",
+            modelId: row.modelId,
+            message: `Model "${row.modelId}" cost-per-task observed ${ageDays}d ago (>${STALE_DAYS}d) — refresh from AA`,
+            value: accessed,
+          });
+        }
+      }
+    }
+  } catch (err) {
+    issues.push({
+      checkId: "aa-cost-per-task",
+      severity: "warning",
+      providerId: "system",
+      message: `Could not query DB for cost-per-task: ${err instanceof Error ? err.message : String(err)}`,
     });
   }
 
@@ -654,7 +766,9 @@ function main(): void {
     ...checkProviderHasNoRecentSourceSnapshot(providers),
     ...checkPlanHasNoPrice(providers),
     ...checkPlanHasNoUsageEstimate(providers),
+    ...checkNoUnlimitedCodingLimit(providers),
     ...checkModelHasNoAAMapping(),
+    ...checkAaCostPerTask(),
     ...checkRankingUsesStaleData(providers),
     ...checkConfidenceBelowThreshold(providers),
     ...checkImpossibleValues(providers),

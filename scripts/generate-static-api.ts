@@ -77,8 +77,8 @@ function generate(): void {
 
   // methodology.json — formula constants
   writeStaging("methodology.json", {
-    version: "3.1",
-    formula: "QAMU = estimatedTokens1mo × (WMQ / 100); score = QAMU / price → 0–100",
+    version: "3.2",
+    formula: "QAMU = estimatedTokens1mo × (WMQ / 100); score = QAMU × efficiencyMultiplier / price → 0–100",
     weights: {
       cost: 0.35,
       benchmark: 0.40,
@@ -88,6 +88,14 @@ function generate(): void {
       agentic: 0.50,
       coding: 0.40,
       speed: 0.10,
+    },
+    efficiency: {
+      source: "Artificial Analysis cost-per-task (USD to run its standardized agentic task)",
+      reference: "self-calibrating median cost-per-task across models with data",
+      formula: "eff = clamp(0,100, median/costPerTask × 50); multiplier = 0.85 + (eff/100) × 0.30",
+      bounds: [0.85, 1.15],
+      neutralWhenAbsent: true,
+      note: "Median model → 1.0×. Multiplier is exactly 1.0 (no-op) when a model has no cost-per-task data.",
     },
     priceBands: {
       free: "$0/mo",

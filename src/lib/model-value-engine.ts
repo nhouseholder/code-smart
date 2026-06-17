@@ -8,7 +8,7 @@ import { usageLimitToRow } from "./value-scorer";
 
 // ─── Version ──────────────────────────────────────────────────────────────────
 
-export const ENGINE_VERSION = "1.0.0";
+export const ENGINE_VERSION = "1.1.0";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -26,6 +26,14 @@ const COST_REFERENCE_USD = 20;
 const QAMU_REFERENCE = (1_000_000 * 0.8) / COST_REFERENCE_USD; // 40_000
 
 const CONFIDENCE_ORDER: Confidence[] = ["observed", "inferred", "assumed", "stale", "unknown"];
+
+// Bounded efficiency multiplier from AA cost-per-task. Self-calibrating: the median
+// cost-per-task across models with data is the reference (par = 1.0). Cheaper → up to
+// EFF_MULT_MAX, pricier → down to EFF_MULT_MIN. Bounded so efficiency never dominates
+// quality/price. No data → 1.0 (exact no-op).
+const EFF_MULT_MIN = 0.85;
+const EFF_MULT_MAX = 1.15;
+const EFF_MEDIAN_POINTS = 50; // median model maps to eff=50 → mult=1.0
 
 // ─── Internal helpers ─────────────────────────────────────────────────────────
 
@@ -163,16 +171,54 @@ export function computeModelCostAdjusted(
 }
 
 /**
- * Compute value score: quality_adjusted_monthly / price, normalized 0–100.
+ * Median cost-per-task across all models that have a non-null value.
+ * This is the self-calibrating reference for the efficiency multiplier.
+ * Returns null when no model has data (→ efficiency neutral everywhere).
+ */
+export function medianCostPerTask(aaScores: Map<string, AAModelScore>): number | null {
+  const values = [...aaScores.values()]
+    .map(s => s.costPerTask)
+    .filter((v): v is number => v !== null && Number.isFinite(v) && v > 0)
+    .sort((a, b) => a - b);
+  if (values.length === 0) return null;
+  const mid = Math.floor(values.length / 2);
+  return values.length % 2 === 0 ? (values[mid - 1] + values[mid]) / 2 : values[mid];
+}
+
+/**
+ * Bounded efficiency multiplier from AA cost-per-task.
+ *   eff  = clamp(0, 100, (median / costPerTask) × EFF_MEDIAN_POINTS)   // median → 50
+ *   mult = EFF_MULT_MIN + (eff / 100) × (EFF_MULT_MAX − EFF_MULT_MIN)  // → [0.85, 1.15], par 1.0 at median
+ * Returns mult 1.0 (neutral) when this model's cost-per-task OR the reference median is null.
+ */
+export function computeEfficiencyMultiplier(
+  costPerTask: number | null,
+  referenceMedian: number | null,
+): { mult: number; note: string | null } {
+  if (costPerTask === null || referenceMedian === null || costPerTask <= 0) {
+    return { mult: 1.0, note: "No cost-per-task data — efficiency neutral" };
+  }
+  const eff = Math.min(100, Math.max(0, (referenceMedian / costPerTask) * EFF_MEDIAN_POINTS));
+  const mult = EFF_MULT_MIN + (eff / 100) * (EFF_MULT_MAX - EFF_MULT_MIN);
+  return {
+    mult,
+    note: `Efficiency multiplier ${mult.toFixed(3)}× (cost-per-task $${costPerTask} vs median $${referenceMedian})`,
+  };
+}
+
+/**
+ * Compute value score: quality_adjusted_monthly × effMult / price, normalized 0–100.
  * Returns null for free plans (price = 0) or missing inputs.
+ * effMult defaults to 1.0 (neutral) — back-compatible with all existing callers/tests.
  */
 export function computeValueScore(
   qualityAdjustedMonthly: number | null,
   price: number | null,
+  effMult: number = 1.0,
 ): number | null {
   if (qualityAdjustedMonthly === null || price === null) return null;
   if (price === 0) return null;
-  const raw = (qualityAdjustedMonthly / price / QAMU_REFERENCE) * 100;
+  const raw = (qualityAdjustedMonthly * effMult / price / QAMU_REFERENCE) * 100;
   return Math.min(100, Math.max(0, Math.round(raw)));
 }
 
@@ -188,8 +234,12 @@ export function computeModelValueEstimate(
   limitRow: UsageLimitRow | null,
   aaScore: AAModelScore | null,
   price: number | null,
+  costPerTaskReference: number | null = null,
 ): ModelValueEstimate {
   const { wmq, confidence: wmqConf, notes: wmqNotes } = computeWMQ(aaScore);
+
+  const costPerTask = aaScore?.costPerTask ?? null;
+  const { mult: effMult, note: effNote } = computeEfficiencyMultiplier(costPerTask, costPerTaskReference);
 
   // NormalizedEstimate uses camelCase; ModelValueEstimate uses snake_case
   const est5h  = estimate?.estimatedTokens5h  ?? null;
@@ -223,10 +273,12 @@ export function computeModelValueEstimate(
     model_adjusted_tokens_24h: tokens_24h,
     model_adjusted_tokens_1w:  tokens_1w,
     model_adjusted_tokens_1mo: tokens_1mo,
-    value_score: computeValueScore(qa1mo, price),
+    value_score: computeValueScore(qa1mo, price, effMult),
+    efficiency_multiplier: effMult,
+    cost_per_task_usd: costPerTask,
     confidence,
     calculation_methodology_version: ENGINE_VERSION,
-    notes: [...wmqNotes, ...costNotes],
+    notes: [...wmqNotes, ...costNotes, ...(effNote ? [effNote] : [])],
   };
 }
 
@@ -244,6 +296,7 @@ export function computePlanValueEstimates(
   const cfg = config ?? DEFAULT_CONFIG;
   const { estimate, limitRow } = getBestNormalizedEstimate(plan, cfg);
   const price = effectiveMonthlyPrice(plan);
+  const costPerTaskReference = medianCostPerTask(aaScores);
 
   const validModelIds = new Set(provider.models.map(m => m.id));
   const activeRefs = plan.models.filter(
@@ -253,7 +306,7 @@ export function computePlanValueEstimates(
   return activeRefs
     .map(ref => {
       const aaScore = aaScores.get(ref.model_id) ?? null;
-      return computeModelValueEstimate(plan.id, ref.model_id, estimate, limitRow, aaScore, price);
+      return computeModelValueEstimate(plan.id, ref.model_id, estimate, limitRow, aaScore, price, costPerTaskReference);
     })
     .sort((a, b) => {
       const aw = a.weighted_model_quality;

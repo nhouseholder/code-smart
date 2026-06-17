@@ -44,6 +44,21 @@ const PROVIDER_FILES = [
 
 let _cachedProviders: Provider[] | null = null;
 
+/**
+ * In-scope predicate — the single source of truth for which plans the product
+ * compares. This is a *coding subscription* comparison, so we keep only paid
+ * individual/pro plans. Excluded: free ($0), API/pay-per-token (`api` tier),
+ * and business/team/enterprise (different buyer). Applied once at the loader
+ * chokepoint so every downstream surface inherits it.
+ */
+export function isInScopePlan(plan: Plan): boolean {
+  return (
+    (plan.tier === "individual" || plan.tier === "pro") &&
+    typeof plan.pricing.monthly_usd === "number" &&
+    plan.pricing.monthly_usd > 0
+  );
+}
+
 /** Load and Zod-validate all provider data. Throws on schema violation. */
 export function getAllProviders(): Provider[] {
   if (_cachedProviders) return _cachedProviders;
@@ -56,7 +71,10 @@ export function getAllProviders(): Provider[] {
     if (!result.success) {
       errors.push(`Provider "${(raw as { id?: string }).id ?? "unknown"}": ${result.error.message}`);
     } else {
-      providers.push(result.data as Provider);
+      const provider = result.data as Provider;
+      // Filter to in-scope plans at the chokepoint — every consumer of
+      // getAllProviders()/getAllPlans() sees only paid individual/pro plans.
+      providers.push({ ...provider, plans: provider.plans.filter(isInScopePlan) });
     }
   }
 

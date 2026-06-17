@@ -114,15 +114,15 @@
       ],
       "usage_limits": [
         {
-          "type": "unlimited",
+          "type": "unknown",
           "value": null,
-          "applies_to": "all courses and AI explanations",
-          "notes": "Unlimited access to the full course catalog, AI tutor explanations, and certificate programs.",
+          "applies_to": "learning content (course catalog, AI tutor)",
+          "notes": "Mimo Pro is an educational/learning platform; advertised 'unlimited' refers to course-catalog and AI-tutor-explanation access, not agentic code generation. No coding-output usage limit is published.",
           "provenance": {
             "url": "https://mimo.org/pro",
             "accessed_date": "2026-06-14",
             "method": "manual",
-            "confidence": "assumed"
+            "confidence": "unknown"
           }
         }
       ],

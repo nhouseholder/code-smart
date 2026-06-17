@@ -33,12 +33,11 @@ export type LimitType =
   | "completions_per_month"   // IDE autocomplete
   | "credits_per_month"       // credit-based platforms
   | "compute_units_per_month"
-  | "unlimited"
   | "unknown";
 
 export interface UsageLimit {
   type: LimitType;
-  value: number | null;           // null when type = unlimited | unknown
+  value: number | null;           // null when type = unknown
   unit?: string;                  // e.g. "messages", "tokens", "requests"
   applies_to?: string;            // e.g. "premium models", "autocomplete"
   notes?: string;
@@ -183,6 +182,8 @@ export interface AAModelScore {
   intelligenceIndex: number | null; // 0–100, display only — NOT used in WMQ
   inputPrice: number | null;        // USD per 1M input tokens
   outputPrice: number | null;       // USD per 1M output tokens
+  costPerTask: number | null;             // AA cost-per-task (USD to run AA's standardized agentic task); null until seeded
+  costPerTaskAccessedDate: string | null; // ISO date the cost-per-task value was observed; null until seeded
   confidence: Confidence;
   source: string;
 }
@@ -214,8 +215,12 @@ export interface ModelValueEstimate {
   model_adjusted_tokens_1w: number | null;
   model_adjusted_tokens_1mo: number | null;
 
-  // value_score = quality_adjusted_monthly / price, normalized 0–100 (null for free plans)
+  // value_score = quality_adjusted_monthly × efficiency_multiplier / price, normalized 0–100 (null for free plans)
   value_score: number | null;
+
+  // Bounded efficiency multiplier [0.85, 1.15] from AA cost-per-task vs median; 1.0 (neutral) when no data
+  efficiency_multiplier: number | null;
+  cost_per_task_usd: number | null;       // pass-through of this model's AA cost-per-task (display/transparency); null until seeded
 
   confidence: Confidence;
   calculation_methodology_version: string;

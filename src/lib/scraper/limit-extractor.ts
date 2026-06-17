@@ -50,10 +50,12 @@ const PATTERNS: LimitPattern[] = [
     type: "rate_limit",
     regex: /\b(rate\s*limit(?:ed)?|throttled|rate\s*limiting)\b/gi,
   },
-  // 6. Fair use: "subject to fair use", "fair usage policy"
+  // 6. Fair use / "unlimited": never a real coding limit. Capture as "vague"
+  //    so it surfaces as unknown (a flag-for-research signal), never a
+  //    fair-use/unlimited type that could manufacture a synthetic estimate.
   {
-    type: "fair_use",
-    regex: /\b(fair\s*use|fair\s*usage\s*(?:policy|limit)|acceptable\s*use)\b/gi,
+    type: "vague",
+    regex: /\b(unlimited|fair\s*use|fair\s*usage\s*(?:policy|limit)|acceptable\s*use)\b/gi,
   },
   // 7. Model-specific: "varies by model", "depends on model"
   {
@@ -77,7 +79,7 @@ const VAGUE_PATTERNS = [
  * 4. Time-windowed → observed
  * 5. Model-specific → assumed
  * 6. Rate limit → assumed
- * 7. Fair use → assumed
+ * 7. Fair use / "unlimited" → vague (flag-for-research; never a real limit)
  * 8. Vague → unknown, raw text only
  */
 export function extractUsageLimits(
@@ -134,7 +136,9 @@ export function extractUsageLimits(
             ? "exact"
             : pattern.type === "relative"
               ? "relative"
-              : "fuzzy";
+              : pattern.type === "vague"
+                ? "vague"
+                : "fuzzy";
 
       // Hard numeric and credit limits are directly observed — no billing context needed
       const confidence: Confidence =

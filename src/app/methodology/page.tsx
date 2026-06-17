@@ -11,13 +11,12 @@ export const metadata: Metadata = {
 
 const ESTIMATION_LAYERS: Array<{ n: number; trigger: string; method: string; confidence: string }> = [
   { n: 1, trigger: "Limit unit is tokens", method: "Use the value directly; apply model multiplier if configured.", confidence: "observed" },
-  { n: 2, trigger: "Unlimited / fair-use", method: "Sessions per month × tokens per agentic request (base).", confidence: "assumed" },
-  { n: 3, trigger: "Message limits", method: "Monthly messages × tokens per coding message (low/base/high).", confidence: "inferred" },
-  { n: 4, trigger: "Request / call limits", method: "Monthly requests × tokens per agentic request (low/base/high).", confidence: "inferred" },
-  { n: 5, trigger: "Credit limits", method: "Credits × provider-specific or default credit-to-token mapping.", confidence: "inferred / assumed" },
-  { n: 6, trigger: "Compute units", method: "Units × provider-specific or default compute-unit-to-token mapping.", confidence: "inferred / assumed" },
-  { n: 7, trigger: "Time-window catch-all", method: "Extrapolate proportionally across the reset window; apply model multiplier.", confidence: "window-dependent" },
-  { n: 8, trigger: "Unknown / vague", method: "All estimates null — rendered as “—”, never 0.", confidence: "unknown" },
+  { n: 2, trigger: "Message limits", method: "Monthly messages × tokens per coding message (low/base/high).", confidence: "inferred" },
+  { n: 3, trigger: "Request / call limits", method: "Monthly requests × tokens per agentic request (low/base/high).", confidence: "inferred" },
+  { n: 4, trigger: "Credit limits", method: "Credits × provider-specific or default credit-to-token mapping.", confidence: "inferred / assumed" },
+  { n: 5, trigger: "Compute units", method: "Units × provider-specific or default compute-unit-to-token mapping.", confidence: "inferred / assumed" },
+  { n: 6, trigger: "Time-window catch-all", method: "Extrapolate proportionally across the reset window; apply model multiplier.", confidence: "window-dependent" },
+  { n: 7, trigger: "Unknown / vague", method: "All estimates null — rendered as “—”, never 0. “Unlimited”/fair-use coding claims are treated as unknown — never a synthetic estimate.", confidence: "unknown" },
 ];
 
 const CONFIDENCE_DEFS: Array<{ key: string; dot: string; def: string }> = [
@@ -82,6 +81,30 @@ Value Score = normalized within price tier to 0–100`}
         <p className="text-[12px] text-gray-400">
           Normalized against a reference of 1M quality-adjusted tokens at $20/mo. A free plan has no
           price denominator, so it carries no normalized Value Score.
+        </p>
+      </section>
+
+      {/* Efficiency multiplier */}
+      <section id="efficiency" className="scroll-mt-24 space-y-3">
+        <h2 className="text-xl font-bold text-gray-900">Efficiency multiplier</h2>
+        <p className="text-sm text-gray-600 leading-relaxed">
+          Two models can post the same quality score yet differ sharply in how much compute they burn to
+          finish real work. Artificial Analysis publishes a <strong>cost-per-task</strong> figure — the dollar
+          cost to run its standardized agentic task — and Code Smart folds it into the Value Score as a
+          bounded multiplier. Cheaper-per-task nudges value up; pricier nudges it down. It rides on top of
+          quality and price rather than replacing either, so it can never dominate them.
+        </p>
+        <pre className="rounded-lg bg-gray-900 text-gray-100 text-xs p-4 overflow-x-auto">
+{`reference   = median cost-per-task across models with data
+eff         = clamp(0, 100, reference / costPerTask × 50)   // median model → 50
+multiplier  = 0.85 + (eff / 100) × 0.30                     // bounded [0.85, 1.15]
+Value Score = QAMU × multiplier / price → normalized 0–100`}
+        </pre>
+        <p className="text-[12px] text-gray-400">
+          The reference is self-calibrating: the median model sits at a neutral 1.0×, cheaper models reach up
+          to 1.15×, pricier ones down to 0.85×. When a model has no published cost-per-task — the current
+          state for every model — the multiplier is exactly 1.0 and the Value Score is unchanged. Cost-per-task
+          and the active multiplier surface on each ranking card (“—” until a value is sourced).
         </p>
       </section>
 

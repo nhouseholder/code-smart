@@ -212,7 +212,7 @@ describe("normalizeLimit — compute units", () => {
 });
 
 describe("normalizeLimit — unlimited / fair use", () => {
-  it("produces conservative estimate for fair use", () => {
+  it("fair use yields NO synthetic estimate — null, never the old 400K manufacture", () => {
     const limit = makeLimit({
       limitType: "fair_use",
       rawLimitText: "fair use policy applies",
@@ -221,13 +221,13 @@ describe("normalizeLimit — unlimited / fair use", () => {
 
     const result = normalizeLimit(limit, DEFAULT_CONFIG);
 
-    // 80 sessions × 5000 tokens = 400,000
-    expect(result.estimatedTokens1mo).toBe(400_000);
-    expect(result.confidence).toBe("assumed");
-    expect(result.conversionChain[0].layer).toBe("unlimited_fair_use");
+    // "Unlimited"/fair-use is banned as a coding limit — falls through to unknown.
+    expect(result.estimatedTokens1mo).toBeNull();
+    expect(result.confidence).toBe("unknown");
+    expect(result.conversionChain[0].layer).toBe("unknown");
   });
 
-  it("detects unlimited in raw text", () => {
+  it("'unlimited' raw text yields NO synthetic estimate — null", () => {
     const limit = makeLimit({
       limitType: "rate",
       rawLimitText: "unlimited usage",
@@ -236,7 +236,7 @@ describe("normalizeLimit — unlimited / fair use", () => {
 
     const result = normalizeLimit(limit, DEFAULT_CONFIG);
 
-    expect(result.estimatedTokens1mo).toBe(400_000);
+    expect(result.estimatedTokens1mo).toBeNull();
   });
 });
 

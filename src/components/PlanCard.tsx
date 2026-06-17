@@ -53,7 +53,7 @@ export function PlanCard({ provider, plan, score, featured = false, compact = fa
     .slice(0, 2);
 
   const primaryLimit = plan.usage_limits.find(
-    (l) => l.type !== "unknown" && l.type !== "unlimited"
+    (l) => l.type !== "unknown"
   ) ?? plan.usage_limits[0];
 
   return (
@@ -115,9 +115,7 @@ export function PlanCard({ provider, plan, score, featured = false, compact = fa
         <div className="mb-4 px-3 py-2 bg-gray-50 rounded-lg border border-gray-100">
           <p className="text-[11px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Usage</p>
           <p className="text-xs text-gray-700">
-            {primaryLimit.type === "unlimited"
-              ? "Unlimited"
-              : primaryLimit.type === "unknown"
+            {primaryLimit.type === "unknown"
               ? "Not publicly stated"
               : primaryLimit.value !== null
               ? `${primaryLimit.value.toLocaleString()} ${primaryLimit.unit ?? primaryLimit.type.replace(/_/g, " ")}`

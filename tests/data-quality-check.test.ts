@@ -117,20 +117,21 @@ describe("checkPlanHasNoPrice", () => {
     expect(issues[0].severity).toBe("warning");
   });
 
-  it("skips pay-per-token plans with null monthly_usd (legitimate usage-based billing)", () => {
+  it("skips api-tier pay-per-token plans with null monthly_usd (legitimate usage-based billing)", () => {
     const providers = [
       makeProvider({
         pricing_url: "https://example.com/pricing",
         plans: [
           makePlan({
             id: "pay-per-token-plan",
+            tier: "api",
             pricing: { monthly_usd: null, currency: "USD" },
-            usage_limits: [{ type: "unlimited", applies_to: "all API calls" }],
+            usage_limits: [{ type: "unknown", applies_to: "all API calls" }],
           }),
         ],
       }),
     ];
-    // pay-per-token plans with "unlimited" usage_limits have no monthly flat fee
+    // api-tier pay-per-token plans have no monthly flat fee — skipped by tier.
     expect(checkPlanHasNoPrice(providers)).toHaveLength(0);
   });
 

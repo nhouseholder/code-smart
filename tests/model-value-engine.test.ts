@@ -88,6 +88,8 @@ const mockAAScore = (overrides: Partial<AAModelScore> = {}): AAModelScore => ({
   intelligenceIndex: 75,
   inputPrice: 3.0,    // $3/M input
   outputPrice: 15.0,  // $15/M output
+  costPerTask: null,
+  costPerTaskAccessedDate: null,
   confidence: "observed",
   source: "test",
   ...overrides,

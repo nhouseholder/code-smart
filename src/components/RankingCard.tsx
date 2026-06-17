@@ -57,6 +57,21 @@ export function RankingCard({ row, showCaveats = true, className }: Props) {
             {row.valueScore != null && <span className="text-xs font-medium text-gray-400">/100</span>}
           </div>
           <div className="text-[10px] text-gray-400 uppercase tracking-wide">Value</div>
+          {row.costPerTaskUsd != null && row.efficiencyMultiplier != null && (
+            <div
+              className={cn(
+                "mt-1 inline-block rounded-full px-1.5 py-0.5 text-[10px] font-semibold tabular-nums",
+                row.efficiencyMultiplier > 1
+                  ? "bg-green-50 text-green-700"
+                  : row.efficiencyMultiplier < 1
+                    ? "bg-red-50 text-red-600"
+                    : "bg-gray-100 text-gray-500",
+              )}
+              title="Efficiency multiplier applied to value (from AA cost-per-task)"
+            >
+              ×{row.efficiencyMultiplier.toFixed(2)} eff
+            </div>
+          )}
         </div>
       </div>
 
@@ -72,7 +87,7 @@ export function RankingCard({ row, showCaveats = true, className }: Props) {
         </div>
       </div>
 
-      <dl className="grid grid-cols-3 gap-2 text-center">
+      <dl className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
         <div>
           <dt className="text-[10px] text-gray-400 uppercase tracking-wide">Price</dt>
           <dd className="text-sm font-semibold tabular-nums text-gray-900">{formatPrice(row.monthlyPriceUsd)}</dd>
@@ -81,6 +96,12 @@ export function RankingCard({ row, showCaveats = true, className }: Props) {
           <dt className="text-[10px] text-gray-400 uppercase tracking-wide">WMQ</dt>
           <dd className="text-sm font-semibold tabular-nums text-gray-900">
             {row.weightedModelQuality == null ? "—" : row.weightedModelQuality}
+          </dd>
+        </div>
+        <div>
+          <dt className="text-[10px] text-gray-400 uppercase tracking-wide">Cost/task</dt>
+          <dd className={cn("text-sm font-semibold tabular-nums", row.costPerTaskUsd == null ? "text-gray-400" : "text-gray-900")}>
+            {row.costPerTaskUsd == null ? "—" : `$${row.costPerTaskUsd}`}
           </dd>
         </div>
         <div>

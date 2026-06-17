@@ -35,6 +35,21 @@ import type { AAModelScore, ModelValueEstimate } from "@/types";
 function loadLatestAaScores(db: ReturnType<typeof getDb>): Map<string, AAModelScore> {
   const map = new Map<string, AAModelScore>();
   for (const [modelId, row] of getLatestAAScores(db)) {
+    // price_efficiency_metrics_json carries cost-per-task; null/absent → no-op (efficiency neutral).
+    let costPerTask: number | null = null;
+    let costPerTaskAccessedDate: string | null = null;
+    if (row.priceEfficiencyMetricsJson) {
+      try {
+        const parsed = JSON.parse(row.priceEfficiencyMetricsJson) as {
+          costPerTaskUsd?: number | null;
+          accessedDate?: string | null;
+        };
+        costPerTask = parsed.costPerTaskUsd ?? null;
+        costPerTaskAccessedDate = parsed.accessedDate ?? null;
+      } catch {
+        // malformed JSON → leave neutral; quality-check surfaces it separately
+      }
+    }
     map.set(modelId, {
       modelId: row.modelId,
       observedAt: row.observedAt,
@@ -44,6 +59,8 @@ function loadLatestAaScores(db: ReturnType<typeof getDb>): Map<string, AAModelSc
       speedScore: row.speedScore,
       inputPrice: row.inputPrice,
       outputPrice: row.outputPrice,
+      costPerTask,
+      costPerTaskAccessedDate,
       confidence: row.confidence as AAModelScore["confidence"],
       source: row.source,
     });

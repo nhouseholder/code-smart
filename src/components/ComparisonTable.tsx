@@ -104,7 +104,6 @@ export const COMPARISON_ROWS: FeatureRow[] = [
     render: ({ plan }) => {
       const limit = plan.usage_limits[0];
       if (!limit) return <Minus size={14} className="text-gray-300 mx-auto" />;
-      if (limit.type === "unlimited") return <span className="text-xs text-green-600 font-medium">Unlimited</span>;
       if (limit.type === "unknown") return <span className="text-xs text-gray-400 italic">Not disclosed</span>;
       return <span className="text-xs text-gray-600">{limit.type.replace(/_/g, " ")}</span>;
     },

@@ -32,7 +32,6 @@ export type ConversionLayer =
   | "requests"
   | "credits"
   | "compute_units"
-  | "unlimited_fair_use"
   | "unknown";
 
 export interface ConversionStep {

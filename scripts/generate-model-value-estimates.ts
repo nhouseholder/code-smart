@@ -34,6 +34,8 @@ function loadAaScores(): Map<string, AAModelScore> {
       speedScore: row.speedScore,
       inputPrice: row.inputPrice,
       outputPrice: row.outputPrice,
+      costPerTask: null,
+      costPerTaskAccessedDate: null,
       confidence: row.confidence as AAModelScore["confidence"],
       source: row.source,
     });

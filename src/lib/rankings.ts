@@ -88,6 +88,8 @@ export interface PlanModelRow extends BaseRow {
   qualityAdjustedMonthlyUsage: number | null; // QAMU
   valueScoreRaw: number | null; // QAMU / price, unnormalized
   valueScore: number | null; // normalized 0–100
+  costPerTaskUsd: number | null; // AA cost-per-task (USD); null until seeded
+  efficiencyMultiplier: number | null; // bounded [0.85,1.15]; 1.0 = neutral (no data)
 }
 
 /** A single model ranked by an AA-derived metric (#4–7). One row per model. */
@@ -232,6 +234,8 @@ export function computeAllRankings(inputs: RankingInputs): RankingSet {
       qualityAdjustedMonthlyUsage: qa1mo,
       valueScoreRaw,
       valueScore: est.value_score,
+      costPerTaskUsd: est.cost_per_task_usd,
+      efficiencyMultiplier: est.efficiency_multiplier,
       confidence: est.confidence,
       caveats: confidenceCaveat(est.confidence),
       sourceDates: {

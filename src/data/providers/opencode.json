@@ -60,7 +60,7 @@
       ],
       "usage_limits": [
         {
-          "type": "unlimited",
+          "type": "unknown",
           "value": null,
           "applies_to": "tool itself",
           "notes": "No usage limits imposed by OpenCode — limits are set by your chosen LLM provider and API key quota.",

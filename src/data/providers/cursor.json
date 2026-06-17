@@ -145,15 +145,15 @@
       ],
       "usage_limits": [
         {
-          "type": "unlimited",
+          "type": "unknown",
           "value": null,
-          "applies_to": "autocomplete",
-          "notes": "Unlimited tab completions.",
+          "applies_to": "autocomplete (tab completions)",
+          "notes": "Cursor advertises 'unlimited' tab completions, but that is autocomplete, not agentic coding. The agentic coding cap is the 500 fast-request/month limit below (Cursor has since moved Pro to a usage-based $20/mo compute allowance).",
           "provenance": {
             "url": "https://cursor.com/pricing",
             "accessed_date": "2026-06-14",
             "method": "manual",
-            "confidence": "assumed"
+            "confidence": "unknown"
           }
         },
         {

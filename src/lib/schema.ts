@@ -26,7 +26,6 @@ export const LimitTypeSchema = z.enum([
   "completions_per_month",
   "credits_per_month",
   "compute_units_per_month",
-  "unlimited",
   "unknown",
 ]);
 
@@ -165,6 +164,8 @@ const PlanModelRowSchema = z
     qualityAdjustedMonthlyUsage: z.number().nullable(),
     valueScoreRaw: z.number().nullable(),
     valueScore: z.number().nullable(),
+    costPerTaskUsd: z.number().nullable(),
+    efficiencyMultiplier: z.number().nullable(),
     confidence: ConfidenceSchema,
     caveats: z.array(z.string()),
     sourceDates: RankingSourceDatesSchema,

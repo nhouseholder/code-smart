@@ -129,7 +129,7 @@ function costScore(plan: Plan): number {
 
 /**
  * Estimate effective cost per message.
- * Returns null when limits are unknown (limits = "unlimited" or "unknown" without a count).
+ * Returns null when limits are unknown (limits = "unknown" without a count).
  */
 function estimateCostPerMessage(plan: Plan): number | null {
   const price = effectiveMonthlyPrice(plan);
@@ -171,7 +171,6 @@ export function usageLimitToRow(limit: UsageLimit, planId: string, idx: number):
   let limitType = limit.type as string;
   if (limit.type === "credits_per_month")            limitType = "credits";
   else if (limit.type === "compute_units_per_month") limitType = "compute_units";
-  else if (limit.type === "unlimited")               limitType = "fair_use";
 
   return {
     id: idx,

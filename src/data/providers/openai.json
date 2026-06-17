@@ -267,7 +267,7 @@
       ],
       "usage_limits": [
         {
-          "type": "unlimited",
+          "type": "unknown",
           "value": null,
           "applies_to": "most models",
           "notes": "Marketed as 'unlimited' for most models; fair-use policy applies.",

@@ -213,7 +213,15 @@ export function seed(): void {
       }
 
       // ── Insert plans + plan_model_access + usage_limits ─────────
-      for (const plan of raw.plans) {
+      // Mirror the loader's in-scope rule (data-loader.ts isInScopePlan):
+      // only paid individual/pro plans — free/api/team/enterprise excluded.
+      const inScopePlans = raw.plans.filter(
+        (p) =>
+          (p.tier === "individual" || p.tier === "pro") &&
+          typeof p.pricing.monthly_usd === "number" &&
+          p.pricing.monthly_usd > 0,
+      );
+      for (const plan of inScopePlans) {
         // "annual" if the JSON has annual_monthly_usd (even if identical to monthly)
         const billingInterval =
           plan.pricing.annual_monthly_usd !== null ? "annual" : "monthly";

@@ -108,34 +108,11 @@ function normalizeLimitInternal(
     return windowNormalize(monthlyTokens, "1mo", config, "Direct token limit", chain, assumptions);
   }
 
-  // ── Layer 2: Unlimited / Fair use ───────────────────────────────────
-  if (
-    limit.limitType === "fair_use" ||
-    /unlimited|fair use/i.test(rawText)
-  ) {
-    const monthlyTokens =
-      config.sessionsPerMonth * config.tokensPerAgenticRequest.base;
-    chain.push({
-      layer: "unlimited_fair_use",
-      description: `Fair-use/unlimited — ${config.sessionsPerMonth} sessions × ${config.tokensPerAgenticRequest.base} tokens/session`,
-      inputValue: config.sessionsPerMonth,
-      inputUnit: "sessions",
-      outputTokens: monthlyTokens,
-      targetWindow: "1mo",
-    });
-    assumptions.push(
-      `Fair-use estimate: ${config.sessionsPerMonth} sessions/month × ${config.tokensPerAgenticRequest.base} tokens per agentic session`,
-    );
-    return windowNormalize(
-      monthlyTokens,
-      "1mo",
-      config,
-      "Unlimited/fair-use conservative estimate",
-      chain,
-      assumptions,
-      "assumed",
-    );
-  }
+  // ── Layer 2: (removed) ──────────────────────────────────────────────
+  // "Unlimited"/fair-use is banned as a coding limit — advertised "unlimited"
+  // refers to chat, not coding/agentic usage, which is always capped. We no
+  // longer manufacture a synthetic sessions×tokens estimate from it. Such
+  // limits now fall through to Layer 8 (unknown) → null estimate, shown "—".
 
   // ── Layer 3: Messages ───────────────────────────────────────────────
   if (limitUnit === "messages" && limitValue !== null) {

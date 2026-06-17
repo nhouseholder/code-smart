@@ -135,7 +135,7 @@
       ],
       "usage_limits": [
         {
-          "type": "unlimited",
+          "type": "unknown",
           "value": null,
           "applies_to": "all API calls",
           "notes": "No hard cap — billed per million tokens. 1M token context available on all paid requests.",

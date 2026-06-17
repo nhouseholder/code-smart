@@ -166,10 +166,10 @@ describe("scorePlan — QAMU path", () => {
       .toBeGreaterThan(scorePlan(noLimits, provider).overall_value_score);
   });
 
-  it("unlimited plan produces a score in [0, 100]", () => {
+  it("unknown/unquantifiable limit produces a score in [0, 100] (never a synthetic estimate)", () => {
     const plan = mockPlan({
-      id: "unlimited",
-      usage_limits: [{ type: "unlimited", value: null, provenance: FAKE_PROV }],
+      id: "unknown-limit",
+      usage_limits: [{ type: "unknown", value: null, provenance: FAKE_PROV }],
     });
     const provider: Provider = { ...mockProvider(), plans: [plan] };
     const score = scorePlan(plan, provider);

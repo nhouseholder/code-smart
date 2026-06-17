@@ -127,14 +127,15 @@
       ],
       "usage_limits": [
         {
-          "type": "unlimited",
+          "type": "unknown",
           "value": null,
-          "applies_to": "completions and chat in Xcode",
+          "applies_to": "agentic coding (premium models)",
+          "notes": "Same GitHub Copilot Pro entitlement ($10/mo): $10/mo of token-metered AI Credits at published API rates (usage-based billing effective 2026-06-01); no fixed request quota for agentic coding. IDE/Xcode completions remain unmetered. Annual subscribers retain legacy request-based pricing until renewal. Advertised 'unlimited' applies only to completions, never agentic coding.",
           "provenance": {
-            "url": "https://github.com/features/copilot#pricing",
-            "accessed_date": "2026-06-14",
+            "url": "https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/",
+            "accessed_date": "2026-06-17",
             "method": "manual",
-            "confidence": "assumed"
+            "confidence": "unknown"
           }
         }
       ],
@@ -181,7 +182,7 @@
       ],
       "usage_limits": [
         {
-          "type": "unlimited",
+          "type": "unknown",
           "value": null,
           "applies_to": "completions and chat across all IDEs",
           "provenance": {

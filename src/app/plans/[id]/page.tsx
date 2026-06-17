@@ -42,9 +42,8 @@ function bandOf(price: number | null): PriceBand {
   return "high";
 }
 
-/** Human-readable observed limit value. null/unlimited → never a bare 0. */
+/** Human-readable observed limit value. null/unknown → never a bare 0. */
 function limitValue(l: UsageLimit): string {
-  if (l.type === "unlimited") return "Unlimited";
   if (l.type === "unknown" || l.value === null) return "—";
   const unit = l.unit ? ` ${l.unit}` : "";
   return `${l.value.toLocaleString()}${unit}`;

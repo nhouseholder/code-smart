@@ -61,11 +61,11 @@ describe("extractUsageLimits", () => {
     expect(result[0].confidence).toBe("assumed");
   });
 
-  it("fair use: subject to fair use → assumed", () => {
+  it("fair use / 'unlimited' → vague + unknown (banned as a real coding limit)", () => {
     const result = extractUsageLimits("All plans subject to fair use policy.");
     expect(result).toHaveLength(1);
-    expect(result[0].limitType).toBe("fair_use");
-    expect(result[0].confidence).toBe("assumed");
+    expect(result[0].limitType).toBe("vague");
+    expect(result[0].confidence).toBe("unknown");
   });
 
   it('vague: "Limited usage" → unknown, raw text only', () => {

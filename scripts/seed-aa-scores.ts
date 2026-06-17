@@ -36,6 +36,9 @@ interface AaEntry {
   speedTps: number;
   inputPrice: number | null;
   outputPrice: number | null;
+  // AA cost-per-task (USD) — premium-gated; null until real values are sourced.
+  // Plumbing is live: fill a number here and rankings pick it up on next regen.
+  costPerTaskUsd?: number | null;
 }
 
 // Data sourced from artificialanalysis.ai individual model pages.
@@ -166,7 +169,10 @@ export function seedAaScores(): void {
         outputPrice: entry.outputPrice,
         source: SOURCE,
         confidence: "assumed",
-        priceEfficiencyMetricsJson: null,
+        priceEfficiencyMetricsJson: JSON.stringify({
+          costPerTaskUsd: entry.costPerTaskUsd ?? null,
+          accessedDate: entry.costPerTaskUsd != null ? OBSERVED_AT : null,
+        }),
         rawPayloadJson: JSON.stringify({
           aaSlug: entry.aaSlug,
           speedRawTps: entry.speedTps,

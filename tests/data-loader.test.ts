@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getAllProviders, getAllPlans, getProvider, getFreePlans, effectiveMonthlyPrice } from "../src/lib/data-loader";
+import { getAllProviders, getAllPlans, getProvider, getFreePlans, effectiveMonthlyPrice, isInScopePlan } from "../src/lib/data-loader";
 
 describe("data-loader", () => {
   it("getAllProviders() returns at least 5 providers", () => {
@@ -7,9 +7,26 @@ describe("data-loader", () => {
     expect(providers.length).toBeGreaterThanOrEqual(5);
   });
 
-  it("all providers have at least one plan", () => {
+  it("every returned plan is in-scope (paid individual/pro); providers may have zero", () => {
     for (const p of getAllProviders()) {
-      expect(p.plans.length).toBeGreaterThan(0);
+      for (const plan of p.plans) {
+        expect(isInScopePlan(plan)).toBe(true);
+      }
+    }
+  });
+
+  it("getAllPlans() returns exactly the 10 paid individual/pro survivors", () => {
+    const plans = getAllPlans().map(({ plan }) => plan);
+    expect(plans).toHaveLength(10);
+    for (const plan of plans) {
+      expect(["individual", "pro"]).toContain(plan.tier);
+      expect(typeof plan.pricing.monthly_usd).toBe("number");
+      expect(plan.pricing.monthly_usd as number).toBeGreaterThan(0);
+    }
+    // No excluded tier survives the loader filter.
+    const tiers = new Set(plans.map((p) => p.tier));
+    for (const banned of ["free", "api", "team", "enterprise"]) {
+      expect(tiers.has(banned)).toBe(false);
     }
   });
 

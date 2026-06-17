@@ -70,7 +70,6 @@ export interface ExtractedLimit {
     | "time_windowed"
     | "model_specific"
     | "rate_limit"
-    | "fair_use"
     | "vague";
   limitValue: number | null;
   limitUnit: string | null;
