@@ -1,35 +1,40 @@
 # code-smart — Current State
 
-**Version:** 1.1.1
-**Updated:** 2026-06-16
+**Version:** 1.6.1
+**Updated:** 2026-06-17
 **Branch:** main
 
 ---
 
 ## What just shipped
 
-Session 10 — QA, Testing, Observability (v1.1.1, live at code-smart.pages.dev). Full production-readiness layer: data quality checks, structured logging, CI pipeline, frontend smoke tests, deployment docs.
+Session 11 — three shipped tasks (live at code-smart.pages.dev, v1.6.0 deploy verified). Plan scoping, model-catalog refresh with real AA data, and a home-page quality-by-tier chart.
 
-- `scripts/data-quality-check.ts` — 9 check functions (stale source, null pricing, missing usage estimates, missing AA mappings, stale rankings, low confidence, impossible values, day-over-day price changes, parser extraction failures). Integrated as non-blocking Step 8.5 in `pipeline-daily.ts`.
-- `src/lib/logger.ts` — structured logger with timestamped LogEntry, buffer accumulation, and pipeline warning integration.
-- `playwright.config.ts` + `tests/e2e/smoke.spec.ts` — frontend smoke tests (8 tests: 6 page loads + 5 static API JSON endpoints).
-- `tests/data-quality-check.test.ts` (323 lines) + `tests/logger.test.ts` — unit tests for new code.
-- `docs/ENVIRONMENT.md` + `docs/DEPLOYMENT.md` — environment vars and deployment docs.
-- `.env.example` — env var template.
-- `eslint.config.mjs` — ESLint 9 flat config (`.mjs` avoids CommonJS/ESM conflict).
-- `.github/workflows/daily-check.yml` — added typecheck/lint/test/quality-check steps.
-- `package.json` — 7 new scripts: typecheck, fetch:aa, rankings:compute, quality-check, test:e2e, test:e2e:ui, status.
-- **Bug fixes:** 30-day test boundary → 29 days (UTC midnight edge case), 4 false-positive data quality flags (pay-per-token null prices, model-agnostic null context_length_k) corrected.
-- **Final state:** 277/277 tests pass, 0 quality-check errors, typecheck clean, lint clean.
+- **Home chart (v1.6.0):** `src/components/ValueByTierChart.tsx` + mounted in `src/app/page.tsx` — "Model quality by price tier" bar chart (Budget ≤$15 / Standard $16–49 / Premium ≥$50), 10 plans, WMQ metric, all observed.
+- **byQualityPerBand ranking:** `src/lib/rankings.ts` computes plan×model WMQ rows directly from global AA scores (bypasses same-provider model restriction so cursor/copilot cross-provider refs work); threaded through `schema.ts`, `data-loader.ts`, `generate-rankings.ts`. New tier boundaries in `getPriceBand()`.
+- **Model catalog refresh (v1.5.0):** `scripts/fetch-aa-current-models.ts` — 10→34 models, all ≤6mo (cutoff 2025-12-17), real AA data; `isCurrentModel()` recency filter in `data-loader.ts`; new providers `xai.json`/`deepseek.json`; `seed-aa-scores.ts` now reads `src/data/aa-scores.json` (real coding index, observed). `src/db/seed.ts` made two-pass so cross-provider plan refs resolve the FK.
+- **Plan scoping (v1.4.0):** `isInScopePlan()` loader filter (paid individual/pro only); "unlimited" coding limit banned.
+- **Copilot Pro+ $39** added (fetch-verified) to `github-copilot.json`.
+- **State:** 323 tests pass, 0 quality-check errors, typecheck + lint clean, build green.
+
+## Key constraint discovered this session
+
+Providers don't publish absolute coding usage caps (Copilot=USD credits, Claude=relative 5x/20x, Cursor/ChatGPT=none/403), so honest **value-per-dollar can't be computed** — the home chart uses **WMQ (model quality)** instead. Seeding fabricated limits was explicitly declined.
 
 ---
 
 ## What's next
 
-1. ~~Wire `rankings.json` into the frontend~~ — DONE: `/rankings` page exists (`src/app/rankings/page.tsx`) and is linked in `src/app/layout.tsx`.
-2. Real AA coding/agentic indices — replace proxied values in DB
-3. Wire BenchmarkSparkline AA-snapshot history
-4. Frontend/mobile e2e coverage — viewport tests (375/768/1024), sortable-column + filter-state tests
+1. Real value-per-dollar chart — only viable if absolute coding limits become sourceable; revisit `src/lib/normalization/engine.ts` (already handles requests/messages/credits→tokens) when data exists.
+2. Premium tier is thin (1 plan) — add fetch-verifiable premium individual plans (Claude Max 20x, ChatGPT Pro, Cursor Ultra, Gemini Ultra) when prices are confirmable from source.
+3. Wire `BenchmarkSparkline` AA-snapshot history (multiple `aa-scores.json` observations over time).
+4. Frontend/mobile e2e coverage — viewport tests (375/768/1024) for the new `ValueByTierChart`.
+
+---
+
+## Prior — Session 10 — QA, Testing, Observability (v1.1.1)
+
+Production-readiness layer: `scripts/data-quality-check.ts` (9 checks), `src/lib/logger.ts`, Playwright smoke tests, CI steps, `docs/ENVIRONMENT.md`+`docs/DEPLOYMENT.md`. Real AA coding/agentic indices (a then-open item) were delivered in Session 11.
 
 ---
 
