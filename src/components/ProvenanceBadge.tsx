@@ -1,5 +1,5 @@
 import type { Provenance, Confidence } from "@/types";
-import { confidenceLabel, confidenceDotColor, daysAgo, isStale, cn } from "@/lib/utils";
+import { confidenceLabel, confidenceDotColor, daysAgo, isStale, effectiveConfidence, cn } from "@/lib/utils";
 import { ExternalLink, Clock } from "lucide-react";
 
 type Variant = "confidence" | "freshness" | "source";
@@ -33,8 +33,10 @@ export function ProvenanceBadge({
     return <SourceLink url={provenance.url} date={showDate ? provenance.accessed_date : undefined} />;
   }
 
-  const dotColor = confidenceDotColor(provenance.confidence);
-  const label = confidenceLabel(provenance.confidence);
+  // Auto-downgrade to "stale" when the source is >90d old (never an upgrade).
+  const effConf = effectiveConfidence(provenance);
+  const dotColor = confidenceDotColor(effConf);
+  const label = confidenceLabel(effConf);
   const age = daysAgo(provenance.accessed_date);
 
   if (compact) {
@@ -58,7 +60,7 @@ export function ProvenanceBadge({
       className={cn(
         "inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border text-xs font-medium",
         "transition-colors cursor-pointer select-none",
-        PILL_BY_CONFIDENCE[provenance.confidence],
+        PILL_BY_CONFIDENCE[effConf],
       )}
     >
       <span className={cn("inline-block w-1.5 h-1.5 rounded-full flex-shrink-0", dotColor)} />

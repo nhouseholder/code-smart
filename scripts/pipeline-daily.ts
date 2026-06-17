@@ -79,6 +79,34 @@ function releaseLock(): void {
 
 // ── runner ─────────────────────────────────────────────────────────────────
 
+const RETRY_ATTEMPTS = 2; // total tries per step on transient non-zero exit
+
+/** Synchronous sleep (main() is sync; spawnSync blocks). Used for retry backoff. */
+function sleepSync(ms: number): void {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}
+
+/**
+ * Run a tsx script via spawnSync with bounded retry + linear backoff on a
+ * non-zero exit. Returns true on the first success. Idempotent steps only
+ * (scrape/normalize/rank/value-estimates) — all writes are upserts keyed by
+ * observedAt, so a retried partial run does not duplicate data.
+ */
+function spawnWithRetry(label: string, argv: string[], attempts = RETRY_ATTEMPTS): boolean {
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    const result = spawnSync("npx", argv, { stdio: "inherit", cwd: ROOT, env: { ...process.env } });
+    if (result.status === 0) return true;
+    if (attempt < attempts) {
+      const delayMs = 2000 * attempt; // 2s, 4s, …
+      console.warn(`  ⚠ ${label} exited ${result.status} — retry ${attempt + 1}/${attempts} in ${delayMs / 1000}s`);
+      sleepSync(delayMs);
+    } else {
+      console.error(`  ✗ ${label} failed after ${attempts} attempt(s)`);
+    }
+  }
+  return false;
+}
+
 function run(label: string, cmd: string, extraArgs: string[] = []): boolean {
   const fullArgs = [...extraArgs];
   if (DRY_RUN) fullArgs.push("--dry-run");
@@ -94,13 +122,9 @@ function run(label: string, cmd: string, extraArgs: string[] = []): boolean {
     return true;
   }
 
-  const result = spawnSync("npx", ["tsx", cmd, ...fullArgs], {
-    stdio: "inherit",
-    cwd: ROOT,
-    env: { ...process.env },
-  });
-
-  return result.status === 0;
+  // stale-check / validate are read-only assertions — run once, no retry.
+  const noRetry = cmd.includes("stale-check") || cmd.includes("validate");
+  return spawnWithRetry(label, ["tsx", cmd, ...fullArgs], noRetry ? 1 : RETRY_ATTEMPTS);
 }
 
 // ── AA cache check ─────────────────────────────────────────────────────────
@@ -359,11 +383,9 @@ function main(): void {
     if (success) {
       console.log("\n▶ generate:rankings");
       if (!DRY_RUN) {
-        const rankResult = spawnSync("npx", ["tsx", "scripts/generate-rankings.ts"], {
-          stdio: "inherit", cwd: ROOT, env: { ...process.env },
-        });
+        const rankOk = spawnWithRetry("generate:rankings", ["tsx", "scripts/generate-rankings.ts"]);
         stepsRun.push("rankings");
-        if (rankResult.status !== 0) {
+        if (!rankOk) {
           success = false;
           errorMessage = "generate-rankings step failed";
         }

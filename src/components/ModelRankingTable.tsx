@@ -62,7 +62,7 @@ export function ModelRankingTable({ rows, metricLabel, emptyMessage = "No models
 
   return (
     <div className="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
-      <table className="w-full text-sm min-w-[520px]">
+      <table className="w-full text-sm min-w-[440px]">
         <thead>
           <tr className="border-b border-gray-200 bg-gray-50 text-xs text-gray-500">
             <th className="py-2.5 px-3 text-left w-12">#</th>

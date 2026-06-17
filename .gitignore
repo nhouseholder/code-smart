@@ -29,3 +29,7 @@ scripts/reports/
 
 # SQLite database (build artifact, not source)
 /data/
+
+# Playwright artifacts
+test-results/
+playwright-report/

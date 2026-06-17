@@ -7,6 +7,7 @@ import type {
 } from "@/types";
 import { effectiveMonthlyPrice } from "./data-loader";
 import { computeWMQ } from "./model-value-engine";
+import { effectiveConfidence } from "./utils";
 
 // ─── Version ──────────────────────────────────────────────────────────────────
 // Independent axis from ENGINE_VERSION: bumps when the *aggregation* rules change
@@ -200,7 +201,7 @@ export function computeAllRankings(inputs: RankingInputs): RankingSet {
   function usageConfidence(plan: Plan): Confidence {
     const confs = plan.usage_limits
       .filter((ul) => ul.type !== "unknown" || ul.value !== null)
-      .map((ul) => ul.provenance?.confidence ?? "unknown");
+      .map((ul) => (ul.provenance ? effectiveConfidence(ul.provenance) : "unknown"));
     return confs.length === 0 ? "unknown" : weakestConf(confs);
   }
 
@@ -443,7 +444,9 @@ export function computeAllRankings(inputs: RankingInputs): RankingSet {
       const repEst = (estimatesByPlan[plan.id] ?? [])[0];
       const aa = repEst ? aaScores.get(repEst.modelId) ?? null : null;
       const aaConf: Confidence = aa?.confidence ?? "unknown";
-      const pricingConf: Confidence = plan.pricing.provenance?.confidence ?? "unknown";
+      const pricingConf: Confidence = plan.pricing.provenance
+        ? effectiveConfidence(plan.pricing.provenance)
+        : "unknown";
       const usageConf: Confidence = usageConfidence(plan);
 
       let u = 0;

@@ -4,6 +4,7 @@ import { normalizeLimit } from "./normalization/engine";
 import { DEFAULT_CONFIG } from "./normalization/config";
 import type { UsageLimitRow } from "./normalization/types";
 import { computeWMQ } from "./model-value-engine";
+import { effectiveConfidence } from "./utils";
 
 // ─── Weights ─────────────────────────────────────────────────────────────────
 // Adjustable without changing scoring logic.
@@ -182,7 +183,7 @@ export function usageLimitToRow(limit: UsageLimit, planId: string, idx: number):
     limitValue: limit.value,
     limitUnit,
     resetWindow,
-    confidence: limit.provenance.confidence,
+    confidence: effectiveConfidence(limit.provenance),
     notes: null,
   };
 }

@@ -1,5 +1,6 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { getAllPlans } from "@/lib/data-loader";
 import { scoreAllPlans } from "@/lib/value-scorer";
@@ -54,7 +55,9 @@ export default function ComparePage() {
           No plans available to compare yet.
         </div>
       ) : (
-        <PlanComparisonTable entries={entries} />
+        <Suspense fallback={<div className="rounded-2xl border border-gray-200 bg-gray-50 p-10 text-center text-sm text-gray-500">Loading comparison…</div>}>
+          <PlanComparisonTable entries={entries} />
+        </Suspense>
       )}
     </div>
   );

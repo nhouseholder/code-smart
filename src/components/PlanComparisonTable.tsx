@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import type { Confidence } from "@/types";
 import { cn, effectiveMonthlyPrice } from "@/lib/utils";
 import { type Entry, COMPARISON_ROWS } from "./ComparisonTable";
@@ -24,6 +25,42 @@ function bandOf(price: number | null): PriceBand {
 
 const CONFIDENCE_ORDER: Confidence[] = ["observed", "inferred", "assumed", "stale", "unknown"];
 
+/**
+ * Diff signatures keyed by COMPARISON_ROWS feature label. Each returns a stable
+ * primitive that represents the cell's underlying value, so diff-mode can detect
+ * whether selected plans actually differ on a row without inspecting rendered JSX.
+ * Rows with no accessor here are never highlighted (and never falsely flagged).
+ */
+const DIFF_ACCESSORS: Record<string, (e: Entry) => string | number | boolean | null> = {
+  "Monthly price": (e) => effectiveMonthlyPrice(e.plan),
+  "Annual price": (e) => e.plan.pricing.annual_monthly_usd ?? null,
+  "Per seat": (e) => e.plan.pricing.is_per_seat,
+  "Overall score": (e) => e.score.overall_value_score,
+  "Benchmark index": (e) => e.score.benchmark_quality_index,
+  "WMQ score": (e) => e.engineBest?.weighted_model_quality ?? null,
+  "QAMU value score": (e) => e.engineBest?.value_score ?? null,
+  "Usage type": (e) => e.plan.usage_limits[0]?.type ?? null,
+  "Agent / Agentic": (e) => e.plan.features.agent_capabilities,
+  "Web search": (e) => e.plan.features.web_search,
+  "File uploads": (e) => e.plan.features.file_uploads,
+  "CLI access": (e) => e.plan.features.cli_access,
+  "API access": (e) => e.plan.features.api_access,
+  "Priority queue": (e) => e.plan.features.priority_access,
+  "Custom instructions": (e) => e.plan.features.custom_instructions,
+  "Team features": (e) => e.plan.features.team_features,
+  "SSO": (e) => e.plan.features.sso,
+  "IDE integrations": (e) => e.plan.features.ide_integrations.length,
+  "Context length": (e) => e.plan.features.code_context_length_k ?? null,
+};
+
+/** True when the selected entries do not all share the same value for `label`. */
+function rowDiffers(label: string, entries: Entry[]): boolean {
+  const accessor = DIFF_ACCESSORS[label];
+  if (!accessor || entries.length < 2) return false;
+  const first = accessor(entries[0]);
+  return entries.some((e) => accessor(e) !== first);
+}
+
 interface Props {
   entries: Entry[];
 }
@@ -34,18 +71,52 @@ interface Props {
  * (reused from ComparisonTable). Null values render "—", never 0.
  */
 export function PlanComparisonTable({ entries }: Props) {
-  const [search, setSearch] = useState("");
-  const [providerId, setProviderId] = useState<string>("all");
-  const [band, setBand] = useState<PriceBand | "all">("all");
-  const [confidence, setConfidence] = useState<Confidence | "all">("all");
+  const router = useRouter();
+  const pathname = usePathname();
+  const params = useSearchParams();
 
   // Default selection: top entries by overall value score, capped at MAX_PICK.
-  const [selected, setSelected] = useState<string[]>(() =>
-    [...entries]
-      .sort((a, b) => b.score.overall_value_score - a.score.overall_value_score)
-      .slice(0, Math.min(3, entries.length))
-      .map((e) => e.plan.id),
+  const defaultSelection = useMemo(
+    () =>
+      [...entries]
+        .sort((a, b) => b.score.overall_value_score - a.score.overall_value_score)
+        .slice(0, Math.min(3, entries.length))
+        .map((e) => e.plan.id),
+    [entries],
   );
+
+  // Initialize all filter + selection state from the URL query (deep-linkable).
+  const [search, setSearch] = useState(() => params.get("q") ?? "");
+  const [providerId, setProviderId] = useState<string>(() => params.get("provider") ?? "all");
+  const [band, setBand] = useState<PriceBand | "all">(() => (params.get("band") as PriceBand | "all") ?? "all");
+  const [confidence, setConfidence] = useState<Confidence | "all">(
+    () => (params.get("conf") as Confidence | "all") ?? "all",
+  );
+  const [diffOnly, setDiffOnly] = useState(() => params.get("diff") === "1");
+  const [selected, setSelected] = useState<string[]>(() => {
+    const sel = params.get("sel");
+    if (!sel) return defaultSelection;
+    const valid = new Set(entries.map((e) => e.plan.id));
+    const parsed = sel.split(",").filter((id) => valid.has(id));
+    return parsed.length >= MIN_PICK ? parsed.slice(0, MAX_PICK) : defaultSelection;
+  });
+
+  // Mirror state → URL so the current view is shareable/bookmarkable. Only
+  // non-default values are written, keeping clean URLs for the default view.
+  useEffect(() => {
+    const next = new URLSearchParams();
+    if (search.trim()) next.set("q", search.trim());
+    if (providerId !== "all") next.set("provider", providerId);
+    if (band !== "all") next.set("band", band);
+    if (confidence !== "all") next.set("conf", confidence);
+    if (diffOnly) next.set("diff", "1");
+    if (selected.join(",") !== defaultSelection.join(",")) next.set("sel", selected.join(","));
+    const qs = next.toString();
+    const current = params.toString();
+    if (qs !== current) {
+      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+    }
+  }, [search, providerId, band, confidence, diffOnly, selected, defaultSelection, pathname, params, router]);
 
   const providers = useMemo(() => {
     const seen = new Map<string, string>();
@@ -68,6 +139,32 @@ export function PlanComparisonTable({ entries }: Props) {
     () => selected.map((id) => entries.find((e) => e.plan.id === id)).filter((e): e is Entry => !!e),
     [selected, entries],
   );
+
+  // Per-row diff flags + the rows visible under the current diff filter.
+  // In "differences only" mode, feature rows that match across all selected
+  // plans are hidden, and section headers with no surviving rows drop out.
+  const visibleRows = useMemo(() => {
+    const flagged = COMPARISON_ROWS.map((row) => ({
+      row,
+      differs: row.kind === "feature" ? rowDiffers(row.label, selectedEntries) : false,
+    }));
+    if (!diffOnly) return flagged;
+    const kept: typeof flagged = [];
+    for (let i = 0; i < flagged.length; i++) {
+      const item = flagged[i];
+      if (item.row.kind === "feature") {
+        if (item.differs) kept.push(item);
+        continue;
+      }
+      // Section: keep only if a differing feature row follows before the next section.
+      let hasDiff = false;
+      for (let j = i + 1; j < flagged.length && flagged[j].row.kind === "feature"; j++) {
+        if (flagged[j].differs) { hasDiff = true; break; }
+      }
+      if (hasDiff) kept.push(item);
+    }
+    return kept;
+  }, [selectedEntries, diffOnly]);
 
   function toggle(id: string) {
     setSelected((prev) => {
@@ -138,14 +235,25 @@ export function PlanComparisonTable({ entries }: Props) {
             </span>
             {atMax && " (max — deselect one to add another)"}
           </span>
-          {selected.length > MIN_PICK && (
-            <button
-              onClick={() => setSelected((p) => p.slice(0, MIN_PICK))}
-              className="text-brand-600 hover:text-brand-700 cursor-pointer transition-colors"
-            >
-              Reset to {MIN_PICK}
-            </button>
-          )}
+          <div className="flex items-center gap-3">
+            <label className="flex items-center gap-1.5 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={diffOnly}
+                onChange={(e) => setDiffOnly(e.target.checked)}
+                className="h-3.5 w-3.5 rounded border-gray-300 text-brand-600 focus:ring-brand-500/40 cursor-pointer"
+              />
+              <span>Differences only</span>
+            </label>
+            {selected.length > MIN_PICK && (
+              <button
+                onClick={() => setSelected((p) => p.slice(0, MIN_PICK))}
+                className="text-brand-600 hover:text-brand-700 cursor-pointer transition-colors"
+              >
+                Reset to {MIN_PICK}
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Selectable list */}
@@ -200,7 +308,7 @@ export function PlanComparisonTable({ entries }: Props) {
         </div>
       ) : (
         <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
-          <table className="w-full text-sm min-w-[640px]">
+          <table className="w-full text-sm min-w-[480px]">
             <thead>
               <tr className="border-b border-gray-200 bg-gray-50">
                 <th className="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wide w-40 sticky left-0 bg-gray-50 z-10">
@@ -231,32 +339,54 @@ export function PlanComparisonTable({ entries }: Props) {
               </tr>
             </thead>
             <tbody>
-              {COMPARISON_ROWS.map((row, i) => {
-                if (row.kind === "section") {
+              {diffOnly && !visibleRows.some((v) => v.row.kind === "feature") ? (
+                <tr>
+                  <td
+                    colSpan={selectedEntries.length + 1}
+                    className="py-8 px-4 text-center text-sm text-gray-500"
+                  >
+                    These plans are identical across every compared feature.
+                  </td>
+                </tr>
+              ) : (
+                visibleRows.map(({ row, differs }, i) => {
+                  if (row.kind === "section") {
+                    return (
+                      <tr key={`section-${i}`} className="bg-gray-50/50">
+                        <td
+                          colSpan={selectedEntries.length + 1}
+                          className="py-2 px-4 text-[11px] font-semibold text-gray-400 uppercase tracking-wider border-t border-gray-100 sticky left-0"
+                        >
+                          {row.label}
+                        </td>
+                      </tr>
+                    );
+                  }
                   return (
-                    <tr key={`section-${i}`} className="bg-gray-50/50">
+                    <tr
+                      key={row.label}
+                      className={cn(
+                        "border-t border-gray-100",
+                        differs ? "bg-amber-50/40" : "even:bg-gray-50/30",
+                      )}
+                    >
                       <td
-                        colSpan={selectedEntries.length + 1}
-                        className="py-2 px-4 text-[11px] font-semibold text-gray-400 uppercase tracking-wider border-t border-gray-100 sticky left-0"
+                        className={cn(
+                          "py-2.5 px-4 text-xs font-medium sticky left-0 bg-inherit",
+                          differs ? "text-amber-700" : "text-gray-600",
+                        )}
                       >
                         {row.label}
                       </td>
+                      {selectedEntries.map((entry) => (
+                        <td key={entry.plan.id} className="py-2.5 px-3 text-center">
+                          {row.render(entry)}
+                        </td>
+                      ))}
                     </tr>
                   );
-                }
-                return (
-                  <tr key={row.label} className="border-t border-gray-100 even:bg-gray-50/30">
-                    <td className="py-2.5 px-4 text-xs text-gray-600 font-medium sticky left-0 bg-inherit">
-                      {row.label}
-                    </td>
-                    {selectedEntries.map((entry) => (
-                      <td key={entry.plan.id} className="py-2.5 px-3 text-center">
-                        {row.render(entry)}
-                      </td>
-                    ))}
-                  </tr>
-                );
-              })}
+                })
+              )}
             </tbody>
           </table>
         </div>

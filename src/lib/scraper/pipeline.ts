@@ -2,7 +2,8 @@ import { chromium, Browser } from "playwright";
 import { eq, and, desc } from "drizzle-orm";
 
 import type { DB, PipelineOptions, ExtractedPrice } from "./types";
-import { fetchStatic, fetchWithPlaywright, fetchWithRetry } from "./fetcher";
+import { fetchStatic, fetchWithPlaywright, fetchWithRetry, SCRAPER_USER_AGENT } from "./fetcher";
+import { RobotsCache } from "./robots";
 import { extractReadableText, computeContentHash } from "./text-extractor";
 import { extractPrices } from "./price-extractor";
 import { extractUsageLimits } from "./limit-extractor";
@@ -97,6 +98,7 @@ export async function runScrapePipeline(
   processed: number;
   changed: number;
   errors: number;
+  skipped: number;
   prices: number;
   limits: number;
   modelMentions: number;
@@ -110,13 +112,17 @@ export async function runScrapePipeline(
 
   if (filtered.length === 0) {
     console.log("No enabled source pages to scrape.");
-    return { processed: 0, changed: 0, errors: 0, prices: 0, limits: 0, modelMentions: 0 };
+    return { processed: 0, changed: 0, errors: 0, skipped: 0, prices: 0, limits: 0, modelMentions: 0 };
   }
 
   let browser: Browser | null = null;
   let processed = 0;
   let changed = 0;
   let errors = 0;
+  let skipped = 0;
+
+  // robots.txt gate — one cache per run, fetched per-host on first use.
+  const robots = new RobotsCache(SCRAPER_USER_AGENT);
   let totalPrices = 0;
   let totalLimits = 0;
   let totalModelMentions = 0;
@@ -137,14 +143,30 @@ export async function runScrapePipeline(
     }
 
     for (const page of filtered) {
-      // Rate limit: sleep between pages (before the fetch, skip on first)
-      if (processed > 0 && filtered.length > 1) {
-        await new Promise((r) => setTimeout(r, RATE_LIMIT_MS));
-      }
-
       console.log(
         `\n[${processed + 1}/${filtered.length}] ${page.providerId} — ${page.pageType} (${page.url})`,
       );
+
+      // robots.txt compliance — skip (don't fail) any path our UA is disallowed from.
+      const robotsRules = await robots.rulesFor(page.url);
+      let robotsPath = "/";
+      try {
+        robotsPath = new URL(page.url).pathname;
+      } catch {
+        /* malformed URL — treated as allowed below */
+      }
+      if (!robotsRules.isAllowed(robotsPath)) {
+        console.log(`  ⏭ Skipped: disallowed by robots.txt for our user-agent`);
+        skipped++;
+        continue;
+      }
+
+      // Rate limit: honor the greater of our 3s floor and the host's Crawl-Delay.
+      // Sleep before the fetch; skip on the first processed page.
+      if (processed > 0 && filtered.length > 1) {
+        const crawlDelayMs = (robotsRules.crawlDelaySec ?? 0) * 1000;
+        await new Promise((r) => setTimeout(r, Math.max(RATE_LIMIT_MS, crawlDelayMs)));
+      }
 
       try {
         // 1. Create scrape run
@@ -361,8 +383,8 @@ export async function runScrapePipeline(
   }
 
   console.log(
-    `\nDone. ${processed} pages, ${changed} changed, ${errors} errors. ${totalPrices} prices, ${totalLimits} limits, ${totalModelMentions} model mentions.`,
+    `\nDone. ${processed} pages, ${changed} changed, ${errors} errors, ${skipped} skipped (robots.txt). ${totalPrices} prices, ${totalLimits} limits, ${totalModelMentions} model mentions.`,
   );
 
-  return { processed, changed, errors, prices: totalPrices, limits: totalLimits, modelMentions: totalModelMentions };
+  return { processed, changed, errors, skipped, prices: totalPrices, limits: totalLimits, modelMentions: totalModelMentions };
 }

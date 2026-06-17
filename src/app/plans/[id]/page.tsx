@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPlans } from "@/lib/data-loader";
-import { effectiveMonthlyPrice, formatPrice, formatTokens } from "@/lib/utils";
+import { effectiveMonthlyPrice, formatPrice, formatTokens, effectiveConfidence } from "@/lib/utils";
 import type { ModelValueEstimate, UsageLimit, Plan, Provider } from "@/types";
 import { ProviderBadge } from "@/components/ProviderBadge";
 import { ModelBadge } from "@/components/ModelBadge";
@@ -117,7 +117,7 @@ export default async function PlanDetailPage({ params }: { params: Promise<{ id:
           </div>
         </div>
         <div className="mt-3 flex items-center gap-3">
-          <ConfidenceBadge confidence={plan.pricing.provenance.confidence} />
+          <ConfidenceBadge confidence={effectiveConfidence(plan.pricing.provenance)} />
           <SourceLink url={plan.pricing.provenance.url} date={plan.pricing.provenance.accessed_date} />
         </div>
         {plan.pricing.notes && <p className="text-[12px] text-gray-400 mt-2">{plan.pricing.notes}</p>}
@@ -171,7 +171,7 @@ export default async function PlanDetailPage({ params }: { params: Promise<{ id:
                     <td className="py-2.5 px-3 text-gray-700">{l.type.replace(/_/g, " ")}</td>
                     <td className="py-2.5 px-3 font-semibold tabular-nums text-gray-900">{limitValue(l)}</td>
                     <td className="py-2.5 px-3 text-gray-500">{l.applies_to ?? "—"}</td>
-                    <td className="py-2.5 px-3"><ConfidenceBadge confidence={l.provenance.confidence} /></td>
+                    <td className="py-2.5 px-3"><ConfidenceBadge confidence={effectiveConfidence(l.provenance)} /></td>
                     <td className="py-2.5 px-3 text-right"><SourceLink url={l.provenance.url} date={l.provenance.accessed_date} /></td>
                   </tr>
                 ))}

@@ -7,6 +7,10 @@ import { FetchResult } from "./types";
 const DEFAULT_TIMEOUT_MS = 30_000;
 const MAX_REDIRECTS = 5;
 
+/** Truthful UA sent on every scrape request; also used for robots.txt matching. */
+export const SCRAPER_USER_AGENT =
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+
 /**
  * Fetch a URL using Node's built-in `fetch()`.
  * Returns raw HTML; caller can pass to `text-extractor.ts` for cleanup.
@@ -26,8 +30,7 @@ export async function fetchStatic(
       const resp = await fetch(currentUrl, {
         signal: controller.signal,
         headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+          "User-Agent": SCRAPER_USER_AGENT,
           Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         },
         redirect: "manual",
@@ -112,8 +115,7 @@ export async function fetchWithPlaywright(
   try {
     context = await browser.newContext({
       viewport: { width: 1440, height: 900 },
-      userAgent:
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+      userAgent: SCRAPER_USER_AGENT,
     });
 
     const page = await context.newPage();

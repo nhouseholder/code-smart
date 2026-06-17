@@ -26,11 +26,10 @@ Session 10 — QA, Testing, Observability (v1.1.1, live at code-smart.pages.dev)
 
 ## What's next
 
-1. Wire `rankings.json` into the frontend — render a rankings page / sidebar widget
-2. 375px mobile pass
-3. Real AA coding/agentic indices — replace proxied values in DB
-4. Wire BenchmarkSparkline AA-snapshot history
-5. `/compare` diff-highlight + filter polish
+1. ~~Wire `rankings.json` into the frontend~~ — DONE: `/rankings` page exists (`src/app/rankings/page.tsx`) and is linked in `src/app/layout.tsx`.
+2. Real AA coding/agentic indices — replace proxied values in DB
+3. Wire BenchmarkSparkline AA-snapshot history
+4. Frontend/mobile e2e coverage — viewport tests (375/768/1024), sortable-column + filter-state tests
 
 ---
 

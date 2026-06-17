@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import type { Confidence, Plan } from "@/types";
+import type { Confidence, Plan, Provenance } from "@/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -67,6 +67,38 @@ export function isStale(accessedDate: string): boolean {
   const now = new Date();
   const days = (now.getTime() - accessed.getTime()) / (1000 * 60 * 60 * 24);
   return days > 90;
+}
+
+/**
+ * Ordered confidence ranking (higher = stronger). Mirrors the ordered enum
+ * `observed > inferred > assumed > stale > unknown`. Kept here (not imported
+ * from rankings.ts) so utils stays a leaf module with no scoring deps.
+ */
+const CONFIDENCE_RANK: Record<Confidence, number> = {
+  observed: 4,
+  inferred: 3,
+  assumed: 2,
+  stale: 1,
+  unknown: 0,
+};
+
+/**
+ * Build-time staleness derivation. If `accessedDate` is >90 days old, the
+ * effective confidence is the *weaker* of the declared confidence and "stale"
+ * — never an upgrade. A fresh source returns its declared confidence
+ * unchanged, and a manually-set "stale"/"unknown" is always preserved.
+ *
+ * No JSON mutation: callers apply this at the scoring/data-loader boundary so
+ * rankings and badges auto-reflect staleness without rewriting source files.
+ */
+export function weakenForStaleness(declared: Confidence, accessedDate: string): Confidence {
+  if (!isStale(accessedDate)) return declared;
+  return CONFIDENCE_RANK[declared] <= CONFIDENCE_RANK.stale ? declared : "stale";
+}
+
+/** Effective confidence for a provenance record, applying the >90d staleness downgrade. */
+export function effectiveConfidence(p: Provenance): Confidence {
+  return weakenForStaleness(p.confidence, p.accessed_date);
 }
 
 export function daysAgo(dateStr: string): number {

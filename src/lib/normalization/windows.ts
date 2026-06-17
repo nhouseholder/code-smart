@@ -26,15 +26,6 @@ export const TARGET_HOURS: Record<TargetWindow, number> = {
 const TARGET_WINDOWS: TargetWindow[] = ["5h", "24h", "1w", "1mo"];
 
 /**
- * Determine whether a value unit is an "active-use" metric (messages, requests, calls).
- * Active-use metrics should be scaled by working days only, not calendar days.
- */
-function isActiveUseUnit(unit: string | null): boolean {
-  if (!unit) return false;
-  return ["messages", "requests", "calls", "queries", "completions"].includes(unit.toLowerCase());
-}
-
-/**
  * Compute confidence level based on extrapolation ratio and whether we
  * are converting units (e.g., messages → tokens) in addition to window scaling.
  */
@@ -52,11 +43,13 @@ function computeConfidence(
 }
 
 /**
- * Convert a value from one reset window to a target window.
- *
- * For active-use metrics (messages, requests), scales by working days
- * when crossing calendar boundaries. For raw token/byte values, scales
+ * Convert a value from one reset window to a target window by scaling
  * proportionally by wall-clock hours.
+ *
+ * NOTE: This is a pure wall-clock proportional conversion. Unit-aware
+ * adjustments (e.g. working-days scaling for message/request metrics) are the
+ * caller's responsibility and are applied in engine.ts before this window
+ * conversion — this function intentionally has no knowledge of units.
  */
 export function extrapolateToTargetWindow(
   value: number,
@@ -73,20 +66,13 @@ export function extrapolateToTargetWindow(
 
   const fromHours = WINDOW_HOURS[fromWindow];
   const toHours = TARGET_HOURS[toWindow];
-  const rawRatio = fromHours / toHours;
 
   let result: number;
-  const hasUnitConversion = false; // window-only, no unit crossing
 
   // Same window (by hours, not by string key — "1d" and "24h" are equivalent)
   if (fromHours === toHours) {
     return { value, confidence: "observed", notes: ["Direct window match"] };
   }
-
-  // Scale by working days when converting from a daily-or-larger window
-  // and the source is a smaller window than the target
-  const fromIsActive = false; // This function doesn't know about units — caller handles unit conversion
-  const useWorkingDays = isActiveUseUnit(null) && rawRatio < 1;
 
   if (fromHours < toHours) {
     // Scaling up: need to multiply

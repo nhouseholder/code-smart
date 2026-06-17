@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllProviders, getAllPlans, getMethodologyMeta, getRankings } from "@/lib/data-loader";
-import { daysAgo, isStale } from "@/lib/utils";
+import { daysAgo, isStale, effectiveConfidence } from "@/lib/utils";
 import { FreshnessBadge, ConfidenceBadge, SourceLink } from "@/components/ProvenanceBadge";
 import type { PlanModelRow } from "@/lib/rankings";
 
@@ -39,12 +39,14 @@ export default function FreshnessPage() {
   const assumptions = getAllPlans().flatMap(({ provider, plan }) => {
     const rows: Array<{ key: string; provider: string; plan: string; field: string; confidence: "assumed" | "stale"; url: string; date: string }> = [];
     const flag = (c: string): c is "assumed" | "stale" => c === "assumed" || c === "stale";
-    if (flag(plan.pricing.provenance.confidence)) {
-      rows.push({ key: `${plan.id}-pricing`, provider: provider.name, plan: plan.name, field: "Pricing", confidence: plan.pricing.provenance.confidence, url: plan.pricing.provenance.url, date: plan.pricing.provenance.accessed_date });
+    const pricingConf = effectiveConfidence(plan.pricing.provenance);
+    if (flag(pricingConf)) {
+      rows.push({ key: `${plan.id}-pricing`, provider: provider.name, plan: plan.name, field: "Pricing", confidence: pricingConf, url: plan.pricing.provenance.url, date: plan.pricing.provenance.accessed_date });
     }
     for (const l of plan.usage_limits) {
-      if (flag(l.provenance.confidence)) {
-        rows.push({ key: `${plan.id}-${l.type}`, provider: provider.name, plan: plan.name, field: l.type.replace(/_/g, " "), confidence: l.provenance.confidence, url: l.provenance.url, date: l.provenance.accessed_date });
+      const limitConf = effectiveConfidence(l.provenance);
+      if (flag(limitConf)) {
+        rows.push({ key: `${plan.id}-${l.type}`, provider: provider.name, plan: plan.name, field: l.type.replace(/_/g, " "), confidence: limitConf, url: l.provenance.url, date: l.provenance.accessed_date });
       }
     }
     return rows;

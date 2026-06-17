@@ -7,9 +7,9 @@
 - DB (offline only): Better-SQLite3 + Drizzle ORM (12 tables)
 - Scraping: Playwright (headless Chromium)
 - Testing: Vitest (in-process, no browser)
-- Deploy: Cloudflare Workers via opennextjs-cloudflare
+- Deploy: Cloudflare **Pages** — 100% static export (`output: "export"`). NOT Workers/OpenNext.
 - Version files: `package.json` (version field)
-- Deploy command: split `wrangler versions upload` → `wrangler versions deploy <UUID>@100%` (combined `wrangler deploy` fails — see Domain Rules)
+- Deploy command: `pnpm build` → `wrangler pages deploy out --project-name=code-smart --branch=main`. Do NOT use `wrangler deploy` or `wrangler versions` (those are for Workers — wrong target here).
 
 ## Architecture & Key Files
 - **Production data flow**: `src/data/providers/*.json` → `src/lib/data-loader.ts` → `src/lib/value-scorer.ts` → Next.js static export (`output: "export"`) → CF Pages (no runtime DB)
