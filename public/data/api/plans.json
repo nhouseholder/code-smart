@@ -277,15 +277,16 @@
       ],
       "usage_limits": [
         {
-          "type": "unknown",
-          "value": null,
+          "type": "usd_credits_per_month",
+          "value": 15,
+          "unit": "USD",
           "applies_to": "agentic coding (premium models)",
-          "notes": "Copilot Pro ($10/mo) includes $10/mo of token-metered AI Credits at published API rates (usage-based billing effective 2026-06-01); no fixed request quota for agentic coding. IDE code completions remain unmetered. Annual subscribers retain legacy request-based pricing until renewal. Advertised 'unlimited' applies only to completions, never agentic coding.",
+          "notes": "Pro plan includes $15/mo of AI Credits billed at published model API rates. IDE code completions remain unmetered. Usage-based billing effective 2026-06-01; annual subscribers retain legacy pricing until renewal.",
           "provenance": {
-            "url": "https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/",
+            "url": "https://github.com/features/copilot/plans",
             "accessed_date": "2026-06-17",
             "method": "manual",
-            "confidence": "unknown"
+            "confidence": "observed"
           }
         }
       ],
@@ -315,8 +316,8 @@
         "freelancer"
       ],
       "is_active": true,
-      "last_verified": "2026-06-14",
-      "source_url": "https://github.com/features/copilot#pricing",
+      "last_verified": "2026-06-17",
+      "source_url": "https://github.com/features/copilot/plans",
       "providerId": "github-copilot",
       "providerName": "GitHub Copilot",
       "effectiveMonthlyUsd": 8.33
@@ -360,16 +361,16 @@
       ],
       "usage_limits": [
         {
-          "type": "unknown",
-          "value": null,
+          "type": "usd_credits_per_month",
+          "value": 70,
+          "unit": "USD",
           "applies_to": "agentic coding (premium models)",
-          "notes": "Copilot Pro+ includes $70/mo of token-metered AI Credits at published API rates (usage-based billing); no fixed request quota for agentic coding. IDE completions remain unmetered.",
+          "notes": "Pro+ plan includes $70/mo of AI Credits billed at published model API rates. IDE code completions remain unmetered.",
           "provenance": {
             "url": "https://github.com/features/copilot/plans",
             "accessed_date": "2026-06-17",
             "method": "manual",
-            "confidence": "observed",
-            "notes": "$70/mo AI-credit allotment verified from github.com/features/copilot/plans on 2026-06-17."
+            "confidence": "observed"
           }
         }
       ],
@@ -1149,15 +1150,16 @@
       ],
       "usage_limits": [
         {
-          "type": "unknown",
-          "value": null,
+          "type": "usd_credits_per_month",
+          "value": 15,
+          "unit": "USD",
           "applies_to": "agentic coding (premium models)",
-          "notes": "Copilot Pro ($10/mo) includes $10/mo of token-metered AI Credits at published API rates (usage-based billing effective 2026-06-01); no fixed request quota for agentic coding. IDE code completions remain unmetered. Annual subscribers retain legacy request-based pricing until renewal. Advertised 'unlimited' applies only to completions, never agentic coding.",
+          "notes": "Pro plan includes $15/mo of AI Credits billed at published model API rates. IDE code completions remain unmetered. Usage-based billing effective 2026-06-01; annual subscribers retain legacy pricing until renewal.",
           "provenance": {
-            "url": "https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/",
+            "url": "https://github.com/features/copilot/plans",
             "accessed_date": "2026-06-17",
             "method": "manual",
-            "confidence": "unknown"
+            "confidence": "observed"
           }
         }
       ],
@@ -1187,8 +1189,8 @@
         "freelancer"
       ],
       "is_active": true,
-      "last_verified": "2026-06-14",
-      "source_url": "https://github.com/features/copilot#pricing",
+      "last_verified": "2026-06-17",
+      "source_url": "https://github.com/features/copilot/plans",
       "providerId": "github-copilot",
       "providerName": "GitHub Copilot",
       "effectiveMonthlyUsd": 8.33
@@ -1232,16 +1234,16 @@
       ],
       "usage_limits": [
         {
-          "type": "unknown",
-          "value": null,
+          "type": "usd_credits_per_month",
+          "value": 70,
+          "unit": "USD",
           "applies_to": "agentic coding (premium models)",
-          "notes": "Copilot Pro+ includes $70/mo of token-metered AI Credits at published API rates (usage-based billing); no fixed request quota for agentic coding. IDE completions remain unmetered.",
+          "notes": "Pro+ plan includes $70/mo of AI Credits billed at published model API rates. IDE code completions remain unmetered.",
           "provenance": {
             "url": "https://github.com/features/copilot/plans",
             "accessed_date": "2026-06-17",
             "method": "manual",
-            "confidence": "observed",
-            "notes": "$70/mo AI-credit allotment verified from github.com/features/copilot/plans on 2026-06-17."
+            "confidence": "observed"
           }
         }
       ],

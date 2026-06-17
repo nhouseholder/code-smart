@@ -168,7 +168,16 @@ export default async function PlanDetailPage({ params }: { params: Promise<{ id:
                 {plan.usage_limits.map((l, i) => (
                   <tr key={`${l.type}-${i}`} className="border-t border-gray-100 even:bg-gray-50/40">
                     <td className="py-2.5 px-3 text-gray-700">{l.type.replace(/_/g, " ")}</td>
-                    <td className="py-2.5 px-3 font-semibold tabular-nums text-gray-900">{limitValue(l)}</td>
+                    <td className="py-2.5 px-3 font-semibold tabular-nums text-gray-900">
+                      {(l.type === "unknown" || l.value === null) ? (
+                        <span>
+                          <span className="text-gray-400">—</span>
+                          {l.notes && (
+                            <span className="block text-xs font-normal text-gray-400 mt-0.5 italic">{l.notes}</span>
+                          )}
+                        </span>
+                      ) : limitValue(l)}
+                    </td>
                     <td className="py-2.5 px-3 text-gray-500">{l.applies_to ?? "—"}</td>
                     <td className="py-2.5 px-3"><ConfidenceBadge confidence={effectiveConfidence(l.provenance)} /></td>
                     <td className="py-2.5 px-3 text-right"><SourceLink url={l.provenance.url} date={l.provenance.accessed_date} /></td>

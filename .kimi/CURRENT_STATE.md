@@ -1,6 +1,6 @@
 # code-smart — Current State
 
-**Version:** 1.6.1
+**Version:** 1.7.0
 **Updated:** 2026-06-17
 **Branch:** main
 
@@ -8,7 +8,16 @@
 
 ## What just shipped
 
-Session 11 — three shipped tasks (live at code-smart.pages.dev, v1.6.0 deploy verified). Plan scoping, model-catalog refresh with real AA data, and a home-page quality-by-tier chart.
+Session 12 — USD credits conversion + methodology page fix (v1.7.0).
+
+- **USD credits conversion (normalization Layer 5):** New `usd_credits_per_month` limit type added to `schema.ts`. Engine Layer 5a converts monthly dollar credit budgets to token estimates using published model API output rates (conservative $75/MTok Opus → base $20/MTok avg → optimistic $10/MTok GPT-4o). Uncertainty range spans cheapest→most expensive model on the plan.
+- **Layer 5/6 bug fixed:** Engine was checking `"credits"` and `"compute_units"` but schema uses `"credits_per_month"` / `"compute_units_per_month"` — layers were unreachable. Fixed; tests updated.
+- **GitHub Copilot data updated:** `copilot-individual` → $15/mo AI credits (was null/stale), `copilot-pro-plus` → $70/mo, new `copilot-max` plan added ($100/mo, $200/mo AI credits). Source: github.com/features/copilot/plans verified 2026-06-17.
+- **Plan detail UI:** Usage limit value cell now shows notes as italic subtext under "—" when type=unknown or value=null.
+- **Methodology page pre-existing bug fixed:** All string literals used Unicode curly quotes (U+201C/201D) as TypeScript delimiters — replaced 62 occurrences with ASCII quotes. Added USD credits as Layer 5 in the normalization table (8 layers total).
+- **State:** 323 tests pass, typecheck clean, build green.
+
+## What's next
 
 - **Home chart (v1.6.0):** `src/components/ValueByTierChart.tsx` + mounted in `src/app/page.tsx` — "Model quality by price tier" bar chart (Budget ≤$15 / Standard $16–49 / Premium ≥$50), 10 plans, WMQ metric, all observed.
 - **byQualityPerBand ranking:** `src/lib/rankings.ts` computes plan×model WMQ rows directly from global AA scores (bypasses same-provider model restriction so cursor/copilot cross-provider refs work); threaded through `schema.ts`, `data-loader.ts`, `generate-rankings.ts`. New tier boundaries in `getPriceBand()`.

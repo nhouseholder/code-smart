@@ -1,6 +1,17 @@
-import type { NormalizationConfig, AssumptionRange } from "./types";
+import type { NormalizationConfig, AssumptionRange, UsdCreditRateMapping } from "./types";
 
-export const NORMALIZATION_METHODOLOGY_VERSION = "1.0.0";
+export const NORMALIZATION_METHODOLOGY_VERSION = "1.1.0";
+
+// USD-per-MTok-output rates for published APIs.
+// Conservative = most expensive model on a typical plan (Claude Opus 4.8: $75/MTok out).
+// Base = weighted average of Copilot-offered models (~$20/MTok out).
+// Optimistic = cheapest model (GPT-4o: $10/MTok out).
+const COPILOT_USD_RATE: UsdCreditRateMapping = {
+  outputRatePerMtokConservative: 75,
+  outputRatePerMtokBase: 20,
+  outputRatePerMtokOptimistic: 10,
+  source: "Published API rates: Anthropic Claude Opus 4.8 $75/MTok output, OpenAI GPT-4o $10/MTok output; source github.com/features/copilot/plans",
+};
 
 export const DEFAULT_CONFIG: NormalizationConfig = {
   tokensPerCodingMessage: { low: 1000, base: 2000, high: 5000 },
@@ -15,6 +26,17 @@ export const DEFAULT_CONFIG: NormalizationConfig = {
   modelMultipliers: {},
   creditMappings: {},
   computeUnitMappings: {},
+  defaultUsdCreditRate: {
+    outputRatePerMtokConservative: 75,
+    outputRatePerMtokBase: 20,
+    outputRatePerMtokOptimistic: 10,
+    source: "Generic range: expensive model $75/MTok out → cheap model $10/MTok out",
+  },
+  usdCreditRates: {
+    "copilot-individual": COPILOT_USD_RATE,
+    "copilot-pro-plus": COPILOT_USD_RATE,
+    "copilot-max": COPILOT_USD_RATE,
+  },
 };
 
 /**

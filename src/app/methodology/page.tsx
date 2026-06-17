@@ -14,9 +14,10 @@ const ESTIMATION_LAYERS: Array<{ n: number; trigger: string; method: string; con
   { n: 2, trigger: "Message limits", method: "Monthly messages × tokens per coding message (low/base/high).", confidence: "inferred" },
   { n: 3, trigger: "Request / call limits", method: "Monthly requests × tokens per agentic request (low/base/high).", confidence: "inferred" },
   { n: 4, trigger: "Credit limits", method: "Credits × provider-specific or default credit-to-token mapping.", confidence: "inferred / assumed" },
-  { n: 5, trigger: "Compute units", method: "Units × provider-specific or default compute-unit-to-token mapping.", confidence: "inferred / assumed" },
-  { n: 6, trigger: "Time-window catch-all", method: "Extrapolate proportionally across the reset window; apply model multiplier.", confidence: "window-dependent" },
-  { n: 7, trigger: "Unknown / vague", method: "All estimates null — rendered as “—”, never 0. “Unlimited”/fair-use coding claims are treated as unknown — never a synthetic estimate.", confidence: "unknown" },
+  { n: 5, trigger: "USD credit budget", method: "Monthly dollar budget ÷ published model API output rate ($/MTok). Outputs a base estimate plus a low–high range spanning the cheapest to most expensive model available on the plan.", confidence: "inferred" },
+  { n: 6, trigger: "Compute units", method: "Units × provider-specific or default compute-unit-to-token mapping.", confidence: "inferred / assumed" },
+  { n: 7, trigger: "Time-window catch-all", method: "Extrapolate proportionally across the reset window; apply model multiplier.", confidence: "window-dependent" },
+  { n: 8, trigger: "Unknown / vague", method: "All estimates null — rendered as \"—\", never 0. \"Unlimited\"/fair-use claims are treated as unknown — never a synthetic estimate.", confidence: "unknown" },
 ];
 
 const CONFIDENCE_DEFS: Array<{ key: string; dot: string; def: string }> = [
@@ -24,7 +25,7 @@ const CONFIDENCE_DEFS: Array<{ key: string; dot: string; def: string }> = [
   { key: "inferred", dot: "bg-blue-500", def: "Mathematically derived from observed figures (e.g. annual ÷ 12)." },
   { key: "assumed", dot: "bg-amber-500", def: "A reasonable assumption, not yet verified from an official source." },
   { key: "stale", dot: "bg-red-500", def: "Was observed, but the source is now more than 90 days old." },
-  { key: "unknown", dot: "bg-gray-400", def: "Could not be determined; the value is null and displays as “—”." },
+  { key: "unknown", dot: "bg-gray-400", def: "Could not be determined; the value is null and displays as \"—\"." },
 ];
 
 export default function MethodologyPage() {
@@ -62,7 +63,7 @@ export default function MethodologyPage() {
         </pre>
         <p className="text-[12px] text-gray-400">
           AA Speed is not exported as a standalone column in the static dataset; it is folded into WMQ at the
-          weight above. Where AA has no profile for a model, WMQ cannot be computed and the Value Score shows “—”.
+          weight above. Where AA has no profile for a model, WMQ cannot be computed and the Value Score shows "—".
         </p>
       </section>
 
@@ -104,7 +105,7 @@ Value Score = QAMU × multiplier / price → normalized 0–100`}
           The reference is self-calibrating: the median model sits at a neutral 1.0×, cheaper models reach up
           to 1.15×, pricier ones down to 0.85×. When a model has no published cost-per-task — the current
           state for every model — the multiplier is exactly 1.0 and the Value Score is unchanged. Cost-per-task
-          and the active multiplier surface on each ranking card (“—” until a value is sourced).
+          and the active multiplier surface on each ranking card ("—" until a value is sourced).
         </p>
       </section>
 
@@ -114,7 +115,7 @@ Value Score = QAMU × multiplier / price → normalized 0–100`}
         <p className="text-sm text-gray-600 leading-relaxed">
           Providers disclose limits in many units — messages, requests, credits, compute units, or raw
           tokens. The normalization engine converts each into per-window token estimates using an 8-layer
-          priority dispatch; the first matching layer wins. <strong>These are estimates, not guarantees.</strong>
+          priority dispatch (one layer per limit type); the first matching layer wins. <strong>These are estimates, not guarantees.</strong>
         </p>
         <div className="overflow-x-auto rounded-2xl border border-gray-200">
           <table className="w-full text-sm min-w-[560px]">
@@ -140,7 +141,7 @@ Value Score = QAMU × multiplier / price → normalized 0–100`}
         </div>
         <p className="text-[12px] text-gray-400">
           Per-window estimates (5h / 24h / 1w / 1mo) are extrapolated proportionally with confidence decay.
-          A vague or undisclosed limit yields null — shown as “—”, never a misleading 0.
+          A vague or undisclosed limit yields null — shown as "—", never a misleading 0.
         </p>
       </section>
 
@@ -182,7 +183,7 @@ Value Score = QAMU × multiplier / price → normalized 0–100`}
         <ul className="text-sm text-gray-600 space-y-1.5 list-disc pl-5">
           <li>Usage limits are <strong>estimates</strong> derived from disclosed plan terms — not guaranteed allowances. Real-world usage varies with prompt size and task type.</li>
           <li>AA benchmark snapshots are fetched weekly; a snapshot older than 14 days is flagged on the model card.</li>
-          <li>Models without an AA profile have no WMQ and no Value Score (shown as “—”).</li>
+          <li>Models without an AA profile have no WMQ and no Value Score (shown as "—").</li>
           <li>Pricing is manually verified per provider; see each plan's source link and verification date.</li>
         </ul>
         <p className="text-sm text-gray-500 pt-2">

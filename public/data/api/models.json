@@ -627,68 +627,6 @@
     "providerName": "Google"
   },
   {
-    "id": "gemini-3-flash-reasoning",
-    "provider_id": "google",
-    "display_name": "Gemini 3 Flash Preview",
-    "context_length_k": null,
-    "strengths": [
-      "coding",
-      "reasoning",
-      "math"
-    ],
-    "released_date": "2025-12-17",
-    "benchmarks": [
-      {
-        "name": "AA Intelligence Index",
-        "score": 37.8,
-        "unit": "normalized",
-        "higher_is_better": true,
-        "provenance": {
-          "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
-          "accessed_date": "2026-06-17",
-          "method": "automated",
-          "confidence": "observed",
-          "notes": "Artificial Analysis evaluation, accessed via AA API."
-        }
-      },
-      {
-        "name": "AA Coding Index",
-        "score": 42.6,
-        "unit": "normalized",
-        "higher_is_better": true,
-        "provenance": {
-          "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
-          "accessed_date": "2026-06-17",
-          "method": "automated",
-          "confidence": "observed",
-          "notes": "Artificial Analysis evaluation, accessed via AA API."
-        }
-      },
-      {
-        "name": "AA Math Index",
-        "score": 97,
-        "unit": "normalized",
-        "higher_is_better": true,
-        "provenance": {
-          "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
-          "accessed_date": "2026-06-17",
-          "method": "automated",
-          "confidence": "observed",
-          "notes": "Artificial Analysis evaluation, accessed via AA API."
-        }
-      }
-    ],
-    "provenance": {
-      "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
-      "accessed_date": "2026-06-17",
-      "method": "automated",
-      "confidence": "observed",
-      "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
-    },
-    "providerId": "google",
-    "providerName": "Google"
-  },
-  {
     "id": "gemma-4-31b",
     "provider_id": "google",
     "display_name": "Gemma 4 31B",

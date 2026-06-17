@@ -129,12 +129,17 @@ function normalizeLimitInternal(
   }
 
   // ── Layer 5: Credits ────────────────────────────────────────────────
-  if (limit.limitType === "credits" && limitValue !== null) {
+  if (limit.limitType === "credits_per_month" && limitValue !== null) {
     return estimateFromCredits(limitValue, resetWindow, config, limit.planId, chain, assumptions);
   }
 
+  // ── Layer 5a: USD Credit Budget ─────────────────────────────────────
+  if (limit.limitType === "usd_credits_per_month" && limitValue !== null) {
+    return estimateFromUsdCredits(limitValue, resetWindow, config, limit.planId, chain, assumptions);
+  }
+
   // ── Layer 6: Compute units ──────────────────────────────────────────
-  if (limit.limitType === "compute_units" && limitValue !== null) {
+  if (limit.limitType === "compute_units_per_month" && limitValue !== null) {
     return estimateFromComputeUnits(limitValue, resetWindow, config, limit.planId, chain, assumptions);
   }
 
@@ -534,6 +539,53 @@ function getMapping<T>(
     if (planId.startsWith(key)) return value;
   }
   return undefined;
+}
+
+function estimateFromUsdCredits(
+  usdPerMonth: number,
+  resetWindow: string | null,
+  config: NormalizationConfig,
+  planId: string,
+  chain: ConversionStep[],
+  assumptions: string[],
+): EstimateResult {
+  const mapping = config.usdCreditRates[planId] ?? config.defaultUsdCreditRate;
+
+  const monthlyUsd = extrapolateToMonthly(usdPerMonth, resetWindow, config);
+
+  // Convert: tokens = (USD × 1_000_000) / ($/MTok output rate)
+  const baseTokens = Math.round((monthlyUsd * 1_000_000) / mapping.outputRatePerMtokBase);
+  const lowTokens = Math.round((monthlyUsd * 1_000_000) / mapping.outputRatePerMtokConservative);
+  const highTokens = Math.round((monthlyUsd * 1_000_000) / mapping.outputRatePerMtokOptimistic);
+
+  chain.push({
+    layer: "usd_credits",
+    description: `$${monthlyUsd}/mo ÷ $${mapping.outputRatePerMtokBase}/MTok out = ${baseTokens} tokens (range ${lowTokens}–${highTokens})`,
+    inputValue: monthlyUsd,
+    inputUnit: "USD",
+    outputTokens: baseTokens,
+    targetWindow: "1mo",
+  });
+
+  assumptions.push(
+    `USD credit conversion: $${monthlyUsd}/mo at $${mapping.outputRatePerMtokConservative}–$${mapping.outputRatePerMtokOptimistic}/MTok output (${mapping.source})`,
+  );
+
+  const base = windowNormalize(baseTokens, "1mo", config, "USD credit budget estimate", chain, assumptions, "inferred");
+
+  // Attach uncertainty range
+  const low = windowNormalize(lowTokens, "1mo", config, "low", [], []);
+  const high = windowNormalize(highTokens, "1mo", config, "high", [], []);
+  base.low5h = low.tokens5h;
+  base.low24h = low.tokens24h;
+  base.low1w = low.tokens1w;
+  base.low1mo = low.tokens1mo;
+  base.high5h = high.tokens5h;
+  base.high24h = high.tokens24h;
+  base.high1w = high.tokens1w;
+  base.high1mo = high.tokens1mo;
+
+  return base;
 }
 
 function estimateFromCredits(

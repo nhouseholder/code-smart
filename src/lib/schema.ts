@@ -25,6 +25,7 @@ export const LimitTypeSchema = z.enum([
   "requests_per_month",
   "completions_per_month",
   "credits_per_month",
+  "usd_credits_per_month",
   "compute_units_per_month",
   "unknown",
 ]);

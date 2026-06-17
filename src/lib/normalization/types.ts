@@ -8,6 +8,13 @@ export interface AssumptionRange {
   high: number;
 }
 
+export interface UsdCreditRateMapping {
+  outputRatePerMtokConservative: number;
+  outputRatePerMtokBase: number;
+  outputRatePerMtokOptimistic: number;
+  source: string;
+}
+
 export interface NormalizationConfig {
   tokensPerCodingMessage: AssumptionRange;
   tokensPerAgenticRequest: AssumptionRange;
@@ -21,6 +28,8 @@ export interface NormalizationConfig {
   modelMultipliers: Record<string, AssumptionRange>;
   creditMappings: Record<string, { tokensPerCredit: number; source: string }>;
   computeUnitMappings: Record<string, { tokensPerComputeUnit: number; source: string }>;
+  defaultUsdCreditRate: UsdCreditRateMapping;
+  usdCreditRates: Record<string, UsdCreditRateMapping>;
 }
 
 // ── Conversion Types ───────────────────────────────────────────────────
@@ -31,6 +40,7 @@ export type ConversionLayer =
   | "messages"
   | "requests"
   | "credits"
+  | "usd_credits"
   | "compute_units"
   | "unknown";
 

@@ -137,7 +137,7 @@ describe("normalizeLimit — time-window limits", () => {
 describe("normalizeLimit — credit limits", () => {
   it("estimates from credits with default mapping", () => {
     const limit = makeLimit({
-      limitType: "credits",
+      limitType: "credits_per_month",
       limitValue: 500,
       limitUnit: "credits",
       resetWindow: "1mo",
@@ -160,7 +160,7 @@ describe("normalizeLimit — credit limits", () => {
     };
     const limit = makeLimit({
       planId: "openai-pro",
-      limitType: "credits",
+      limitType: "credits_per_month",
       limitValue: 500,
       resetWindow: "1mo",
     });
@@ -176,7 +176,7 @@ describe("normalizeLimit — credit limits", () => {
 describe("normalizeLimit — compute units", () => {
   it("estimates from compute units with default mapping", () => {
     const limit = makeLimit({
-      limitType: "compute_units",
+      limitType: "compute_units_per_month",
       limitValue: 1000,
       limitUnit: "compute_units",
       resetWindow: "1mo",
@@ -198,7 +198,7 @@ describe("normalizeLimit — compute units", () => {
     };
     const limit = makeLimit({
       planId: "google-pro",
-      limitType: "compute_units",
+      limitType: "compute_units_per_month",
       limitValue: 500,
       resetWindow: "1mo",
     });
