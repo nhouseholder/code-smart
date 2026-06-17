@@ -8,9 +8,35 @@
 
 ## What just shipped
 
-Session 9 — User-facing website (v1.1.0, live at code-smart.pages.dev, deploy c59ad6a9). 8 pages over the data engine, ~20 components, uncertainty/provenance UX, Framer Motion. 240 tests, 70 static pages. **Post-ship investigation:** the reported `/data/api/*.json` "schema-shape transform" was a **false alarm** — a local RTK token-compression artifact (`rtk rewrite` summarizes `curl …json`/`cat …json` in the Bash channel). Origin serves correct raw JSON (confirmed via WebFetch). No bug, no redeploy.
+Session 10 — QA, Testing, Observability (v1.1.1, live at code-smart.pages.dev). Full production-readiness layer: data quality checks, structured logging, CI pipeline, frontend smoke tests, deployment docs.
 
-**Next 3:** (1) 375px mobile pass · (2) wire BenchmarkSparkline AA-snapshot history · (3) `/compare` diff-highlight + filter polish.
+- `scripts/data-quality-check.ts` — 9 check functions (stale source, null pricing, missing usage estimates, missing AA mappings, stale rankings, low confidence, impossible values, day-over-day price changes, parser extraction failures). Integrated as non-blocking Step 8.5 in `pipeline-daily.ts`.
+- `src/lib/logger.ts` — structured logger with timestamped LogEntry, buffer accumulation, and pipeline warning integration.
+- `playwright.config.ts` + `tests/e2e/smoke.spec.ts` — frontend smoke tests (8 tests: 6 page loads + 5 static API JSON endpoints).
+- `tests/data-quality-check.test.ts` (323 lines) + `tests/logger.test.ts` — unit tests for new code.
+- `docs/ENVIRONMENT.md` + `docs/DEPLOYMENT.md` — environment vars and deployment docs.
+- `.env.example` — env var template.
+- `eslint.config.mjs` — ESLint 9 flat config (`.mjs` avoids CommonJS/ESM conflict).
+- `.github/workflows/daily-check.yml` — added typecheck/lint/test/quality-check steps.
+- `package.json` — 7 new scripts: typecheck, fetch:aa, rankings:compute, quality-check, test:e2e, test:e2e:ui, status.
+- **Bug fixes:** 30-day test boundary → 29 days (UTC midnight edge case), 4 false-positive data quality flags (pay-per-token null prices, model-agnostic null context_length_k) corrected.
+- **Final state:** 277/277 tests pass, 0 quality-check errors, typecheck clean, lint clean.
+
+---
+
+## What's next
+
+1. Wire `rankings.json` into the frontend — render a rankings page / sidebar widget
+2. 375px mobile pass
+3. Real AA coding/agentic indices — replace proxied values in DB
+4. Wire BenchmarkSparkline AA-snapshot history
+5. `/compare` diff-highlight + filter polish
+
+---
+
+## Prior — Session 9 — User-Facing Website (v1.1.0)
+
+8 pages over the data engine, ~20 components, uncertainty/provenance UX, Framer Motion. 240 tests, 70 static pages. **Post-ship investigation:** the reported `/data/api/*.json` "schema-shape transform" was a **false alarm** — a local RTK token-compression artifact. Origin serves correct raw JSON.
 
 ---
 
