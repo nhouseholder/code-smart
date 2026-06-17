@@ -1,6 +1,6 @@
 # code-smart — Current State
 
-**Version:** 1.1.0
+**Version:** 1.1.1
 **Updated:** 2026-06-16
 **Branch:** main
 
