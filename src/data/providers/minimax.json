@@ -24,7 +24,12 @@
       "display_name": "MiniMax-Text-01",
       "family": "minimax-text",
       "context_length_k": 1000,
-      "strengths": ["long-context", "document-analysis", "reasoning", "code-generation"],
+      "strengths": [
+        "long-context",
+        "document-analysis",
+        "reasoning",
+        "code-generation"
+      ],
       "released_date": "2025-01-15",
       "benchmarks": [],
       "provenance": {
@@ -41,7 +46,13 @@
       "display_name": "MiniMax-M1",
       "family": "minimax-m1",
       "context_length_k": 1000,
-      "strengths": ["reasoning", "coding", "math", "long-context", "chain-of-thought"],
+      "strengths": [
+        "reasoning",
+        "coding",
+        "math",
+        "long-context",
+        "chain-of-thought"
+      ],
       "released_date": "2025-05-22",
       "benchmarks": [],
       "provenance": {
@@ -50,6 +61,204 @@
         "method": "manual",
         "confidence": "assumed",
         "notes": "MiniMax-M1 is MiniMax's reasoning-focused model. Supports 1M token context with reasoning capabilities."
+      }
+    },
+    {
+      "id": "minimax-m3",
+      "provider_id": "minimax",
+      "display_name": "MiniMax-M3",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-06-01",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 44.4,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/minimax-m3",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 43.4,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/minimax-m3",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/minimax-m3",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "minimax-m2-7",
+      "provider_id": "minimax",
+      "display_name": "MiniMax-M2.7",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-03-18",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 38.1,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/minimax-m2-7",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 41.9,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/minimax-m2-7",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/minimax-m2-7",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "minimax-m2-5",
+      "provider_id": "minimax",
+      "display_name": "MiniMax-M2.5",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-02-12",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 33.7,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/minimax-m2-5",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 37.4,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/minimax-m2-5",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/minimax-m2-5",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "minimax-m2-1",
+      "provider_id": "minimax",
+      "display_name": "MiniMax-M2.1",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning",
+        "math"
+      ],
+      "released_date": "2025-12-23",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 31.4,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/minimax-m2-1",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 32.8,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/minimax-m2-1",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Math Index",
+          "score": 82.7,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/minimax-m2-1",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/minimax-m2-1",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
       }
     }
   ],
@@ -73,8 +282,15 @@
         }
       },
       "models": [
-        { "model_id": "minimax-text-01", "access_type": "limited", "is_default": true },
-        { "model_id": "minimax-m1", "access_type": "limited" }
+        {
+          "model_id": "minimax-text-01",
+          "access_type": "limited",
+          "is_default": true
+        },
+        {
+          "model_id": "minimax-m1",
+          "access_type": "limited"
+        }
       ],
       "usage_limits": [
         {
@@ -106,7 +322,11 @@
         "sso": false,
         "notes": "API-only access. Standout feature is 1M token context window — useful for large codebase analysis. No web IDE or chat UI for coding workflow."
       },
-      "target_personas": ["developer needing long-context analysis", "AI researcher", "application builder"],
+      "target_personas": [
+        "developer needing long-context analysis",
+        "AI researcher",
+        "application builder"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://platform.minimaxi.com/document/pricing"
@@ -130,8 +350,15 @@
         }
       },
       "models": [
-        { "model_id": "minimax-text-01", "access_type": "full", "is_default": true },
-        { "model_id": "minimax-m1", "access_type": "full" }
+        {
+          "model_id": "minimax-text-01",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "minimax-m1",
+          "access_type": "full"
+        }
       ],
       "usage_limits": [
         {
@@ -162,7 +389,11 @@
         "sso": false,
         "notes": "Full API access. 1M token context is the key differentiator — suited for analyzing very large codebases in a single request."
       },
-      "target_personas": ["developer needing maximum context", "AI application builder", "production codebase analysis"],
+      "target_personas": [
+        "developer needing maximum context",
+        "AI application builder",
+        "production codebase analysis"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://platform.minimaxi.com/document/pricing"

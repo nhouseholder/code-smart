@@ -1,0 +1,115 @@
+{
+  "id": "deepseek",
+  "name": "DeepSeek",
+  "display_name": "DeepSeek",
+  "website": "https://www.deepseek.com",
+  "pricing_url": "https://api-docs.deepseek.com/quick_start/pricing",
+  "description": "DeepSeek develops open-weight and API-hosted models with strong coding and reasoning performance at low cost. Access is primarily via the DeepSeek API and chat app; there is no dedicated developer coding subscription, so its models appear here for comparison only.",
+  "logo_slug": "deepseek",
+  "category": "ai_lab",
+  "headquarters_country": "CN",
+  "founded_year": 2023,
+  "last_verified": "2026-06-17",
+  "provenance": {
+    "url": "https://www.deepseek.com",
+    "accessed_date": "2026-06-17",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "Provider metadata from model knowledge. Models sourced from the Artificial Analysis API."
+  },
+  "models": [
+    {
+      "id": "deepseek-v4-pro",
+      "provider_id": "deepseek",
+      "display_name": "DeepSeek Pro",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-24",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 44.3,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 47.5,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "provider_id": "deepseek",
+      "display_name": "DeepSeek Flash",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-24",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 40.3,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 38.7,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    }
+  ],
+  "plans": []
+}

@@ -24,7 +24,12 @@
       "display_name": "Moonshot v1 (128K)",
       "family": "moonshot-v1",
       "context_length_k": 128,
-      "strengths": ["long-context", "code-generation", "document-analysis", "chinese-language"],
+      "strengths": [
+        "long-context",
+        "code-generation",
+        "document-analysis",
+        "chinese-language"
+      ],
       "benchmarks": [],
       "provenance": {
         "url": "https://platform.moonshot.cn/docs",
@@ -40,7 +45,12 @@
       "display_name": "Kimi k1.5",
       "family": "kimi-k1",
       "context_length_k": 128,
-      "strengths": ["reasoning", "coding", "math", "long-context"],
+      "strengths": [
+        "reasoning",
+        "coding",
+        "math",
+        "long-context"
+      ],
       "released_date": "2025-01-22",
       "benchmarks": [],
       "provenance": {
@@ -49,6 +59,144 @@
         "method": "manual",
         "confidence": "assumed",
         "notes": "Kimi k1.5 is a multimodal reasoning model. Benchmark scores not publicly disclosed at benchmark standard sites as of this writing."
+      }
+    },
+    {
+      "id": "kimi-k2-6",
+      "provider_id": "kimi",
+      "display_name": "Kimi K2.6",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-20",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 42.8,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/kimi-k2-6",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 47.1,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/kimi-k2-6",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/kimi-k2-6",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "kimi-k2-7-code",
+      "provider_id": "kimi",
+      "display_name": "Kimi K2.7 Code",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-06-12",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 41.9,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 45.6,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "kimi-k2-5",
+      "provider_id": "kimi",
+      "display_name": "Kimi K2.5",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-01-27",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 38.1,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/kimi-k2-5",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 39.6,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/kimi-k2-5",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/kimi-k2-5",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
       }
     }
   ],
@@ -72,7 +220,11 @@
         }
       },
       "models": [
-        { "model_id": "moonshot-v1-128k", "access_type": "limited", "is_default": true }
+        {
+          "model_id": "moonshot-v1-128k",
+          "access_type": "limited",
+          "is_default": true
+        }
       ],
       "usage_limits": [
         {
@@ -103,7 +255,11 @@
         "team_features": false,
         "sso": false
       },
-      "target_personas": ["casual user", "student", "hobbyist"],
+      "target_personas": [
+        "casual user",
+        "student",
+        "hobbyist"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://kimi.ai/pricing"
@@ -127,8 +283,17 @@
         }
       },
       "models": [
-        { "model_id": "moonshot-v1-128k", "access_type": "full", "is_default": true },
-        { "model_id": "kimi-k1-5", "access_type": "full" }
+        {
+          "model_id": "kimi-k2-6",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "kimi-k2-5",
+          "access_type": "full",
+          "notes": "availability inferred"
+        }
       ],
       "usage_limits": [
         {
@@ -158,7 +323,11 @@
         "team_features": false,
         "sso": false
       },
-      "target_personas": ["professional developer", "researcher", "power user"],
+      "target_personas": [
+        "professional developer",
+        "researcher",
+        "power user"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://kimi.ai/pricing"
@@ -182,8 +351,22 @@
         }
       },
       "models": [
-        { "model_id": "moonshot-v1-128k", "access_type": "full", "is_default": true },
-        { "model_id": "kimi-k1-5", "access_type": "full" }
+        {
+          "model_id": "kimi-k2-7-code",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "kimi-k2-6",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "kimi-k2-5",
+          "access_type": "full",
+          "notes": "availability inferred"
+        }
       ],
       "usage_limits": [
         {
@@ -213,7 +396,11 @@
         "team_features": false,
         "sso": false
       },
-      "target_personas": ["power user", "professional developer", "AI researcher"],
+      "target_personas": [
+        "power user",
+        "professional developer",
+        "AI researcher"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://kimi.ai/pricing"

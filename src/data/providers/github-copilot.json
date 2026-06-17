@@ -24,7 +24,12 @@
       "display_name": "Copilot Base Model (GPT-4o / Claude / Gemini)",
       "family": "copilot",
       "context_length_k": 64,
-      "strengths": ["autocomplete", "ide-integration", "code-chat", "pr-review"],
+      "strengths": [
+        "autocomplete",
+        "ide-integration",
+        "code-chat",
+        "pr-review"
+      ],
       "benchmarks": [],
       "provenance": {
         "url": "https://github.com/features/copilot",
@@ -55,7 +60,11 @@
         }
       },
       "models": [
-        { "model_id": "copilot-base", "access_type": "limited", "is_default": true }
+        {
+          "model_id": "copilot-base",
+          "access_type": "limited",
+          "is_default": true
+        }
       ],
       "usage_limits": [
         {
@@ -90,7 +99,13 @@
         "code_context_length_k": 64,
         "file_uploads": false,
         "voice_input": false,
-        "ide_integrations": ["VS Code", "JetBrains", "Visual Studio", "Vim/Neovim", "Xcode"],
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode"
+        ],
         "cli_access": true,
         "api_access": false,
         "priority_access": false,
@@ -98,7 +113,11 @@
         "team_features": false,
         "sso": false
       },
-      "target_personas": ["open-source developer", "student", "hobbyist"],
+      "target_personas": [
+        "open-source developer",
+        "student",
+        "hobbyist"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://github.com/features/copilot"
@@ -122,7 +141,22 @@
         }
       },
       "models": [
-        { "model_id": "copilot-base", "access_type": "full", "is_default": true }
+        {
+          "model_id": "gpt-5-5",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "gemini-3-1-pro-preview",
+          "access_type": "full",
+          "notes": "availability inferred"
+        }
       ],
       "usage_limits": [
         {
@@ -144,7 +178,14 @@
         "code_context_length_k": 64,
         "file_uploads": true,
         "voice_input": false,
-        "ide_integrations": ["VS Code", "JetBrains", "Visual Studio", "Vim/Neovim", "Xcode", "Azure Data Studio"],
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode",
+          "Azure Data Studio"
+        ],
         "cli_access": true,
         "api_access": false,
         "priority_access": false,
@@ -152,7 +193,10 @@
         "team_features": false,
         "sso": false
       },
-      "target_personas": ["professional developer", "freelancer"],
+      "target_personas": [
+        "professional developer",
+        "freelancer"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://github.com/features/copilot#pricing"
@@ -176,7 +220,11 @@
         }
       },
       "models": [
-        { "model_id": "copilot-base", "access_type": "full", "is_default": true }
+        {
+          "model_id": "copilot-base",
+          "access_type": "full",
+          "is_default": true
+        }
       ],
       "usage_limits": [
         {
@@ -197,7 +245,14 @@
         "code_context_length_k": 64,
         "file_uploads": true,
         "voice_input": false,
-        "ide_integrations": ["VS Code", "JetBrains", "Visual Studio", "Vim/Neovim", "Xcode", "Azure Data Studio"],
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode",
+          "Azure Data Studio"
+        ],
         "cli_access": true,
         "api_access": false,
         "priority_access": false,
@@ -206,7 +261,11 @@
         "sso": true,
         "notes": "Admin policy controls; IP indemnification; no training on code."
       },
-      "target_personas": ["engineering team", "startup", "enterprise developer"],
+      "target_personas": [
+        "engineering team",
+        "startup",
+        "enterprise developer"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://github.com/features/copilot#pricing"
@@ -230,7 +289,11 @@
         }
       },
       "models": [
-        { "model_id": "copilot-base", "access_type": "full", "is_default": true }
+        {
+          "model_id": "copilot-base",
+          "access_type": "full",
+          "is_default": true
+        }
       ],
       "usage_limits": [
         {
@@ -251,7 +314,14 @@
         "code_context_length_k": 64,
         "file_uploads": true,
         "voice_input": false,
-        "ide_integrations": ["VS Code", "JetBrains", "Visual Studio", "Vim/Neovim", "Xcode", "Azure Data Studio"],
+        "ide_integrations": [
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Xcode",
+          "Azure Data Studio"
+        ],
         "cli_access": true,
         "api_access": false,
         "priority_access": true,
@@ -260,7 +330,11 @@
         "sso": true,
         "notes": "Codebase-aware chat (indexes your org's repos); PR summaries; fine-tuned models."
       },
-      "target_personas": ["large enterprise", "regulated industry", "org with private codebase"],
+      "target_personas": [
+        "large enterprise",
+        "regulated industry",
+        "org with private codebase"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://github.com/features/copilot#pricing"

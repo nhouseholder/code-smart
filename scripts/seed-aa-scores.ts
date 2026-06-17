@@ -1,27 +1,29 @@
 /**
- * seed-aa-scores.ts — Seeds artificial_analysis_model_scores with data
- * scraped from artificialanalysis.ai on 2026-06-15.
+ * seed-aa-scores.ts — Seeds artificial_analysis_model_scores from the
+ * generated artifact src/data/aa-scores.json (produced by
+ * scripts/fetch-aa-current-models.ts off the Artificial Analysis API).
  *
- * LIMITATIONS (document before replacing with real data):
- *  - codingIndex / agenticIndex: premium-gated on AA; proxied from
- *    intelligenceIndex until real values are available.
- *  - speedScore: pre-normalized from raw TPS using a 300-TPS ceiling
- *    (fastest frontier model in the leaderboard ≈ 220 TPS as of 2026-06-15).
- *  - confidence: "assumed" throughout — replace with "observed" once real
- *    Coding/Agentic indices are sourced.
- *  - cursor-* models are not direct AA models; data proxied from the
- *    underlying model (claude-sonnet-4-6 / gpt-4o).
+ * Each row carries the real AA intelligence + coding indices, so confidence is
+ * "observed". Remaining proxies/limitations:
+ *  - agenticIndex: AA does not expose a standalone agentic index in the v2 API,
+ *    so it is proxied from the real codingIndex (closest published signal).
+ *  - speedScore: normalized from median_output_tokens_per_second using a
+ *    300-TPS ceiling. Rows where AA reports no TPS (0) normalize to 0.
+ *
+ * To refresh: re-run `pnpm exec tsx scripts/fetch-aa-current-models.ts`, then
+ * re-seed. Source of truth is the JSON artifact — never hand-edit rows here.
  *
  * Usage:
  *   npx tsx scripts/seed-aa-scores.ts
  *   npm run db:seed-aa
  */
 
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { getDb, runMigrations } from "../src/db/index";
 import { artificialAnalysisModelScores } from "../src/db/schema";
 import { sql } from "drizzle-orm";
 
-const OBSERVED_AT = "2026-06-15";
 const SOURCE = "https://artificialanalysis.ai";
 const SPEED_TPS_CEILING = 300;
 
@@ -33,104 +35,27 @@ interface AaEntry {
   modelId: string;
   aaSlug: string | null;
   intelligenceIndex: number;
+  codingIndex: number | null;
   speedTps: number;
   inputPrice: number | null;
   outputPrice: number | null;
-  // AA cost-per-task (USD) — premium-gated; null until real values are sourced.
-  // Plumbing is live: fill a number here and rankings pick it up on next regen.
+  // AA cost-per-task (USD) — not exposed by the v2 API; null until sourced.
   costPerTaskUsd?: number | null;
 }
 
-// Data sourced from artificialanalysis.ai individual model pages.
-// Intelligence index values from the public AA leaderboard (2026-06-15).
-// Prices from the model detail pages (USD per 1M tokens).
-// codingIndex and agenticIndex are set equal to intelligenceIndex (see file header).
-const AA_DATA: AaEntry[] = [
-  // ── Anthropic ─────────────────────────────────────────────────────────────
-  {
-    modelId: "claude-haiku-4-5",
-    aaSlug: "claude-4-5-haiku",
-    intelligenceIndex: 31,
-    speedTps: 95.1,
-    inputPrice: 1.00,
-    outputPrice: 5.00,
-  },
-  {
-    modelId: "claude-sonnet-4-6",
-    aaSlug: "claude-sonnet-4-6",
-    intelligenceIndex: 44,
-    speedTps: 44.2,
-    inputPrice: 3.00,
-    outputPrice: 15.00,
-  },
-  {
-    modelId: "claude-opus-4-8",
-    aaSlug: "claude-opus-4-8",
-    intelligenceIndex: 61,
-    speedTps: 60.4,
-    inputPrice: 5.00,
-    outputPrice: 25.00,
-  },
-  // ── OpenAI ────────────────────────────────────────────────────────────────
-  {
-    modelId: "gpt-4o",
-    aaSlug: "gpt-4o",
-    intelligenceIndex: 17,
-    speedTps: 190.8,
-    inputPrice: 2.50,
-    outputPrice: 10.00,
-  },
-  {
-    modelId: "o3",
-    aaSlug: "o3",
-    intelligenceIndex: 38,
-    speedTps: 138.2,
-    inputPrice: 2.00,
-    outputPrice: 8.00,
-  },
-  {
-    modelId: "o4-mini",
-    aaSlug: "o4-mini",
-    intelligenceIndex: 33,
-    speedTps: 186.5,
-    inputPrice: 1.10,
-    outputPrice: 4.40,
-  },
-  // ── Google ────────────────────────────────────────────────────────────────
-  {
-    modelId: "gemini-2-5-pro",
-    aaSlug: "gemini-2-5-pro",
-    intelligenceIndex: 35,
-    speedTps: 139.9,
-    inputPrice: 1.25,
-    outputPrice: 10.00,
-  },
-  {
-    modelId: "gemini-2-5-flash",
-    aaSlug: "gemini-2-5-flash",
-    intelligenceIndex: 21,
-    speedTps: 220.3,
-    inputPrice: 0.30,
-    outputPrice: 2.50,
-  },
-  // ── Cursor (proxy — not direct AA models) ─────────────────────────────────
-  {
-    modelId: "cursor-claude-sonnet",
-    aaSlug: null,           // proxied from claude-sonnet-4-6
-    intelligenceIndex: 44,
-    speedTps: 44.2,
-    inputPrice: null,       // cursor uses credit-based pricing; no per-token API price
-    outputPrice: null,
-  },
-  {
-    modelId: "cursor-gpt-4o",
-    aaSlug: null,           // proxied from gpt-4o
-    intelligenceIndex: 17,
-    speedTps: 190.8,
-    inputPrice: null,
-    outputPrice: null,
-  },
-];
+interface AaScoresArtifact {
+  observed_at: string;
+  source: string;
+  speed_tps_ceiling: number;
+  note?: string;
+  scores: AaEntry[];
+}
+
+// Load the generated AA artifact (real indices, observed via the AA API).
+const AA_SCORES_PATH = path.join(__dirname, "..", "src", "data", "aa-scores.json");
+const _artifact = JSON.parse(fs.readFileSync(AA_SCORES_PATH, "utf8")) as AaScoresArtifact;
+const OBSERVED_AT = _artifact.observed_at;
+const AA_DATA: AaEntry[] = _artifact.scores;
 
 export function seedAaScores(): void {
   const db = getDb();
@@ -154,21 +79,24 @@ export function seedAaScores(): void {
     for (const entry of AA_DATA) {
       const speedScore = normalizeTps(entry.speedTps);
 
-      const rawNote = entry.aaSlug
-        ? `Scraped from ${SOURCE}/models/${entry.aaSlug}. codingIndex+agenticIndex proxied from intelligenceIndex (AA premium gate). speedScore = round(${entry.speedTps} TPS / ${SPEED_TPS_CEILING}) = ${speedScore}.`
-        : `Proxy model: not on AA directly; data from underlying model. speedScore = round(${entry.speedTps} TPS / ${SPEED_TPS_CEILING}) = ${speedScore}. inputPrice/outputPrice null — cursor credit-based pricing.`;
+      // Real AA coding index where present; fall back to intelligence only if absent.
+      const codingIndex = entry.codingIndex ?? entry.intelligenceIndex;
+      const rawNote =
+        `From AA API via ${SOURCE}/models/${entry.aaSlug ?? entry.modelId}. ` +
+        `intelligenceIndex + codingIndex observed; agenticIndex proxied from codingIndex (no AA agentic index in v2 API). ` +
+        `speedScore = round(${entry.speedTps} TPS / ${SPEED_TPS_CEILING}) = ${speedScore}.`;
 
       tx.insert(artificialAnalysisModelScores).values({
         modelId: entry.modelId,
         observedAt: OBSERVED_AT,
         intelligenceIndex: entry.intelligenceIndex,
-        codingIndex: entry.intelligenceIndex,    // proxy — replace when real data available
-        agenticIndex: entry.intelligenceIndex,   // proxy — replace when real data available
+        codingIndex,                              // real AA coding index
+        agenticIndex: codingIndex,                // proxy — AA v2 has no agentic index
         speedScore,
         inputPrice: entry.inputPrice,
         outputPrice: entry.outputPrice,
         source: SOURCE,
-        confidence: "assumed",
+        confidence: "observed",
         priceEfficiencyMetricsJson: JSON.stringify({
           costPerTaskUsd: entry.costPerTaskUsd ?? null,
           accessedDate: entry.costPerTaskUsd != null ? OBSERVED_AT : null,
@@ -195,9 +123,8 @@ export function seedAaScores(): void {
     .from(artificialAnalysisModelScores)
     .get();
 
-  console.log(`\nSeed complete: ${row?.count ?? 0} AA score rows inserted.`);
-  console.log("NOTE: codingIndex and agenticIndex are proxied from intelligenceIndex.");
-  console.log("      Replace with real AA values when available.");
+  console.log(`\nSeed complete: ${row?.count ?? 0} AA score rows inserted (observed ${OBSERVED_AT}).`);
+  console.log("NOTE: intelligenceIndex + codingIndex are real AA values; agenticIndex proxied from codingIndex.");
 }
 
 if (

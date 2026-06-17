@@ -25,7 +25,13 @@
       "display_name": "Gemini 2.5 Pro",
       "family": "gemini-2.5",
       "context_length_k": 1000,
-      "strengths": ["coding", "long-context", "reasoning", "multimodal", "deep-research"],
+      "strengths": [
+        "coding",
+        "long-context",
+        "reasoning",
+        "multimodal",
+        "deep-research"
+      ],
       "benchmarks": [
         {
           "name": "SWE-bench-verified",
@@ -42,7 +48,7 @@
         },
         {
           "name": "HumanEval",
-          "score": 87.0,
+          "score": 87,
           "unit": "percent",
           "higher_is_better": true,
           "notes": "Approximate; verify against official model card",
@@ -67,13 +73,308 @@
       "display_name": "Gemini 2.5 Flash",
       "family": "gemini-2.5",
       "context_length_k": 1000,
-      "strengths": ["speed", "cost-efficient", "coding", "multimodal"],
+      "strengths": [
+        "speed",
+        "cost-efficient",
+        "coding",
+        "multimodal"
+      ],
       "benchmarks": [],
       "provenance": {
         "url": "https://deepmind.google/technologies/gemini/flash/",
         "accessed_date": "2026-06-14",
         "method": "manual",
         "confidence": "assumed"
+      }
+    },
+    {
+      "id": "gemini-3-5-flash",
+      "provider_id": "google",
+      "display_name": "Gemini 3.5 Flash",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-05-19",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 50.2,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 45,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "gemini-3-1-pro-preview",
+      "provider_id": "google",
+      "display_name": "Gemini 3.1 Pro Preview",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-02-19",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 46.5,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 55.5,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "gemini-3-flash-reasoning",
+      "provider_id": "google",
+      "display_name": "Gemini 3 Flash Preview",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning",
+        "math"
+      ],
+      "released_date": "2025-12-17",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 37.8,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 42.6,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Math Index",
+          "score": 97,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "gemma-4-31b",
+      "provider_id": "google",
+      "display_name": "Gemma 4 31B",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-02",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 29.4,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemma-4-31b",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 38.7,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemma-4-31b",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/gemma-4-31b",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "gemma-4-26b-a4b",
+      "provider_id": "google",
+      "display_name": "Gemma 4 26B A4B",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-02",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 25.7,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 22.4,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "gemini-3-1-flash-lite-preview",
+      "provider_id": "google",
+      "display_name": "Gemini 3.1 Flash-Lite",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-03-03",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 25,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 30.1,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
       }
     }
   ],
@@ -97,7 +398,11 @@
         }
       },
       "models": [
-        { "model_id": "gemini-2-5-flash", "access_type": "full", "is_default": true }
+        {
+          "model_id": "gemini-2-5-flash",
+          "access_type": "full",
+          "is_default": true
+        }
       ],
       "usage_limits": [
         {
@@ -127,7 +432,10 @@
         "team_features": false,
         "sso": false
       },
-      "target_personas": ["casual user", "student"],
+      "target_personas": [
+        "casual user",
+        "student"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://gemini.google.com"
@@ -151,8 +459,22 @@
         }
       },
       "models": [
-        { "model_id": "gemini-2-5-flash", "access_type": "full" },
-        { "model_id": "gemini-2-5-pro", "access_type": "full", "is_default": true }
+        {
+          "model_id": "gemini-3-1-pro-preview",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "gemini-3-5-flash",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "gemini-3-flash-reasoning",
+          "access_type": "full",
+          "notes": "availability inferred"
+        }
       ],
       "usage_limits": [
         {
@@ -174,7 +496,10 @@
         "code_context_length_k": 1000,
         "file_uploads": true,
         "voice_input": true,
-        "ide_integrations": ["VS Code (Gemini Code Assist)", "JetBrains (Gemini Code Assist)"],
+        "ide_integrations": [
+          "VS Code (Gemini Code Assist)",
+          "JetBrains (Gemini Code Assist)"
+        ],
         "cli_access": false,
         "api_access": false,
         "priority_access": true,
@@ -183,7 +508,11 @@
         "sso": false,
         "notes": "Includes Deep Research agent, extended Gems, Google Workspace integration."
       },
-      "target_personas": ["professional", "researcher", "developer in Google ecosystem"],
+      "target_personas": [
+        "professional",
+        "researcher",
+        "developer in Google ecosystem"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://gemini.google.com/advanced"
@@ -207,8 +536,16 @@
         }
       },
       "models": [
-        { "model_id": "gemini-2-5-flash", "access_type": "full", "is_default": true },
-        { "model_id": "gemini-2-5-pro", "access_type": "limited", "notes": "RPM limited on free tier" }
+        {
+          "model_id": "gemini-2-5-flash",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "gemini-2-5-pro",
+          "access_type": "limited",
+          "notes": "RPM limited on free tier"
+        }
       ],
       "usage_limits": [
         {
@@ -240,7 +577,11 @@
         "sso": false,
         "notes": "API-based access, not a consumer product. Useful for developers building on Gemini."
       },
-      "target_personas": ["developer", "researcher", "prototype builder"],
+      "target_personas": [
+        "developer",
+        "researcher",
+        "prototype builder"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://aistudio.google.com"

@@ -1,0 +1,115 @@
+{
+  "id": "xai",
+  "name": "xAI",
+  "display_name": "Grok (xAI)",
+  "website": "https://x.ai",
+  "pricing_url": "https://x.ai/api",
+  "description": "xAI builds the Grok family of models, focused on reasoning, coding, and real-time knowledge. Grok is available via the xAI API and the X/Grok consumer apps; xAI does not currently sell a dedicated developer coding subscription, so its models appear here for comparison only.",
+  "logo_slug": "xai",
+  "category": "ai_lab",
+  "headquarters_country": "US",
+  "founded_year": 2023,
+  "last_verified": "2026-06-17",
+  "provenance": {
+    "url": "https://x.ai",
+    "accessed_date": "2026-06-17",
+    "method": "manual",
+    "confidence": "assumed",
+    "notes": "Provider metadata from model knowledge. Models sourced from the Artificial Analysis API."
+  },
+  "models": [
+    {
+      "id": "grok-4-3",
+      "provider_id": "xai",
+      "display_name": "Grok 4.3",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-30",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 37.6,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/grok-4-3",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 41,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/grok-4-3",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/grok-4-3",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "grok-4-20",
+      "provider_id": "xai",
+      "display_name": "Grok 4.20",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-07",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 37,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/grok-4-20",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 40.5,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/grok-4-20",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/grok-4-20",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    }
+  ],
+  "plans": []
+}

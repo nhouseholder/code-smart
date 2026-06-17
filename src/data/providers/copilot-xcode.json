@@ -24,7 +24,14 @@
       "display_name": "Copilot Base Model (Xcode)",
       "family": "copilot",
       "context_length_k": 64,
-      "strengths": ["swift", "objective-c", "xcode-integration", "autocomplete", "ios-development", "macos-development"],
+      "strengths": [
+        "swift",
+        "objective-c",
+        "xcode-integration",
+        "autocomplete",
+        "ios-development",
+        "macos-development"
+      ],
       "benchmarks": [],
       "provenance": {
         "url": "https://github.com/github/CopilotForXcode",
@@ -55,7 +62,11 @@
         }
       },
       "models": [
-        { "model_id": "copilot-xcode-base", "access_type": "limited", "is_default": true }
+        {
+          "model_id": "copilot-xcode-base",
+          "access_type": "limited",
+          "is_default": true
+        }
       ],
       "usage_limits": [
         {
@@ -90,7 +101,9 @@
         "code_context_length_k": 64,
         "file_uploads": false,
         "voice_input": false,
-        "ide_integrations": ["Xcode"],
+        "ide_integrations": [
+          "Xcode"
+        ],
         "cli_access": false,
         "api_access": false,
         "priority_access": false,
@@ -99,7 +112,12 @@
         "sso": false,
         "notes": "Xcode-only integration. Swift, Objective-C, and C/C++ code completion. Chat panel within Xcode."
       },
-      "target_personas": ["iOS developer", "macOS developer", "Apple platform developer", "student learning Swift"],
+      "target_personas": [
+        "iOS developer",
+        "macOS developer",
+        "Apple platform developer",
+        "student learning Swift"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://github.com/features/copilot#pricing"
@@ -123,7 +141,17 @@
         }
       },
       "models": [
-        { "model_id": "copilot-xcode-base", "access_type": "full", "is_default": true }
+        {
+          "model_id": "gpt-5-5",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "full",
+          "notes": "availability inferred"
+        }
       ],
       "usage_limits": [
         {
@@ -145,7 +173,13 @@
         "code_context_length_k": 64,
         "file_uploads": true,
         "voice_input": false,
-        "ide_integrations": ["Xcode", "VS Code", "JetBrains", "Visual Studio", "Vim/Neovim"],
+        "ide_integrations": [
+          "Xcode",
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim"
+        ],
         "cli_access": true,
         "api_access": false,
         "priority_access": false,
@@ -154,7 +188,11 @@
         "sso": false,
         "notes": "Subscription covers all Copilot integrations. Xcode support is one of several IDE options."
       },
-      "target_personas": ["professional iOS developer", "Apple platform engineer", "freelance Swift developer"],
+      "target_personas": [
+        "professional iOS developer",
+        "Apple platform engineer",
+        "freelance Swift developer"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://github.com/features/copilot#pricing"
@@ -178,7 +216,11 @@
         }
       },
       "models": [
-        { "model_id": "copilot-xcode-base", "access_type": "full", "is_default": true }
+        {
+          "model_id": "copilot-xcode-base",
+          "access_type": "full",
+          "is_default": true
+        }
       ],
       "usage_limits": [
         {
@@ -199,7 +241,14 @@
         "code_context_length_k": 64,
         "file_uploads": true,
         "voice_input": false,
-        "ide_integrations": ["Xcode", "VS Code", "JetBrains", "Visual Studio", "Vim/Neovim", "Azure Data Studio"],
+        "ide_integrations": [
+          "Xcode",
+          "VS Code",
+          "JetBrains",
+          "Visual Studio",
+          "Vim/Neovim",
+          "Azure Data Studio"
+        ],
         "cli_access": true,
         "api_access": false,
         "priority_access": false,
@@ -208,7 +257,11 @@
         "sso": true,
         "notes": "Admin policy controls; IP indemnification; no training on code. Xcode integration included alongside all other IDE support."
       },
-      "target_personas": ["iOS engineering team", "Apple platform company", "mobile-first startup"],
+      "target_personas": [
+        "iOS engineering team",
+        "Apple platform company",
+        "mobile-first startup"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://github.com/features/copilot#pricing"

@@ -31,13 +31,20 @@
         },
         "models": [
           {
-            "model_id": "claude-haiku-4-5",
-            "access_type": "full"
+            "model_id": "claude-sonnet-4-6-adaptive",
+            "access_type": "full",
+            "is_default": true,
+            "notes": "availability inferred"
           },
           {
-            "model_id": "claude-sonnet-4-6",
+            "model_id": "claude-opus-4-7",
             "access_type": "full",
-            "is_default": true
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "claude-opus-4-8",
+            "access_type": "full",
+            "notes": "availability inferred"
           }
         ],
         "usage_limits": [
@@ -99,17 +106,25 @@
         },
         "models": [
           {
-            "model_id": "claude-haiku-4-5",
-            "access_type": "full"
-          },
-          {
-            "model_id": "claude-sonnet-4-6",
-            "access_type": "full",
-            "is_default": true
-          },
-          {
             "model_id": "claude-opus-4-8",
-            "access_type": "full"
+            "access_type": "full",
+            "is_default": true,
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "claude-fable-5",
+            "access_type": "full",
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "claude-opus-4-7",
+            "access_type": "full",
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "claude-sonnet-4-6-adaptive",
+            "access_type": "full",
+            "notes": "availability inferred"
           }
         ],
         "usage_limits": [
@@ -155,74 +170,6 @@
     ],
     "models": [
       {
-        "id": "claude-haiku-4-5",
-        "provider_id": "anthropic",
-        "display_name": "Claude Haiku 4.5",
-        "family": "claude-4",
-        "context_length_k": 200,
-        "strengths": [
-          "fast",
-          "cost-efficient",
-          "coding-assistance",
-          "chat"
-        ],
-        "benchmarks": [],
-        "provenance": {
-          "url": "https://docs.anthropic.com/en/docs/about-claude/models",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed"
-        }
-      },
-      {
-        "id": "claude-sonnet-4-6",
-        "provider_id": "anthropic",
-        "display_name": "Claude Sonnet 4.6",
-        "family": "claude-4",
-        "context_length_k": 200,
-        "strengths": [
-          "coding",
-          "reasoning",
-          "analysis",
-          "long-context"
-        ],
-        "released_date": "2025-07-01",
-        "benchmarks": [
-          {
-            "name": "SWE-bench-verified",
-            "score": 72.7,
-            "unit": "percent",
-            "higher_is_better": true,
-            "notes": "claude-3.7-sonnet approximate; verify for 4.6",
-            "provenance": {
-              "url": "https://www.anthropic.com/research/swe-bench-sonnet",
-              "accessed_date": "2026-06-14",
-              "method": "manual",
-              "confidence": "assumed"
-            }
-          },
-          {
-            "name": "HumanEval",
-            "score": 93,
-            "unit": "percent",
-            "higher_is_better": true,
-            "notes": "Approximate; verify against Anthropic model card",
-            "provenance": {
-              "url": "https://www.anthropic.com/claude/sonnet",
-              "accessed_date": "2026-06-14",
-              "method": "manual",
-              "confidence": "assumed"
-            }
-          }
-        ],
-        "provenance": {
-          "url": "https://docs.anthropic.com/en/docs/about-claude/models",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed"
-        }
-      },
-      {
         "id": "claude-opus-4-8",
         "provider_id": "anthropic",
         "display_name": "Claude Opus 4.8",
@@ -234,26 +181,225 @@
           "coding",
           "agentic-tasks"
         ],
+        "released_date": "2026-05-28",
         "benchmarks": [
           {
-            "name": "SWE-bench-verified",
-            "score": 79.4,
-            "unit": "percent",
+            "name": "AA Intelligence Index",
+            "score": 55.7,
+            "unit": "normalized",
             "higher_is_better": true,
-            "notes": "Approximate; verify against Anthropic's published evals",
             "provenance": {
-              "url": "https://www.anthropic.com/claude/opus",
-              "accessed_date": "2026-06-14",
-              "method": "manual",
-              "confidence": "assumed"
+              "url": "https://artificialanalysis.ai/models/claude-opus-4-8",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 56.7,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/claude-opus-4-8",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
             }
           }
         ],
         "provenance": {
-          "url": "https://docs.anthropic.com/en/docs/about-claude/models",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed"
+          "url": "https://artificialanalysis.ai/models/claude-opus-4-8",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "claude-fable-5",
+        "provider_id": "anthropic",
+        "display_name": "Claude Fable 5",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-06-09",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 59.9,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/claude-fable-5",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 62,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/claude-fable-5",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/claude-fable-5",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "claude-opus-4-7",
+        "provider_id": "anthropic",
+        "display_name": "Claude Opus 4.7",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-16",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 53.5,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/claude-opus-4-7",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 52.5,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/claude-opus-4-7",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/claude-opus-4-7",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "claude-sonnet-4-6-adaptive",
+        "provider_id": "anthropic",
+        "display_name": "Claude Sonnet 4.6",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-02-17",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 47.2,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 50.9,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "claude-opus-4-6-adaptive",
+        "provider_id": "anthropic",
+        "display_name": "Claude Opus 4.6",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-02-05",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 43.7,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 48.1,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       }
     ],
@@ -297,18 +443,20 @@
         },
         "models": [
           {
-            "model_id": "gpt-4o",
+            "model_id": "gpt-5-5",
             "access_type": "full",
-            "is_default": true
+            "is_default": true,
+            "notes": "availability inferred"
           },
           {
-            "model_id": "o4-mini",
-            "access_type": "full"
+            "model_id": "gpt-5-4",
+            "access_type": "full",
+            "notes": "availability inferred"
           },
           {
-            "model_id": "o3",
-            "access_type": "limited",
-            "notes": "Limited messages per day on o3"
+            "model_id": "gpt-5-3-codex",
+            "access_type": "full",
+            "notes": "availability inferred"
           }
         ],
         "usage_limits": [
@@ -353,130 +501,279 @@
     ],
     "models": [
       {
-        "id": "gpt-4o",
+        "id": "gpt-5-5",
         "provider_id": "openai",
-        "display_name": "GPT-4o",
-        "family": "gpt-4o",
-        "context_length_k": 128,
+        "display_name": "GPT-5.5",
+        "context_length_k": null,
         "strengths": [
           "coding",
-          "vision",
-          "speed",
-          "multimodal"
+          "reasoning"
         ],
+        "released_date": "2026-04-23",
         "benchmarks": [
           {
-            "name": "HumanEval",
-            "score": 90.2,
-            "unit": "percent",
+            "name": "AA Intelligence Index",
+            "score": 54.8,
+            "unit": "normalized",
             "higher_is_better": true,
-            "notes": "Approximate; varies by prompt format",
             "provenance": {
-              "url": "https://openai.com/research",
-              "accessed_date": "2026-06-14",
-              "method": "manual",
-              "confidence": "assumed"
+              "url": "https://artificialanalysis.ai/models/gpt-5-5",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
             }
           },
           {
-            "name": "SWE-bench-verified",
-            "score": 38.8,
-            "unit": "percent",
+            "name": "AA Coding Index",
+            "score": 59.1,
+            "unit": "normalized",
             "higher_is_better": true,
-            "notes": "gpt-4o single-attempt pass rate; verify against OpenAI evals",
             "provenance": {
-              "url": "https://openai.com/index/introducing-swe-bench-verified",
-              "accessed_date": "2026-06-14",
-              "method": "manual",
-              "confidence": "assumed"
+              "url": "https://artificialanalysis.ai/models/gpt-5-5",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
             }
           }
         ],
         "provenance": {
-          "url": "https://platform.openai.com/docs/models",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed"
+          "url": "https://artificialanalysis.ai/models/gpt-5-5",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       },
       {
-        "id": "o3",
+        "id": "gpt-5-4",
         "provider_id": "openai",
-        "display_name": "o3",
-        "family": "o-series",
-        "context_length_k": 200,
+        "display_name": "GPT-5.4",
+        "context_length_k": null,
         "strengths": [
-          "complex-reasoning",
-          "math",
           "coding",
-          "agentic"
+          "reasoning"
         ],
+        "released_date": "2026-03-05",
         "benchmarks": [
           {
-            "name": "SWE-bench-verified",
-            "score": 69.1,
-            "unit": "percent",
+            "name": "AA Intelligence Index",
+            "score": 51.4,
+            "unit": "normalized",
             "higher_is_better": true,
-            "notes": "o3 high-compute setting; verify against OpenAI published evals",
             "provenance": {
-              "url": "https://openai.com/o3",
-              "accessed_date": "2026-06-14",
-              "method": "manual",
-              "confidence": "assumed"
+              "url": "https://artificialanalysis.ai/models/gpt-5-4",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
             }
           },
           {
-            "name": "HumanEval",
-            "score": 97.9,
-            "unit": "percent",
+            "name": "AA Coding Index",
+            "score": 57.2,
+            "unit": "normalized",
             "higher_is_better": true,
-            "notes": "Approximate; varies by compute budget",
             "provenance": {
-              "url": "https://openai.com/o3",
-              "accessed_date": "2026-06-14",
-              "method": "manual",
-              "confidence": "assumed"
+              "url": "https://artificialanalysis.ai/models/gpt-5-4",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
             }
           }
         ],
         "provenance": {
-          "url": "https://platform.openai.com/docs/models",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed"
+          "url": "https://artificialanalysis.ai/models/gpt-5-4",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       },
       {
-        "id": "o4-mini",
+        "id": "gpt-5-3-codex",
         "provider_id": "openai",
-        "display_name": "o4-mini",
-        "family": "o-series",
-        "context_length_k": 200,
+        "display_name": "GPT-5.3 Codex",
+        "context_length_k": null,
         "strengths": [
-          "fast-reasoning",
           "coding",
-          "cost-efficient"
+          "reasoning"
         ],
+        "released_date": "2026-02-05",
         "benchmarks": [
           {
-            "name": "SWE-bench-verified",
-            "score": 68.1,
-            "unit": "percent",
+            "name": "AA Intelligence Index",
+            "score": 44.3,
+            "unit": "normalized",
             "higher_is_better": true,
-            "notes": "Approximate; verify against OpenAI evals page",
             "provenance": {
-              "url": "https://openai.com/index/openai-o4-mini-system-card",
-              "accessed_date": "2026-06-14",
-              "method": "manual",
-              "confidence": "assumed"
+              "url": "https://artificialanalysis.ai/models/gpt-5-3-codex",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 53.1,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gpt-5-3-codex",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
             }
           }
         ],
         "provenance": {
-          "url": "https://platform.openai.com/docs/models",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed"
+          "url": "https://artificialanalysis.ai/models/gpt-5-3-codex",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "gpt-5-4-mini",
+        "provider_id": "openai",
+        "display_name": "GPT-5.4 mini",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-03-17",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 40,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gpt-5-4-mini",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 51.5,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gpt-5-4-mini",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/gpt-5-4-mini",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "gpt-5-4-nano",
+        "provider_id": "openai",
+        "display_name": "GPT-5.4 nano",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-03-17",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 38.2,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gpt-5-4-nano",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 43.9,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gpt-5-4-nano",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/gpt-5-4-nano",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "gpt-5-5-instant-05-26",
+        "provider_id": "openai",
+        "display_name": "GPT-5.5 Instant",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-05-05",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 33.5,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gpt-5-5-instant-05-26",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 45.1,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gpt-5-5-instant-05-26",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/gpt-5-5-instant-05-26",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       }
     ],
@@ -520,9 +817,20 @@
         },
         "models": [
           {
-            "model_id": "copilot-base",
+            "model_id": "gpt-5-5",
             "access_type": "full",
-            "is_default": true
+            "is_default": true,
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "claude-opus-4-8",
+            "access_type": "full",
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "gemini-3-1-pro-preview",
+            "access_type": "full",
+            "notes": "availability inferred"
           }
         ],
         "usage_limits": [
@@ -569,29 +877,7 @@
         "source_url": "https://github.com/features/copilot#pricing"
       }
     ],
-    "models": [
-      {
-        "id": "copilot-base",
-        "provider_id": "github-copilot",
-        "display_name": "Copilot Base Model (GPT-4o / Claude / Gemini)",
-        "family": "copilot",
-        "context_length_k": 64,
-        "strengths": [
-          "autocomplete",
-          "ide-integration",
-          "code-chat",
-          "pr-review"
-        ],
-        "benchmarks": [],
-        "provenance": {
-          "url": "https://github.com/features/copilot",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed",
-          "notes": "Copilot uses multiple underlying models (GPT-4o, Claude, Gemini) depending on task and user selection."
-        }
-      }
-    ],
+    "models": [],
     "last_verified": "2026-06-14",
     "provenance": {
       "url": "https://github.com/features/copilot",
@@ -633,13 +919,20 @@
         },
         "models": [
           {
-            "model_id": "cursor-claude-sonnet",
+            "model_id": "claude-opus-4-8",
             "access_type": "full",
-            "is_default": true
+            "is_default": true,
+            "notes": "availability inferred"
           },
           {
-            "model_id": "cursor-gpt-4o",
-            "access_type": "full"
+            "model_id": "gpt-5-5",
+            "access_type": "full",
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "gemini-3-1-pro-preview",
+            "access_type": "full",
+            "notes": "availability inferred"
           }
         ],
         "usage_limits": [
@@ -697,47 +990,7 @@
         "source_url": "https://cursor.com/pricing"
       }
     ],
-    "models": [
-      {
-        "id": "cursor-claude-sonnet",
-        "provider_id": "cursor",
-        "display_name": "Claude Sonnet (via Cursor)",
-        "family": "claude-4",
-        "context_length_k": 200,
-        "strengths": [
-          "agentic-coding",
-          "multi-file-edit",
-          "codebase-context"
-        ],
-        "benchmarks": [],
-        "provenance": {
-          "url": "https://cursor.com",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed",
-          "notes": "Cursor proxies Anthropic Claude — benchmark scores are equivalent to claude-sonnet-4-6."
-        }
-      },
-      {
-        "id": "cursor-gpt-4o",
-        "provider_id": "cursor",
-        "display_name": "GPT-4o (via Cursor)",
-        "family": "gpt-4o",
-        "context_length_k": 128,
-        "strengths": [
-          "speed",
-          "coding",
-          "multimodal"
-        ],
-        "benchmarks": [],
-        "provenance": {
-          "url": "https://cursor.com",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed"
-        }
-      }
-    ],
+    "models": [],
     "last_verified": "2026-06-14",
     "provenance": {
       "url": "https://cursor.com/pricing",
@@ -779,13 +1032,20 @@
         },
         "models": [
           {
-            "model_id": "gemini-2-5-flash",
-            "access_type": "full"
+            "model_id": "gemini-3-1-pro-preview",
+            "access_type": "full",
+            "is_default": true,
+            "notes": "availability inferred"
           },
           {
-            "model_id": "gemini-2-5-pro",
+            "model_id": "gemini-3-5-flash",
             "access_type": "full",
-            "is_default": true
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "gemini-3-flash-reasoning",
+            "access_type": "full",
+            "notes": "availability inferred"
           }
         ],
         "usage_limits": [
@@ -832,71 +1092,293 @@
     ],
     "models": [
       {
-        "id": "gemini-2-5-pro",
+        "id": "gemini-3-5-flash",
         "provider_id": "google",
-        "display_name": "Gemini 2.5 Pro",
-        "family": "gemini-2.5",
-        "context_length_k": 1000,
+        "display_name": "Gemini 3.5 Flash",
+        "context_length_k": null,
         "strengths": [
           "coding",
-          "long-context",
-          "reasoning",
-          "multimodal",
-          "deep-research"
+          "reasoning"
         ],
+        "released_date": "2026-05-19",
         "benchmarks": [
           {
-            "name": "SWE-bench-verified",
-            "score": 63.8,
-            "unit": "percent",
+            "name": "AA Intelligence Index",
+            "score": 50.2,
+            "unit": "normalized",
             "higher_is_better": true,
-            "notes": "Gemini 2.5 Pro; verify against Google DeepMind published evals",
             "provenance": {
-              "url": "https://deepmind.google/technologies/gemini/pro/",
-              "accessed_date": "2026-06-14",
-              "method": "manual",
-              "confidence": "assumed"
+              "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
             }
           },
           {
-            "name": "HumanEval",
-            "score": 87,
-            "unit": "percent",
+            "name": "AA Coding Index",
+            "score": 45,
+            "unit": "normalized",
             "higher_is_better": true,
-            "notes": "Approximate; verify against official model card",
             "provenance": {
-              "url": "https://deepmind.google/technologies/gemini/",
-              "accessed_date": "2026-06-14",
-              "method": "manual",
-              "confidence": "assumed"
+              "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
             }
           }
         ],
         "provenance": {
-          "url": "https://deepmind.google/technologies/gemini/pro/",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed"
+          "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       },
       {
-        "id": "gemini-2-5-flash",
+        "id": "gemini-3-1-pro-preview",
         "provider_id": "google",
-        "display_name": "Gemini 2.5 Flash",
-        "family": "gemini-2.5",
-        "context_length_k": 1000,
+        "display_name": "Gemini 3.1 Pro Preview",
+        "context_length_k": null,
         "strengths": [
-          "speed",
-          "cost-efficient",
           "coding",
-          "multimodal"
+          "reasoning"
         ],
-        "benchmarks": [],
+        "released_date": "2026-02-19",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 46.5,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 55.5,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
         "provenance": {
-          "url": "https://deepmind.google/technologies/gemini/flash/",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed"
+          "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "gemini-3-flash-reasoning",
+        "provider_id": "google",
+        "display_name": "Gemini 3 Flash Preview",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning",
+          "math"
+        ],
+        "released_date": "2025-12-17",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 37.8,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 42.6,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Math Index",
+            "score": 97,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "gemma-4-31b",
+        "provider_id": "google",
+        "display_name": "Gemma 4 31B",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-02",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 29.4,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemma-4-31b",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 38.7,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemma-4-31b",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/gemma-4-31b",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "gemma-4-26b-a4b",
+        "provider_id": "google",
+        "display_name": "Gemma 4 26B A4B",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-02",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 25.7,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 22.4,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "gemini-3-1-flash-lite-preview",
+        "provider_id": "google",
+        "display_name": "Gemini 3.1 Flash-Lite",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-03-03",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 25,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 30.1,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       }
     ],
@@ -941,13 +1423,15 @@
         },
         "models": [
           {
-            "model_id": "moonshot-v1-128k",
+            "model_id": "kimi-k2-6",
             "access_type": "full",
-            "is_default": true
+            "is_default": true,
+            "notes": "availability inferred"
           },
           {
-            "model_id": "kimi-k1-5",
-            "access_type": "full"
+            "model_id": "kimi-k2-5",
+            "access_type": "full",
+            "notes": "availability inferred"
           }
         ],
         "usage_limits": [
@@ -1007,13 +1491,20 @@
         },
         "models": [
           {
-            "model_id": "moonshot-v1-128k",
+            "model_id": "kimi-k2-7-code",
             "access_type": "full",
-            "is_default": true
+            "is_default": true,
+            "notes": "availability inferred"
           },
           {
-            "model_id": "kimi-k1-5",
-            "access_type": "full"
+            "model_id": "kimi-k2-6",
+            "access_type": "full",
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "kimi-k2-5",
+            "access_type": "full",
+            "notes": "availability inferred"
           }
         ],
         "usage_limits": [
@@ -1056,46 +1547,141 @@
     ],
     "models": [
       {
-        "id": "moonshot-v1-128k",
+        "id": "kimi-k2-6",
         "provider_id": "kimi",
-        "display_name": "Moonshot v1 (128K)",
-        "family": "moonshot-v1",
-        "context_length_k": 128,
+        "display_name": "Kimi K2.6",
+        "context_length_k": null,
         "strengths": [
-          "long-context",
-          "code-generation",
-          "document-analysis",
-          "chinese-language"
+          "coding",
+          "reasoning"
         ],
-        "benchmarks": [],
+        "released_date": "2026-04-20",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 42.8,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/kimi-k2-6",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 47.1,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/kimi-k2-6",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
         "provenance": {
-          "url": "https://platform.moonshot.cn/docs",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed",
-          "notes": "Moonshot v1 series supports 8K, 32K, and 128K context variants."
+          "url": "https://artificialanalysis.ai/models/kimi-k2-6",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       },
       {
-        "id": "kimi-k1-5",
+        "id": "kimi-k2-7-code",
         "provider_id": "kimi",
-        "display_name": "Kimi k1.5",
-        "family": "kimi-k1",
-        "context_length_k": 128,
+        "display_name": "Kimi K2.7 Code",
+        "context_length_k": null,
         "strengths": [
-          "reasoning",
           "coding",
-          "math",
-          "long-context"
+          "reasoning"
         ],
-        "released_date": "2025-01-22",
-        "benchmarks": [],
+        "released_date": "2026-06-12",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 41.9,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 45.6,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
         "provenance": {
-          "url": "https://kimi.ai",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed",
-          "notes": "Kimi k1.5 is a multimodal reasoning model. Benchmark scores not publicly disclosed at benchmark standard sites as of this writing."
+          "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "kimi-k2-5",
+        "provider_id": "kimi",
+        "display_name": "Kimi K2.5",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-01-27",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 38.1,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/kimi-k2-5",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 39.6,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/kimi-k2-5",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/kimi-k2-5",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       }
     ],
@@ -1122,46 +1708,279 @@
     "plans": [],
     "models": [
       {
-        "id": "qwen2-5-coder-32b",
+        "id": "qwen3-7-max",
         "provider_id": "qwen",
-        "display_name": "Qwen2.5-Coder-32B-Instruct",
-        "family": "qwen2.5-coder",
-        "context_length_k": 128,
+        "display_name": "Qwen3.7 Max",
+        "context_length_k": null,
         "strengths": [
-          "code-generation",
-          "code-completion",
-          "debugging",
-          "multi-language"
+          "coding",
+          "reasoning"
         ],
-        "released_date": "2024-11-12",
-        "benchmarks": [],
+        "released_date": "2026-05-19",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 46,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-7-max",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 50.1,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-7-max",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
         "provenance": {
-          "url": "https://qwenlm.github.io/blog/qwen2.5-coder/",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed",
-          "notes": "Qwen2.5-Coder-32B reported strong performance on HumanEval and SWE-bench but exact verified scores not confirmed here."
+          "url": "https://artificialanalysis.ai/models/qwen3-7-max",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       },
       {
-        "id": "qwq-32b",
+        "id": "qwen3-6-max",
         "provider_id": "qwen",
-        "display_name": "QwQ-32B",
-        "family": "qwq",
-        "context_length_k": 32,
+        "display_name": "Qwen3.6 Max Preview",
+        "context_length_k": null,
         "strengths": [
-          "reasoning",
           "coding",
-          "math",
-          "chain-of-thought"
+          "reasoning"
         ],
-        "released_date": "2025-03-06",
-        "benchmarks": [],
+        "released_date": "2026-04-20",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 40,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-6-max",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 44.9,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-6-max",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
         "provenance": {
-          "url": "https://qwenlm.github.io/blog/qwq-32b/",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed"
+          "url": "https://artificialanalysis.ai/models/qwen3-6-max",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "qwen3-6-plus",
+        "provider_id": "qwen",
+        "display_name": "Qwen3.6 Plus",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-02",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 39.6,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-6-plus",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 42.9,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-6-plus",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/qwen3-6-plus",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "qwen3-7-plus",
+        "provider_id": "qwen",
+        "display_name": "Qwen3.7 Plus",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-06-01",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 39,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-7-plus",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 46.5,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-7-plus",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/qwen3-7-plus",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "qwen3-6-27b",
+        "provider_id": "qwen",
+        "display_name": "Qwen3.6 27B",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-22",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 37.1,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-6-27b",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 36.5,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-6-27b",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/qwen3-6-27b",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "qwen3-5-27b",
+        "provider_id": "qwen",
+        "display_name": "Qwen3.5 27B",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-02-24",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 33.8,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-5-27b",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 34.9,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-5-27b",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/qwen3-5-27b",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       }
     ],
@@ -1206,9 +2025,15 @@
         },
         "models": [
           {
-            "model_id": "copilot-xcode-base",
+            "model_id": "gpt-5-5",
             "access_type": "full",
-            "is_default": true
+            "is_default": true,
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "claude-opus-4-8",
+            "access_type": "full",
+            "notes": "availability inferred"
           }
         ],
         "usage_limits": [
@@ -1256,31 +2081,7 @@
         "source_url": "https://github.com/features/copilot#pricing"
       }
     ],
-    "models": [
-      {
-        "id": "copilot-xcode-base",
-        "provider_id": "copilot-xcode",
-        "display_name": "Copilot Base Model (Xcode)",
-        "family": "copilot",
-        "context_length_k": 64,
-        "strengths": [
-          "swift",
-          "objective-c",
-          "xcode-integration",
-          "autocomplete",
-          "ios-development",
-          "macos-development"
-        ],
-        "benchmarks": [],
-        "provenance": {
-          "url": "https://github.com/github/CopilotForXcode",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed",
-          "notes": "Uses the same underlying Copilot models (GPT-4o, Claude, Gemini) as the main Copilot product."
-        }
-      }
-    ],
+    "models": [],
     "last_verified": "2026-06-14",
     "provenance": {
       "url": "https://github.com/github/CopilotForXcode",
@@ -1302,29 +2103,7 @@
     "headquarters_country": "US",
     "founded_year": 2025,
     "plans": [],
-    "models": [
-      {
-        "id": "byok",
-        "provider_id": "opencode",
-        "display_name": "BYOK — Your Choice of Model",
-        "family": "byok",
-        "context_length_k": null,
-        "strengths": [
-          "model-agnostic",
-          "local-models",
-          "openai-compatible",
-          "any-provider"
-        ],
-        "benchmarks": [],
-        "provenance": {
-          "url": "https://opencode.ai",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed",
-          "notes": "OpenCode is model-agnostic. Context length, quality, and benchmarks depend entirely on the model API you configure (e.g. Claude Sonnet, GPT-4o, Gemini, or a local Ollama model)."
-        }
-      }
-    ],
+    "models": [],
     "last_verified": "2026-06-14",
     "provenance": {
       "url": "https://opencode.ai",
@@ -1411,29 +2190,7 @@
         "source_url": "https://mimo.org/pro"
       }
     ],
-    "models": [
-      {
-        "id": "mimo-ai-tutor",
-        "provider_id": "mimo",
-        "display_name": "Mimo AI Tutor",
-        "family": "mimo-internal",
-        "context_length_k": null,
-        "strengths": [
-          "coding-education",
-          "guided-exercises",
-          "beginner-friendly",
-          "explanation"
-        ],
-        "benchmarks": [],
-        "provenance": {
-          "url": "https://mimo.org",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed",
-          "notes": "Mimo AI Tutor is an educational assistant built into the platform. Underlying model not publicly disclosed."
-        }
-      }
-    ],
+    "models": [],
     "last_verified": "2026-06-14",
     "provenance": {
       "url": "https://mimo.org/pro",
@@ -1457,48 +2214,201 @@
     "plans": [],
     "models": [
       {
-        "id": "minimax-text-01",
+        "id": "minimax-m3",
         "provider_id": "minimax",
-        "display_name": "MiniMax-Text-01",
-        "family": "minimax-text",
-        "context_length_k": 1000,
+        "display_name": "MiniMax-M3",
+        "context_length_k": null,
         "strengths": [
-          "long-context",
-          "document-analysis",
-          "reasoning",
-          "code-generation"
+          "coding",
+          "reasoning"
         ],
-        "released_date": "2025-01-15",
-        "benchmarks": [],
+        "released_date": "2026-06-01",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 44.4,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/minimax-m3",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 43.4,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/minimax-m3",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
         "provenance": {
-          "url": "https://www.minimaxi.com/en/news/minimax-text-01",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed",
-          "notes": "MiniMax-Text-01 supports 1M token context. One of the longest context windows commercially available. Coding benchmarks not independently verified here."
+          "url": "https://artificialanalysis.ai/models/minimax-m3",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       },
       {
-        "id": "minimax-m1",
+        "id": "minimax-m2-7",
         "provider_id": "minimax",
-        "display_name": "MiniMax-M1",
-        "family": "minimax-m1",
-        "context_length_k": 1000,
+        "display_name": "MiniMax-M2.7",
+        "context_length_k": null,
         "strengths": [
-          "reasoning",
           "coding",
-          "math",
-          "long-context",
-          "chain-of-thought"
+          "reasoning"
         ],
-        "released_date": "2025-05-22",
-        "benchmarks": [],
+        "released_date": "2026-03-18",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 38.1,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/minimax-m2-7",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 41.9,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/minimax-m2-7",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
         "provenance": {
-          "url": "https://www.minimaxi.com",
-          "accessed_date": "2026-06-14",
-          "method": "manual",
-          "confidence": "assumed",
-          "notes": "MiniMax-M1 is MiniMax's reasoning-focused model. Supports 1M token context with reasoning capabilities."
+          "url": "https://artificialanalysis.ai/models/minimax-m2-7",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "minimax-m2-5",
+        "provider_id": "minimax",
+        "display_name": "MiniMax-M2.5",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-02-12",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 33.7,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/minimax-m2-5",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 37.4,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/minimax-m2-5",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/minimax-m2-5",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "minimax-m2-1",
+        "provider_id": "minimax",
+        "display_name": "MiniMax-M2.1",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning",
+          "math"
+        ],
+        "released_date": "2025-12-23",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 31.4,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/minimax-m2-1",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 32.8,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/minimax-m2-1",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Math Index",
+            "score": 82.7,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/minimax-m2-1",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/minimax-m2-1",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
         }
       }
     ],
@@ -1509,6 +2419,236 @@
       "method": "manual",
       "confidence": "assumed",
       "notes": "MiniMax provides API access via platform.minimaxi.com. Pricing is per-token; no subscription tiers. USD pricing for international users may differ from CNY domestic pricing."
+    }
+  },
+  {
+    "id": "xai",
+    "name": "xAI",
+    "display_name": "Grok (xAI)",
+    "website": "https://x.ai",
+    "pricing_url": "https://x.ai/api",
+    "description": "xAI builds the Grok family of models, focused on reasoning, coding, and real-time knowledge. Grok is available via the xAI API and the X/Grok consumer apps; xAI does not currently sell a dedicated developer coding subscription, so its models appear here for comparison only.",
+    "logo_slug": "xai",
+    "category": "ai_lab",
+    "headquarters_country": "US",
+    "founded_year": 2023,
+    "plans": [],
+    "models": [
+      {
+        "id": "grok-4-3",
+        "provider_id": "xai",
+        "display_name": "Grok 4.3",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-30",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 37.6,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/grok-4-3",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 41,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/grok-4-3",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/grok-4-3",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "grok-4-20",
+        "provider_id": "xai",
+        "display_name": "Grok 4.20",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-07",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 37,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/grok-4-20",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 40.5,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/grok-4-20",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/grok-4-20",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      }
+    ],
+    "last_verified": "2026-06-17",
+    "provenance": {
+      "url": "https://x.ai",
+      "accessed_date": "2026-06-17",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "Provider metadata from model knowledge. Models sourced from the Artificial Analysis API."
+    }
+  },
+  {
+    "id": "deepseek",
+    "name": "DeepSeek",
+    "display_name": "DeepSeek",
+    "website": "https://www.deepseek.com",
+    "pricing_url": "https://api-docs.deepseek.com/quick_start/pricing",
+    "description": "DeepSeek develops open-weight and API-hosted models with strong coding and reasoning performance at low cost. Access is primarily via the DeepSeek API and chat app; there is no dedicated developer coding subscription, so its models appear here for comparison only.",
+    "logo_slug": "deepseek",
+    "category": "ai_lab",
+    "headquarters_country": "CN",
+    "founded_year": 2023,
+    "plans": [],
+    "models": [
+      {
+        "id": "deepseek-v4-pro",
+        "provider_id": "deepseek",
+        "display_name": "DeepSeek Pro",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-24",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 44.3,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 47.5,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "deepseek-v4-flash",
+        "provider_id": "deepseek",
+        "display_name": "DeepSeek Flash",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-24",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 40.3,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 38.7,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
+              "accessed_date": "2026-06-17",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
+          "accessed_date": "2026-06-17",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      }
+    ],
+    "last_verified": "2026-06-17",
+    "provenance": {
+      "url": "https://www.deepseek.com",
+      "accessed_date": "2026-06-17",
+      "method": "manual",
+      "confidence": "assumed",
+      "notes": "Provider metadata from model knowledge. Models sourced from the Artificial Analysis API."
     }
   }
 ]

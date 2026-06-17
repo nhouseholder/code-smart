@@ -24,7 +24,12 @@
       "display_name": "Qwen2.5-Coder-32B-Instruct",
       "family": "qwen2.5-coder",
       "context_length_k": 128,
-      "strengths": ["code-generation", "code-completion", "debugging", "multi-language"],
+      "strengths": [
+        "code-generation",
+        "code-completion",
+        "debugging",
+        "multi-language"
+      ],
       "released_date": "2024-11-12",
       "benchmarks": [],
       "provenance": {
@@ -41,7 +46,12 @@
       "display_name": "QwQ-32B",
       "family": "qwq",
       "context_length_k": 32,
-      "strengths": ["reasoning", "coding", "math", "chain-of-thought"],
+      "strengths": [
+        "reasoning",
+        "coding",
+        "math",
+        "chain-of-thought"
+      ],
       "released_date": "2025-03-06",
       "benchmarks": [],
       "provenance": {
@@ -49,6 +59,282 @@
         "accessed_date": "2026-06-14",
         "method": "manual",
         "confidence": "assumed"
+      }
+    },
+    {
+      "id": "qwen3-7-max",
+      "provider_id": "qwen",
+      "display_name": "Qwen3.7 Max",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-05-19",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 46,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-7-max",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 50.1,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-7-max",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/qwen3-7-max",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "qwen3-6-max",
+      "provider_id": "qwen",
+      "display_name": "Qwen3.6 Max Preview",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-20",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 40,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-6-max",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 44.9,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-6-max",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/qwen3-6-max",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "qwen3-6-plus",
+      "provider_id": "qwen",
+      "display_name": "Qwen3.6 Plus",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-02",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 39.6,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-6-plus",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 42.9,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-6-plus",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/qwen3-6-plus",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "qwen3-7-plus",
+      "provider_id": "qwen",
+      "display_name": "Qwen3.7 Plus",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-06-01",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 39,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-7-plus",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 46.5,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-7-plus",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/qwen3-7-plus",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "qwen3-6-27b",
+      "provider_id": "qwen",
+      "display_name": "Qwen3.6 27B",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-22",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 37.1,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-6-27b",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 36.5,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-6-27b",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/qwen3-6-27b",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "qwen3-5-27b",
+      "provider_id": "qwen",
+      "display_name": "Qwen3.5 27B",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-02-24",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 33.8,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-5-27b",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 34.9,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/qwen3-5-27b",
+            "accessed_date": "2026-06-17",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/qwen3-5-27b",
+        "accessed_date": "2026-06-17",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
       }
     }
   ],
@@ -72,8 +358,15 @@
         }
       },
       "models": [
-        { "model_id": "qwen2-5-coder-32b", "access_type": "limited", "is_default": true },
-        { "model_id": "qwq-32b", "access_type": "limited" }
+        {
+          "model_id": "qwen2-5-coder-32b",
+          "access_type": "limited",
+          "is_default": true
+        },
+        {
+          "model_id": "qwq-32b",
+          "access_type": "limited"
+        }
       ],
       "usage_limits": [
         {
@@ -105,7 +398,11 @@
         "sso": false,
         "notes": "API-only access. No web UI for coding workflow. Integrate into your own tooling or IDE via OpenAI-compatible endpoints."
       },
-      "target_personas": ["developer building AI tools", "researcher", "startup integrating LLM coding"],
+      "target_personas": [
+        "developer building AI tools",
+        "researcher",
+        "startup integrating LLM coding"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen"
@@ -129,8 +426,15 @@
         }
       },
       "models": [
-        { "model_id": "qwen2-5-coder-32b", "access_type": "full", "is_default": true },
-        { "model_id": "qwq-32b", "access_type": "full" }
+        {
+          "model_id": "qwen2-5-coder-32b",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "qwq-32b",
+          "access_type": "full"
+        }
       ],
       "usage_limits": [
         {
@@ -161,7 +465,11 @@
         "sso": false,
         "notes": "Full API access with no monthly commitment. OpenAI-compatible endpoint available for easy integration."
       },
-      "target_personas": ["developer building AI tools", "production application", "high-volume coder tooling"],
+      "target_personas": [
+        "developer building AI tools",
+        "production application",
+        "high-volume coder tooling"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen"

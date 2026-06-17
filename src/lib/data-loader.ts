@@ -12,7 +12,7 @@ import {
   type ModelsApi,
   type PlansApi,
 } from "./schema";
-import type { Provider, Plan } from "@/types";
+import type { Provider, Plan, Model } from "@/types";
 
 // Static imports of all provider JSON files.
 // Adding a new provider = add one import + one entry to PROVIDER_FILES.
@@ -27,6 +27,8 @@ import copilotXcodeData from "@/data/providers/copilot-xcode.json";
 import opencodeData from "@/data/providers/opencode.json";
 import mimoData from "@/data/providers/mimo.json";
 import minimaxData from "@/data/providers/minimax.json";
+import xaiData from "@/data/providers/xai.json";
+import deepseekData from "@/data/providers/deepseek.json";
 
 const PROVIDER_FILES = [
   anthropicData,
@@ -40,6 +42,8 @@ const PROVIDER_FILES = [
   opencodeData,
   mimoData,
   minimaxData,
+  xaiData,
+  deepseekData,
 ];
 
 let _cachedProviders: Provider[] | null = null;
@@ -59,6 +63,26 @@ export function isInScopePlan(plan: Plan): boolean {
   );
 }
 
+/** Number of months a model's release date may age before it's pruned. */
+export const MODEL_RECENCY_MONTHS = 6;
+
+/**
+ * Recency predicate — the single source of truth for which models the catalog
+ * surfaces. A model is "current" iff it has a `released_date` AND that date is
+ * within the last {@link MODEL_RECENCY_MONTHS} months. Models with no release
+ * date (undated legacy/proxy entries) are treated as not current. Applied once
+ * at the loader chokepoint (mirrors {@link isInScopePlan}); pruning is a filter,
+ * not a deletion — raw provider JSON is retained and the cutoff is reversible.
+ * `now` is injectable for deterministic tests.
+ */
+export function isCurrentModel(model: Model, now: Date = new Date()): boolean {
+  if (!model.released_date) return false;
+  const cutoff = new Date(now);
+  cutoff.setMonth(cutoff.getMonth() - MODEL_RECENCY_MONTHS);
+  const cutoffIso = cutoff.toISOString().slice(0, 10);
+  return model.released_date >= cutoffIso;
+}
+
 /** Load and Zod-validate all provider data. Throws on schema violation. */
 export function getAllProviders(): Provider[] {
   if (_cachedProviders) return _cachedProviders;
@@ -72,9 +96,14 @@ export function getAllProviders(): Provider[] {
       errors.push(`Provider "${(raw as { id?: string }).id ?? "unknown"}": ${result.error.message}`);
     } else {
       const provider = result.data as Provider;
-      // Filter to in-scope plans at the chokepoint — every consumer of
-      // getAllProviders()/getAllPlans() sees only paid individual/pro plans.
-      providers.push({ ...provider, plans: provider.plans.filter(isInScopePlan) });
+      // Filter at the chokepoint — every consumer of getAllProviders()/
+      // getAllPlans() sees only paid individual/pro plans and only models
+      // released within the recency window.
+      providers.push({
+        ...provider,
+        plans: provider.plans.filter(isInScopePlan),
+        models: provider.models.filter((m) => isCurrentModel(m)),
+      });
     }
   }
 

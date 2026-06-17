@@ -150,8 +150,15 @@ export function seed(): void {
     return JSON.parse(fs.readFileSync(filePath, "utf-8")) as ProviderJSON;
   });
 
-  // Use a transaction for atomicity
+  // Use a transaction for atomicity.
+  // Two passes: insert ALL providers + models first, then ALL plans. The models
+  // table is global, so a plan may reference a model from another provider
+  // (e.g. cursor-pro → gpt-5-5). Inserting every model up front means
+  // plan_model_access FKs resolve regardless of provider file order.
   db.transaction((tx) => {
+    const seenModelIds = new Set<string>();
+
+    // ── Pass 1: providers, source pages, models ───────────────────
     for (const raw of providersData) {
       const providerId = raw.id;
 
@@ -195,8 +202,7 @@ export function seed(): void {
         }).run();
       }
 
-      // ── Insert models (deduplicated across provider and plans) ──
-      const seenModelIds = new Set<string>();
+      // ── Insert models (deduplicated globally across all providers) ──
       for (const m of raw.models) {
         if (seenModelIds.has(m.id)) continue;
         seenModelIds.add(m.id);
@@ -211,8 +217,12 @@ export function seed(): void {
           aliases: null,
         }).run();
       }
+    }
 
-      // ── Insert plans + plan_model_access + usage_limits ─────────
+    // ── Pass 2: plans + plan_model_access + usage_limits ──────────
+    for (const raw of providersData) {
+      const providerId = raw.id;
+
       // Mirror the loader's in-scope rule (data-loader.ts isInScopePlan):
       // only paid individual/pro plans — free/api/team/enterprise excluded.
       const inScopePlans = raw.plans.filter(

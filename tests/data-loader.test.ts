@@ -1,5 +1,24 @@
 import { describe, it, expect } from "vitest";
-import { getAllProviders, getAllPlans, getProvider, getFreePlans, effectiveMonthlyPrice, isInScopePlan } from "../src/lib/data-loader";
+import { getAllProviders, getAllPlans, getProvider, getFreePlans, effectiveMonthlyPrice, isInScopePlan, isCurrentModel, MODEL_RECENCY_MONTHS } from "../src/lib/data-loader";
+import type { Model } from "@/types";
+
+function modelFixture(released_date?: string): Model {
+  return {
+    id: "m",
+    provider_id: "p",
+    display_name: "M",
+    context_length_k: null,
+    strengths: ["coding"],
+    ...(released_date ? { released_date } : {}),
+    benchmarks: [],
+    provenance: {
+      url: "https://example.com",
+      accessed_date: "2026-06-17",
+      method: "automated",
+      confidence: "observed",
+    },
+  } as Model;
+}
 
 describe("data-loader", () => {
   it("getAllProviders() returns at least 5 providers", () => {
@@ -24,7 +43,7 @@ describe("data-loader", () => {
       expect(plan.pricing.monthly_usd as number).toBeGreaterThan(0);
     }
     // No excluded tier survives the loader filter.
-    const tiers = new Set(plans.map((p) => p.tier));
+    const tiers = new Set<string>(plans.map((p) => p.tier));
     for (const banned of ["free", "api", "team", "enterprise"]) {
       expect(tiers.has(banned)).toBe(false);
     }
@@ -98,5 +117,39 @@ describe("data-loader", () => {
 
   it("all providers pass Zod schema validation (no throwing)", () => {
     expect(() => getAllProviders()).not.toThrow();
+  });
+
+  describe("isCurrentModel (recency prune)", () => {
+    const NOW = new Date("2026-06-17T00:00:00Z");
+
+    it("returns true for a model released within the recency window", () => {
+      expect(isCurrentModel(modelFixture("2026-04-01"), NOW)).toBe(true);
+    });
+
+    it("returns true for a model released exactly on the cutoff", () => {
+      // cutoff = NOW - 6 months = 2025-12-17
+      expect(isCurrentModel(modelFixture("2025-12-17"), NOW)).toBe(true);
+    });
+
+    it("returns false for a model older than the recency window", () => {
+      expect(isCurrentModel(modelFixture("2025-07-01"), NOW)).toBe(false);
+    });
+
+    it("returns false for a model with no release date", () => {
+      expect(isCurrentModel(modelFixture(undefined), NOW)).toBe(false);
+    });
+
+    it("exposes a 6-month window", () => {
+      expect(MODEL_RECENCY_MONTHS).toBe(6);
+    });
+  });
+
+  it("surfaces a refreshed catalog of >30 current models, all within the window", () => {
+    const now = new Date();
+    const models = getAllProviders().flatMap((p) => p.models);
+    expect(models.length).toBeGreaterThan(30);
+    for (const m of models) {
+      expect(isCurrentModel(m, now)).toBe(true);
+    }
   });
 });

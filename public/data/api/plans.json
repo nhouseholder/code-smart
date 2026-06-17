@@ -20,13 +20,20 @@
       },
       "models": [
         {
-          "model_id": "claude-haiku-4-5",
-          "access_type": "full"
+          "model_id": "claude-sonnet-4-6-adaptive",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "claude-sonnet-4-6",
+          "model_id": "claude-opus-4-7",
           "access_type": "full",
-          "is_default": true
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -91,17 +98,25 @@
       },
       "models": [
         {
-          "model_id": "claude-haiku-4-5",
-          "access_type": "full"
-        },
-        {
-          "model_id": "claude-sonnet-4-6",
-          "access_type": "full",
-          "is_default": true
-        },
-        {
           "model_id": "claude-opus-4-8",
-          "access_type": "full"
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-fable-5",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-opus-4-7",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-sonnet-4-6-adaptive",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -166,18 +181,20 @@
       },
       "models": [
         {
-          "model_id": "gpt-4o",
+          "model_id": "gpt-5-5",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "o4-mini",
-          "access_type": "full"
+          "model_id": "gpt-5-4",
+          "access_type": "full",
+          "notes": "availability inferred"
         },
         {
-          "model_id": "o3",
-          "access_type": "limited",
-          "notes": "Limited messages per day on o3"
+          "model_id": "gpt-5-3-codex",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -242,9 +259,20 @@
       },
       "models": [
         {
-          "model_id": "copilot-base",
+          "model_id": "gpt-5-5",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "gemini-3-1-pro-preview",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -313,13 +341,20 @@
       },
       "models": [
         {
-          "model_id": "cursor-claude-sonnet",
+          "model_id": "claude-opus-4-8",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "cursor-gpt-4o",
-          "access_type": "full"
+          "model_id": "gpt-5-5",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "gemini-3-1-pro-preview",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -399,13 +434,20 @@
       },
       "models": [
         {
-          "model_id": "gemini-2-5-flash",
-          "access_type": "full"
+          "model_id": "gemini-3-1-pro-preview",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "gemini-2-5-pro",
+          "model_id": "gemini-3-5-flash",
           "access_type": "full",
-          "is_default": true
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "gemini-3-flash-reasoning",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -472,13 +514,15 @@
       },
       "models": [
         {
-          "model_id": "moonshot-v1-128k",
+          "model_id": "kimi-k2-6",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "kimi-k1-5",
-          "access_type": "full"
+          "model_id": "kimi-k2-5",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -541,13 +585,20 @@
       },
       "models": [
         {
-          "model_id": "moonshot-v1-128k",
+          "model_id": "kimi-k2-7-code",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "kimi-k1-5",
-          "access_type": "full"
+          "model_id": "kimi-k2-6",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "kimi-k2-5",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -610,9 +661,15 @@
       },
       "models": [
         {
-          "model_id": "copilot-xcode-base",
+          "model_id": "gpt-5-5",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -751,13 +808,20 @@
       },
       "models": [
         {
-          "model_id": "claude-haiku-4-5",
-          "access_type": "full"
+          "model_id": "claude-sonnet-4-6-adaptive",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "claude-sonnet-4-6",
+          "model_id": "claude-opus-4-7",
           "access_type": "full",
-          "is_default": true
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -822,17 +886,25 @@
       },
       "models": [
         {
-          "model_id": "claude-haiku-4-5",
-          "access_type": "full"
-        },
-        {
-          "model_id": "claude-sonnet-4-6",
-          "access_type": "full",
-          "is_default": true
-        },
-        {
           "model_id": "claude-opus-4-8",
-          "access_type": "full"
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-fable-5",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-opus-4-7",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-sonnet-4-6-adaptive",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -897,18 +969,20 @@
       },
       "models": [
         {
-          "model_id": "gpt-4o",
+          "model_id": "gpt-5-5",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "o4-mini",
-          "access_type": "full"
+          "model_id": "gpt-5-4",
+          "access_type": "full",
+          "notes": "availability inferred"
         },
         {
-          "model_id": "o3",
-          "access_type": "limited",
-          "notes": "Limited messages per day on o3"
+          "model_id": "gpt-5-3-codex",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -973,9 +1047,20 @@
       },
       "models": [
         {
-          "model_id": "copilot-base",
+          "model_id": "gpt-5-5",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "gemini-3-1-pro-preview",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -1044,13 +1129,20 @@
       },
       "models": [
         {
-          "model_id": "cursor-claude-sonnet",
+          "model_id": "claude-opus-4-8",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "cursor-gpt-4o",
-          "access_type": "full"
+          "model_id": "gpt-5-5",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "gemini-3-1-pro-preview",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -1130,13 +1222,20 @@
       },
       "models": [
         {
-          "model_id": "gemini-2-5-flash",
-          "access_type": "full"
+          "model_id": "gemini-3-1-pro-preview",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "gemini-2-5-pro",
+          "model_id": "gemini-3-5-flash",
           "access_type": "full",
-          "is_default": true
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "gemini-3-flash-reasoning",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -1203,13 +1302,15 @@
       },
       "models": [
         {
-          "model_id": "moonshot-v1-128k",
+          "model_id": "kimi-k2-6",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "kimi-k1-5",
-          "access_type": "full"
+          "model_id": "kimi-k2-5",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -1272,13 +1373,20 @@
       },
       "models": [
         {
-          "model_id": "moonshot-v1-128k",
+          "model_id": "kimi-k2-7-code",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
         },
         {
-          "model_id": "kimi-k1-5",
-          "access_type": "full"
+          "model_id": "kimi-k2-6",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "kimi-k2-5",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [
@@ -1341,9 +1449,15 @@
       },
       "models": [
         {
-          "model_id": "copilot-xcode-base",
+          "model_id": "gpt-5-5",
           "access_type": "full",
-          "is_default": true
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "full",
+          "notes": "availability inferred"
         }
       ],
       "usage_limits": [

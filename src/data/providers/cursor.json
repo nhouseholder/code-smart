@@ -25,7 +25,11 @@
       "display_name": "Claude Sonnet (via Cursor)",
       "family": "claude-4",
       "context_length_k": 200,
-      "strengths": ["agentic-coding", "multi-file-edit", "codebase-context"],
+      "strengths": [
+        "agentic-coding",
+        "multi-file-edit",
+        "codebase-context"
+      ],
       "benchmarks": [],
       "provenance": {
         "url": "https://cursor.com",
@@ -41,7 +45,11 @@
       "display_name": "GPT-4o (via Cursor)",
       "family": "gpt-4o",
       "context_length_k": 128,
-      "strengths": ["speed", "coding", "multimodal"],
+      "strengths": [
+        "speed",
+        "coding",
+        "multimodal"
+      ],
       "benchmarks": [],
       "provenance": {
         "url": "https://cursor.com",
@@ -71,8 +79,15 @@
         }
       },
       "models": [
-        { "model_id": "cursor-claude-sonnet", "access_type": "limited", "notes": "50 slow-request premium model uses/mo" },
-        { "model_id": "cursor-gpt-4o", "access_type": "limited" }
+        {
+          "model_id": "cursor-claude-sonnet",
+          "access_type": "limited",
+          "notes": "50 slow-request premium model uses/mo"
+        },
+        {
+          "model_id": "cursor-gpt-4o",
+          "access_type": "limited"
+        }
       ],
       "usage_limits": [
         {
@@ -107,7 +122,10 @@
         "code_context_length_k": 200,
         "file_uploads": true,
         "voice_input": false,
-        "ide_integrations": ["Cursor (built-in)", "VS Code extensions compatible"],
+        "ide_integrations": [
+          "Cursor (built-in)",
+          "VS Code extensions compatible"
+        ],
         "cli_access": false,
         "api_access": false,
         "priority_access": false,
@@ -116,7 +134,11 @@
         "sso": false,
         "notes": "Can use own API key (BYOK) to bypass request limits."
       },
-      "target_personas": ["hobbyist", "student", "occasional coder"],
+      "target_personas": [
+        "hobbyist",
+        "student",
+        "occasional coder"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://cursor.com/pricing"
@@ -140,8 +162,22 @@
         }
       },
       "models": [
-        { "model_id": "cursor-claude-sonnet", "access_type": "full", "is_default": true },
-        { "model_id": "cursor-gpt-4o", "access_type": "full" }
+        {
+          "model_id": "claude-opus-4-8",
+          "access_type": "full",
+          "is_default": true,
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "gpt-5-5",
+          "access_type": "full",
+          "notes": "availability inferred"
+        },
+        {
+          "model_id": "gemini-3-1-pro-preview",
+          "access_type": "full",
+          "notes": "availability inferred"
+        }
       ],
       "usage_limits": [
         {
@@ -176,7 +212,10 @@
         "code_context_length_k": 200,
         "file_uploads": true,
         "voice_input": false,
-        "ide_integrations": ["Cursor (built-in)", "VS Code extensions compatible"],
+        "ide_integrations": [
+          "Cursor (built-in)",
+          "VS Code extensions compatible"
+        ],
         "cli_access": false,
         "api_access": false,
         "priority_access": true,
@@ -185,7 +224,11 @@
         "sso": false,
         "notes": "BYOK supported for additional capacity."
       },
-      "target_personas": ["professional developer", "AI-first coder", "solo founder"],
+      "target_personas": [
+        "professional developer",
+        "AI-first coder",
+        "solo founder"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://cursor.com/pricing"
@@ -209,8 +252,15 @@
         }
       },
       "models": [
-        { "model_id": "cursor-claude-sonnet", "access_type": "full", "is_default": true },
-        { "model_id": "cursor-gpt-4o", "access_type": "full" }
+        {
+          "model_id": "cursor-claude-sonnet",
+          "access_type": "full",
+          "is_default": true
+        },
+        {
+          "model_id": "cursor-gpt-4o",
+          "access_type": "full"
+        }
       ],
       "usage_limits": [
         {
@@ -232,7 +282,9 @@
         "code_context_length_k": 200,
         "file_uploads": true,
         "voice_input": false,
-        "ide_integrations": ["Cursor (built-in)"],
+        "ide_integrations": [
+          "Cursor (built-in)"
+        ],
         "cli_access": false,
         "api_access": false,
         "priority_access": true,
@@ -241,7 +293,10 @@
         "sso": true,
         "notes": "Centralized billing; privacy mode; no training on code."
       },
-      "target_personas": ["engineering team", "startup"],
+      "target_personas": [
+        "engineering team",
+        "startup"
+      ],
       "is_active": true,
       "last_verified": "2026-06-14",
       "source_url": "https://cursor.com/pricing"
