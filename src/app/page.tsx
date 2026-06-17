@@ -7,6 +7,7 @@ import { Hero } from "@/components/Hero";
 import { PlansGrid } from "@/components/PlansGrid";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { RankingCard } from "@/components/RankingCard";
+import { ValueByTierChart } from "@/components/ValueByTierChart";
 import { FadeIn } from "@/components/motion/FadeIn";
 import type { ModelValueEstimate } from "@/types";
 import type { PlanModelRow } from "@/lib/rankings";
@@ -91,6 +92,11 @@ export default function HomePage() {
           )}
         </FadeIn>
       </section>
+
+      {/* Model quality by price tier (WMQ bar chart) */}
+      <FadeIn>
+        <ValueByTierChart tiers={rankings.rankings.byQualityPerBand} />
+      </FadeIn>
 
       <div id="plans" className="scroll-mt-28 mt-12">
         <PlansGrid entries={enrichedPlans} />

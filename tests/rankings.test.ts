@@ -116,17 +116,19 @@ function makeEst(
 
 // ─── getPriceBand (doc §8 bands) ───────────────────────────────────────────────
 
-describe("getPriceBand (§8 bands)", () => {
+describe("getPriceBand (Budget/Standard/Premium tiers)", () => {
   it("free for null price", () => expect(getPriceBand(null)).toBe("free"));
   it("free for $0", () => expect(getPriceBand(0)).toBe("free"));
   it("free for negative", () => expect(getPriceBand(-5)).toBe("free"));
-  it("low for $0.01", () => expect(getPriceBand(0.01)).toBe("low"));
-  it("low for $20", () => expect(getPriceBand(20)).toBe("low"));
-  it("low for $30 (upper boundary)", () => expect(getPriceBand(30)).toBe("low"));
-  it("mid for $30.01", () => expect(getPriceBand(30.01)).toBe("mid"));
-  it("mid for $80 (upper boundary)", () => expect(getPriceBand(80)).toBe("mid"));
-  it("high for $80.01", () => expect(getPriceBand(80.01)).toBe("high"));
-  it("high for $200", () => expect(getPriceBand(200)).toBe("high"));
+  it("low (Budget) for $0.01", () => expect(getPriceBand(0.01)).toBe("low"));
+  it("low (Budget) for $10", () => expect(getPriceBand(10)).toBe("low"));
+  it("low (Budget) for $15 (upper boundary)", () => expect(getPriceBand(15)).toBe("low"));
+  it("mid (Standard) for $15.01", () => expect(getPriceBand(15.01)).toBe("mid"));
+  it("mid (Standard) for $20", () => expect(getPriceBand(20)).toBe("mid"));
+  it("mid (Standard) for $49 (upper boundary)", () => expect(getPriceBand(49)).toBe("mid"));
+  it("high (Premium) for $49.01", () => expect(getPriceBand(49.01)).toBe("high"));
+  it("high (Premium) for $100", () => expect(getPriceBand(100)).toBe("high"));
+  it("high (Premium) for $200", () => expect(getPriceBand(200)).toBe("high"));
 });
 
 // ─── computeAllRankings — primary scenario ─────────────────────────────────────
@@ -137,8 +139,9 @@ function primaryInputs() {
   const mLow = makeModel("m-low", "LowConf");
   const provider = makeProvider("prov-1", "Provider One", [mSmart, mFast, mLow]);
 
-  const pLow = makePlan("p-low20", 20, { pricingConf: "observed", usageConf: "observed" });
-  const pMid = makePlan("p-mid50", 50);
+  // Prices chosen to land one plan in each tier: Budget ≤$15, Standard $16–49, Premium ≥$50.
+  const pLow = makePlan("p-low20", 10, { pricingConf: "observed", usageConf: "observed" });
+  const pMid = makePlan("p-mid50", 25);
   const pHigh = makePlan("p-high120", 120);
   const pFree = makePlan("p-free0", 0);
 
@@ -233,9 +236,9 @@ describe("computeAllRankings — price bands (#1–3)", () => {
     const { rankings } = computeAllRankings(primaryInputs());
     const row = rankings.byPriceBand.low.find((r) => r.modelId === "m-smart")!;
     expect(typeof row.valueScore).toBe("number");
-    expect(row.valueScoreRaw).toBe(400); // qa 8000 / price 20
+    expect(row.valueScoreRaw).toBe(800); // qa 8000 / price 10
     expect(row.estimatedMonthlyTokens).toBe(10000);
-    expect(row.monthlyPriceUsd).toBe(20);
+    expect(row.monthlyPriceUsd).toBe(10);
     expect(row.caveats.length).toBeGreaterThan(0); // confidence "assumed"
     expect(row.sourceDates.pricing).toBe("2026-06-15");
   });
@@ -291,7 +294,7 @@ describe("computeAllRankings — provider coding value (#9)", () => {
   it("scores each provider by its peak (tokens × coding/100) / price combo", () => {
     const { rankings } = computeAllRankings(primaryInputs());
     const prov1 = rankings.byProviderCodingValue.find((r) => r.providerId === "prov-1")!;
-    expect(prov1.codingValuePeak).toBe(425); // p-low20 × m-smart: 10000·0.85/20
+    expect(prov1.codingValuePeak).toBe(850); // p-low20 × m-smart: 10000·0.85/10
     expect(prov1.bestPlanId).toBe("p-low20");
     expect(prov1.bestModelId).toBe("m-smart");
   });
@@ -324,7 +327,7 @@ describe("computeAllRankings — top-N cap", () => {
     const estimatesByPlan: Record<string, ModelValueEstimate[]> = {};
     for (let i = 0; i < 12; i++) {
       const id = `p${String(i).padStart(2, "0")}`;
-      plans.push({ provider, plan: makePlan(id, 10 + i) }); // $10–$21 → all "low"
+      plans.push({ provider, plan: makePlan(id, 8 + i * 0.5) }); // $8.0–$13.5 → all "low" (≤$15)
       estimatesByPlan[id] = [makeEst(id, "m1", { wmq: 70, tokens1mo: 1000, qa1mo: 1000, value: 100 - i })];
     }
     const { rankings } = computeAllRankings({
@@ -345,7 +348,7 @@ describe("computeAllRankings — tie-break", () => {
     const provider = makeProvider("prov-1", "P1", [model]);
     const { rankings } = computeAllRankings({
       plans: [
-        { provider, plan: makePlan("dear", 20) },
+        { provider, plan: makePlan("dear", 14) },
         { provider, plan: makePlan("cheap", 10) },
       ],
       estimatesByPlan: {
@@ -364,7 +367,7 @@ describe("computeAllRankings — observed confidence carries no caveat", () => {
     const model = makeModel("mo", "MO");
     const provider = makeProvider("prov-1", "P1", [model]);
     const { rankings } = computeAllRankings({
-      plans: [{ provider, plan: makePlan("plan-o", 25) }],
+      plans: [{ provider, plan: makePlan("plan-o", 12) }],
       estimatesByPlan: {
         "plan-o": [makeEst("plan-o", "mo", { wmq: 70, tokens1mo: 1000, qa1mo: 1000, value: 50, conf: "observed" })],
       },
@@ -372,5 +375,84 @@ describe("computeAllRankings — observed confidence carries no caveat", () => {
       observedAt: "2026-06-15",
     });
     expect(rankings.byPriceBand.low[0].caveats).toEqual([]);
+  });
+});
+
+// ─── byQualityPerBand (home-page quality-per-tier chart) ──────────────────────
+
+describe("computeAllRankings — quality per band (home chart)", () => {
+  function qualityInputs() {
+    const mSmart = makeModel("m-smart", "Smart"); // WMQ 84
+    const mFast = makeModel("m-fast", "Fast"); // WMQ 65.5
+    const mNoAa = makeModel("m-noaa", "NoData"); // no AA score
+    const provider = makeProvider("prov-1", "Provider One", [mSmart, mFast, mNoAa]);
+
+    // Plans carry model refs (byQualityPerBand reads plan.models, not estimates).
+    const withRefs = (plan: Plan, refs: Array<{ model_id: string; access_type?: string }>): Plan => {
+      (plan as unknown as { models: unknown }).models = refs.map((r) => ({
+        access_type: r.access_type ?? "full",
+        ...r,
+      }));
+      return plan;
+    };
+
+    const pBudget = withRefs(makePlan("q-budget", 10), [
+      { model_id: "m-smart" },
+      { model_id: "m-fast" },
+    ]);
+    const pStd = withRefs(makePlan("q-std", 25), [{ model_id: "m-fast" }]);
+    const pPrem = withRefs(makePlan("q-prem", 120), [{ model_id: "m-smart" }]);
+    const pNoData = withRefs(makePlan("q-nodata", 12), [{ model_id: "m-noaa" }]);
+    const pLegacy = withRefs(makePlan("q-legacy", 11), [
+      { model_id: "m-smart", access_type: "legacy" },
+    ]);
+
+    return {
+      plans: [
+        { provider, plan: pBudget },
+        { provider, plan: pStd },
+        { provider, plan: pPrem },
+        { provider, plan: pNoData },
+        { provider, plan: pLegacy },
+      ],
+      estimatesByPlan: {},
+      aaScores: new Map<string, AAModelScore>([
+        ["m-smart", makeAA("m-smart", { intel: 90, coding: 85, agentic: 88, speed: 60 })],
+        ["m-fast", makeAA("m-fast", { intel: 70, coding: 65, agentic: 60, speed: 95 })],
+      ]),
+      observedAt: "2026-06-15",
+    };
+  }
+
+  it("places one row per plan in its tier, using the best-WMQ offered model", () => {
+    const { rankings } = computeAllRankings(qualityInputs());
+    const q = rankings.byQualityPerBand;
+
+    // Budget: q-budget picks m-smart (WMQ 84 > m-fast 65.5).
+    expect(q.low.map((r) => r.planId)).toEqual(["q-budget"]);
+    expect(q.low[0].modelId).toBe("m-smart");
+    expect(q.low[0].weightedModelQuality).toBe(84);
+    // Standard: q-std offers only m-fast.
+    expect(q.mid.map((r) => r.planId)).toEqual(["q-std"]);
+    expect(q.mid[0].modelId).toBe("m-fast");
+    // Premium: q-prem.
+    expect(q.high.map((r) => r.planId)).toEqual(["q-prem"]);
+  });
+
+  it("does not require a usage estimate (valueScore stays null)", () => {
+    const { rankings } = computeAllRankings(qualityInputs());
+    expect(rankings.byQualityPerBand.low[0].valueScore).toBeNull();
+    expect(rankings.byQualityPerBand.low[0].weightedModelQuality).not.toBeNull();
+  });
+
+  it("excludes plans whose offered model has no AA score, and legacy-only refs", () => {
+    const { rankings } = computeAllRankings(qualityInputs());
+    const allPlanIds = [
+      ...rankings.byQualityPerBand.low,
+      ...rankings.byQualityPerBand.mid,
+      ...rankings.byQualityPerBand.high,
+    ].map((r) => r.planId);
+    expect(allPlanIds).not.toContain("q-nodata"); // model has no AA score
+    expect(allPlanIds).not.toContain("q-legacy"); // only a legacy ref
   });
 });

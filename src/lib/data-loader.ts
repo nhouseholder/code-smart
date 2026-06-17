@@ -198,6 +198,7 @@ const EMPTY_RANKINGS: RankingSetArtifact = {
   methodologyVersion: "0.0.0-dev",
   rankings: {
     byPriceBand: { low: [], mid: [], high: [] },
+    byQualityPerBand: { low: [], mid: [], high: [] },
     byIntelligence: [],
     byCoding: [],
     byAgentic: [],

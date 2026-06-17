@@ -875,6 +875,87 @@
         "is_active": true,
         "last_verified": "2026-06-14",
         "source_url": "https://github.com/features/copilot#pricing"
+      },
+      {
+        "id": "copilot-pro-plus",
+        "provider_id": "github-copilot",
+        "name": "Copilot Pro+",
+        "tier": "individual",
+        "pricing": {
+          "monthly_usd": 39,
+          "annual_monthly_usd": 33,
+          "is_per_seat": false,
+          "currency": "USD",
+          "notes": "$39/mo individual plan; includes the highest monthly AI-credit allotment and access to all frontier models.",
+          "provenance": {
+            "url": "https://github.com/features/copilot/plans",
+            "accessed_date": "2026-06-17",
+            "method": "manual",
+            "confidence": "observed",
+            "notes": "Price $39/mo verified from github.com/features/copilot/plans on 2026-06-17."
+          }
+        },
+        "models": [
+          {
+            "model_id": "gpt-5-5",
+            "access_type": "full",
+            "is_default": true,
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "claude-opus-4-8",
+            "access_type": "full",
+            "notes": "availability inferred"
+          },
+          {
+            "model_id": "gemini-3-1-pro-preview",
+            "access_type": "full",
+            "notes": "availability inferred"
+          }
+        ],
+        "usage_limits": [
+          {
+            "type": "unknown",
+            "value": null,
+            "applies_to": "agentic coding (premium models)",
+            "notes": "Copilot Pro+ includes $70/mo of token-metered AI Credits at published API rates (usage-based billing); no fixed request quota for agentic coding. IDE completions remain unmetered.",
+            "provenance": {
+              "url": "https://github.com/features/copilot/plans",
+              "accessed_date": "2026-06-17",
+              "method": "manual",
+              "confidence": "observed",
+              "notes": "$70/mo AI-credit allotment verified from github.com/features/copilot/plans on 2026-06-17."
+            }
+          }
+        ],
+        "features": {
+          "agent_capabilities": true,
+          "web_search": true,
+          "code_context_length_k": 128,
+          "file_uploads": true,
+          "voice_input": false,
+          "ide_integrations": [
+            "VS Code",
+            "JetBrains",
+            "Visual Studio",
+            "Vim/Neovim",
+            "Xcode",
+            "Azure Data Studio"
+          ],
+          "cli_access": true,
+          "api_access": false,
+          "priority_access": true,
+          "custom_instructions": true,
+          "team_features": false,
+          "sso": false
+        },
+        "target_personas": [
+          "professional developer",
+          "power user"
+        ],
+        "is_active": true,
+        "last_verified": "2026-06-17",
+        "source_url": "https://github.com/features/copilot/plans"
       }
     ],
     "models": [],

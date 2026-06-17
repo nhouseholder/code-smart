@@ -14,15 +14,24 @@ import { effectiveConfidence } from "./utils";
 // (band semantics, sort keys, ranking set shape), not when the underlying math does.
 export const RANKINGS_METHODOLOGY_VERSION = "1.0.0";
 
-// ─── Price bands (doc §8 Tier Normalization) ──────────────────────────────────
-// free $0/null · low $0.01–30 · mid $30.01–80 · high >$80.
-// Free plans carry no value score and auto-drop from value-based rankings.
+// ─── Price bands (3 populated tiers, derived from the real plan distribution) ──
+// free $0/null · low/Budget ≤$15 · mid/Standard $15.01–49 · high/Premium ≥$50.
+// Boundaries chosen so each tier holds real plans: Budget ($8–15), Standard
+// ($16–39, the bulk of coding subs), Premium ($100+). Free plans carry no
+// value score and auto-drop from value-based rankings.
 export type PriceBand = "free" | "low" | "mid" | "high";
+
+/** Human-facing tier labels for the price bands (Budget / Standard / Premium). */
+export const PRICE_BAND_LABELS: Record<"low" | "mid" | "high", string> = {
+  low: "Budget",
+  mid: "Standard",
+  high: "Premium",
+};
 
 export function getPriceBand(monthlyUsd: number | null): PriceBand {
   if (monthlyUsd === null || monthlyUsd <= 0) return "free";
-  if (monthlyUsd <= 30) return "low";
-  if (monthlyUsd <= 80) return "mid";
+  if (monthlyUsd <= 15) return "low";
+  if (monthlyUsd <= 49) return "mid";
   return "high";
 }
 
@@ -131,6 +140,14 @@ export interface RankingSet {
   methodologyVersion: string;
   rankings: {
     byPriceBand: Record<"low" | "mid" | "high", PlanModelRow[]>;
+    /**
+     * Plan×model ranked by model *quality* (WMQ) within each price tier — the
+     * home-page "quality per price point" chart. Unlike byPriceBand (value
+     * per dollar, requires a usage estimate), this needs only an AA score, so
+     * it covers every plan including coding tools that serve cross-provider
+     * models. One row per plan (its highest-WMQ offered model).
+     */
+    byQualityPerBand: Record<"low" | "mid" | "high", PlanModelRow[]>;
     byIntelligence: ModelRow[];
     byCoding: ModelRow[];
     byAgentic: ModelRow[];
@@ -266,6 +283,74 @@ export function computeAllRankings(inputs: RankingInputs): RankingSet {
 
   function assignRanks<T extends { rank: number }>(rows: T[]): T[] {
     return rows.map((r, i) => ({ ...r, rank: i + 1 }));
+  }
+
+  // Quality-per-tier — one row per plan (its highest-WMQ offered model), grouped
+  // by price band. Computed directly from plan model refs + global aaScores, so
+  // it does NOT depend on a usage estimate (unlike value-per-dollar) and covers
+  // plans whose models are defined under another provider (cursor/copilot).
+  function qualityRows(): PlanModelRow[] {
+    const rows: PlanModelRow[] = [];
+    for (const { plan, provider } of plans) {
+      const price = effectiveMonthlyPrice(plan);
+      const band = getPriceBand(price);
+      if (band === "free") continue;
+
+      // Best (highest-WMQ) model this plan offers, among non-legacy refs.
+      let best: { ref: Plan["models"][number]; wmq: number; conf: Confidence } | null = null;
+      for (const ref of plan.models) {
+        if (ref.access_type === "legacy") continue;
+        const aa = aaScores.get(ref.model_id) ?? null;
+        const { wmq, confidence } = computeWMQ(aa);
+        if (wmq === null) continue;
+        if (!best || wmq > best.wmq) best = { ref, wmq, conf: confidence };
+      }
+      if (!best) continue; // no offered model has an AA score → no quality bar
+      if (!meetsMin(best.conf, minConfidence)) continue;
+
+      const meta = modelIndex.get(best.ref.model_id);
+      const aa = aaScores.get(best.ref.model_id) ?? null;
+      rows.push({
+        rank: 0,
+        providerId: provider.id,
+        providerName: provider.name,
+        planId: plan.id,
+        planName: plan.name,
+        modelId: best.ref.model_id,
+        modelDisplayName: meta?.displayName ?? best.ref.model_id,
+        monthlyPriceUsd: price,
+        priceBand: band,
+        weightedModelQuality: best.wmq,
+        estimatedMonthlyTokens: null,
+        modelAdjustedMonthlyTokens: null,
+        qualityAdjustedMonthlyUsage: null,
+        valueScoreRaw: null,
+        valueScore: null,
+        costPerTaskUsd: aa?.costPerTask ?? null,
+        efficiencyMultiplier: null,
+        confidence: best.conf,
+        caveats: confidenceCaveat(best.conf),
+        sourceDates: {
+          aa: aa?.observedAt ?? null,
+          pricing: plan.pricing.provenance?.accessed_date ?? null,
+          usage: usageAccessedDate(plan),
+        },
+      });
+    }
+    return rows;
+  }
+
+  function qualityBandRanking(band: "low" | "mid" | "high"): PlanModelRow[] {
+    const inBand = qualityRows()
+      .filter((r) => r.priceBand === band)
+      .sort((a, b) => {
+        const aw = a.weightedModelQuality ?? -Infinity;
+        const bw = b.weightedModelQuality ?? -Infinity;
+        if (bw !== aw) return bw - aw;
+        if (a.planId !== b.planId) return a.planId < b.planId ? -1 : 1;
+        return a.modelId < b.modelId ? -1 : a.modelId > b.modelId ? 1 : 0;
+      });
+    return assignRanks(inBand.slice(0, topN));
   }
 
   // #1–3 — value within a price band
@@ -498,6 +583,11 @@ export function computeAllRankings(inputs: RankingInputs): RankingSet {
         low: bandRanking("low"),
         mid: bandRanking("mid"),
         high: bandRanking("high"),
+      },
+      byQualityPerBand: {
+        low: qualityBandRanking("low"),
+        mid: qualityBandRanking("mid"),
+        high: qualityBandRanking("high"),
       },
       byIntelligence: metricRanking("intelligence", (aa) => aa.intelligenceIndex),
       byCoding: metricRanking("coding", (aa) => aa.codingIndex),

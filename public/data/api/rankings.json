@@ -7,6 +7,274 @@
       "mid": [],
       "high": []
     },
+    "byQualityPerBand": {
+      "low": [
+        {
+          "rank": 1,
+          "providerId": "github-copilot",
+          "providerName": "GitHub Copilot",
+          "planId": "copilot-individual",
+          "planName": "Copilot Individual",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 8.33,
+          "priceBand": "low",
+          "weightedModelQuality": 55.3,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "observed",
+          "caveats": [],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 2,
+          "providerId": "copilot-xcode",
+          "providerName": "Copilot for Xcode",
+          "planId": "copilot-xcode-individual",
+          "planName": "Copilot for Xcode Individual",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 8.33,
+          "priceBand": "low",
+          "weightedModelQuality": 55.3,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "observed",
+          "caveats": [],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 3,
+          "providerId": "kimi",
+          "providerName": "Kimi",
+          "planId": "kimi-plus",
+          "planName": "Kimi Plus",
+          "modelId": "kimi-k2-6",
+          "modelDisplayName": "Kimi K2.6",
+          "monthlyPriceUsd": 8,
+          "priceBand": "low",
+          "weightedModelQuality": 43.8,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "observed",
+          "caveats": [],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        }
+      ],
+      "mid": [
+        {
+          "rank": 1,
+          "providerId": "openai",
+          "providerName": "OpenAI",
+          "planId": "openai-plus",
+          "planName": "ChatGPT Plus",
+          "modelId": "gpt-5-4",
+          "modelDisplayName": "GPT-5.4",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 57,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "observed",
+          "caveats": [],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-14"
+          }
+        },
+        {
+          "rank": 2,
+          "providerId": "github-copilot",
+          "providerName": "GitHub Copilot",
+          "planId": "copilot-pro-plus",
+          "planName": "Copilot Pro+",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 33,
+          "priceBand": "mid",
+          "weightedModelQuality": 55.3,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "observed",
+          "caveats": [],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-17",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 3,
+          "providerId": "cursor",
+          "providerName": "Cursor",
+          "planId": "cursor-pro",
+          "planName": "Cursor Pro",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 16,
+          "priceBand": "mid",
+          "weightedModelQuality": 55.3,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "observed",
+          "caveats": [],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-14"
+          }
+        },
+        {
+          "rank": 4,
+          "providerId": "google",
+          "providerName": "Google",
+          "planId": "google-gemini-advanced",
+          "planName": "Gemini Advanced (Google One AI Premium)",
+          "modelId": "gemini-3-1-pro-preview",
+          "modelDisplayName": "Gemini 3.1 Pro Preview",
+          "monthlyPriceUsd": 19.99,
+          "priceBand": "mid",
+          "weightedModelQuality": 54.2,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "observed",
+          "caveats": [],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-14"
+          }
+        },
+        {
+          "rank": 5,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-pro",
+          "planName": "Claude Pro",
+          "modelId": "claude-opus-4-8",
+          "modelDisplayName": "Claude Opus 4.8",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 53.2,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "observed",
+          "caveats": [],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-14"
+          }
+        },
+        {
+          "rank": 6,
+          "providerId": "kimi",
+          "providerName": "Kimi",
+          "planId": "kimi-pro",
+          "planName": "Kimi Pro",
+          "modelId": "kimi-k2-6",
+          "modelDisplayName": "Kimi K2.6",
+          "monthlyPriceUsd": 27,
+          "priceBand": "mid",
+          "weightedModelQuality": 43.8,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "observed",
+          "caveats": [],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        }
+      ],
+      "high": [
+        {
+          "rank": 1,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-max",
+          "planName": "Claude Max",
+          "modelId": "claude-fable-5",
+          "modelDisplayName": "Claude Fable 5",
+          "monthlyPriceUsd": 100,
+          "priceBand": "high",
+          "weightedModelQuality": 55.8,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "observed",
+          "caveats": [],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-14"
+          }
+        }
+      ]
+    },
     "byIntelligence": [
       {
         "rank": 1,
@@ -776,6 +1044,25 @@
         "rank": 7,
         "providerId": "github-copilot",
         "providerName": "GitHub Copilot",
+        "planId": "copilot-pro-plus",
+        "planName": "Copilot Pro+",
+        "uncertaintyScore": 75,
+        "transparencyScore": 25,
+        "confidence": "unknown",
+        "caveats": [
+          "AA indices (agentic/coding/speed) confidence: unknown.",
+          "Usage-limit confidence: unknown."
+        ],
+        "sourceDates": {
+          "aa": null,
+          "pricing": "2026-06-17",
+          "usage": "2026-06-17"
+        }
+      },
+      {
+        "rank": 8,
+        "providerId": "github-copilot",
+        "providerName": "GitHub Copilot",
         "planId": "copilot-individual",
         "planName": "Copilot Individual",
         "uncertaintyScore": 100,
@@ -793,7 +1080,7 @@
         }
       },
       {
-        "rank": 8,
+        "rank": 9,
         "providerId": "copilot-xcode",
         "providerName": "Copilot for Xcode",
         "planId": "copilot-xcode-individual",
@@ -813,7 +1100,7 @@
         }
       },
       {
-        "rank": 9,
+        "rank": 10,
         "providerId": "cursor",
         "providerName": "Cursor",
         "planId": "cursor-pro",
@@ -833,7 +1120,7 @@
         }
       },
       {
-        "rank": 10,
+        "rank": 11,
         "providerId": "mimo",
         "providerName": "Mimo",
         "planId": "mimo-pro",

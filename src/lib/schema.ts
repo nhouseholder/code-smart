@@ -237,6 +237,11 @@ export const RankingSetSchema = z.object({
       mid: z.array(PlanModelRowSchema),
       high: z.array(PlanModelRowSchema),
     }),
+    byQualityPerBand: z.object({
+      low: z.array(PlanModelRowSchema),
+      mid: z.array(PlanModelRowSchema),
+      high: z.array(PlanModelRowSchema),
+    }),
     byIntelligence: z.array(ModelRowSchema),
     byCoding: z.array(ModelRowSchema),
     byAgentic: z.array(ModelRowSchema),
