@@ -6,6 +6,7 @@ import type { NormalizationConfig, ResetWindow, TargetWindow, WindowConversionRe
  */
 export const WINDOW_HOURS: Record<ResetWindow, number> = {
   "1h": 1,
+  "3h": 3,
   "5h": 5,
   "1d": 24,
   "1w": 168,

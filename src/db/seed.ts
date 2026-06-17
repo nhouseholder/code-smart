@@ -66,6 +66,7 @@ interface PlanJSON {
     type: string;
     value: number | null;
     unit?: string;
+    reset_window?: string;
     applies_to?: string;
     notes?: string;
     provenance: { confidence: string };
@@ -275,7 +276,7 @@ export function seed(): void {
             limitType: ul.type,
             limitValue: ul.value,
             limitUnit: ul.unit ?? null,
-            resetWindow: null,
+            resetWindow: ul.reset_window ?? null,
             sourceSnapshotId: null,
             confidence: ul.provenance.confidence ?? "unknown",
             notes: ul.notes ?? null,

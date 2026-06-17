@@ -17,6 +17,7 @@ export const ProvenanceSchema = z.object({
 export const LimitTypeSchema = z.enum([
   "messages_per_day",
   "messages_per_month",
+  "messages_per_period",
   "tokens_per_minute",
   "tokens_per_day",
   "tokens_per_month",
@@ -34,6 +35,7 @@ export const UsageLimitSchema = z.object({
   type: LimitTypeSchema,
   value: z.number().positive().nullable(),
   unit: z.string().optional(),
+  reset_window: z.string().optional(),
   applies_to: z.string().optional(),
   notes: z.string().optional(),
   provenance: ProvenanceSchema,

@@ -55,7 +55,7 @@ export interface ConversionStep {
 
 // ── Window Types ───────────────────────────────────────────────────────
 
-export type ResetWindow = "1h" | "5h" | "1d" | "1w" | "1mo" | "1y";
+export type ResetWindow = "1h" | "3h" | "5h" | "1d" | "1w" | "1mo" | "1y";
 
 export type TargetWindow = "5h" | "24h" | "1w" | "1mo";
 

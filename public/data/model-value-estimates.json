@@ -1,19 +1,19 @@
 {
   "generated_at": "2026-06-17",
   "engine_version": "1.1.0",
-  "total_estimates": 18,
+  "total_estimates": 17,
   "plan_count": 6,
-  "aa_score_count": 34,
+  "aa_score_count": 0,
   "estimates": {
     "anthropic-pro": [
       {
-        "modelId": "claude-opus-4-8",
+        "modelId": "claude-sonnet-4-6-adaptive",
         "planId": "anthropic-pro",
-        "weighted_model_quality": 53.2,
-        "estimated_tokens_5h": null,
-        "estimated_tokens_24h": null,
-        "estimated_tokens_1w": null,
-        "estimated_tokens_1mo": null,
+        "weighted_model_quality": null,
+        "estimated_tokens_5h": 616,
+        "estimated_tokens_24h": 2959,
+        "estimated_tokens_1w": 20712,
+        "estimated_tokens_1mo": 90000,
         "quality_adjusted_tokens_5h": null,
         "quality_adjusted_tokens_24h": null,
         "quality_adjusted_tokens_1w": null,
@@ -28,17 +28,18 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       },
       {
         "modelId": "claude-opus-4-7",
         "planId": "anthropic-pro",
-        "weighted_model_quality": 49.1,
-        "estimated_tokens_5h": null,
-        "estimated_tokens_24h": null,
-        "estimated_tokens_1w": null,
-        "estimated_tokens_1mo": null,
+        "weighted_model_quality": null,
+        "estimated_tokens_5h": 616,
+        "estimated_tokens_24h": 2959,
+        "estimated_tokens_1w": 20712,
+        "estimated_tokens_1mo": 90000,
         "quality_adjusted_tokens_5h": null,
         "quality_adjusted_tokens_24h": null,
         "quality_adjusted_tokens_1w": null,
@@ -53,17 +54,18 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       },
       {
-        "modelId": "claude-sonnet-4-6-adaptive",
+        "modelId": "claude-opus-4-8",
         "planId": "anthropic-pro",
-        "weighted_model_quality": 48.1,
-        "estimated_tokens_5h": null,
-        "estimated_tokens_24h": null,
-        "estimated_tokens_1w": null,
-        "estimated_tokens_1mo": null,
+        "weighted_model_quality": null,
+        "estimated_tokens_5h": 616,
+        "estimated_tokens_24h": 2959,
+        "estimated_tokens_1w": 20712,
+        "estimated_tokens_1mo": 90000,
         "quality_adjusted_tokens_5h": null,
         "quality_adjusted_tokens_24h": null,
         "quality_adjusted_tokens_1w": null,
@@ -78,19 +80,20 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       }
     ],
     "anthropic-max": [
       {
-        "modelId": "claude-fable-5",
+        "modelId": "claude-opus-4-8",
         "planId": "anthropic-max",
-        "weighted_model_quality": 55.8,
-        "estimated_tokens_5h": null,
-        "estimated_tokens_24h": null,
-        "estimated_tokens_1w": null,
-        "estimated_tokens_1mo": null,
+        "weighted_model_quality": null,
+        "estimated_tokens_5h": 3082,
+        "estimated_tokens_24h": 14795,
+        "estimated_tokens_1w": 103562,
+        "estimated_tokens_1mo": 450000,
         "quality_adjusted_tokens_5h": null,
         "quality_adjusted_tokens_24h": null,
         "quality_adjusted_tokens_1w": null,
@@ -105,17 +108,18 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       },
       {
-        "modelId": "claude-opus-4-8",
+        "modelId": "claude-fable-5",
         "planId": "anthropic-max",
-        "weighted_model_quality": 53.2,
-        "estimated_tokens_5h": null,
-        "estimated_tokens_24h": null,
-        "estimated_tokens_1w": null,
-        "estimated_tokens_1mo": null,
+        "weighted_model_quality": null,
+        "estimated_tokens_5h": 3082,
+        "estimated_tokens_24h": 14795,
+        "estimated_tokens_1w": 103562,
+        "estimated_tokens_1mo": 450000,
         "quality_adjusted_tokens_5h": null,
         "quality_adjusted_tokens_24h": null,
         "quality_adjusted_tokens_1w": null,
@@ -130,17 +134,18 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       },
       {
         "modelId": "claude-opus-4-7",
         "planId": "anthropic-max",
-        "weighted_model_quality": 49.1,
-        "estimated_tokens_5h": null,
-        "estimated_tokens_24h": null,
-        "estimated_tokens_1w": null,
-        "estimated_tokens_1mo": null,
+        "weighted_model_quality": null,
+        "estimated_tokens_5h": 3082,
+        "estimated_tokens_24h": 14795,
+        "estimated_tokens_1w": 103562,
+        "estimated_tokens_1mo": 450000,
         "quality_adjusted_tokens_5h": null,
         "quality_adjusted_tokens_24h": null,
         "quality_adjusted_tokens_1w": null,
@@ -155,17 +160,18 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       },
       {
         "modelId": "claude-sonnet-4-6-adaptive",
         "planId": "anthropic-max",
-        "weighted_model_quality": 48.1,
-        "estimated_tokens_5h": null,
-        "estimated_tokens_24h": null,
-        "estimated_tokens_1w": null,
-        "estimated_tokens_1mo": null,
+        "weighted_model_quality": null,
+        "estimated_tokens_5h": 3082,
+        "estimated_tokens_24h": 14795,
+        "estimated_tokens_1w": 103562,
+        "estimated_tokens_1mo": 450000,
         "quality_adjusted_tokens_5h": null,
         "quality_adjusted_tokens_24h": null,
         "quality_adjusted_tokens_1w": null,
@@ -180,19 +186,20 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       }
     ],
     "openai-plus": [
       {
-        "modelId": "gpt-5-4",
+        "modelId": "gpt-5-5",
         "planId": "openai-plus",
-        "weighted_model_quality": 57,
-        "estimated_tokens_5h": null,
-        "estimated_tokens_24h": null,
-        "estimated_tokens_1w": null,
-        "estimated_tokens_1mo": null,
+        "weighted_model_quality": null,
+        "estimated_tokens_5h": 41096,
+        "estimated_tokens_24h": 197260,
+        "estimated_tokens_1w": 1380822,
+        "estimated_tokens_1mo": 6000000,
         "quality_adjusted_tokens_5h": null,
         "quality_adjusted_tokens_24h": null,
         "quality_adjusted_tokens_1w": null,
@@ -207,17 +214,18 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       },
       {
-        "modelId": "gpt-5-5",
+        "modelId": "gpt-5-4",
         "planId": "openai-plus",
-        "weighted_model_quality": 55.3,
-        "estimated_tokens_5h": null,
-        "estimated_tokens_24h": null,
-        "estimated_tokens_1w": null,
-        "estimated_tokens_1mo": null,
+        "weighted_model_quality": null,
+        "estimated_tokens_5h": 41096,
+        "estimated_tokens_24h": 197260,
+        "estimated_tokens_1w": 1380822,
+        "estimated_tokens_1mo": 6000000,
         "quality_adjusted_tokens_5h": null,
         "quality_adjusted_tokens_24h": null,
         "quality_adjusted_tokens_1w": null,
@@ -232,17 +240,18 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       },
       {
         "modelId": "gpt-5-3-codex",
         "planId": "openai-plus",
-        "weighted_model_quality": 50.8,
-        "estimated_tokens_5h": null,
-        "estimated_tokens_24h": null,
-        "estimated_tokens_1w": null,
-        "estimated_tokens_1mo": null,
+        "weighted_model_quality": null,
+        "estimated_tokens_5h": 41096,
+        "estimated_tokens_24h": 197260,
+        "estimated_tokens_1w": 1380822,
+        "estimated_tokens_1mo": 6000000,
         "quality_adjusted_tokens_5h": null,
         "quality_adjusted_tokens_24h": null,
         "quality_adjusted_tokens_1w": null,
@@ -257,6 +266,7 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       }
@@ -265,7 +275,7 @@
       {
         "modelId": "gemini-3-1-pro-preview",
         "planId": "google-gemini-advanced",
-        "weighted_model_quality": 54.2,
+        "weighted_model_quality": null,
         "estimated_tokens_5h": null,
         "estimated_tokens_24h": null,
         "estimated_tokens_1w": null,
@@ -284,13 +294,14 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       },
       {
         "modelId": "gemini-3-5-flash",
         "planId": "google-gemini-advanced",
-        "weighted_model_quality": 48,
+        "weighted_model_quality": null,
         "estimated_tokens_5h": null,
         "estimated_tokens_24h": null,
         "estimated_tokens_1w": null,
@@ -309,31 +320,7 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
-          "No cost-per-task data — efficiency neutral"
-        ]
-      },
-      {
-        "modelId": "gemini-3-flash-reasoning",
-        "planId": "google-gemini-advanced",
-        "weighted_model_quality": 44.8,
-        "estimated_tokens_5h": null,
-        "estimated_tokens_24h": null,
-        "estimated_tokens_1w": null,
-        "estimated_tokens_1mo": null,
-        "quality_adjusted_tokens_5h": null,
-        "quality_adjusted_tokens_24h": null,
-        "quality_adjusted_tokens_1w": null,
-        "quality_adjusted_tokens_1mo": null,
-        "model_adjusted_tokens_5h": null,
-        "model_adjusted_tokens_24h": null,
-        "model_adjusted_tokens_1w": null,
-        "model_adjusted_tokens_1mo": null,
-        "value_score": null,
-        "efficiency_multiplier": 1,
-        "cost_per_task_usd": null,
-        "confidence": "unknown",
-        "calculation_methodology_version": "1.1.0",
-        "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       }
@@ -342,7 +329,7 @@
       {
         "modelId": "kimi-k2-6",
         "planId": "kimi-plus",
-        "weighted_model_quality": 43.8,
+        "weighted_model_quality": null,
         "estimated_tokens_5h": null,
         "estimated_tokens_24h": null,
         "estimated_tokens_1w": null,
@@ -361,13 +348,14 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       },
       {
         "modelId": "kimi-k2-5",
         "planId": "kimi-plus",
-        "weighted_model_quality": 37,
+        "weighted_model_quality": null,
         "estimated_tokens_5h": null,
         "estimated_tokens_24h": null,
         "estimated_tokens_1w": null,
@@ -386,15 +374,16 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       }
     ],
     "kimi-pro": [
       {
-        "modelId": "kimi-k2-6",
+        "modelId": "kimi-k2-7-code",
         "planId": "kimi-pro",
-        "weighted_model_quality": 43.8,
+        "weighted_model_quality": null,
         "estimated_tokens_5h": null,
         "estimated_tokens_24h": null,
         "estimated_tokens_1w": null,
@@ -413,13 +402,14 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       },
       {
-        "modelId": "kimi-k2-7-code",
+        "modelId": "kimi-k2-6",
         "planId": "kimi-pro",
-        "weighted_model_quality": 42.8,
+        "weighted_model_quality": null,
         "estimated_tokens_5h": null,
         "estimated_tokens_24h": null,
         "estimated_tokens_1w": null,
@@ -438,13 +428,14 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       },
       {
         "modelId": "kimi-k2-5",
         "planId": "kimi-pro",
-        "weighted_model_quality": 37,
+        "weighted_model_quality": null,
         "estimated_tokens_5h": null,
         "estimated_tokens_24h": null,
         "estimated_tokens_1w": null,
@@ -463,6 +454,7 @@
         "confidence": "unknown",
         "calculation_methodology_version": "1.1.0",
         "notes": [
+          "No AA data available",
           "No cost-per-task data — efficiency neutral"
         ]
       }

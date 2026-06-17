@@ -1,6 +1,6 @@
 # code-smart — Current State
 
-**Version:** 1.7.0
+**Version:** 1.8.0
 **Updated:** 2026-06-17
 **Branch:** main
 
@@ -8,7 +8,26 @@
 
 ## What just shipped
 
-Session 12 — USD credits conversion + methodology page fix (v1.7.0).
+Session 13 — Provider usage limit estimation (v1.8.0).
+
+- **OpenAI Plus**: 160 messages/3h rolling window (official) → 6M tokens/month. New `messages_per_period` limit type + `reset_window` field added throughout schema/seed/engine.
+- **Anthropic Pro/Max**: 45/225 messages/5h (community-observed, `confidence: "assumed"`) → 90K/450K tokens/month.
+- **Cursor Pro**: $20/mo compute allowance (official) → 133K–10M token range via Layer 5 USD credits. 0 token estimates rendered because cursor-pro.json has no models listed (pre-existing data gap).
+- **Engine**: Added `"3h"` to `ResetWindow`, `WINDOW_HOURS`, `extrapolateToMonthly` (active-hours wall-clock: 20 days × 5h/day / 3h = 33.3 windows/mo), and Layer 7 valid windows. `NORMALIZATION_METHODOLOGY_VERSION` bumped to `"1.2.0"`.
+- **Stale check**: Tiered freshness — `assumed` entries expire at 30 days (vs 90 for observed/inferred).
+- **State:** 323 tests pass, typecheck clean, build green, deployed to code-smart.pages.dev.
+
+## What's next
+
+- **Cursor Pro models**: Add model list to `cursor.json` so USD credits → token estimates render on `/plans/cursor-pro`.
+- **Google Gemini Advanced**: No absolute usage anchor; only shows "—" — needs Google to publish a message/token cap.
+- **Copilot Business/Enterprise**: No per-seat credit allotment published; credits→tokens blocked.
+- **OpenAI Free**: Community reports ~10–30 msgs/day (unofficial); blocked without official source.
+- **Confidence improvement**: `anthropic-pro` / `anthropic-max` estimates are `assumed` (30-day stale threshold) — upgrade to `observed` when Anthropic publishes official limits.
+
+---
+
+## Prior — Session 12 — USD credits conversion + methodology page fix (v1.7.0).
 
 - **USD credits conversion (normalization Layer 5):** New `usd_credits_per_month` limit type added to `schema.ts`. Engine Layer 5a converts monthly dollar credit budgets to token estimates using published model API output rates (conservative $75/MTok Opus → base $20/MTok avg → optimistic $10/MTok GPT-4o). Uncertainty range spans cheapest→most expensive model on the plan.
 - **Layer 5/6 bug fixed:** Engine was checking `"credits"` and `"compute_units"` but schema uses `"credits_per_month"` / `"compute_units_per_month"` — layers were unreachable. Fixed; tests updated.

@@ -34,9 +34,9 @@ describe("data-loader", () => {
     }
   });
 
-  it("getAllPlans() returns exactly the 11 paid individual/pro survivors", () => {
+  it("getAllPlans() returns exactly the 12 paid individual/pro survivors", () => {
     const plans = getAllPlans().map(({ plan }) => plan);
-    expect(plans).toHaveLength(11);
+    expect(plans).toHaveLength(12);
     for (const plan of plans) {
       expect(["individual", "pro"]).toContain(plan.tier);
       expect(typeof plan.pricing.monthly_usd).toBe("number");

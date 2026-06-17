@@ -16,7 +16,7 @@ const ESTIMATION_LAYERS: Array<{ n: number; trigger: string; method: string; con
   { n: 4, trigger: "Credit limits", method: "Credits × provider-specific or default credit-to-token mapping.", confidence: "inferred / assumed" },
   { n: 5, trigger: "USD credit budget", method: "Monthly dollar budget ÷ published model API output rate ($/MTok). Outputs a base estimate plus a low–high range spanning the cheapest to most expensive model available on the plan.", confidence: "inferred" },
   { n: 6, trigger: "Compute units", method: "Units × provider-specific or default compute-unit-to-token mapping.", confidence: "inferred / assumed" },
-  { n: 7, trigger: "Time-window catch-all", method: "Extrapolate proportionally across the reset window; apply model multiplier.", confidence: "window-dependent" },
+  { n: 7, trigger: "Time-window catch-all (1h, 3h, 5h, 1d, 1w, 1mo, 1y)", method: "Extrapolate proportionally across the reset window; apply model multiplier. 3h windows use active-hours scaling (working days × coding hours / 3).", confidence: "window-dependent" },
   { n: 8, trigger: "Unknown / vague", method: "All estimates null — rendered as \"—\", never 0. \"Unlimited\"/fair-use claims are treated as unknown — never a synthetic estimate.", confidence: "unknown" },
 ];
 

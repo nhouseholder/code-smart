@@ -49,6 +49,20 @@
         ],
         "usage_limits": [
           {
+            "type": "messages_per_period",
+            "value": 45,
+            "unit": "messages",
+            "reset_window": "5h",
+            "applies_to": "Claude Sonnet 4.6 and above",
+            "notes": "Community-observed ~45 messages per 5-hour window. Anthropic does not publish hard limits; actual count varies by message length and model load.",
+            "provenance": {
+              "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work",
+              "accessed_date": "2026-06-17",
+              "method": "manual",
+              "confidence": "assumed"
+            }
+          },
+          {
             "type": "unknown",
             "value": null,
             "applies_to": "Sonnet / Opus messages",
@@ -128,6 +142,20 @@
           }
         ],
         "usage_limits": [
+          {
+            "type": "messages_per_period",
+            "value": 225,
+            "unit": "messages",
+            "reset_window": "5h",
+            "applies_to": "All models",
+            "notes": "Community-observed ~225 messages per 5-hour window (~5× Pro). The $200/mo tier is ~20× Pro (~900 messages/5h). Anthropic does not publish hard limits.",
+            "provenance": {
+              "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work",
+              "accessed_date": "2026-06-17",
+              "method": "manual",
+              "confidence": "assumed"
+            }
+          },
           {
             "type": "unknown",
             "value": null,
@@ -461,15 +489,31 @@
         ],
         "usage_limits": [
           {
-            "type": "unknown",
-            "value": null,
-            "applies_to": "o3 messages",
-            "notes": "GPT-4o is generous; o3 has a smaller daily allotment. Exact limits dynamic.",
+            "type": "messages_per_period",
+            "value": 160,
+            "unit": "messages",
+            "reset_window": "3h",
+            "applies_to": "GPT-5 and o-series (advanced reasoning models)",
+            "notes": "160 messages per 3-hour rolling window on standard advanced models. GPT-4o-class messages are more generous and undisclosed. Limits may adjust dynamically.",
             "provenance": {
-              "url": "https://openai.com/chatgpt/pricing",
-              "accessed_date": "2026-06-14",
+              "url": "https://help.openai.com/en/articles/11909943-gpt-53-and-54-in-chatgpt",
+              "accessed_date": "2026-06-17",
               "method": "manual",
-              "confidence": "assumed"
+              "confidence": "observed"
+            }
+          },
+          {
+            "type": "messages_per_period",
+            "value": 3000,
+            "unit": "messages",
+            "reset_window": "1w",
+            "applies_to": "Thinking / o-series extended reasoning",
+            "notes": "3,000 Thinking messages per week — separate bucket from the 160/3h standard limit.",
+            "provenance": {
+              "url": "https://help.openai.com/en/articles/11909943-gpt-53-and-54-in-chatgpt",
+              "accessed_date": "2026-06-17",
+              "method": "manual",
+              "confidence": "observed"
             }
           }
         ],
@@ -1111,16 +1155,16 @@
             }
           },
           {
-            "type": "requests_per_month",
-            "value": 500,
-            "unit": "fast premium model requests",
-            "applies_to": "Claude Sonnet, GPT-4o (chat + composer)",
-            "notes": "500 fast requests; additional slow requests available after. Resets monthly.",
+            "type": "usd_credits_per_month",
+            "value": 20,
+            "unit": "USD",
+            "applies_to": "all models (claude, gpt-5, gemini, etc.)",
+            "notes": "$20/mo compute allowance billed at published model API rates. Tab completions remain unmetered. Additional compute available at pay-as-you-go rates.",
             "provenance": {
-              "url": "https://cursor.com/pricing",
-              "accessed_date": "2026-06-14",
+              "url": "https://cursor.com/docs/models-and-pricing",
+              "accessed_date": "2026-06-17",
               "method": "manual",
-              "confidence": "assumed"
+              "confidence": "observed"
             }
           }
         ],

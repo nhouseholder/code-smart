@@ -76,6 +76,44 @@
       },
       {
         "rank": 4,
+        "providerId": "cursor",
+        "providerName": "Cursor",
+        "planId": "cursor-pro",
+        "planName": "Cursor Pro",
+        "uncertaintyScore": 90,
+        "transparencyScore": 10,
+        "confidence": "unknown",
+        "caveats": [
+          "AA indices (agentic/coding/speed) confidence: unknown.",
+          "Pricing confidence: assumed."
+        ],
+        "sourceDates": {
+          "aa": null,
+          "pricing": "2026-06-14",
+          "usage": "2026-06-14"
+        }
+      },
+      {
+        "rank": 5,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "planId": "openai-plus",
+        "planName": "ChatGPT Plus",
+        "uncertaintyScore": 90,
+        "transparencyScore": 10,
+        "confidence": "unknown",
+        "caveats": [
+          "AA indices (agentic/coding/speed) confidence: unknown.",
+          "Pricing confidence: assumed."
+        ],
+        "sourceDates": {
+          "aa": null,
+          "pricing": "2026-06-14",
+          "usage": "2026-06-17"
+        }
+      },
+      {
+        "rank": 6,
         "providerId": "anthropic",
         "providerName": "Anthropic",
         "planId": "anthropic-max",
@@ -86,16 +124,16 @@
         "caveats": [
           "AA indices (agentic/coding/speed) confidence: unknown.",
           "Pricing confidence: assumed.",
-          "Usage-limit confidence: unknown."
+          "Usage-limit confidence: assumed."
         ],
         "sourceDates": {
           "aa": null,
           "pricing": "2026-06-14",
-          "usage": "2026-06-14"
+          "usage": "2026-06-17"
         }
       },
       {
-        "rank": 5,
+        "rank": 7,
         "providerId": "anthropic",
         "providerName": "Anthropic",
         "planId": "anthropic-pro",
@@ -106,16 +144,16 @@
         "caveats": [
           "AA indices (agentic/coding/speed) confidence: unknown.",
           "Pricing confidence: assumed.",
-          "Usage-limit confidence: unknown."
+          "Usage-limit confidence: assumed."
         ],
         "sourceDates": {
           "aa": null,
           "pricing": "2026-06-14",
-          "usage": "2026-06-14"
+          "usage": "2026-06-17"
         }
       },
       {
-        "rank": 6,
+        "rank": 8,
         "providerId": "copilot-xcode",
         "providerName": "Copilot for Xcode",
         "planId": "copilot-xcode-individual",
@@ -135,27 +173,7 @@
         }
       },
       {
-        "rank": 7,
-        "providerId": "cursor",
-        "providerName": "Cursor",
-        "planId": "cursor-pro",
-        "planName": "Cursor Pro",
-        "uncertaintyScore": 100,
-        "transparencyScore": 0,
-        "confidence": "unknown",
-        "caveats": [
-          "AA indices (agentic/coding/speed) confidence: unknown.",
-          "Pricing confidence: assumed.",
-          "Usage-limit confidence: assumed."
-        ],
-        "sourceDates": {
-          "aa": null,
-          "pricing": "2026-06-14",
-          "usage": "2026-06-14"
-        }
-      },
-      {
-        "rank": 8,
+        "rank": 9,
         "providerId": "google",
         "providerName": "Google",
         "planId": "google-gemini-advanced",
@@ -175,7 +193,7 @@
         }
       },
       {
-        "rank": 9,
+        "rank": 10,
         "providerId": "kimi",
         "providerName": "Kimi",
         "planId": "kimi-plus",
@@ -195,7 +213,7 @@
         }
       },
       {
-        "rank": 10,
+        "rank": 11,
         "providerId": "kimi",
         "providerName": "Kimi",
         "planId": "kimi-pro",
@@ -215,31 +233,11 @@
         }
       },
       {
-        "rank": 11,
+        "rank": 12,
         "providerId": "mimo",
         "providerName": "Mimo",
         "planId": "mimo-pro",
         "planName": "Mimo Pro",
-        "uncertaintyScore": 100,
-        "transparencyScore": 0,
-        "confidence": "unknown",
-        "caveats": [
-          "AA indices (agentic/coding/speed) confidence: unknown.",
-          "Pricing confidence: assumed.",
-          "Usage-limit confidence: unknown."
-        ],
-        "sourceDates": {
-          "aa": null,
-          "pricing": "2026-06-14",
-          "usage": "2026-06-14"
-        }
-      },
-      {
-        "rank": 12,
-        "providerId": "openai",
-        "providerName": "OpenAI",
-        "planId": "openai-plus",
-        "planName": "ChatGPT Plus",
         "uncertaintyScore": 100,
         "transparencyScore": 0,
         "confidence": "unknown",

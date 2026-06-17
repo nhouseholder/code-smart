@@ -422,6 +422,20 @@
       ],
       "usage_limits": [
         {
+          "type": "messages_per_period",
+          "value": 45,
+          "unit": "messages",
+          "reset_window": "5h",
+          "applies_to": "Claude Sonnet 4.6 and above",
+          "notes": "Community-observed ~45 messages per 5-hour window. Anthropic does not publish hard limits; actual count varies by message length and model load.",
+          "provenance": {
+            "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work",
+            "accessed_date": "2026-06-17",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
+        {
           "type": "unknown",
           "value": null,
           "applies_to": "Sonnet / Opus messages",
@@ -501,6 +515,20 @@
         }
       ],
       "usage_limits": [
+        {
+          "type": "messages_per_period",
+          "value": 225,
+          "unit": "messages",
+          "reset_window": "5h",
+          "applies_to": "All models",
+          "notes": "Community-observed ~225 messages per 5-hour window (~5× Pro). The $200/mo tier is ~20× Pro (~900 messages/5h). Anthropic does not publish hard limits.",
+          "provenance": {
+            "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work",
+            "accessed_date": "2026-06-17",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        },
         {
           "type": "unknown",
           "value": null,

@@ -522,15 +522,31 @@
       ],
       "usage_limits": [
         {
-          "type": "unknown",
-          "value": null,
-          "applies_to": "o3 messages",
-          "notes": "GPT-4o is generous; o3 has a smaller daily allotment. Exact limits dynamic.",
+          "type": "messages_per_period",
+          "value": 160,
+          "unit": "messages",
+          "reset_window": "3h",
+          "applies_to": "GPT-5 and o-series (advanced reasoning models)",
+          "notes": "160 messages per 3-hour rolling window on standard advanced models. GPT-4o-class messages are more generous and undisclosed. Limits may adjust dynamically.",
           "provenance": {
-            "url": "https://openai.com/chatgpt/pricing",
-            "accessed_date": "2026-06-14",
+            "url": "https://help.openai.com/en/articles/11909943-gpt-53-and-54-in-chatgpt",
+            "accessed_date": "2026-06-17",
             "method": "manual",
-            "confidence": "assumed"
+            "confidence": "observed"
+          }
+        },
+        {
+          "type": "messages_per_period",
+          "value": 3000,
+          "unit": "messages",
+          "reset_window": "1w",
+          "applies_to": "Thinking / o-series extended reasoning",
+          "notes": "3,000 Thinking messages per week — separate bucket from the 160/3h standard limit.",
+          "provenance": {
+            "url": "https://help.openai.com/en/articles/11909943-gpt-53-and-54-in-chatgpt",
+            "accessed_date": "2026-06-17",
+            "method": "manual",
+            "confidence": "observed"
           }
         }
       ],

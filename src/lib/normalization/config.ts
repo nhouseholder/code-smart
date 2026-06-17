@@ -1,11 +1,18 @@
 import type { NormalizationConfig, AssumptionRange, UsdCreditRateMapping } from "./types";
 
-export const NORMALIZATION_METHODOLOGY_VERSION = "1.1.0";
+export const NORMALIZATION_METHODOLOGY_VERSION = "1.2.0";
 
 // USD-per-MTok-output rates for published APIs.
 // Conservative = most expensive model on a typical plan (Claude Opus 4.8: $75/MTok out).
 // Base = weighted average of Copilot-offered models (~$20/MTok out).
 // Optimistic = cheapest model (GPT-4o: $10/MTok out).
+const CURSOR_USD_RATE: UsdCreditRateMapping = {
+  outputRatePerMtokConservative: 150,
+  outputRatePerMtokBase: 40,
+  outputRatePerMtokOptimistic: 2,
+  source: "cursor.com/docs/models-and-pricing: Opus Fast $150/MTok out, GPT-5 Mini $2/MTok out",
+};
+
 const COPILOT_USD_RATE: UsdCreditRateMapping = {
   outputRatePerMtokConservative: 75,
   outputRatePerMtokBase: 20,
@@ -36,6 +43,7 @@ export const DEFAULT_CONFIG: NormalizationConfig = {
     "copilot-individual": COPILOT_USD_RATE,
     "copilot-pro-plus": COPILOT_USD_RATE,
     "copilot-max": COPILOT_USD_RATE,
+    "cursor-pro": CURSOR_USD_RATE,
   },
 };
 

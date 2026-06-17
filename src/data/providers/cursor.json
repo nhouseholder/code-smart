@@ -193,16 +193,16 @@
           }
         },
         {
-          "type": "requests_per_month",
-          "value": 500,
-          "unit": "fast premium model requests",
-          "applies_to": "Claude Sonnet, GPT-4o (chat + composer)",
-          "notes": "500 fast requests; additional slow requests available after. Resets monthly.",
+          "type": "usd_credits_per_month",
+          "value": 20,
+          "unit": "USD",
+          "applies_to": "all models (claude, gpt-5, gemini, etc.)",
+          "notes": "$20/mo compute allowance billed at published model API rates. Tab completions remain unmetered. Additional compute available at pay-as-you-go rates.",
           "provenance": {
-            "url": "https://cursor.com/pricing",
-            "accessed_date": "2026-06-14",
+            "url": "https://cursor.com/docs/models-and-pricing",
+            "accessed_date": "2026-06-17",
             "method": "manual",
-            "confidence": "assumed"
+            "confidence": "observed"
           }
         }
       ],

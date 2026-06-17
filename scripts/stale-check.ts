@@ -9,7 +9,10 @@ import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 
 const DATA_DIR = join(process.cwd(), "src/data/providers");
-const STALE_DAYS = 90;
+function getThreshold(confidence: string | undefined): number {
+  if (confidence === "assumed") return 30;
+  return 90;
+}
 
 interface ProvenanceLike {
   accessed_date?: string;
@@ -44,15 +47,15 @@ function findProvenance(obj: unknown, path: string): Array<{ path: string; prov:
 const files = readdirSync(DATA_DIR).filter((f) => f.endsWith(".json"));
 let hasStale = false;
 
-console.log(`\nStale provenance check (threshold: ${STALE_DAYS} days)\n${"─".repeat(60)}`);
+console.log(`\nStale provenance check (assumed: 30d, observed/inferred: 90d)\n${"─".repeat(60)}`);
 
 for (const file of files) {
   const raw = JSON.parse(readFileSync(join(DATA_DIR, file), "utf-8"));
   const provenances = findProvenance(raw, file.replace(".json", ""));
 
   const stale = provenances.filter(({ prov }) => {
-    if (!prov.accessed_date) return false;
-    return daysAgo(prov.accessed_date) > STALE_DAYS;
+    if (!prov.accessed_date || prov.confidence === "unknown") return false;
+    return daysAgo(prov.accessed_date) > getThreshold(prov.confidence);
   });
 
   if (stale.length > 0) {
@@ -63,7 +66,7 @@ for (const file of files) {
       console.log(`   ${path} — last verified ${prov.accessed_date} (${age}d ago) → ${prov.url}`);
     }
   } else {
-    console.log(`✓ ${file.padEnd(40)} all provenance within ${STALE_DAYS}d`);
+    console.log(`✓ ${file.padEnd(40)} all provenance fresh`);
   }
 }
 

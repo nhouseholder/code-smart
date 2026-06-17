@@ -146,7 +146,7 @@ function normalizeLimitInternal(
   // ── Layer 7: Time-window numeric (generic catch-all) ────────────────
   if (limitValue !== null && resetWindow !== null) {
     const window = resetWindow;
-    if (["1h", "5h", "1d", "1w", "1mo", "1y"].includes(window)) {
+    if (["1h", "3h", "5h", "1d", "1w", "1mo", "1y"].includes(window)) {
       chain.push({
         layer: "time_window",
         description: `Generic time-window limit: ${limitValue} ${limitUnit ?? ""} per ${window}`,
@@ -218,6 +218,8 @@ function extrapolateToMonthly(
   switch (window) {
     case "1h":
       return value * config.hoursPerSession * config.sessionsPerMonth;
+    case "3h":
+      return Math.round(value * config.workingDaysPerMonth * config.hoursPerSession / 3);
     case "5h":
       return value * config.sessionsPerMonth;
     case "1d":
