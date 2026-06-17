@@ -18,9 +18,13 @@
 
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { execSync, spawnSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
 import { PipelineStatusSchema } from "@/lib/pipeline-schema";
-import type { PipelineRun, PipelineStatus, ProviderStatus } from "@/types/pipeline";
+import type { PipelineRun, PipelineStatus, ProviderStatus, PipelineWarning } from "@/types/pipeline";
+import { getDb } from "@/db";
+import { createLogger, clearLogBuffer, getLogBuffer } from "@/lib/logger";
+
+const log = createLogger("pipeline");
 
 // ── paths ──────────────────────────────────────────────────────────────────
 
@@ -174,6 +178,16 @@ function printStatus(): void {
   console.log(`  Dry run:    ${last.dryRun}`);
   console.log();
 
+  // ── warnings ──────────────────────────────────────────────────────
+  if (last.warnings && last.warnings.length > 0) {
+    console.log(`  Warnings (${last.warnings.length}):`);
+    for (const w of last.warnings) {
+      console.log(`    ⚠ [${w.component}] ${w.message}`);
+    }
+    console.log();
+  }
+
+  // ── providers freshness bar ───────────────────────────────────────
   if (last.providers.length > 0) {
     console.log("  Providers:");
     const col = (s: string, w: number) => s.padEnd(w).slice(0, w);
@@ -186,6 +200,64 @@ function printStatus(): void {
     }
     console.log();
   }
+
+  // ── data freshness bar ────────────────────────────────────────────
+  console.log("  Data freshness:");
+  try {
+    const providersDir = path.join(ROOT, "src", "data", "providers");
+    if (fs.existsSync(providersDir)) {
+      const providerFiles = fs.readdirSync(providersDir).filter((f) => f.endsWith(".json"));
+      const ages: Array<{ id: string; days: number }> = [];
+      const now = Date.now();
+
+      for (const file of providerFiles) {
+        try {
+          const data = JSON.parse(fs.readFileSync(path.join(providersDir, file), "utf8"));
+          if (data.last_verified) {
+            const ageDays = (now - new Date(data.last_verified).getTime()) / 86400000;
+            ages.push({ id: data.id, days: Math.round(ageDays) });
+          }
+        } catch { /* skip unparseable */ }
+      }
+
+      ages.sort((a, b) => a.days - b.days);
+      for (const p of ages) {
+        const marker = p.days > 30 ? "🔴" : p.days > 14 ? "🟡" : "🟢";
+        console.log(`    ${marker} ${p.id.padEnd(16)} ${p.days}d since verified`);
+      }
+    }
+  } catch { /* skip freshness if providers dir missing */ }
+  console.log();
+
+  // ── DB stats ──────────────────────────────────────────────────────
+  console.log("  Database:");
+  try {
+    const db = getDb();
+    const tableCounts: [string, string][] = [
+      ["providers", "providers"],
+      ["plans", "plans"],
+      ["models", "models"],
+      ["AA scores", "artificial_analysis_model_scores"],
+      ["rankings", "rankings"],
+      ["scrape runs", "scrape_runs"],
+    ];
+    for (const [label, tableName] of tableCounts) {
+      try {
+        const result = db.get<{ c: number }>(`SELECT COUNT(*) as c FROM ${tableName}`);
+        console.log(`    • ${label.padEnd(16)} ${result?.c ?? 0} rows`);
+      } catch { /* table may not exist yet */ }
+    }
+  } catch { /* DB not accessible */ }
+
+  // DB file size
+  try {
+    const dbPath = process.env.DB_PATH ?? "./data/code-smart.db";
+    if (fs.existsSync(dbPath)) {
+      const sizeKb = Math.round(fs.statSync(dbPath).size / 1024);
+      console.log(`    • file size${"".padEnd(6)} ${sizeKb} KiB`);
+    }
+  } catch { /* skip */ }
+  console.log();
 
   if (last.unmappedModels.length > 0) {
     console.log(`  Unmapped models: ${last.unmappedModels.join(", ")}`);
@@ -329,6 +401,25 @@ function main(): void {
       }
     }
 
+    // Step 9: quality check (warnings only — never fails pipeline)
+    if (!DRY_RUN) {
+      log.info("Running data quality checks...");
+      const qcResult = spawnSync("npx", ["tsx", "scripts/data-quality-check.ts"], {
+        stdio: "inherit",
+        cwd: ROOT,
+        env: { ...process.env },
+      });
+      stepsRun.push("quality-check");
+      if (qcResult.status !== 0) {
+        log.warn("Data quality checks found issues", { exitCode: qcResult.status });
+      } else {
+        log.info("Data quality checks passed");
+      }
+    } else {
+      console.log("\n▶ quality-check [dry-run — skipped]");
+      stepsRun.push("quality-check");
+    }
+
   } catch (err) {
     success = false;
     errorMessage = err instanceof Error ? err.message : String(err);
@@ -339,6 +430,17 @@ function main(): void {
 
   const completedAt = new Date().toISOString();
   const durationMs  = new Date(completedAt).getTime() - new Date(startedAt).getTime();
+
+  // Flush logger buffer into pipeline warnings
+  const logEntries = getLogBuffer();
+  const warnings: PipelineWarning[] = logEntries
+    .filter((e) => e.level === "warn" || e.level === "error")
+    .map((e) => ({
+      timestamp: e.timestamp,
+      component: e.component,
+      message: e.message,
+      data: e.data,
+    }));
 
   const pipelineRun: PipelineRun = {
     runId,
@@ -353,7 +455,10 @@ function main(): void {
     failedProviders: [],
     success,
     errorMessage,
+    warnings,
   };
+
+  clearLogBuffer();
 
   writeStatus(pipelineRun);
 

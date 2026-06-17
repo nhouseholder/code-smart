@@ -7,6 +7,13 @@ export interface ProviderStatus {
   staleSince?: string; // ISO date of oldest stale provenance entry
 }
 
+export interface PipelineWarning {
+  timestamp: string; // ISO
+  component: string;
+  message: string;
+  data?: Record<string, unknown>;
+}
+
 export interface PipelineRun {
   runId: string;              // ISO timestamp used as unique id
   startedAt: string;         // ISO
@@ -20,6 +27,7 @@ export interface PipelineRun {
   failedProviders: string[];
   success: boolean;
   errorMessage?: string;
+  warnings: PipelineWarning[]; // accumulated quality/log warnings
 }
 
 export interface PipelineStatus {

@@ -9,6 +9,13 @@ export const ProviderStatusSchema = z.object({
   staleSince: z.string().optional(),
 });
 
+export const PipelineWarningSchema = z.object({
+  timestamp: z.string(),
+  component: z.string(),
+  message: z.string(),
+  data: z.record(z.unknown()).optional(),
+});
+
 export const PipelineRunSchema = z.object({
   runId: z.string(),
   startedAt: z.string(),
@@ -22,6 +29,7 @@ export const PipelineRunSchema = z.object({
   failedProviders: z.array(z.string()),
   success: z.boolean(),
   errorMessage: z.string().optional(),
+  warnings: z.array(PipelineWarningSchema).default([]),
 });
 
 export const PipelineStatusSchema = z.object({
