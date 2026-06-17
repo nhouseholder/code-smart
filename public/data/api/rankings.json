@@ -23,6 +23,24 @@
         "rank": 1,
         "providerId": "github-copilot",
         "providerName": "GitHub Copilot",
+        "planId": "copilot-max",
+        "planName": "Copilot Max",
+        "uncertaintyScore": 65,
+        "transparencyScore": 35,
+        "confidence": "unknown",
+        "caveats": [
+          "AA indices (agentic/coding/speed) confidence: unknown."
+        ],
+        "sourceDates": {
+          "aa": null,
+          "pricing": "2026-06-17",
+          "usage": "2026-06-17"
+        }
+      },
+      {
+        "rank": 2,
+        "providerId": "github-copilot",
+        "providerName": "GitHub Copilot",
         "planId": "copilot-pro-plus",
         "planName": "Copilot Pro+",
         "uncertaintyScore": 65,
@@ -38,7 +56,7 @@
         }
       },
       {
-        "rank": 2,
+        "rank": 3,
         "providerId": "github-copilot",
         "providerName": "GitHub Copilot",
         "planId": "copilot-individual",
@@ -57,7 +75,7 @@
         }
       },
       {
-        "rank": 3,
+        "rank": 4,
         "providerId": "anthropic",
         "providerName": "Anthropic",
         "planId": "anthropic-max",
@@ -77,7 +95,7 @@
         }
       },
       {
-        "rank": 4,
+        "rank": 5,
         "providerId": "anthropic",
         "providerName": "Anthropic",
         "planId": "anthropic-pro",
@@ -97,7 +115,7 @@
         }
       },
       {
-        "rank": 5,
+        "rank": 6,
         "providerId": "copilot-xcode",
         "providerName": "Copilot for Xcode",
         "planId": "copilot-xcode-individual",
@@ -117,7 +135,7 @@
         }
       },
       {
-        "rank": 6,
+        "rank": 7,
         "providerId": "cursor",
         "providerName": "Cursor",
         "planId": "cursor-pro",
@@ -137,7 +155,7 @@
         }
       },
       {
-        "rank": 7,
+        "rank": 8,
         "providerId": "google",
         "providerName": "Google",
         "planId": "google-gemini-advanced",
@@ -157,7 +175,7 @@
         }
       },
       {
-        "rank": 8,
+        "rank": 9,
         "providerId": "kimi",
         "providerName": "Kimi",
         "planId": "kimi-plus",
@@ -177,7 +195,7 @@
         }
       },
       {
-        "rank": 9,
+        "rank": 10,
         "providerId": "kimi",
         "providerName": "Kimi",
         "planId": "kimi-pro",
@@ -197,7 +215,7 @@
         }
       },
       {
-        "rank": 10,
+        "rank": 11,
         "providerId": "mimo",
         "providerName": "Mimo",
         "planId": "mimo-pro",
@@ -217,7 +235,7 @@
         }
       },
       {
-        "rank": 11,
+        "rank": 12,
         "providerId": "openai",
         "providerName": "OpenAI",
         "planId": "openai-plus",

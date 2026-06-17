@@ -287,7 +287,7 @@
       "id": "copilot-max",
       "provider_id": "github-copilot",
       "name": "Copilot Max",
-      "tier": "enterprise",
+      "tier": "individual",
       "pricing": {
         "monthly_usd": 100,
         "annual_monthly_usd": null,
