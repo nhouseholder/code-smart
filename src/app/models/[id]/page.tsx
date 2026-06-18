@@ -85,10 +85,10 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ id
       <section>
         <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
           AA benchmark indices
-          <MethodologyTooltip text="Indices from Artificial Analysis. Weighted quality = 50% agentic + 40% coding + 10% speed." anchor="wmq" />
+          <MethodologyTooltip text="Indices from Artificial Analysis. Intelligence score = 50% agentic + 40% coding + 10% speed." anchor="intelligence-score" />
         </h2>
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
-          <MetricCard label="Weighted quality" value={metrics.wmq?.metricValue ?? null} confidence={confidence} hint="WMQ composite" />
+          <MetricCard label="Intelligence score" value={metrics.wmq?.metricValue ?? null} confidence={confidence} hint="Intelligence score composite" />
           <MetricCard label="Intelligence" value={metrics.intelligence?.metricValue ?? null} confidence={metrics.intelligence?.confidence} />
           <MetricCard label="Coding" value={metrics.coding?.metricValue ?? null} confidence={metrics.coding?.confidence} />
           <MetricCard label="Agentic" value={metrics.agentic?.metricValue ?? null} confidence={metrics.agentic?.confidence} />

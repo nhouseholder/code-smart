@@ -18,7 +18,7 @@ export const RANKINGS_METHODOLOGY_VERSION = "1.0.0";
 // free $0/null · low/Budget ≤$15 · mid/Standard $15.01–49 · high/Premium ≥$50.
 // Boundaries chosen so each tier holds real plans: Budget ($8–15), Standard
 // ($16–39, the bulk of coding subs), Premium ($100+). Free plans carry no
-// value score and auto-drop from value-based rankings.
+// value per intelligence per task and auto-drop from value-based rankings.
 export type PriceBand = "free" | "low" | "mid" | "high";
 
 /** Human-facing tier labels for the price bands (Budget / Standard / Premium). */
@@ -94,8 +94,8 @@ export interface PlanModelRow extends BaseRow {
   weightedModelQuality: number | null;
   estimatedMonthlyTokens: number | null;
   modelAdjustedMonthlyTokens: number | null;
-  qualityAdjustedMonthlyUsage: number | null; // QAMU
-  valueScoreRaw: number | null; // QAMU / price, unnormalized
+  qualityAdjustedMonthlyUsage: number | null; // Quality-adjusted capacity
+  valueScoreRaw: number | null; // Intelligence-adjusted capacity / price, unnormalized
   valueScore: number | null; // normalized 0–100
   costPerTaskUsd: number | null; // AA cost-per-task (USD); null until seeded
   efficiencyMultiplier: number | null; // bounded [0.85,1.15]; 1.0 = neutral (no data)

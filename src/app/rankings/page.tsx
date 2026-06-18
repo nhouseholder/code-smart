@@ -24,7 +24,7 @@ export default function RankingsPage() {
   const { rankings } = getRankings();
   const meta = getMethodologyMeta();
 
-  // A representative row to power the worked example in the explainer (first non-null value score).
+  // A representative row to power the worked example in the explainer (first non-null value per intelligence per task).
   const example = (["low", "mid", "high"] as const)
     .flatMap((b) => rankings.byPriceBand[b] as PlanModelRow[])
     .find((r) => r.valueScore != null);
@@ -66,9 +66,9 @@ export default function RankingsPage() {
         );
       })}
 
-      {/* Weighted Value Score explanation */}
+      {/* Value per Intelligence per Task explanation */}
       <section>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">How the Value Score works</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">How Value per Intelligence per Task works</h2>
         {example ? (
           <CalculationExplainer
             weightedModelQuality={example.weightedModelQuality}

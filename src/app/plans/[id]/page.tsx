@@ -74,7 +74,7 @@ export default async function PlanDetailPage({ params }: { params: Promise<{ id:
   const nameById = new Map(provider.models.map((m) => [m.id, m.display_name]));
 
   const estimates = (loadEstimates()[plan.id] ?? []).slice();
-  // Engine sorts by WMQ desc; the top row powers the worked calculation example.
+  // Engine sorts by Intelligence Score desc; the top row powers the worked calculation example.
   const topEstimate = estimates[0] ?? null;
   const allNotes = [...new Set(estimates.flatMap((e) => e.notes))];
 
@@ -211,7 +211,7 @@ export default async function PlanDetailPage({ params }: { params: Promise<{ id:
                     href={`/models/${e.modelId}`}
                   />
                   <div className="flex items-center gap-2">
-                    <span className="text-[11px] text-gray-400">WMQ</span>
+                    <span className="text-[11px] text-gray-400">Intel.</span>
                     <span className="text-sm font-semibold tabular-nums text-gray-900">
                       {e.weighted_model_quality == null ? "—" : `${e.weighted_model_quality}/100`}
                     </span>
@@ -219,12 +219,12 @@ export default async function PlanDetailPage({ params }: { params: Promise<{ id:
                   </div>
                 </div>
                 <UsageEstimateRow label="Estimated tokens / month" tokens={e.estimated_tokens_1mo} confidence={e.confidence} />
-                <UsageEstimateRow label="Quality-adjusted / month (QAMU)" tokens={e.quality_adjusted_tokens_1mo} confidence={e.confidence} showHowLink={false} />
+                <UsageEstimateRow label="Intelligence-adjusted capacity / month" tokens={e.quality_adjusted_tokens_1mo} confidence={e.confidence} showHowLink={false} />
                 {e.model_adjusted_tokens_1mo != null && (
                   <UsageEstimateRow label="Model-cost-adjusted / month" tokens={e.model_adjusted_tokens_1mo} confidence={e.confidence} showHowLink={false} />
                 )}
                 <div className="flex items-center justify-between pt-2 mt-1 border-t border-gray-100">
-                  <span className="text-sm text-gray-600">Value Score</span>
+                  <span className="text-sm text-gray-600">Value per intelligence per task</span>
                   <span className="text-sm font-bold tabular-nums text-brand-700">
                     {e.value_score == null ? "—" : `${e.value_score}/100`}
                   </span>

@@ -5,7 +5,7 @@ interface Props {
   weightedModelQuality: number | null;
   estimatedMonthlyTokens: number | null;
   modelAdjustedMonthlyTokens: number | null;
-  qualityAdjustedMonthlyUsage: number | null; // QAMU
+  qualityAdjustedMonthlyUsage: number | null; // Quality-adjusted tokens
   monthlyPriceUsd: number | null;
   valueScoreRaw: number | null;
   valueScore: number | null;
@@ -31,7 +31,7 @@ function Step({ n, label, value, note }: { n: number; label: string; value: stri
   );
 }
 
-/** Transparent WMQ → QAMU → Value Score derivation with the row's real numbers. */
+/** Transparent derivation with the row's real numbers. */
 export function CalculationExplainer(props: Props) {
   const {
     weightedModelQuality,
@@ -49,8 +49,8 @@ export function CalculationExplainer(props: Props) {
     <details open={defaultOpen} className={cn("rounded-xl border border-gray-200 bg-white group", className)}>
       <summary className="flex items-center justify-between gap-2 px-4 py-3 cursor-pointer select-none list-none">
         <span className="flex items-center gap-1.5 text-sm font-semibold text-gray-900">
-          How this Value Score is calculated
-          <MethodologyTooltip text="The full formula and constants are documented in the methodology." anchor="wmq" />
+          How Value per Intelligence per Task is calculated
+          <MethodologyTooltip text="The full formula and constants are documented in the methodology." anchor="intelligence-score" />
         </span>
         <span className="text-xs text-brand-600 group-open:hidden">Show steps</span>
         <span className="text-xs text-brand-600 hidden group-open:inline">Hide</span>
@@ -59,7 +59,7 @@ export function CalculationExplainer(props: Props) {
       <ol className="px-4 pb-4">
         <Step
           n={1}
-          label="Weighted Model Quality (WMQ)"
+          label="Intelligence Score"
           value={weightedModelQuality == null ? "—" : `${weightedModelQuality}/100`}
           note="50% AA agentic + 40% AA coding + 10% AA speed."
         />
@@ -77,25 +77,25 @@ export function CalculationExplainer(props: Props) {
         />
         <Step
           n={4}
-          label="Quality-adjusted monthly usage (QAMU)"
+          label="Intelligence-adjusted capacity"
           value={formatTokens(qualityAdjustedMonthlyUsage)}
-          note="Tokens × (WMQ / 100)."
+          note="Tokens × (Intelligence Score / 100)."
         />
         <Step
           n={5}
           label="Per dollar"
           value={monthlyPriceUsd == null ? "—" : formatPrice(monthlyPriceUsd)}
-          note="QAMU ÷ monthly price = raw value."
+          note="Intelligence-adjusted capacity ÷ monthly price = raw value."
         />
         <Step
           n={6}
           label="Raw value"
           value={valueScoreRaw == null ? "—" : valueScoreRaw.toLocaleString()}
-          note="QAMU per dollar before normalization."
+          note="Intelligence-adjusted capacity per dollar before normalization."
         />
         <Step
           n={7}
-          label="Normalized Value Score"
+          label="Normalized Value per Intelligence per Task"
           value={valueScore == null ? "—" : `${valueScore}/100`}
           note="Scaled to 0–100 against a reference of 1M quality-adjusted tokens at $20/mo."
         />

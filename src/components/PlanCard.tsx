@@ -1,6 +1,6 @@
-import type { Provider, Plan } from "@/types";
+import type { Provider, Plan, ModelValueEstimate } from "@/types";
 import type { ValueScore } from "@/types";
-import { formatPrice, cn, effectiveMonthlyPrice } from "@/lib/utils";
+import { formatPrice, cn, effectiveMonthlyPrice, formatTokens } from "@/lib/utils";
 import { ProvenanceBadge } from "./ProvenanceBadge";
 import { ProviderBadge } from "./ProviderBadge";
 import { ModelBadge } from "./ModelBadge";
@@ -11,6 +11,7 @@ interface Props {
   provider: Provider;
   plan: Plan;
   score: ValueScore;
+  engineBest?: ModelValueEstimate | null;
   featured?: boolean;
   compact?: boolean;
 }
@@ -44,7 +45,7 @@ function FeatureChip({ enabled, label }: { enabled: boolean | null; label: strin
   );
 }
 
-export function PlanCard({ provider, plan, score, featured = false, compact = false }: Props) {
+export function PlanCard({ provider, plan, score, engineBest, featured = false, compact = false }: Props) {
   const price = effectiveMonthlyPrice(plan);
   const isFree = price === 0;
 
@@ -110,21 +111,31 @@ export function PlanCard({ provider, plan, score, featured = false, compact = fa
         <ProvenanceBadge provenance={plan.pricing.provenance} showDate compact />
       </div>
 
-      {/* Usage limit */}
-      {primaryLimit && (
+      {/* Estimated Usage / Limit */}
+      {(engineBest?.estimated_tokens_1mo != null || primaryLimit) && (
         <div className="mb-4 px-3 py-2 bg-gray-50 rounded-lg border border-gray-100">
-          <p className="text-[11px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Usage</p>
-          <p className="text-xs text-gray-700">
-            {primaryLimit.type === "unknown"
-              ? "Not publicly stated"
-              : primaryLimit.value !== null
-              ? `${primaryLimit.value.toLocaleString()} ${primaryLimit.unit ?? primaryLimit.type.replace(/_/g, " ")}`
-              : "Varies"}
+          <p className="text-[11px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">
+            {engineBest?.estimated_tokens_1mo != null ? "Estimated Usage" : "Usage"}
           </p>
-          {primaryLimit.notes && (
-            <p className="text-[10px] text-gray-400 mt-0.5 line-clamp-2">{primaryLimit.notes}</p>
+          {engineBest?.estimated_tokens_1mo != null ? (
+            <p className="text-xs text-gray-700 font-medium">
+              ~{formatTokens(engineBest.estimated_tokens_1mo)} tokens / mo
+            </p>
+          ) : primaryLimit && (
+            <>
+              <p className="text-xs text-gray-700">
+                {primaryLimit.type === "unknown"
+                  ? "Not publicly stated"
+                  : primaryLimit.value !== null
+                  ? `${primaryLimit.value.toLocaleString()} ${primaryLimit.unit ?? primaryLimit.type.replace(/_/g, " ")}`
+                  : "Varies"}
+              </p>
+              {primaryLimit.notes && (
+                <p className="text-[10px] text-gray-400 mt-0.5 line-clamp-2">{primaryLimit.notes}</p>
+              )}
+              <ProvenanceBadge provenance={primaryLimit.provenance} compact />
+            </>
           )}
-          <ProvenanceBadge provenance={primaryLimit.provenance} compact />
         </div>
       )}
 

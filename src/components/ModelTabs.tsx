@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { ModelRankingTable } from "./ModelRankingTable";
 import { CaveatCallout } from "./CaveatCallout";
 
-type TabKey = "intelligence" | "coding" | "agentic" | "speed" | "wmq";
+type TabKey = "intelligence" | "coding" | "agentic" | "speed" | "intelligence-score";
 
 interface Props {
   byIntelligence: ModelRow[];
@@ -16,7 +16,7 @@ interface Props {
 }
 
 const TABS: Array<{ key: TabKey; label: string; metricLabel: string }> = [
-  { key: "wmq", label: "Weighted quality", metricLabel: "WMQ" },
+  { key: "intelligence-score", label: "Intelligence score", metricLabel: "Intelligence score" },
   { key: "intelligence", label: "Intelligence", metricLabel: "Intelligence" },
   { key: "coding", label: "Coding", metricLabel: "Coding" },
   { key: "agentic", label: "Agentic", metricLabel: "Agentic" },
@@ -24,10 +24,10 @@ const TABS: Array<{ key: TabKey; label: string; metricLabel: string }> = [
 ];
 
 export function ModelTabs({ byIntelligence, byCoding, byAgentic, byWeightedQuality }: Props) {
-  const [tab, setTab] = useState<TabKey>("wmq");
+  const [tab, setTab] = useState<TabKey>("intelligence-score");
 
   const data: Record<Exclude<TabKey, "speed">, ModelRow[]> = {
-    wmq: byWeightedQuality,
+    "intelligence-score": byWeightedQuality,
     intelligence: byIntelligence,
     coding: byCoding,
     agentic: byAgentic,
@@ -59,15 +59,15 @@ export function ModelTabs({ byIntelligence, byCoding, byAgentic, byWeightedQuali
           <CaveatCallout
             title="AA Speed isn't published as a standalone metric"
             caveats={[
-              "Artificial Analysis speed scores feed the Weighted Model Quality (10% weight) but are not exported as a separate column in the static dataset.",
-              "To rank by responsiveness, use the Weighted Quality tab — it already folds speed in alongside agentic and coding ability.",
+              "Artificial Analysis speed scores feed the Intelligence Score (10% weight) but are not exported as a separate column in the static dataset.",
+              "To rank by responsiveness, use the Intelligence score tab — it already folds speed in alongside agentic and coding ability.",
             ]}
           />
           <button
-            onClick={() => setTab("wmq")}
+            onClick={() => setTab("intelligence-score")}
             className="text-sm font-medium text-brand-600 hover:text-brand-700 cursor-pointer transition-colors"
           >
-            → View Weighted quality ranking
+            → View Intelligence score ranking
           </button>
         </div>
       ) : (

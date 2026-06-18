@@ -2,7 +2,7 @@ import type { PlanModelRow } from "@/lib/rankings";
 import { cn } from "@/lib/utils";
 
 interface Props {
-  /** byQualityPerBand from the rankings artifact: one row per plan, best-WMQ model. */
+  /** byQualityPerBand from the rankings artifact: one row per plan, best-quality model. */
   tiers: Record<"low" | "mid" | "high", PlanModelRow[]>;
 }
 
@@ -13,13 +13,13 @@ const TIER_META = [
 ] as const;
 
 // Same thresholds the ValueScoreBar ring uses, kept in sync for visual cohesion.
-function wmqFill(v: number): string {
+function qualityFill(v: number): string {
   if (v >= 75) return "bg-green-600";
   if (v >= 55) return "bg-blue-600";
   if (v >= 35) return "bg-amber-500";
   return "bg-red-500";
 }
-function wmqText(v: number): string {
+function qualityText(v: number): string {
   if (v >= 75) return "text-green-600";
   if (v >= 55) return "text-blue-600";
   if (v >= 35) return "text-amber-600";
@@ -32,20 +32,20 @@ function priceLabel(usd: number | null): string {
 }
 
 function QualityBar({ row }: { row: PlanModelRow }) {
-  const wmq = row.weightedModelQuality ?? 0;
+  const score = row.weightedModelQuality ?? 0;
   return (
     <li
       className="group"
-      title={`${row.planName} · best model ${row.modelDisplayName} · WMQ ${wmq} · ${priceLabel(row.monthlyPriceUsd)}/mo · confidence ${row.confidence}`}
+      title={`${row.planName} · best model ${row.modelDisplayName} · Intelligence score ${score} · ${priceLabel(row.monthlyPriceUsd)}/mo · confidence ${row.confidence}`}
     >
       <div className="flex items-baseline justify-between gap-2 mb-1">
         <span className="text-sm font-medium text-gray-900 truncate">{row.planName}</span>
-        <span className={cn("text-sm font-semibold tabular-nums shrink-0", wmqText(wmq))}>{wmq}</span>
+        <span className={cn("text-sm font-semibold tabular-nums shrink-0", qualityText(score))}>{score}</span>
       </div>
       <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
         <div
-          className={cn("h-full rounded-full transition-[width] duration-500", wmqFill(wmq))}
-          style={{ width: `${Math.min(100, Math.max(0, wmq))}%` }}
+          className={cn("h-full rounded-full transition-[width] duration-500", qualityFill(score))}
+          style={{ width: `${Math.min(100, Math.max(0, score))}%` }}
         />
       </div>
       <div className="flex items-center gap-1.5 mt-1">
@@ -91,8 +91,8 @@ function TierPanel({
 
 /**
  * Quality-per-price-tier bar chart for the home page. Each bar = a plan, height
- * (fill width) = the Weighted Model Quality of the best model that plan unlocks,
- * grouped into 3 price tiers. WMQ is real AA-observed data — see /methodology.
+ * (fill width) = the Intelligence Score of the best model that plan unlocks,
+ * grouped into 3 price tiers. Intelligence Score is real AA-observed data — see /methodology.
  */
 export function ValueByTierChart({ tiers }: Props) {
   const total = tiers.low.length + tiers.mid.length + tiers.high.length;
@@ -104,7 +104,7 @@ export function ValueByTierChart({ tiers }: Props) {
         <div>
           <h2 className="text-2xl font-bold text-gray-900">Model quality by price tier</h2>
           <p className="text-sm text-gray-500 mt-1">
-            The best model each plan unlocks, scored by Weighted Model Quality (50% agentic, 40% coding,
+            The best model each plan unlocks, scored by Intelligence Score (50% agentic, 40% coding,
             10% speed), split into budget, standard, and premium tiers.
           </p>
         </div>
@@ -117,7 +117,7 @@ export function ValueByTierChart({ tiers }: Props) {
       </div>
 
       <p className="text-xs text-gray-400 mt-3">
-        WMQ is sourced from Artificial Analysis indices (observed). Bars show the highest-quality model a
+        Intelligence Score is sourced from Artificial Analysis indices (observed). Bars show the highest-quality model a
         plan offers, not its price-efficiency. See the{" "}
         <a href="/methodology" className="text-brand-600 hover:underline">methodology</a> for the formula.
       </p>

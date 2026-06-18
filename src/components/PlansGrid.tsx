@@ -11,6 +11,7 @@ interface PlanEntry {
   provider: Provider;
   plan: Plan;
   score: ValueScore;
+  engineBest?: import("@/types").ModelValueEstimate | null;
 }
 
 interface Props {
@@ -71,7 +72,7 @@ export function PlansGrid({ entries }: Props) {
     return result;
   }, [entries, filter]);
 
-  // The top-scoring plan (by value score) is "featured"
+  // The top-scoring plan (by value per intelligence per task) is "featured"
   const topId = filtered[0]?.plan.id;
 
   if (entries.length === 0) {
@@ -106,7 +107,7 @@ export function PlansGrid({ entries }: Props) {
         ) : (
           // Bento grid: first card spans 2 columns when featured, rest fill organically
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {filtered.map(({ provider, plan, score }, idx) => (
+            {filtered.map(({ provider, plan, score, engineBest }, idx) => (
               <div
                 key={plan.id}
                 className={
@@ -120,6 +121,7 @@ export function PlansGrid({ entries }: Props) {
                   provider={provider}
                   plan={plan}
                   score={score}
+                  engineBest={engineBest}
                   featured={idx === 0 && plan.id === topId}
                 />
               </div>

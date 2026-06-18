@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: "Build a side-by-side comparison of 2–6 AI coding plans: pricing, models, usage limits, features and quality-adjusted value.",
 };
 
-/** Best engine estimate (sorted WMQ desc) for a plan, or null. */
+/** Best engine estimate (sorted Intelligence Score desc) for a plan, or null. */
 function bestEstimate(estimates: Record<string, ModelValueEstimate[]>, planId: string): ModelValueEstimate | null {
   const rows = estimates[planId];
   return rows && rows.length > 0 ? rows[0] : null;
@@ -31,7 +31,7 @@ export default function ComparePage() {
     );
     engineEstimates = (JSON.parse(raw) as { estimates: typeof engineEstimates }).estimates;
   } catch {
-    // Absent pre-build — comparison renders without the WMQ-derived rows.
+    // Absent pre-build — comparison renders without the Intelligence score-derived rows.
   }
 
   const entries = scored.map((entry) => ({

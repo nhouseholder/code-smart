@@ -93,7 +93,7 @@ export function RankingCard({ row, showCaveats = true, className }: Props) {
           <dd className="text-sm font-semibold tabular-nums text-gray-900">{formatPrice(row.monthlyPriceUsd)}</dd>
         </div>
         <div>
-          <dt className="text-[10px] text-gray-400 uppercase tracking-wide">WMQ</dt>
+          <dt className="text-[10px] text-gray-400 uppercase tracking-wide">Intel.</dt>
           <dd className="text-sm font-semibold tabular-nums text-gray-900">
             {row.weightedModelQuality == null ? "—" : row.weightedModelQuality}
           </dd>

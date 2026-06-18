@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 interface Props {
   /** Tooltip body text. */
   text: string;
-  /** Anchor on /methodology to deep-link to (e.g. "wmq", "token-estimation"). */
+  /** Anchor on /methodology to deep-link to (e.g. "intelligence-score", "token-estimation"). */
   anchor?: string;
   className?: string;
 }

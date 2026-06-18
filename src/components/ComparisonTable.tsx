@@ -50,7 +50,7 @@ export const COMPARISON_ROWS: FeatureRow[] = [
     kind: "feature", label: "Per seat",
     render: ({ plan }) => <Bool value={plan.pricing.is_per_seat} />,
   },
-  { kind: "section", label: "Value Score" },
+  { kind: "section", label: "Value per intelligence per task" },
   {
     kind: "feature", label: "Overall score",
     render: ({ score }) => (
@@ -69,7 +69,7 @@ export const COMPARISON_ROWS: FeatureRow[] = [
       : <Minus size={14} className="text-gray-300 mx-auto" />,
   },
   {
-    kind: "feature", label: "WMQ score",
+    kind: "feature", label: "Intelligence score",
     render: ({ engineBest }) => {
       const wmq = engineBest?.weighted_model_quality ?? null;
       if (wmq === null) return <Minus size={14} className="text-gray-300 mx-auto" />;
@@ -84,7 +84,7 @@ export const COMPARISON_ROWS: FeatureRow[] = [
     },
   },
   {
-    kind: "feature", label: "QAMU value score",
+    kind: "feature", label: "Value per intelligence per task",
     render: ({ engineBest }) => {
       const vs = engineBest?.value_score ?? null;
       if (vs === null) return <Minus size={14} className="text-gray-300 mx-auto" />;
@@ -169,7 +169,7 @@ export function ComparisonTable({ entries }: Props) {
     <section id="compare" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h2 className="text-2xl font-bold text-gray-900 mb-2">Side-by-Side Comparison</h2>
       <p className="text-sm text-gray-500 mb-6">
-        Showing top {displayed.length} plans by value score.{" "}
+        Showing top {displayed.length} plans by value per intelligence per task.{" "}
         {entries.length > 6 && `Filter above to narrow to specific tiers.`}
       </p>
 

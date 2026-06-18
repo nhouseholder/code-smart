@@ -16,14 +16,14 @@ import { ArrowRight } from "lucide-react";
 export const dynamic = "force-static";   // data is built at compile time
 export const revalidate = 86400;         // revalidate daily on ISR
 
-/** Best estimate by WMQ for a plan (null when plan has no estimates). */
+/** Best estimate by Intelligence Score for a plan (null when plan has no estimates). */
 function bestEstimateForPlan(
   estimates: Record<string, ModelValueEstimate[]>,
   planId: string,
 ): ModelValueEstimate | null {
   const rows = estimates[planId];
   if (!rows || rows.length === 0) return null;
-  return rows[0]; // already sorted by WMQ desc by the generator
+  return rows[0]; // already sorted by Intelligence Score desc by the generator
 }
 
 export default function HomePage() {
@@ -41,7 +41,7 @@ export default function HomePage() {
     );
     engineEstimates = (JSON.parse(raw) as { estimates: typeof engineEstimates }).estimates;
   } catch {
-    // File absent (pre-build). Fall back to empty — UI renders without WMQ column.
+    // File absent (pre-build). Fall back to empty — UI renders without Intelligence score column.
   }
 
   // Enrich each scored entry with the best engine estimate for its plan
@@ -93,7 +93,7 @@ export default function HomePage() {
         </FadeIn>
       </section>
 
-      {/* Model quality by price tier (WMQ bar chart) */}
+      {/* Model quality by price tier (Intelligence score bar chart) */}
       <FadeIn>
         <ValueByTierChart tiers={rankings.rankings.byQualityPerBand} />
       </FadeIn>
@@ -126,10 +126,10 @@ export default function HomePage() {
       <section id="value" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-gray-100">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-semibold text-gray-900 mb-2">How Value Score Works</h3>
+            <h3 className="font-semibold text-gray-900 mb-2">How Value per Intelligence per Task Works</h3>
             <p className="text-sm text-gray-500 leading-relaxed">
-              The QAMU Value Score measures quality-adjusted tokens per dollar: we take the
-              plan&apos;s monthly token budget, multiply by Weighted Model Quality (50% agentic
+              The Value per Intelligence per Task measures intelligence-adjusted tokens per dollar: we take the
+              plan&apos;s monthly token budget, multiply by Intelligence Score (50% agentic
               index + 40% coding index + 10% speed from Artificial Analysis), then divide by
               price. Score of 100 = 1M quality-adjusted tokens for $20/mo.
             </p>

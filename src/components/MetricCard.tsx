@@ -22,7 +22,7 @@ interface Props {
   className?: string;
 }
 
-/** AA metric tile (intelligence/coding/agentic/speed/WMQ). null renders "—". */
+/** AA metric tile (intelligence/coding/agentic/speed/Intelligence Score). null renders "—". */
 export function MetricCard({ label, value, outOf = "/100", aa = true, confidence, hint, className }: Props) {
   const isNull = value === null || value === undefined;
   return (

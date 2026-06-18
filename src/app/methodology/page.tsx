@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Methodology — Code Smart",
-  description: "How Code Smart derives token estimates, weights model quality, and computes the quality-adjusted Value Score — with explicit confidence levels for every figure.",
+  description: "How Code Smart derives token estimates, weights model quality, and computes the Value per Intelligence per Task — with explicit confidence levels for every figure.",
 };
 
 const ESTIMATION_LAYERS: Array<{ n: number; trigger: string; method: string; confidence: string }> = [
@@ -46,8 +46,8 @@ export default function MethodologyPage() {
       </header>
 
       {/* WMQ */}
-      <section id="wmq" className="scroll-mt-24 space-y-3">
-        <h2 className="text-xl font-bold text-gray-900">Weighted Model Quality (WMQ)</h2>
+      <section id="intelligence-score" className="scroll-mt-24 space-y-3">
+        <h2 className="text-xl font-bold text-gray-900">Intelligence Score</h2>
         <p className="text-sm text-gray-600 leading-relaxed">
           Each model's quality is a weighted blend of three Artificial Analysis indices, all on a 0–100 scale:
         </p>
@@ -57,31 +57,30 @@ export default function MethodologyPage() {
           <li><strong>{pct(wmq.speed, 0.1)} Speed Score</strong> — normalized output tokens/second; secondary to quality.</li>
         </ul>
         <pre className="rounded-lg bg-gray-900 text-gray-100 text-xs p-4 overflow-x-auto">
-{`WMQ = ${fmt(wmq.agentic, 0.5)} × Agentic
-    + ${fmt(wmq.coding, 0.4)} × Coding
-    + ${fmt(wmq.speed, 0.1)} × Speed`}
+{`Intelligence = ${fmt(wmq.agentic, 0.5)} × Agentic
+           + ${fmt(wmq.coding, 0.4)} × Coding
+           + ${fmt(wmq.speed, 0.1)} × Speed`}
         </pre>
         <p className="text-[12px] text-gray-400">
           AA Speed is not exported as a standalone column in the static dataset; it is folded into WMQ at the
-          weight above. Where AA has no profile for a model, WMQ cannot be computed and the Value Score shows "—".
+          weight above. Where AA has no profile for a model, Intelligence Score cannot be computed and the Value per Intelligence per Task shows "—".
         </p>
       </section>
 
       {/* Value Score formula */}
       <section className="space-y-3">
-        <h2 className="text-xl font-bold text-gray-900">The Value Score</h2>
+        <h2 className="text-xl font-bold text-gray-900">Value per Intelligence per Task</h2>
         <p className="text-sm text-gray-600 leading-relaxed">
-          The Value Score answers one question: <em>how much high-quality coding capability does this plan
-          provide per dollar per month?</em>
+          The Value per Intelligence per Task answers one question: <em>how much intelligence are you getting per cost per one task?</em>
         </p>
         <pre className="rounded-lg bg-gray-900 text-gray-100 text-xs p-4 overflow-x-auto">
-{meta.formula ?? `QAMU = Estimated Monthly Tokens × (WMQ / 100)
-Value Score (raw) = QAMU / Effective Monthly Price
-Value Score = normalized within price tier to 0–100`}
+{meta.formula ?? `Intelligence-adjusted capacity = Estimated Monthly Tokens × (Intelligence Score / 100)
+Value per Intelligence per Task (raw) = Intelligence-adjusted capacity / Effective Monthly Price
+Value per Intelligence per Task = normalized within price tier to 0–100`}
         </pre>
         <p className="text-[12px] text-gray-400">
           Normalized against a reference of 1M quality-adjusted tokens at $20/mo. A free plan has no
-          price denominator, so it carries no normalized Value Score.
+          price denominator, so it carries no normalized Value per Intelligence per Task.
         </p>
       </section>
 
@@ -91,7 +90,7 @@ Value Score = normalized within price tier to 0–100`}
         <p className="text-sm text-gray-600 leading-relaxed">
           Two models can post the same quality score yet differ sharply in how much compute they burn to
           finish real work. Artificial Analysis publishes a <strong>cost-per-task</strong> figure — the dollar
-          cost to run its standardized agentic task — and Code Smart folds it into the Value Score as a
+          cost to run its standardized agentic task — and Code Smart folds it into the Value per Intelligence per Task as a
           bounded multiplier. Cheaper-per-task nudges value up; pricier nudges it down. It rides on top of
           quality and price rather than replacing either, so it can never dominate them.
         </p>
@@ -99,12 +98,12 @@ Value Score = normalized within price tier to 0–100`}
 {`reference   = median cost-per-task across models with data
 eff         = clamp(0, 100, reference / costPerTask × 50)   // median model → 50
 multiplier  = 0.85 + (eff / 100) × 0.30                     // bounded [0.85, 1.15]
-Value Score = QAMU × multiplier / price → normalized 0–100`}
+Value per Intelligence per Task = Intelligence-adjusted capacity × multiplier / price → normalized 0–100`}
         </pre>
         <p className="text-[12px] text-gray-400">
           The reference is self-calibrating: the median model sits at a neutral 1.0×, cheaper models reach up
           to 1.15×, pricier ones down to 0.85×. When a model has no published cost-per-task — the current
-          state for every model — the multiplier is exactly 1.0 and the Value Score is unchanged. Cost-per-task
+          state for every model — the multiplier is exactly 1.0 and the Value per Intelligence per Task is unchanged. Cost-per-task
           and the active multiplier surface on each ranking card ("—" until a value is sourced).
         </p>
       </section>
@@ -183,7 +182,7 @@ Value Score = QAMU × multiplier / price → normalized 0–100`}
         <ul className="text-sm text-gray-600 space-y-1.5 list-disc pl-5">
           <li>Usage limits are <strong>estimates</strong> derived from disclosed plan terms — not guaranteed allowances. Real-world usage varies with prompt size and task type.</li>
           <li>AA benchmark snapshots are fetched weekly; a snapshot older than 14 days is flagged on the model card.</li>
-          <li>Models without an AA profile have no WMQ and no Value Score (shown as "—").</li>
+          <li>Models without an AA profile have no Intelligence Score and no Value per Intelligence per Task (shown as "—").</li>
           <li>Pricing is manually verified per provider; see each plan's source link and verification date.</li>
         </ul>
         <p className="text-sm text-gray-500 pt-2">

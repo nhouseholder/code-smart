@@ -37,8 +37,8 @@ const DIFF_ACCESSORS: Record<string, (e: Entry) => string | number | boolean | n
   "Per seat": (e) => e.plan.pricing.is_per_seat,
   "Overall score": (e) => e.score.overall_value_score,
   "Benchmark index": (e) => e.score.benchmark_quality_index,
-  "WMQ score": (e) => e.engineBest?.weighted_model_quality ?? null,
-  "QAMU value score": (e) => e.engineBest?.value_score ?? null,
+  "Intelligence score": (e) => e.engineBest?.weighted_model_quality ?? null,
+  "Value per intelligence per task": (e) => e.engineBest?.value_score ?? null,
   "Usage type": (e) => e.plan.usage_limits[0]?.type ?? null,
   "Agent / Agentic": (e) => e.plan.features.agent_capabilities,
   "Web search": (e) => e.plan.features.web_search,
@@ -75,7 +75,7 @@ export function PlanComparisonTable({ entries }: Props) {
   const pathname = usePathname();
   const params = useSearchParams();
 
-  // Default selection: top entries by overall value score, capped at MAX_PICK.
+  // Default selection: top entries by overall value per intelligence per task, capped at MAX_PICK.
   const defaultSelection = useMemo(
     () =>
       [...entries]
