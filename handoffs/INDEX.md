@@ -14,3 +14,4 @@
 - **[2026-06-16]** [2026-06-16_v1.1.1_qa-testing-observability.md](2026-06-16_v1.1.1_qa-testing-observability.md) — v1.1.1 — Session 10: QA, testing, observability — 9 quality checks, structured logger, Playwright smoke tests, CI pipeline, ESLint 9 config, 277 tests
 - **[2026-06-17]** [2026-06-17_v1.6.1_home-quality-tier-chart.md](2026-06-17_v1.6.1_home-quality-tier-chart.md) — v1.6.1 — home "Model quality by price tier" chart + catalog refresh 10→34 + plan scoping (Session 11)
 - **[2026-06-17]** [2026-06-17_v1.8.0_usage-limit-estimation.md](2026-06-17_v1.8.0_usage-limit-estimation.md) — v1.8.0 — Provider usage limit estimation: openai-plus 6M, anthropic-pro 90K, anthropic-max 450K; "3h" window + messages_per_period type (Session 13)
+- **[2026-06-17]** [2026-06-17_v1.8.1_session-close.md](2026-06-17_v1.8.1_session-close.md) — v1.8.1 — session-close
