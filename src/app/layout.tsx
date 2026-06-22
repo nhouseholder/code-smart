@@ -10,6 +10,8 @@ const NAV = [
   { href: "/rankings", label: "Rankings" },
   { href: "/methodology", label: "Methodology" },
   { href: "/freshness", label: "Freshness" },
+  { href: "/efficiency", label: "Efficiency" },
+  { href: "/radar", label: "Radar" },
 ];
 
 export const metadata: Metadata = {
