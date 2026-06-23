@@ -29,6 +29,7 @@ import mimoData from "@/data/providers/mimo.json";
 import minimaxData from "@/data/providers/minimax.json";
 import xaiData from "@/data/providers/xai.json";
 import deepseekData from "@/data/providers/deepseek.json";
+import windsurfData from "@/data/providers/windsurf.json";
 
 const PROVIDER_FILES = [
   anthropicData,
@@ -44,6 +45,7 @@ const PROVIDER_FILES = [
   minimaxData,
   xaiData,
   deepseekData,
+  windsurfData,
 ];
 
 let _cachedProviders: Provider[] | null = null;
@@ -137,6 +139,30 @@ export function getPlansByTier(tier: Plan["tier"]): Array<{ provider: Provider; 
 /** Get all free plans. */
 export function getFreePlans() {
   return getAllPlans().filter(({ plan }) => plan.pricing.monthly_usd === 0);
+}
+
+/**
+ * API-tier predicate — pay-per-token or API-only plans (no fixed monthly cost).
+ * These are excluded from subscription rankings but surfaced in the API Providers section.
+ */
+export function isApiPricedPlan(plan: Plan): boolean {
+  return plan.tier === "api" && plan.is_active;
+}
+
+/** All API-tier active plans, one entry per plan (for the API Providers section). */
+export function getAllApiPlans(): Array<{ provider: Provider; plan: Plan }> {
+  const result: Array<{ provider: Provider; plan: Plan }> = [];
+  for (const raw of PROVIDER_FILES) {
+    const parsed = ProviderSchema.safeParse(raw);
+    if (!parsed.success) continue;
+    const provider = parsed.data as Provider;
+    for (const plan of provider.plans) {
+      if (isApiPricedPlan(plan)) {
+        result.push({ provider, plan });
+      }
+    }
+  }
+  return result;
 }
 
 /** Lowest non-zero price plan for a provider. */

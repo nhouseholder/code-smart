@@ -5,13 +5,20 @@ import { getMethodologyMeta } from "@/lib/data-loader";
 
 const NAV = [
   { href: "/", label: "Home" },
-  { href: "/compare", label: "Compare" },
   { href: "/models", label: "Models" },
-  { href: "/rankings", label: "Rankings" },
+  { href: "/compare", label: "Compare" },
   { href: "/methodology", label: "Methodology" },
-  { href: "/freshness", label: "Freshness" },
+];
+
+const NAV_FOOTER = [
+  { href: "/", label: "Home" },
+  { href: "/models", label: "Models" },
+  { href: "/compare", label: "Compare" },
+  { href: "/methodology", label: "Methodology" },
   { href: "/efficiency", label: "Efficiency" },
   { href: "/radar", label: "Radar" },
+  { href: "/rankings", label: "Rankings" },
+  { href: "/freshness", label: "Freshness" },
 ];
 
 export const metadata: Metadata = {
@@ -50,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="border-t border-gray-100 py-8 mt-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-gray-400 space-y-2">
             <nav className="flex flex-wrap justify-center gap-x-5 gap-y-1 text-gray-500">
-              {NAV.map((n) => (
+              {NAV_FOOTER.map((n) => (
                 <Link key={n.href} href={n.href} className="hover:text-gray-800 transition-colors">
                   {n.label}
                 </Link>

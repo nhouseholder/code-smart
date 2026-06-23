@@ -29,6 +29,7 @@ import { getDb, runMigrations } from "@/db/index";
 import { getLatestAAScores, insertRanking } from "@/db/helpers";
 import { rankings as rankingsTable } from "@/db/schema";
 import type { AAModelScore, ModelValueEstimate } from "@/types";
+import aaScoresJson from "@/data/aa-scores.json";
 
 // ─── Load latest AA scores (one per model) as domain objects ──────────────────
 
@@ -76,6 +77,29 @@ function generate(): void {
 
   const aaScores = loadLatestAaScores(db);
   console.log(`Loaded ${aaScores.size} latest AA score(s) from DB.`);
+
+  // Fallback: if the DB was never seeded, load from the static aa-scores.json snapshot.
+  // agenticIndex is absent in that file; computeWMQ redistributes weight to coding+speed.
+  if (aaScores.size === 0) {
+    console.log("DB empty — falling back to aa-scores.json");
+    for (const entry of aaScoresJson.scores) {
+      aaScores.set(entry.modelId, {
+        modelId: entry.modelId,
+        observedAt: aaScoresJson.observed_at,
+        intelligenceIndex: entry.intelligenceIndex,
+        codingIndex: entry.codingIndex,
+        agenticIndex: null,
+        speedScore: null,
+        inputPrice: entry.inputPrice,
+        outputPrice: entry.outputPrice,
+        costPerTask: null,
+        costPerTaskAccessedDate: null,
+        confidence: "observed",
+        source: "aa-scores.json",
+      });
+    }
+    console.log(`Loaded ${aaScores.size} AA score(s) from aa-scores.json fallback.`);
+  }
 
   const allPlans = getAllPlans();
   console.log(`Processing ${allPlans.length} active plan(s)...`);

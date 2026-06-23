@@ -108,6 +108,51 @@ Value per Intelligence per Task = Intelligence-adjusted capacity × multiplier /
         </p>
       </section>
 
+      {/* Model Efficiency Index */}
+      <section id="efficiency-index" className="scroll-mt-24 space-y-3">
+        <h2 className="text-xl font-bold text-gray-900">Model Efficiency Index</h2>
+        <p className="text-sm text-gray-600 leading-relaxed">
+          A separate ranking that answers: <em>which model delivers the most intelligence and
+          throughput per dollar spent on API calls?</em> Three inputs from Artificial Analysis
+          and OpenRouter combine into a single composite.
+        </p>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div className="rounded-2xl border border-gray-200 p-4 space-y-2">
+            <h3 className="font-semibold text-gray-900 text-sm">Cost model — $/Task</h3>
+            <p className="text-xs text-gray-600">
+              Assumes 10,000 input tokens per agentic request (70% fresh, 30% cached):
+            </p>
+            <pre className="text-xs bg-gray-50 rounded-lg p-3 overflow-x-auto text-gray-700 leading-relaxed">
+{`$/Task =
+  ( 7,000 × OR_In$/1M
+  + 3,000 × OR_CH$/1M
+  + Tok/Task × OR_Out$/1M
+  ) ÷ 1,000,000`}
+            </pre>
+          </div>
+          <div className="rounded-2xl border border-gray-200 p-4 space-y-2">
+            <h3 className="font-semibold text-gray-900 text-sm">Composite — Intel·t/s/$100T</h3>
+            <p className="text-xs text-gray-600">
+              Rewards models that are simultaneously smart, fast, and cheap:
+            </p>
+            <pre className="text-xs bg-gray-50 rounded-lg p-3 text-gray-700 leading-relaxed">
+{`(Intel × t/s) ÷ $/100T
+
+Doubling speed at constant cost
+and intelligence doubles the score.
+Doubling cost halves it.`}
+            </pre>
+          </div>
+        </div>
+        <p className="text-[12px] text-gray-400">
+          Intel = AA Intelligence Index (0–100). t/s = AA median output tokens/sec.
+          $/100T = cost to run 100 representative agentic tasks at OpenRouter pricing.{" "}
+          <Link href="/efficiency" className="text-brand-600 hover:text-brand-700 font-medium">
+            Full model rankings →
+          </Link>
+        </p>
+      </section>
+
       {/* Token estimation */}
       <section id="token-estimation" className="scroll-mt-24 space-y-3">
         <h2 className="text-xl font-bold text-gray-900">Token estimation</h2>

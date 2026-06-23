@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import type { ModelRow } from "@/lib/rankings";
+import { ROWS, MAX_COMPOSITE } from "@/lib/efficiency-models";
 import { cn } from "@/lib/utils";
 import { ModelRankingTable } from "./ModelRankingTable";
+import { ModelEfficiencyTable } from "./ModelEfficiencyTable";
 import { CaveatCallout } from "./CaveatCallout";
 
-type TabKey = "intelligence" | "coding" | "agentic" | "speed" | "intelligence-score";
+type TabKey = "intelligence" | "coding" | "agentic" | "speed" | "intelligence-score" | "efficiency";
 
 interface Props {
   byIntelligence: ModelRow[];
@@ -21,12 +23,13 @@ const TABS: Array<{ key: TabKey; label: string; metricLabel: string }> = [
   { key: "coding", label: "Coding", metricLabel: "Coding" },
   { key: "agentic", label: "Agentic", metricLabel: "Agentic" },
   { key: "speed", label: "Speed", metricLabel: "Speed" },
+  { key: "efficiency", label: "Price Efficiency", metricLabel: "Intel·t/s/$100T" },
 ];
 
 export function ModelTabs({ byIntelligence, byCoding, byAgentic, byWeightedQuality }: Props) {
   const [tab, setTab] = useState<TabKey>("intelligence-score");
 
-  const data: Record<Exclude<TabKey, "speed">, ModelRow[]> = {
+  const data: Record<Exclude<TabKey, "speed" | "efficiency">, ModelRow[]> = {
     "intelligence-score": byWeightedQuality,
     intelligence: byIntelligence,
     coding: byCoding,
@@ -54,7 +57,9 @@ export function ModelTabs({ byIntelligence, byCoding, byAgentic, byWeightedQuali
         ))}
       </div>
 
-      {tab === "speed" ? (
+      {tab === "efficiency" ? (
+        <ModelEfficiencyTable rows={ROWS} maxComposite={MAX_COMPOSITE} />
+      ) : tab === "speed" ? (
         <div className="space-y-3">
           <CaveatCallout
             title="AA Speed isn't published as a standalone metric"

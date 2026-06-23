@@ -997,6 +997,146 @@
       "providerId": "mimo",
       "providerName": "Mimo",
       "effectiveMonthlyUsd": 9.99
+    },
+    {
+      "id": "windsurf-pro",
+      "provider_id": "windsurf",
+      "name": "Windsurf Pro",
+      "tier": "individual",
+      "pricing": {
+        "monthly_usd": 15,
+        "annual_monthly_usd": 12,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "500 Flow credits per month for agentic sessions. Unlimited autocomplete.",
+        "provenance": {
+          "url": "https://windsurf.com/pricing",
+          "accessed_date": "2026-06-23",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "windsurf-swe-1",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "requests_per_month",
+          "value": 500,
+          "unit": "flow_credits",
+          "applies_to": "agentic Cascade flows",
+          "notes": "500 Flow credits per month. Each Flow = one agentic coding session using SWE-1 or other models.",
+          "provenance": {
+            "url": "https://windsurf.com/pricing",
+            "accessed_date": "2026-06-23",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [
+          "vs-code",
+          "windsurf-ide"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Pro plan gives 500 agentic Flow credits per month and priority access to models."
+      },
+      "target_personas": [
+        "professional developer",
+        "power user",
+        "daily AI coder"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-23",
+      "source_url": "https://windsurf.com/pricing",
+      "providerId": "windsurf",
+      "providerName": "Windsurf",
+      "effectiveMonthlyUsd": 12
+    },
+    {
+      "id": "windsurf-teams",
+      "provider_id": "windsurf",
+      "name": "Windsurf Teams",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 35,
+        "annual_monthly_usd": 30,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "$35/seat/month. 1000 Flow credits per seat per month.",
+        "provenance": {
+          "url": "https://windsurf.com/pricing",
+          "accessed_date": "2026-06-23",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "windsurf-swe-1",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "requests_per_month",
+          "value": 1000,
+          "unit": "flow_credits",
+          "applies_to": "agentic Cascade flows per seat",
+          "notes": "1000 Flow credits per seat per month. Team admin dashboard included.",
+          "provenance": {
+            "url": "https://windsurf.com/pricing",
+            "accessed_date": "2026-06-23",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [
+          "vs-code",
+          "windsurf-ide"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": false,
+        "team_features": true,
+        "sso": true,
+        "notes": "Teams plan includes 1000 agentic Flow credits per seat, team dashboard, and SSO."
+      },
+      "target_personas": [
+        "engineering team",
+        "startup",
+        "tech company"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-23",
+      "source_url": "https://windsurf.com/pricing",
+      "providerId": "windsurf",
+      "providerName": "Windsurf",
+      "effectiveMonthlyUsd": 30
     }
   ],
   "bySlug": {
@@ -1997,6 +2137,146 @@
       "providerId": "mimo",
       "providerName": "Mimo",
       "effectiveMonthlyUsd": 9.99
+    },
+    "windsurf-pro": {
+      "id": "windsurf-pro",
+      "provider_id": "windsurf",
+      "name": "Windsurf Pro",
+      "tier": "individual",
+      "pricing": {
+        "monthly_usd": 15,
+        "annual_monthly_usd": 12,
+        "is_per_seat": false,
+        "currency": "USD",
+        "notes": "500 Flow credits per month for agentic sessions. Unlimited autocomplete.",
+        "provenance": {
+          "url": "https://windsurf.com/pricing",
+          "accessed_date": "2026-06-23",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "windsurf-swe-1",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "requests_per_month",
+          "value": 500,
+          "unit": "flow_credits",
+          "applies_to": "agentic Cascade flows",
+          "notes": "500 Flow credits per month. Each Flow = one agentic coding session using SWE-1 or other models.",
+          "provenance": {
+            "url": "https://windsurf.com/pricing",
+            "accessed_date": "2026-06-23",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [
+          "vs-code",
+          "windsurf-ide"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": false,
+        "team_features": false,
+        "sso": false,
+        "notes": "Pro plan gives 500 agentic Flow credits per month and priority access to models."
+      },
+      "target_personas": [
+        "professional developer",
+        "power user",
+        "daily AI coder"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-23",
+      "source_url": "https://windsurf.com/pricing",
+      "providerId": "windsurf",
+      "providerName": "Windsurf",
+      "effectiveMonthlyUsd": 12
+    },
+    "windsurf-teams": {
+      "id": "windsurf-teams",
+      "provider_id": "windsurf",
+      "name": "Windsurf Teams",
+      "tier": "pro",
+      "pricing": {
+        "monthly_usd": 35,
+        "annual_monthly_usd": 30,
+        "is_per_seat": true,
+        "currency": "USD",
+        "notes": "$35/seat/month. 1000 Flow credits per seat per month.",
+        "provenance": {
+          "url": "https://windsurf.com/pricing",
+          "accessed_date": "2026-06-23",
+          "method": "manual",
+          "confidence": "assumed"
+        }
+      },
+      "models": [
+        {
+          "model_id": "windsurf-swe-1",
+          "access_type": "full",
+          "is_default": true
+        }
+      ],
+      "usage_limits": [
+        {
+          "type": "requests_per_month",
+          "value": 1000,
+          "unit": "flow_credits",
+          "applies_to": "agentic Cascade flows per seat",
+          "notes": "1000 Flow credits per seat per month. Team admin dashboard included.",
+          "provenance": {
+            "url": "https://windsurf.com/pricing",
+            "accessed_date": "2026-06-23",
+            "method": "manual",
+            "confidence": "assumed"
+          }
+        }
+      ],
+      "features": {
+        "agent_capabilities": true,
+        "web_search": false,
+        "code_context_length_k": null,
+        "file_uploads": false,
+        "voice_input": false,
+        "ide_integrations": [
+          "vs-code",
+          "windsurf-ide"
+        ],
+        "cli_access": false,
+        "api_access": false,
+        "priority_access": true,
+        "custom_instructions": false,
+        "team_features": true,
+        "sso": true,
+        "notes": "Teams plan includes 1000 agentic Flow credits per seat, team dashboard, and SSO."
+      },
+      "target_personas": [
+        "engineering team",
+        "startup",
+        "tech company"
+      ],
+      "is_active": true,
+      "last_verified": "2026-06-23",
+      "source_url": "https://windsurf.com/pricing",
+      "providerId": "windsurf",
+      "providerName": "Windsurf",
+      "effectiveMonthlyUsd": 30
     }
   }
 }

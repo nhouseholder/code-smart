@@ -1,26 +1,1622 @@
 {
-  "generatedAt": "2026-06-22",
+  "generatedAt": "2026-06-23",
   "methodologyVersion": "1.0.0",
   "rankings": {
     "byPriceBand": {
       "low": [],
-      "mid": [],
-      "high": []
+      "mid": [
+        {
+          "rank": 1,
+          "providerId": "openai",
+          "providerName": "OpenAI",
+          "planId": "openai-plus",
+          "planName": "ChatGPT Plus",
+          "modelId": "gpt-5-3-codex",
+          "modelDisplayName": "GPT-5.3 Codex",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 52.5,
+          "estimatedMonthlyTokens": 6000000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 3150000,
+          "valueScoreRaw": 157500,
+          "valueScore": 100,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 2,
+          "providerId": "openai",
+          "providerName": "OpenAI",
+          "planId": "openai-plus",
+          "planName": "ChatGPT Plus",
+          "modelId": "gpt-5-4",
+          "modelDisplayName": "GPT-5.4",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 55.8,
+          "estimatedMonthlyTokens": 6000000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 3348000,
+          "valueScoreRaw": 167400,
+          "valueScore": 100,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 3,
+          "providerId": "openai",
+          "providerName": "OpenAI",
+          "planId": "openai-plus",
+          "planName": "ChatGPT Plus",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 57.3,
+          "estimatedMonthlyTokens": 6000000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 3438000,
+          "valueScoreRaw": 171900,
+          "valueScore": 100,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 4,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-pro",
+          "planName": "Claude Pro",
+          "modelId": "claude-opus-4-7",
+          "modelDisplayName": "Claude Opus 4.7",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 52,
+          "estimatedMonthlyTokens": 90000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 46800,
+          "valueScoreRaw": 2340,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 5,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-pro",
+          "planName": "Claude Pro",
+          "modelId": "claude-opus-4-8",
+          "modelDisplayName": "Claude Opus 4.8",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 55.4,
+          "estimatedMonthlyTokens": 90000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 49860,
+          "valueScoreRaw": 2493,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 6,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-pro",
+          "planName": "Claude Pro",
+          "modelId": "claude-sonnet-4-6-adaptive",
+          "modelDisplayName": "Claude Sonnet 4.6",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 50.7,
+          "estimatedMonthlyTokens": 90000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 45630,
+          "valueScoreRaw": 2281.5,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        }
+      ],
+      "high": [
+        {
+          "rank": 1,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-max",
+          "planName": "Claude Max",
+          "modelId": "claude-fable-5",
+          "modelDisplayName": "Claude Fable 5",
+          "monthlyPriceUsd": 100,
+          "priceBand": "high",
+          "weightedModelQuality": 59.6,
+          "estimatedMonthlyTokens": 450000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 268200,
+          "valueScoreRaw": 2682,
+          "valueScore": 7,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 2,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-max",
+          "planName": "Claude Max",
+          "modelId": "claude-opus-4-7",
+          "modelDisplayName": "Claude Opus 4.7",
+          "monthlyPriceUsd": 100,
+          "priceBand": "high",
+          "weightedModelQuality": 52,
+          "estimatedMonthlyTokens": 450000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 234000,
+          "valueScoreRaw": 2340,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 3,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-max",
+          "planName": "Claude Max",
+          "modelId": "claude-opus-4-8",
+          "modelDisplayName": "Claude Opus 4.8",
+          "monthlyPriceUsd": 100,
+          "priceBand": "high",
+          "weightedModelQuality": 55.4,
+          "estimatedMonthlyTokens": 450000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 249300,
+          "valueScoreRaw": 2493,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 4,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-max",
+          "planName": "Claude Max",
+          "modelId": "claude-sonnet-4-6-adaptive",
+          "modelDisplayName": "Claude Sonnet 4.6",
+          "monthlyPriceUsd": 100,
+          "priceBand": "high",
+          "weightedModelQuality": 50.7,
+          "estimatedMonthlyTokens": 450000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 228150,
+          "valueScoreRaw": 2281.5,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        }
+      ]
     },
     "byQualityPerBand": {
-      "low": [],
-      "mid": [],
-      "high": []
+      "low": [
+        {
+          "rank": 1,
+          "providerId": "github-copilot",
+          "providerName": "GitHub Copilot",
+          "planId": "copilot-individual",
+          "planName": "Copilot Individual",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 8.33,
+          "priceBand": "low",
+          "weightedModelQuality": 57.3,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 2,
+          "providerId": "copilot-xcode",
+          "providerName": "Copilot for Xcode",
+          "planId": "copilot-xcode-individual",
+          "planName": "Copilot for Xcode Individual",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 8.33,
+          "priceBand": "low",
+          "weightedModelQuality": 57.3,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 3,
+          "providerId": "kimi",
+          "providerName": "Kimi",
+          "planId": "kimi-plus",
+          "planName": "Kimi Plus",
+          "modelId": "kimi-k2-6",
+          "modelDisplayName": "Kimi K2.6",
+          "monthlyPriceUsd": 8,
+          "priceBand": "low",
+          "weightedModelQuality": 47.7,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        }
+      ],
+      "mid": [
+        {
+          "rank": 1,
+          "providerId": "github-copilot",
+          "providerName": "GitHub Copilot",
+          "planId": "copilot-pro-plus",
+          "planName": "Copilot Pro+",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 33,
+          "priceBand": "mid",
+          "weightedModelQuality": 57.3,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-17",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 2,
+          "providerId": "cursor",
+          "providerName": "Cursor",
+          "planId": "cursor-pro",
+          "planName": "Cursor Pro",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 16,
+          "priceBand": "mid",
+          "weightedModelQuality": 57.3,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-14"
+          }
+        },
+        {
+          "rank": 3,
+          "providerId": "openai",
+          "providerName": "OpenAI",
+          "planId": "openai-plus",
+          "planName": "ChatGPT Plus",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 57.3,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 4,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-pro",
+          "planName": "Claude Pro",
+          "modelId": "claude-opus-4-8",
+          "modelDisplayName": "Claude Opus 4.8",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 55.4,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 5,
+          "providerId": "google",
+          "providerName": "Google",
+          "planId": "google-gemini-advanced",
+          "planName": "Gemini Advanced (Google One AI Premium)",
+          "modelId": "gemini-3-1-pro-preview",
+          "modelDisplayName": "Gemini 3.1 Pro Preview",
+          "monthlyPriceUsd": 19.99,
+          "priceBand": "mid",
+          "weightedModelQuality": 54.4,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-14"
+          }
+        },
+        {
+          "rank": 6,
+          "providerId": "kimi",
+          "providerName": "Kimi",
+          "planId": "kimi-pro",
+          "planName": "Kimi Pro",
+          "modelId": "kimi-k2-6",
+          "modelDisplayName": "Kimi K2.6",
+          "monthlyPriceUsd": 27,
+          "priceBand": "mid",
+          "weightedModelQuality": 47.7,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        }
+      ],
+      "high": [
+        {
+          "rank": 1,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-max",
+          "planName": "Claude Max",
+          "modelId": "claude-fable-5",
+          "modelDisplayName": "Claude Fable 5",
+          "monthlyPriceUsd": 100,
+          "priceBand": "high",
+          "weightedModelQuality": 59.6,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        {
+          "rank": 2,
+          "providerId": "github-copilot",
+          "providerName": "GitHub Copilot",
+          "planId": "copilot-max",
+          "planName": "Copilot Max",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 100,
+          "priceBand": "high",
+          "weightedModelQuality": 57.3,
+          "estimatedMonthlyTokens": null,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": null,
+          "valueScoreRaw": null,
+          "valueScore": null,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": null,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-17",
+            "usage": "2026-06-17"
+          }
+        }
+      ]
     },
-    "byIntelligence": [],
-    "byCoding": [],
+    "byIntelligence": [
+      {
+        "rank": 1,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-fable-5",
+        "modelDisplayName": "Claude Fable 5",
+        "metric": "intelligence",
+        "metricValue": 59.9,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 2,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-opus-4-8",
+        "modelDisplayName": "Claude Opus 4.8",
+        "metric": "intelligence",
+        "metricValue": 55.7,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 3,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-5",
+        "modelDisplayName": "GPT-5.5",
+        "metric": "intelligence",
+        "metricValue": 54.8,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 4,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-opus-4-7",
+        "modelDisplayName": "Claude Opus 4.7",
+        "metric": "intelligence",
+        "metricValue": 53.5,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 5,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-4",
+        "modelDisplayName": "GPT-5.4",
+        "metric": "intelligence",
+        "metricValue": 51.4,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 6,
+        "providerId": "google",
+        "providerName": "Google",
+        "modelId": "gemini-3-5-flash",
+        "modelDisplayName": "Gemini 3.5 Flash",
+        "metric": "intelligence",
+        "metricValue": 50.2,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 7,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-sonnet-4-6-adaptive",
+        "modelDisplayName": "Claude Sonnet 4.6",
+        "metric": "intelligence",
+        "metricValue": 47.2,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 8,
+        "providerId": "google",
+        "providerName": "Google",
+        "modelId": "gemini-3-1-pro-preview",
+        "modelDisplayName": "Gemini 3.1 Pro Preview",
+        "metric": "intelligence",
+        "metricValue": 46.5,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 9,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-3-codex",
+        "modelDisplayName": "GPT-5.3 Codex",
+        "metric": "intelligence",
+        "metricValue": 44.3,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 10,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-opus-4-6-adaptive",
+        "modelDisplayName": "Claude Opus 4.6",
+        "metric": "intelligence",
+        "metricValue": 43.7,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      }
+    ],
+    "byCoding": [
+      {
+        "rank": 1,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-fable-5",
+        "modelDisplayName": "Claude Fable 5",
+        "metric": "coding",
+        "metricValue": 62,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 2,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-5",
+        "modelDisplayName": "GPT-5.5",
+        "metric": "coding",
+        "metricValue": 59.1,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 3,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-4",
+        "modelDisplayName": "GPT-5.4",
+        "metric": "coding",
+        "metricValue": 57.2,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 4,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-opus-4-8",
+        "modelDisplayName": "Claude Opus 4.8",
+        "metric": "coding",
+        "metricValue": 56.7,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 5,
+        "providerId": "google",
+        "providerName": "Google",
+        "modelId": "gemini-3-1-pro-preview",
+        "modelDisplayName": "Gemini 3.1 Pro Preview",
+        "metric": "coding",
+        "metricValue": 55.5,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 6,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-3-codex",
+        "modelDisplayName": "GPT-5.3 Codex",
+        "metric": "coding",
+        "metricValue": 53.1,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 7,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-opus-4-7",
+        "modelDisplayName": "Claude Opus 4.7",
+        "metric": "coding",
+        "metricValue": 52.5,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 8,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-4-mini",
+        "modelDisplayName": "GPT-5.4 mini",
+        "metric": "coding",
+        "metricValue": 51.5,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 9,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-sonnet-4-6-adaptive",
+        "modelDisplayName": "Claude Sonnet 4.6",
+        "metric": "coding",
+        "metricValue": 50.9,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 10,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-opus-4-6-adaptive",
+        "modelDisplayName": "Claude Opus 4.6",
+        "metric": "coding",
+        "metricValue": 48.1,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      }
+    ],
     "byAgentic": [],
-    "byWeightedQuality": [],
-    "bestPlansPerModel": [],
-    "byProviderCodingValue": [],
+    "byWeightedQuality": [
+      {
+        "rank": 1,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-fable-5",
+        "modelDisplayName": "Claude Fable 5",
+        "metric": "wmq",
+        "metricValue": 59.6,
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 2,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-5",
+        "modelDisplayName": "GPT-5.5",
+        "metric": "wmq",
+        "metricValue": 57.3,
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 3,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-4",
+        "modelDisplayName": "GPT-5.4",
+        "metric": "wmq",
+        "metricValue": 55.8,
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 4,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-opus-4-8",
+        "modelDisplayName": "Claude Opus 4.8",
+        "metric": "wmq",
+        "metricValue": 55.4,
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 5,
+        "providerId": "google",
+        "providerName": "Google",
+        "modelId": "gemini-3-1-pro-preview",
+        "modelDisplayName": "Gemini 3.1 Pro Preview",
+        "metric": "wmq",
+        "metricValue": 54.4,
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 6,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-3-codex",
+        "modelDisplayName": "GPT-5.3 Codex",
+        "metric": "wmq",
+        "metricValue": 52.5,
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 7,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-opus-4-7",
+        "modelDisplayName": "Claude Opus 4.7",
+        "metric": "wmq",
+        "metricValue": 52,
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 8,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-4-mini",
+        "modelDisplayName": "GPT-5.4 mini",
+        "metric": "wmq",
+        "metricValue": 51.2,
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 9,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-sonnet-4-6-adaptive",
+        "modelDisplayName": "Claude Sonnet 4.6",
+        "metric": "wmq",
+        "metricValue": 50.7,
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 10,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-opus-4-6-adaptive",
+        "modelDisplayName": "Claude Opus 4.6",
+        "metric": "wmq",
+        "metricValue": 48.5,
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": null,
+          "usage": null
+        }
+      }
+    ],
+    "bestPlansPerModel": [
+      {
+        "modelId": "claude-fable-5",
+        "modelDisplayName": "Claude Fable 5",
+        "weightedModelQuality": 59.6,
+        "bestLowCost": null,
+        "bestMidCost": null,
+        "bestHighCost": {
+          "rank": 1,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-max",
+          "planName": "Claude Max",
+          "modelId": "claude-fable-5",
+          "modelDisplayName": "Claude Fable 5",
+          "monthlyPriceUsd": 100,
+          "priceBand": "high",
+          "weightedModelQuality": 59.6,
+          "estimatedMonthlyTokens": 450000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 268200,
+          "valueScoreRaw": 2682,
+          "valueScore": 7,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        "caveats": [
+          "No low-cost ($0.01–30) plan offers this model.",
+          "No mid-cost ($30.01–80) plan offers this model."
+        ]
+      },
+      {
+        "modelId": "gpt-5-5",
+        "modelDisplayName": "GPT-5.5",
+        "weightedModelQuality": 57.3,
+        "bestLowCost": null,
+        "bestMidCost": {
+          "rank": 1,
+          "providerId": "openai",
+          "providerName": "OpenAI",
+          "planId": "openai-plus",
+          "planName": "ChatGPT Plus",
+          "modelId": "gpt-5-5",
+          "modelDisplayName": "GPT-5.5",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 57.3,
+          "estimatedMonthlyTokens": 6000000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 3438000,
+          "valueScoreRaw": 171900,
+          "valueScore": 100,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        "bestHighCost": null,
+        "caveats": [
+          "No low-cost ($0.01–30) plan offers this model.",
+          "No high-cost (>$80) plan offers this model."
+        ]
+      },
+      {
+        "modelId": "gpt-5-4",
+        "modelDisplayName": "GPT-5.4",
+        "weightedModelQuality": 55.8,
+        "bestLowCost": null,
+        "bestMidCost": {
+          "rank": 1,
+          "providerId": "openai",
+          "providerName": "OpenAI",
+          "planId": "openai-plus",
+          "planName": "ChatGPT Plus",
+          "modelId": "gpt-5-4",
+          "modelDisplayName": "GPT-5.4",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 55.8,
+          "estimatedMonthlyTokens": 6000000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 3348000,
+          "valueScoreRaw": 167400,
+          "valueScore": 100,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        "bestHighCost": null,
+        "caveats": [
+          "No low-cost ($0.01–30) plan offers this model.",
+          "No high-cost (>$80) plan offers this model."
+        ]
+      },
+      {
+        "modelId": "claude-opus-4-8",
+        "modelDisplayName": "Claude Opus 4.8",
+        "weightedModelQuality": 55.4,
+        "bestLowCost": null,
+        "bestMidCost": {
+          "rank": 1,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-pro",
+          "planName": "Claude Pro",
+          "modelId": "claude-opus-4-8",
+          "modelDisplayName": "Claude Opus 4.8",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 55.4,
+          "estimatedMonthlyTokens": 90000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 49860,
+          "valueScoreRaw": 2493,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        "bestHighCost": {
+          "rank": 1,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-max",
+          "planName": "Claude Max",
+          "modelId": "claude-opus-4-8",
+          "modelDisplayName": "Claude Opus 4.8",
+          "monthlyPriceUsd": 100,
+          "priceBand": "high",
+          "weightedModelQuality": 55.4,
+          "estimatedMonthlyTokens": 450000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 249300,
+          "valueScoreRaw": 2493,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        "caveats": [
+          "No low-cost ($0.01–30) plan offers this model."
+        ]
+      },
+      {
+        "modelId": "gpt-5-3-codex",
+        "modelDisplayName": "GPT-5.3 Codex",
+        "weightedModelQuality": 52.5,
+        "bestLowCost": null,
+        "bestMidCost": {
+          "rank": 1,
+          "providerId": "openai",
+          "providerName": "OpenAI",
+          "planId": "openai-plus",
+          "planName": "ChatGPT Plus",
+          "modelId": "gpt-5-3-codex",
+          "modelDisplayName": "GPT-5.3 Codex",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 52.5,
+          "estimatedMonthlyTokens": 6000000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 3150000,
+          "valueScoreRaw": 157500,
+          "valueScore": 100,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        "bestHighCost": null,
+        "caveats": [
+          "No low-cost ($0.01–30) plan offers this model.",
+          "No high-cost (>$80) plan offers this model."
+        ]
+      },
+      {
+        "modelId": "claude-opus-4-7",
+        "modelDisplayName": "Claude Opus 4.7",
+        "weightedModelQuality": 52,
+        "bestLowCost": null,
+        "bestMidCost": {
+          "rank": 1,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-pro",
+          "planName": "Claude Pro",
+          "modelId": "claude-opus-4-7",
+          "modelDisplayName": "Claude Opus 4.7",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 52,
+          "estimatedMonthlyTokens": 90000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 46800,
+          "valueScoreRaw": 2340,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        "bestHighCost": {
+          "rank": 1,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-max",
+          "planName": "Claude Max",
+          "modelId": "claude-opus-4-7",
+          "modelDisplayName": "Claude Opus 4.7",
+          "monthlyPriceUsd": 100,
+          "priceBand": "high",
+          "weightedModelQuality": 52,
+          "estimatedMonthlyTokens": 450000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 234000,
+          "valueScoreRaw": 2340,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        "caveats": [
+          "No low-cost ($0.01–30) plan offers this model."
+        ]
+      },
+      {
+        "modelId": "claude-sonnet-4-6-adaptive",
+        "modelDisplayName": "Claude Sonnet 4.6",
+        "weightedModelQuality": 50.7,
+        "bestLowCost": null,
+        "bestMidCost": {
+          "rank": 1,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-pro",
+          "planName": "Claude Pro",
+          "modelId": "claude-sonnet-4-6-adaptive",
+          "modelDisplayName": "Claude Sonnet 4.6",
+          "monthlyPriceUsd": 20,
+          "priceBand": "mid",
+          "weightedModelQuality": 50.7,
+          "estimatedMonthlyTokens": 90000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 45630,
+          "valueScoreRaw": 2281.5,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        "bestHighCost": {
+          "rank": 1,
+          "providerId": "anthropic",
+          "providerName": "Anthropic",
+          "planId": "anthropic-max",
+          "planName": "Claude Max",
+          "modelId": "claude-sonnet-4-6-adaptive",
+          "modelDisplayName": "Claude Sonnet 4.6",
+          "monthlyPriceUsd": 100,
+          "priceBand": "high",
+          "weightedModelQuality": 50.7,
+          "estimatedMonthlyTokens": 450000,
+          "modelAdjustedMonthlyTokens": null,
+          "qualityAdjustedMonthlyUsage": 228150,
+          "valueScoreRaw": 2281.5,
+          "valueScore": 6,
+          "costPerTaskUsd": null,
+          "efficiencyMultiplier": 1,
+          "confidence": "inferred",
+          "caveats": [
+            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+          ],
+          "sourceDates": {
+            "aa": "2026-06-17",
+            "pricing": "2026-06-14",
+            "usage": "2026-06-17"
+          }
+        },
+        "caveats": [
+          "No low-cost ($0.01–30) plan offers this model."
+        ]
+      }
+    ],
+    "byProviderCodingValue": [
+      {
+        "rank": 1,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "codingValuePeak": 177300,
+        "bestPlanId": "openai-plus",
+        "bestModelId": "gpt-5-5",
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": "2026-06-14",
+          "usage": "2026-06-17"
+        }
+      },
+      {
+        "rank": 2,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "codingValuePeak": 2790,
+        "bestPlanId": "anthropic-max",
+        "bestModelId": "claude-fable-5",
+        "confidence": "inferred",
+        "caveats": [
+          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": "2026-06-14",
+          "usage": "2026-06-17"
+        }
+      }
+    ],
     "byTransparency": [
       {
         "rank": 1,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "planId": "openai-plus",
+        "planName": "ChatGPT Plus",
+        "uncertaintyScore": 25,
+        "transparencyScore": 75,
+        "confidence": "assumed",
+        "caveats": [
+          "Pricing confidence: assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": "2026-06-14",
+          "usage": "2026-06-17"
+        }
+      },
+      {
+        "rank": 2,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "planId": "anthropic-max",
+        "planName": "Claude Max",
+        "uncertaintyScore": 35,
+        "transparencyScore": 65,
+        "confidence": "assumed",
+        "caveats": [
+          "Pricing confidence: assumed.",
+          "Usage-limit confidence: assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": "2026-06-14",
+          "usage": "2026-06-17"
+        }
+      },
+      {
+        "rank": 3,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "planId": "anthropic-pro",
+        "planName": "Claude Pro",
+        "uncertaintyScore": 35,
+        "transparencyScore": 65,
+        "confidence": "assumed",
+        "caveats": [
+          "Pricing confidence: assumed.",
+          "Usage-limit confidence: assumed."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": "2026-06-14",
+          "usage": "2026-06-17"
+        }
+      },
+      {
+        "rank": 4,
+        "providerId": "google",
+        "providerName": "Google",
+        "planId": "google-gemini-advanced",
+        "planName": "Gemini Advanced (Google One AI Premium)",
+        "uncertaintyScore": 35,
+        "transparencyScore": 65,
+        "confidence": "unknown",
+        "caveats": [
+          "Pricing confidence: assumed.",
+          "Usage-limit confidence: unknown."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": "2026-06-14",
+          "usage": "2026-06-14"
+        }
+      },
+      {
+        "rank": 5,
+        "providerId": "kimi",
+        "providerName": "Kimi",
+        "planId": "kimi-plus",
+        "planName": "Kimi Plus",
+        "uncertaintyScore": 35,
+        "transparencyScore": 65,
+        "confidence": "unknown",
+        "caveats": [
+          "Pricing confidence: assumed.",
+          "Usage-limit confidence: unknown."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": "2026-06-14",
+          "usage": "2026-06-17"
+        }
+      },
+      {
+        "rank": 6,
+        "providerId": "kimi",
+        "providerName": "Kimi",
+        "planId": "kimi-pro",
+        "planName": "Kimi Pro",
+        "uncertaintyScore": 35,
+        "transparencyScore": 65,
+        "confidence": "unknown",
+        "caveats": [
+          "Pricing confidence: assumed.",
+          "Usage-limit confidence: unknown."
+        ],
+        "sourceDates": {
+          "aa": "2026-06-17",
+          "pricing": "2026-06-14",
+          "usage": "2026-06-17"
+        }
+      },
+      {
+        "rank": 7,
         "providerId": "github-copilot",
         "providerName": "GitHub Copilot",
         "planId": "copilot-max",
@@ -38,7 +1634,7 @@
         }
       },
       {
-        "rank": 2,
+        "rank": 8,
         "providerId": "github-copilot",
         "providerName": "GitHub Copilot",
         "planId": "copilot-pro-plus",
@@ -56,7 +1652,7 @@
         }
       },
       {
-        "rank": 3,
+        "rank": 9,
         "providerId": "github-copilot",
         "providerName": "GitHub Copilot",
         "planId": "copilot-individual",
@@ -75,7 +1671,7 @@
         }
       },
       {
-        "rank": 4,
+        "rank": 10,
         "providerId": "cursor",
         "providerName": "Cursor",
         "planId": "cursor-pro",
@@ -94,130 +1690,11 @@
         }
       },
       {
-        "rank": 5,
-        "providerId": "openai",
-        "providerName": "OpenAI",
-        "planId": "openai-plus",
-        "planName": "ChatGPT Plus",
-        "uncertaintyScore": 90,
-        "transparencyScore": 10,
-        "confidence": "unknown",
-        "caveats": [
-          "AA indices (agentic/coding/speed) confidence: unknown.",
-          "Pricing confidence: assumed."
-        ],
-        "sourceDates": {
-          "aa": null,
-          "pricing": "2026-06-14",
-          "usage": "2026-06-17"
-        }
-      },
-      {
-        "rank": 6,
-        "providerId": "anthropic",
-        "providerName": "Anthropic",
-        "planId": "anthropic-max",
-        "planName": "Claude Max",
-        "uncertaintyScore": 100,
-        "transparencyScore": 0,
-        "confidence": "unknown",
-        "caveats": [
-          "AA indices (agentic/coding/speed) confidence: unknown.",
-          "Pricing confidence: assumed.",
-          "Usage-limit confidence: assumed."
-        ],
-        "sourceDates": {
-          "aa": null,
-          "pricing": "2026-06-14",
-          "usage": "2026-06-17"
-        }
-      },
-      {
-        "rank": 7,
-        "providerId": "anthropic",
-        "providerName": "Anthropic",
-        "planId": "anthropic-pro",
-        "planName": "Claude Pro",
-        "uncertaintyScore": 100,
-        "transparencyScore": 0,
-        "confidence": "unknown",
-        "caveats": [
-          "AA indices (agentic/coding/speed) confidence: unknown.",
-          "Pricing confidence: assumed.",
-          "Usage-limit confidence: assumed."
-        ],
-        "sourceDates": {
-          "aa": null,
-          "pricing": "2026-06-14",
-          "usage": "2026-06-17"
-        }
-      },
-      {
-        "rank": 8,
+        "rank": 11,
         "providerId": "copilot-xcode",
         "providerName": "Copilot for Xcode",
         "planId": "copilot-xcode-individual",
         "planName": "Copilot for Xcode Individual",
-        "uncertaintyScore": 100,
-        "transparencyScore": 0,
-        "confidence": "unknown",
-        "caveats": [
-          "AA indices (agentic/coding/speed) confidence: unknown.",
-          "Pricing confidence: assumed.",
-          "Usage-limit confidence: unknown."
-        ],
-        "sourceDates": {
-          "aa": null,
-          "pricing": "2026-06-14",
-          "usage": "2026-06-17"
-        }
-      },
-      {
-        "rank": 9,
-        "providerId": "google",
-        "providerName": "Google",
-        "planId": "google-gemini-advanced",
-        "planName": "Gemini Advanced (Google One AI Premium)",
-        "uncertaintyScore": 100,
-        "transparencyScore": 0,
-        "confidence": "unknown",
-        "caveats": [
-          "AA indices (agentic/coding/speed) confidence: unknown.",
-          "Pricing confidence: assumed.",
-          "Usage-limit confidence: unknown."
-        ],
-        "sourceDates": {
-          "aa": null,
-          "pricing": "2026-06-14",
-          "usage": "2026-06-14"
-        }
-      },
-      {
-        "rank": 10,
-        "providerId": "kimi",
-        "providerName": "Kimi",
-        "planId": "kimi-plus",
-        "planName": "Kimi Plus",
-        "uncertaintyScore": 100,
-        "transparencyScore": 0,
-        "confidence": "unknown",
-        "caveats": [
-          "AA indices (agentic/coding/speed) confidence: unknown.",
-          "Pricing confidence: assumed.",
-          "Usage-limit confidence: unknown."
-        ],
-        "sourceDates": {
-          "aa": null,
-          "pricing": "2026-06-14",
-          "usage": "2026-06-17"
-        }
-      },
-      {
-        "rank": 11,
-        "providerId": "kimi",
-        "providerName": "Kimi",
-        "planId": "kimi-pro",
-        "planName": "Kimi Pro",
         "uncertaintyScore": 100,
         "transparencyScore": 0,
         "confidence": "unknown",
@@ -250,6 +1727,46 @@
           "aa": null,
           "pricing": "2026-06-14",
           "usage": "2026-06-14"
+        }
+      },
+      {
+        "rank": 13,
+        "providerId": "windsurf",
+        "providerName": "Windsurf",
+        "planId": "windsurf-pro",
+        "planName": "Windsurf Pro",
+        "uncertaintyScore": 100,
+        "transparencyScore": 0,
+        "confidence": "unknown",
+        "caveats": [
+          "AA indices (agentic/coding/speed) confidence: unknown.",
+          "Pricing confidence: assumed.",
+          "Usage-limit confidence: assumed."
+        ],
+        "sourceDates": {
+          "aa": null,
+          "pricing": "2026-06-23",
+          "usage": "2026-06-23"
+        }
+      },
+      {
+        "rank": 14,
+        "providerId": "windsurf",
+        "providerName": "Windsurf",
+        "planId": "windsurf-teams",
+        "planName": "Windsurf Teams",
+        "uncertaintyScore": 100,
+        "transparencyScore": 0,
+        "confidence": "unknown",
+        "caveats": [
+          "AA indices (agentic/coding/speed) confidence: unknown.",
+          "Pricing confidence: assumed.",
+          "Usage-limit confidence: assumed."
+        ],
+        "sourceDates": {
+          "aa": null,
+          "pricing": "2026-06-23",
+          "usage": "2026-06-23"
         }
       }
     ]

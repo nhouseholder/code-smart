@@ -1,5 +1,5 @@
 import type { Provider } from "@/types";
-import { ArrowDown, Database, RefreshCcw, Shield } from "lucide-react";
+import { ArrowRight, Database, RefreshCcw, Shield } from "lucide-react";
 
 interface Props {
   providers: Provider[];
@@ -65,11 +65,11 @@ export function Hero({ providers, totalPlans }: Props) {
             </div>
 
             <a
-              href="#plans"
+              href="/compare"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-600 text-white rounded-xl font-semibold text-sm hover:bg-brand-700 transition-colors shadow-sm"
             >
               Compare plans
-              <ArrowDown size={14} />
+              <ArrowRight size={14} />
             </a>
           </div>
 
