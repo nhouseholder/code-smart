@@ -79,7 +79,6 @@ function generate(): void {
   console.log(`Loaded ${aaScores.size} latest AA score(s) from DB.`);
 
   // Fallback: if the DB was never seeded, load from the static aa-scores.json snapshot.
-  // agenticIndex is absent in that file; computeWMQ redistributes weight to coding+speed.
   if (aaScores.size === 0) {
     console.log("DB empty — falling back to aa-scores.json");
     for (const entry of aaScoresJson.scores) {
@@ -88,7 +87,7 @@ function generate(): void {
         observedAt: aaScoresJson.observed_at,
         intelligenceIndex: entry.intelligenceIndex,
         codingIndex: entry.codingIndex,
-        agenticIndex: null,
+        agenticIndex: (entry as { agenticIndex?: number | null }).agenticIndex ?? null,
         speedScore: null,
         inputPrice: entry.inputPrice,
         outputPrice: entry.outputPrice,
