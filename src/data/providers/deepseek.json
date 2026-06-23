@@ -36,7 +36,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -44,12 +44,12 @@
         },
         {
           "name": "AA Coding Index",
-          "score": 47.5,
+          "score": 59.4,
           "unit": "normalized",
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -58,7 +58,7 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -82,7 +82,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -90,12 +90,12 @@
         },
         {
           "name": "AA Coding Index",
-          "score": 38.7,
+          "score": 56.2,
           "unit": "normalized",
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -104,7 +104,191 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "deepseek-v3-2-reasoning",
+      "provider_id": "deepseek",
+      "display_name": "DeepSeek.2",
+      "context_length_k": null,
+      "strengths": [
+        "reasoning",
+        "math"
+      ],
+      "released_date": "2025-12-01",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 33.4,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v3-2-reasoning",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Math Index",
+          "score": 92,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v3-2-reasoning",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/deepseek-v3-2-reasoning",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "deepseek-v3-1-terminus-reasoning",
+      "provider_id": "deepseek",
+      "display_name": "DeepSeek.1 Terminus",
+      "context_length_k": null,
+      "strengths": [
+        "reasoning",
+        "math"
+      ],
+      "released_date": "2025-09-22",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 26.3,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v3-1-terminus-reasoning",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Math Index",
+          "score": 89.7,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v3-1-terminus-reasoning",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/deepseek-v3-1-terminus-reasoning",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "deepseek-v3-2-speciale",
+      "provider_id": "deepseek",
+      "display_name": "DeepSeek.2 Speciale",
+      "context_length_k": null,
+      "strengths": [
+        "reasoning",
+        "math"
+      ],
+      "released_date": "2025-12-01",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 22.2,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v3-2-speciale",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Math Index",
+          "score": 96.7,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v3-2-speciale",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/deepseek-v3-2-speciale",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "deepseek-v3-1",
+      "provider_id": "deepseek",
+      "display_name": "DeepSeek.1",
+      "context_length_k": null,
+      "strengths": [
+        "reasoning",
+        "math"
+      ],
+      "released_date": "2025-08-21",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 21,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v3-1",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Math Index",
+          "score": 49.7,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/deepseek-v3-1",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/deepseek-v3-1",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."

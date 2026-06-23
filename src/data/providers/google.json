@@ -105,7 +105,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -113,12 +113,12 @@
         },
         {
           "name": "AA Coding Index",
-          "score": 45,
+          "score": 70.1,
           "unit": "normalized",
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -127,7 +127,7 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -151,7 +151,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -159,12 +159,12 @@
         },
         {
           "name": "AA Coding Index",
-          "score": 55.5,
+          "score": 68.8,
           "unit": "normalized",
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -173,7 +173,7 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -198,20 +198,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
-            "accessed_date": "2026-06-17",
-            "method": "automated",
-            "confidence": "observed",
-            "notes": "Artificial Analysis evaluation, accessed via AA API."
-          }
-        },
-        {
-          "name": "AA Coding Index",
-          "score": 42.6,
-          "unit": "normalized",
-          "higher_is_better": true,
-          "provenance": {
-            "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -224,7 +211,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -233,7 +220,7 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -257,7 +244,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemma-4-31b",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -265,12 +252,12 @@
         },
         {
           "name": "AA Coding Index",
-          "score": 38.7,
+          "score": 43.4,
           "unit": "normalized",
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemma-4-31b",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -279,7 +266,7 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/gemma-4-31b",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -303,7 +290,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -311,12 +298,12 @@
         },
         {
           "name": "AA Coding Index",
-          "score": 22.4,
+          "score": 39.3,
           "unit": "normalized",
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -325,7 +312,7 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -349,7 +336,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -357,12 +344,12 @@
         },
         {
           "name": "AA Coding Index",
-          "score": 30.1,
+          "score": 34.7,
           "unit": "normalized",
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -371,7 +358,131 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "gemini-3-pro",
+      "provider_id": "google",
+      "display_name": "Gemini 3 Pro Preview",
+      "context_length_k": null,
+      "strengths": [
+        "reasoning",
+        "math"
+      ],
+      "released_date": "2025-11-18",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 39.6,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-3-pro",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Math Index",
+          "score": 95.7,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-3-pro",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/gemini-3-pro",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "gemini-2-5-flash-preview-09-2025-reasoning",
+      "provider_id": "google",
+      "display_name": "Gemini 2.5 Flash Preview",
+      "context_length_k": null,
+      "strengths": [
+        "reasoning",
+        "math"
+      ],
+      "released_date": "2025-09-25",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 23.8,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-2-5-flash-preview-09-2025-reasoning",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Math Index",
+          "score": 78.3,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemini-2-5-flash-preview-09-2025-reasoning",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/gemini-2-5-flash-preview-09-2025-reasoning",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "gemma-4-12b",
+      "provider_id": "google",
+      "display_name": "Gemma 4 12B",
+      "context_length_k": null,
+      "strengths": [
+        "reasoning"
+      ],
+      "released_date": "2026-06-03",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 22,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/gemma-4-12b",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/gemma-4-12b",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."

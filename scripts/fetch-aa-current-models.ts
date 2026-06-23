@@ -23,10 +23,10 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-const RUN_DATE = "2026-06-17"; // accessed_date stamped on every AA-sourced row
-const MONTHS_BACK = 6;
-const TOP_N = 36; // curated catalog size target
-const PER_PROVIDER_CAP = 6; // diversity guard — trims a single creator's long tail
+const RUN_DATE = "2026-06-23"; // accessed_date stamped on every AA-sourced row
+const MONTHS_BACK = 12;
+const TOP_N = 100; // curated catalog size target
+const PER_PROVIDER_CAP = 12; // diversity guard — trims a single creator's long tail
 const SPEED_TPS_CEILING = 300; // matches seed-aa-scores normalization
 const AA_BASE = "https://artificialanalysis.ai";
 const AA_ENDPOINT = `${AA_BASE}/api/v2/data/llms/models`;
@@ -35,7 +35,8 @@ const CACHE_PATH = "/tmp/aa-models.json";
 const PROVIDERS_DIR = path.join(__dirname, "..", "src", "data", "providers");
 const AA_SCORES_PATH = path.join(__dirname, "..", "src", "data", "aa-scores.json");
 
-// AA model_creator.slug -> our provider_id. Only these creators are sourced.
+// AA model_creator.slug -> our provider_id.
+// Unknown creators fall through gracefully: score row emitted, provider upsert skipped.
 const CREATOR_TO_PROVIDER: Record<string, string> = {
   anthropic: "anthropic",
   openai: "openai",
@@ -45,6 +46,10 @@ const CREATOR_TO_PROVIDER: Record<string, string> = {
   minimax: "minimax",
   xai: "xai",
   deepseek: "deepseek",
+  meta: "meta",
+  mistral: "mistral",
+  cohere: "cohere",
+  microsoft: "microsoft",
 };
 
 // ── AA row typing (only the fields we read) ──────────────────────────────
@@ -207,6 +212,7 @@ interface AaScoreEntry {
   aaSlug: string;
   intelligenceIndex: number;
   codingIndex: number | null;
+  agenticIndex: number | null; // ponytail: proxy from codingIndex — AA v2 has no agentic index
   speedTps: number;
   inputPrice: number | null;
   outputPrice: number | null;
@@ -218,17 +224,16 @@ async function main() {
   const cutoff = cutoffDate();
   console.log(`Cutoff (release_date >= ${cutoff}); curating top ${TOP_N}, cap ${PER_PROVIDER_CAP}/provider.`);
 
-  // 1. Filter to recent + tracked creators.
+  // 1. Filter to recent models from any creator (tracked or not).
   const recent = rows.filter((r) => {
-    const cs = r.model_creator?.slug;
-    return r.release_date && r.release_date >= cutoff && cs && cs in CREATOR_TO_PROVIDER;
+    return r.release_date && r.release_date >= cutoff && r.model_creator?.slug;
   });
 
-  // 2. Dedup effort/snapshot variants per (provider, baseKey) — keep highest intel.
+  // 2. Dedup effort/snapshot variants per (creator, baseKey) — keep highest intel.
   const groups = new Map<string, AaRow>();
   for (const r of recent) {
-    const pid = CREATOR_TO_PROVIDER[r.model_creator!.slug!];
-    const k = `${pid}::${baseKey(r.slug)}`;
+    const creatorSlug = r.model_creator!.slug!;
+    const k = `${creatorSlug}::${baseKey(r.slug)}`;
     const cur = groups.get(k);
     if (!cur || intel(r) > intel(cur)) groups.set(k, r);
   }
@@ -238,8 +243,8 @@ async function main() {
   //    the global top-N by intelligence — curated + diverse.
   const byProvider = new Map<string, AaRow[]>();
   for (const r of deduped) {
-    const pid = CREATOR_TO_PROVIDER[r.model_creator!.slug!];
-    (byProvider.get(pid) ?? byProvider.set(pid, []).get(pid)!).push(r);
+    const creatorSlug = r.model_creator!.slug!;
+    (byProvider.get(creatorSlug) ?? byProvider.set(creatorSlug, []).get(creatorSlug)!).push(r);
   }
   const capped: AaRow[] = [];
   for (const list of byProvider.values()) {
@@ -253,7 +258,8 @@ async function main() {
   const modelsByProvider = new Map<string, ModelObject[]>();
   const aaScores: AaScoreEntry[] = [];
   for (const r of selected) {
-    const pid = CREATOR_TO_PROVIDER[r.model_creator!.slug!];
+    const creatorSlug = r.model_creator!.slug!;
+    const pid = CREATOR_TO_PROVIDER[creatorSlug] ?? creatorSlug;
     const ev = r.evaluations ?? {};
     const model: ModelObject = {
       id: r.slug,
@@ -275,6 +281,7 @@ async function main() {
       aaSlug: r.slug,
       intelligenceIndex: ev.artificial_analysis_intelligence_index ?? 0,
       codingIndex: ev.artificial_analysis_coding_index ?? null,
+      agenticIndex: ev.artificial_analysis_coding_index ?? null,
       speedTps: r.median_output_tokens_per_second ?? 0,
       inputPrice: r.pricing?.price_1m_input_tokens ?? null,
       outputPrice: r.pricing?.price_1m_output_tokens ?? null,
@@ -287,8 +294,8 @@ async function main() {
   for (const [pid, models] of modelsByProvider) {
     const file = path.join(PROVIDERS_DIR, `${pid}.json`);
     if (!fs.existsSync(file)) {
-      console.error(`  ✗ provider file missing: ${file} — create it before merging ${pid} models.`);
-      throw new Error(`Missing provider file ${pid}.json (create xai/deepseek stubs first).`);
+      console.warn(`  ⚠ no provider file for "${pid}" — skipping model upsert, AA score row kept`);
+      continue;
     }
     const provider = JSON.parse(fs.readFileSync(file, "utf8")) as { models: ModelObject[] };
     const byId = new Map(provider.models.map((m) => [m.id, m] as const));

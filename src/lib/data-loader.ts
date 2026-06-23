@@ -30,6 +30,10 @@ import minimaxData from "@/data/providers/minimax.json";
 import xaiData from "@/data/providers/xai.json";
 import deepseekData from "@/data/providers/deepseek.json";
 import windsurfData from "@/data/providers/windsurf.json";
+import metaData from "@/data/providers/meta.json";
+import mistralData from "@/data/providers/mistral.json";
+import cohereData from "@/data/providers/cohere.json";
+import microsoftData from "@/data/providers/microsoft.json";
 
 const PROVIDER_FILES = [
   anthropicData,
@@ -46,6 +50,10 @@ const PROVIDER_FILES = [
   xaiData,
   deepseekData,
   windsurfData,
+  metaData,
+  mistralData,
+  cohereData,
+  microsoftData,
 ];
 
 let _cachedProviders: Provider[] | null = null;

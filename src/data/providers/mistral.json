@@ -1,0 +1,69 @@
+{
+  "id": "mistral",
+  "name": "Mistral AI",
+  "display_name": "Mistral AI",
+  "website": "https://mistral.ai",
+  "pricing_url": "https://mistral.ai/technology",
+  "description": "Mistral AI develops efficient open-weight and API-hosted language models. Known for Mistral, Mixtral, and Codestral. Access via la Plateforme API; no dedicated coding subscription — models appear here for radar comparison only.",
+  "logo_slug": "mistral",
+  "category": "ai_lab",
+  "headquarters_country": "FR",
+  "founded_year": 2023,
+  "last_verified": "2026-06-23",
+  "provenance": {
+    "url": "https://mistral.ai",
+    "accessed_date": "2026-06-23",
+    "method": "automated",
+    "confidence": "observed",
+    "notes": "Models sourced from the Artificial Analysis API."
+  },
+  "models": [
+    {
+      "id": "mistral-medium-3-5",
+      "provider_id": "mistral",
+      "display_name": "Mistral Medium 3.5",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-29",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 29.9,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/mistral-medium-3-5",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 46.9,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/mistral-medium-3-5",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/mistral-medium-3-5",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    }
+  ],
+  "plans": []
+}

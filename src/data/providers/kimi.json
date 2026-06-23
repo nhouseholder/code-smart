@@ -79,7 +79,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/kimi-k2-6",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -87,12 +87,12 @@
         },
         {
           "name": "AA Coding Index",
-          "score": 47.1,
+          "score": 56,
           "unit": "normalized",
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/kimi-k2-6",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -101,7 +101,7 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/kimi-k2-6",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -125,7 +125,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -133,12 +133,12 @@
         },
         {
           "name": "AA Coding Index",
-          "score": 45.6,
+          "score": 60.8,
           "unit": "normalized",
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -147,7 +147,7 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -171,20 +171,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/kimi-k2-5",
-            "accessed_date": "2026-06-17",
-            "method": "automated",
-            "confidence": "observed",
-            "notes": "Artificial Analysis evaluation, accessed via AA API."
-          }
-        },
-        {
-          "name": "AA Coding Index",
-          "score": 39.6,
-          "unit": "normalized",
-          "higher_is_better": true,
-          "provenance": {
-            "url": "https://artificialanalysis.ai/models/kimi-k2-5",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -193,7 +180,53 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/kimi-k2-5",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "kimi-k2-thinking",
+      "provider_id": "kimi",
+      "display_name": "Kimi K2 Thinking",
+      "context_length_k": null,
+      "strengths": [
+        "reasoning",
+        "math"
+      ],
+      "released_date": "2025-11-06",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 32.7,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/kimi-k2-thinking",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Math Index",
+          "score": 94.7,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/kimi-k2-thinking",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/kimi-k2-thinking",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."

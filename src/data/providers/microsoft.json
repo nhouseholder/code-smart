@@ -1,0 +1,22 @@
+{
+  "id": "microsoft",
+  "name": "Microsoft",
+  "display_name": "Microsoft",
+  "website": "https://azure.microsoft.com/en-us/products/ai-services",
+  "pricing_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service",
+  "description": "Microsoft develops the Phi family of small language models optimized for reasoning and coding. Available via Azure AI and GitHub Models. No dedicated developer subscription — models appear here for radar comparison only.",
+  "logo_slug": "microsoft",
+  "category": "ai_lab",
+  "headquarters_country": "US",
+  "founded_year": 1990,
+  "last_verified": "2026-06-23",
+  "provenance": {
+    "url": "https://azure.microsoft.com",
+    "accessed_date": "2026-06-23",
+    "method": "automated",
+    "confidence": "observed",
+    "notes": "Models sourced from the Artificial Analysis API."
+  },
+  "models": [],
+  "plans": []
+}

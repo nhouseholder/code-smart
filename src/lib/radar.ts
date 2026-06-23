@@ -27,6 +27,7 @@ type AaEntry = {
   modelId: string;
   intelligenceIndex: number;
   codingIndex: number;
+  agenticIndex?: number | null;
   speedTps: number;
   inputPrice: number;
   outputPrice: number;
@@ -82,7 +83,7 @@ export function getRadarProfiles(): RadarProfile[] {
 
     const intel   = intelMap.get(s.modelId)?.metricValue   ?? s.intelligenceIndex ?? 0;
     const coding  = codingMap.get(s.modelId)?.metricValue  ?? s.codingIndex       ?? 0;
-    const agentic = agenticMap.get(s.modelId)?.metricValue ?? null;
+    const agentic = agenticMap.get(s.modelId)?.metricValue ?? s.agenticIndex ?? s.codingIndex ?? null;
 
     const speedPct = s.speedTps > 0
       ? percentileRank(validSpeeds, s.speedTps)

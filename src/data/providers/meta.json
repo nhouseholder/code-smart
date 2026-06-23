@@ -1,0 +1,69 @@
+{
+  "id": "meta",
+  "name": "Meta AI",
+  "display_name": "Meta AI",
+  "website": "https://ai.meta.com",
+  "pricing_url": "https://ai.meta.com/llama",
+  "description": "Meta AI develops the Llama family of open-weight models. Available via API partners (AWS, Azure, Together, Groq, etc.) and self-hosted. No direct Meta subscription — models appear here for radar comparison only.",
+  "logo_slug": "meta",
+  "category": "ai_lab",
+  "headquarters_country": "US",
+  "founded_year": 2023,
+  "last_verified": "2026-06-23",
+  "provenance": {
+    "url": "https://ai.meta.com",
+    "accessed_date": "2026-06-23",
+    "method": "automated",
+    "confidence": "observed",
+    "notes": "Models sourced from the Artificial Analysis API."
+  },
+  "models": [
+    {
+      "id": "muse-spark",
+      "provider_id": "meta",
+      "display_name": "Muse Spark",
+      "context_length_k": null,
+      "strengths": [
+        "coding",
+        "reasoning"
+      ],
+      "released_date": "2026-04-08",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 43.1,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/muse-spark",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Coding Index",
+          "score": 58.6,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/muse-spark",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/muse-spark",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    }
+  ],
+  "plans": []
+}

@@ -81,7 +81,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/minimax-m3",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -89,12 +89,12 @@
         },
         {
           "name": "AA Coding Index",
-          "score": 43.4,
+          "score": 58.6,
           "unit": "normalized",
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/minimax-m3",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -103,7 +103,7 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/minimax-m3",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -127,7 +127,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/minimax-m2-7",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -135,12 +135,12 @@
         },
         {
           "name": "AA Coding Index",
-          "score": 41.9,
+          "score": 52.6,
           "unit": "normalized",
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/minimax-m2-7",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -149,7 +149,7 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/minimax-m2-7",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -173,20 +173,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/minimax-m2-5",
-            "accessed_date": "2026-06-17",
-            "method": "automated",
-            "confidence": "observed",
-            "notes": "Artificial Analysis evaluation, accessed via AA API."
-          }
-        },
-        {
-          "name": "AA Coding Index",
-          "score": 37.4,
-          "unit": "normalized",
-          "higher_is_better": true,
-          "provenance": {
-            "url": "https://artificialanalysis.ai/models/minimax-m2-5",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -195,7 +182,7 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/minimax-m2-5",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -220,20 +207,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/minimax-m2-1",
-            "accessed_date": "2026-06-17",
-            "method": "automated",
-            "confidence": "observed",
-            "notes": "Artificial Analysis evaluation, accessed via AA API."
-          }
-        },
-        {
-          "name": "AA Coding Index",
-          "score": 32.8,
-          "unit": "normalized",
-          "higher_is_better": true,
-          "provenance": {
-            "url": "https://artificialanalysis.ai/models/minimax-m2-1",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -246,7 +220,7 @@
           "higher_is_better": true,
           "provenance": {
             "url": "https://artificialanalysis.ai/models/minimax-m2-1",
-            "accessed_date": "2026-06-17",
+            "accessed_date": "2026-06-23",
             "method": "automated",
             "confidence": "observed",
             "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -255,7 +229,53 @@
       ],
       "provenance": {
         "url": "https://artificialanalysis.ai/models/minimax-m2-1",
-        "accessed_date": "2026-06-17",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    },
+    {
+      "id": "minimax-m2",
+      "provider_id": "minimax",
+      "display_name": "MiniMax-M2",
+      "context_length_k": null,
+      "strengths": [
+        "reasoning",
+        "math"
+      ],
+      "released_date": "2025-10-26",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 28.3,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/minimax-m2",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        },
+        {
+          "name": "AA Math Index",
+          "score": 78.3,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/minimax-m2",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/minimax-m2",
+        "accessed_date": "2026-06-23",
         "method": "automated",
         "confidence": "observed",
         "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."

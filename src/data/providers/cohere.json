@@ -1,0 +1,55 @@
+{
+  "id": "cohere",
+  "name": "Cohere",
+  "display_name": "Cohere",
+  "website": "https://cohere.com",
+  "pricing_url": "https://cohere.com/pricing",
+  "description": "Cohere builds enterprise-focused language models including the Command R series. Access via Cohere API; no dedicated coding subscription — models appear here for radar comparison only.",
+  "logo_slug": "cohere",
+  "category": "ai_lab",
+  "headquarters_country": "CA",
+  "founded_year": 2019,
+  "last_verified": "2026-06-23",
+  "provenance": {
+    "url": "https://cohere.com",
+    "accessed_date": "2026-06-23",
+    "method": "automated",
+    "confidence": "observed",
+    "notes": "Models sourced from the Artificial Analysis API."
+  },
+  "models": [
+    {
+      "id": "command-a-plus",
+      "provider_id": "cohere",
+      "display_name": "Command A+",
+      "context_length_k": null,
+      "strengths": [
+        "reasoning"
+      ],
+      "released_date": "2026-05-20",
+      "benchmarks": [
+        {
+          "name": "AA Intelligence Index",
+          "score": 29.3,
+          "unit": "normalized",
+          "higher_is_better": true,
+          "provenance": {
+            "url": "https://artificialanalysis.ai/models/command-a-plus",
+            "accessed_date": "2026-06-23",
+            "method": "automated",
+            "confidence": "observed",
+            "notes": "Artificial Analysis evaluation, accessed via AA API."
+          }
+        }
+      ],
+      "provenance": {
+        "url": "https://artificialanalysis.ai/models/command-a-plus",
+        "accessed_date": "2026-06-23",
+        "method": "automated",
+        "confidence": "observed",
+        "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+      }
+    }
+  ],
+  "plans": []
+}

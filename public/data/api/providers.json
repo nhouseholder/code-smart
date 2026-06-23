@@ -218,7 +218,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/claude-opus-4-8",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -226,12 +226,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 56.7,
+            "score": 74.3,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/claude-opus-4-8",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -240,7 +240,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/claude-opus-4-8",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -264,7 +264,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/claude-fable-5",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -272,12 +272,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 62,
+            "score": 76.5,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/claude-fable-5",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -286,7 +286,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/claude-fable-5",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -310,7 +310,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/claude-opus-4-7",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -318,12 +318,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 52.5,
+            "score": 73.6,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/claude-opus-4-7",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -332,7 +332,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/claude-opus-4-7",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -356,7 +356,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -364,12 +364,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 50.9,
+            "score": 63,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -378,7 +378,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -402,20 +402,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive",
-              "accessed_date": "2026-06-17",
-              "method": "automated",
-              "confidence": "observed",
-              "notes": "Artificial Analysis evaluation, accessed via AA API."
-            }
-          },
-          {
-            "name": "AA Coding Index",
-            "score": 48.1,
-            "unit": "normalized",
-            "higher_is_better": true,
-            "provenance": {
-              "url": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -424,7 +411,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -562,7 +549,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gpt-5-5",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -570,12 +557,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 59.1,
+            "score": 74.9,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gpt-5-5",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -584,7 +571,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/gpt-5-5",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -608,7 +595,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gpt-5-4",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -616,12 +603,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 57.2,
+            "score": 71.1,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gpt-5-4",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -630,7 +617,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/gpt-5-4",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -654,20 +641,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gpt-5-3-codex",
-              "accessed_date": "2026-06-17",
-              "method": "automated",
-              "confidence": "observed",
-              "notes": "Artificial Analysis evaluation, accessed via AA API."
-            }
-          },
-          {
-            "name": "AA Coding Index",
-            "score": 53.1,
-            "unit": "normalized",
-            "higher_is_better": true,
-            "provenance": {
-              "url": "https://artificialanalysis.ai/models/gpt-5-3-codex",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -676,7 +650,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/gpt-5-3-codex",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -700,7 +674,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gpt-5-4-mini",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -708,12 +682,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 51.5,
+            "score": 56.1,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gpt-5-4-mini",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -722,7 +696,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/gpt-5-4-mini",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -746,7 +720,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gpt-5-4-nano",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -754,12 +728,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 43.9,
+            "score": 56.1,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gpt-5-4-nano",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -768,7 +742,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/gpt-5-4-nano",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -792,20 +766,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gpt-5-5-instant-05-26",
-              "accessed_date": "2026-06-17",
-              "method": "automated",
-              "confidence": "observed",
-              "notes": "Artificial Analysis evaluation, accessed via AA API."
-            }
-          },
-          {
-            "name": "AA Coding Index",
-            "score": 45.1,
-            "unit": "normalized",
-            "higher_is_better": true,
-            "provenance": {
-              "url": "https://artificialanalysis.ai/models/gpt-5-5-instant-05-26",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -814,7 +775,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/gpt-5-5-instant-05-26",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -1315,7 +1276,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1323,12 +1284,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 45,
+            "score": 70.1,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1337,7 +1298,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -1361,7 +1322,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1369,12 +1330,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 55.5,
+            "score": 68.8,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1383,7 +1344,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -1407,7 +1368,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gemma-4-31b",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1415,12 +1376,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 38.7,
+            "score": 43.4,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gemma-4-31b",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1429,7 +1390,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/gemma-4-31b",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -1453,7 +1414,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1461,12 +1422,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 22.4,
+            "score": 39.3,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1475,7 +1436,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -1499,7 +1460,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1507,12 +1468,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 30.1,
+            "score": 34.7,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1521,7 +1482,39 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "gemma-4-12b",
+        "provider_id": "google",
+        "display_name": "Gemma 4 12B",
+        "context_length_k": null,
+        "strengths": [
+          "reasoning"
+        ],
+        "released_date": "2026-06-03",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 22,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/gemma-4-12b",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/gemma-4-12b",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -1710,7 +1703,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/kimi-k2-6",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1718,12 +1711,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 47.1,
+            "score": 56,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/kimi-k2-6",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1732,7 +1725,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/kimi-k2-6",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -1756,7 +1749,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1764,12 +1757,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 45.6,
+            "score": 60.8,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1778,7 +1771,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -1802,20 +1795,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/kimi-k2-5",
-              "accessed_date": "2026-06-17",
-              "method": "automated",
-              "confidence": "observed",
-              "notes": "Artificial Analysis evaluation, accessed via AA API."
-            }
-          },
-          {
-            "name": "AA Coding Index",
-            "score": 39.6,
-            "unit": "normalized",
-            "higher_is_better": true,
-            "provenance": {
-              "url": "https://artificialanalysis.ai/models/kimi-k2-5",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1824,7 +1804,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/kimi-k2-5",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -1871,7 +1851,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/qwen3-7-max",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1879,12 +1859,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 50.1,
+            "score": 66,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/qwen3-7-max",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1893,7 +1873,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/qwen3-7-max",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -1917,20 +1897,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/qwen3-6-max",
-              "accessed_date": "2026-06-17",
-              "method": "automated",
-              "confidence": "observed",
-              "notes": "Artificial Analysis evaluation, accessed via AA API."
-            }
-          },
-          {
-            "name": "AA Coding Index",
-            "score": 44.9,
-            "unit": "normalized",
-            "higher_is_better": true,
-            "provenance": {
-              "url": "https://artificialanalysis.ai/models/qwen3-6-max",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1939,7 +1906,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/qwen3-6-max",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -1963,7 +1930,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/qwen3-6-plus",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1971,12 +1938,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 42.9,
+            "score": 54.5,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/qwen3-6-plus",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -1985,7 +1952,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/qwen3-6-plus",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2009,7 +1976,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/qwen3-7-plus",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2017,12 +1984,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 46.5,
+            "score": 55.9,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/qwen3-7-plus",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2031,7 +1998,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/qwen3-7-plus",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2055,7 +2022,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/qwen3-6-27b",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2063,12 +2030,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 36.5,
+            "score": 53.7,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/qwen3-6-27b",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2077,7 +2044,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/qwen3-6-27b",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2101,20 +2068,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/qwen3-5-27b",
-              "accessed_date": "2026-06-17",
-              "method": "automated",
-              "confidence": "observed",
-              "notes": "Artificial Analysis evaluation, accessed via AA API."
-            }
-          },
-          {
-            "name": "AA Coding Index",
-            "score": 34.9,
-            "unit": "normalized",
-            "higher_is_better": true,
-            "provenance": {
-              "url": "https://artificialanalysis.ai/models/qwen3-5-27b",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2123,7 +2077,241 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/qwen3-5-27b",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "qwen3-5-397b-a17b",
+        "provider_id": "qwen",
+        "display_name": "Qwen3.5 397B A17B",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-02-16",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 33.7,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-5-397b-a17b",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 48.2,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-5-397b-a17b",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/qwen3-5-397b-a17b",
+          "accessed_date": "2026-06-23",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "qwen3-5-122b-a10b",
+        "provider_id": "qwen",
+        "display_name": "Qwen3.5 122B A10B",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-02-24",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 32.3,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-5-122b-a10b",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 45.7,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-5-122b-a10b",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/qwen3-5-122b-a10b",
+          "accessed_date": "2026-06-23",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "qwen3-max-thinking",
+        "provider_id": "qwen",
+        "display_name": "Qwen3 Max Thinking",
+        "context_length_k": null,
+        "strengths": [
+          "reasoning"
+        ],
+        "released_date": "2026-01-26",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 31.7,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-max-thinking",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/qwen3-max-thinking",
+          "accessed_date": "2026-06-23",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "qwen3-6-35b-a3b",
+        "provider_id": "qwen",
+        "display_name": "Qwen3.6 35B A3B",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-16",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 31.6,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-6-35b-a3b",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 41.9,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-6-35b-a3b",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/qwen3-6-35b-a3b",
+          "accessed_date": "2026-06-23",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "qwen3-5-omni-plus",
+        "provider_id": "qwen",
+        "display_name": "Qwen3.5 Omni Plus",
+        "context_length_k": null,
+        "strengths": [
+          "reasoning"
+        ],
+        "released_date": "2026-03-30",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 30.6,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-5-omni-plus",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/qwen3-5-omni-plus",
+          "accessed_date": "2026-06-23",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      },
+      {
+        "id": "qwen3-5-35b-a3b",
+        "provider_id": "qwen",
+        "display_name": "Qwen3.5 35B A3B",
+        "context_length_k": null,
+        "strengths": [
+          "reasoning"
+        ],
+        "released_date": "2026-02-24",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 29.3,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/qwen3-5-35b-a3b",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/qwen3-5-35b-a3b",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2377,7 +2565,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/minimax-m3",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2385,12 +2573,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 43.4,
+            "score": 58.6,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/minimax-m3",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2399,7 +2587,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/minimax-m3",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2423,7 +2611,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/minimax-m2-7",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2431,12 +2619,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 41.9,
+            "score": 52.6,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/minimax-m2-7",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2445,7 +2633,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/minimax-m2-7",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2469,20 +2657,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/minimax-m2-5",
-              "accessed_date": "2026-06-17",
-              "method": "automated",
-              "confidence": "observed",
-              "notes": "Artificial Analysis evaluation, accessed via AA API."
-            }
-          },
-          {
-            "name": "AA Coding Index",
-            "score": 37.4,
-            "unit": "normalized",
-            "higher_is_better": true,
-            "provenance": {
-              "url": "https://artificialanalysis.ai/models/minimax-m2-5",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2491,7 +2666,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/minimax-m2-5",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2516,20 +2691,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/minimax-m2-1",
-              "accessed_date": "2026-06-17",
-              "method": "automated",
-              "confidence": "observed",
-              "notes": "Artificial Analysis evaluation, accessed via AA API."
-            }
-          },
-          {
-            "name": "AA Coding Index",
-            "score": 32.8,
-            "unit": "normalized",
-            "higher_is_better": true,
-            "provenance": {
-              "url": "https://artificialanalysis.ai/models/minimax-m2-1",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2542,7 +2704,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/minimax-m2-1",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2551,7 +2713,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/minimax-m2-1",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2598,7 +2760,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/grok-4-3",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2606,12 +2768,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 41,
+            "score": 42.2,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/grok-4-3",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2620,7 +2782,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/grok-4-3",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2644,20 +2806,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/grok-4-20",
-              "accessed_date": "2026-06-17",
-              "method": "automated",
-              "confidence": "observed",
-              "notes": "Artificial Analysis evaluation, accessed via AA API."
-            }
-          },
-          {
-            "name": "AA Coding Index",
-            "score": 40.5,
-            "unit": "normalized",
-            "higher_is_better": true,
-            "provenance": {
-              "url": "https://artificialanalysis.ai/models/grok-4-20",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2666,7 +2815,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/grok-4-20",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2713,7 +2862,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2721,12 +2870,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 47.5,
+            "score": 59.4,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2735,7 +2884,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2759,7 +2908,7 @@
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2767,12 +2916,12 @@
           },
           {
             "name": "AA Coding Index",
-            "score": 38.7,
+            "score": 56.2,
             "unit": "normalized",
             "higher_is_better": true,
             "provenance": {
               "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
-              "accessed_date": "2026-06-17",
+              "accessed_date": "2026-06-23",
               "method": "automated",
               "confidence": "observed",
               "notes": "Artificial Analysis evaluation, accessed via AA API."
@@ -2781,7 +2930,7 @@
         ],
         "provenance": {
           "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
-          "accessed_date": "2026-06-17",
+          "accessed_date": "2026-06-23",
           "method": "automated",
           "confidence": "observed",
           "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
@@ -2952,6 +3101,221 @@
       "method": "manual",
       "confidence": "assumed",
       "notes": "Pricing sourced from training data (windsurf.com/pricing). Flow credits = agentic AI coding sessions (Cascade flows). Verify at windsurf.com/pricing for current rates."
+    }
+  },
+  {
+    "id": "meta",
+    "name": "Meta AI",
+    "display_name": "Meta AI",
+    "website": "https://ai.meta.com",
+    "pricing_url": "https://ai.meta.com/llama",
+    "description": "Meta AI develops the Llama family of open-weight models. Available via API partners (AWS, Azure, Together, Groq, etc.) and self-hosted. No direct Meta subscription — models appear here for radar comparison only.",
+    "logo_slug": "meta",
+    "category": "ai_lab",
+    "headquarters_country": "US",
+    "founded_year": 2023,
+    "plans": [],
+    "models": [
+      {
+        "id": "muse-spark",
+        "provider_id": "meta",
+        "display_name": "Muse Spark",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-08",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 43.1,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/muse-spark",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 58.6,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/muse-spark",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/muse-spark",
+          "accessed_date": "2026-06-23",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      }
+    ],
+    "last_verified": "2026-06-23",
+    "provenance": {
+      "url": "https://ai.meta.com",
+      "accessed_date": "2026-06-23",
+      "method": "automated",
+      "confidence": "observed",
+      "notes": "Models sourced from the Artificial Analysis API."
+    }
+  },
+  {
+    "id": "mistral",
+    "name": "Mistral AI",
+    "display_name": "Mistral AI",
+    "website": "https://mistral.ai",
+    "pricing_url": "https://mistral.ai/technology",
+    "description": "Mistral AI develops efficient open-weight and API-hosted language models. Known for Mistral, Mixtral, and Codestral. Access via la Plateforme API; no dedicated coding subscription — models appear here for radar comparison only.",
+    "logo_slug": "mistral",
+    "category": "ai_lab",
+    "headquarters_country": "FR",
+    "founded_year": 2023,
+    "plans": [],
+    "models": [
+      {
+        "id": "mistral-medium-3-5",
+        "provider_id": "mistral",
+        "display_name": "Mistral Medium 3.5",
+        "context_length_k": null,
+        "strengths": [
+          "coding",
+          "reasoning"
+        ],
+        "released_date": "2026-04-29",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 29.9,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/mistral-medium-3-5",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          },
+          {
+            "name": "AA Coding Index",
+            "score": 46.9,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/mistral-medium-3-5",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/mistral-medium-3-5",
+          "accessed_date": "2026-06-23",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      }
+    ],
+    "last_verified": "2026-06-23",
+    "provenance": {
+      "url": "https://mistral.ai",
+      "accessed_date": "2026-06-23",
+      "method": "automated",
+      "confidence": "observed",
+      "notes": "Models sourced from the Artificial Analysis API."
+    }
+  },
+  {
+    "id": "cohere",
+    "name": "Cohere",
+    "display_name": "Cohere",
+    "website": "https://cohere.com",
+    "pricing_url": "https://cohere.com/pricing",
+    "description": "Cohere builds enterprise-focused language models including the Command R series. Access via Cohere API; no dedicated coding subscription — models appear here for radar comparison only.",
+    "logo_slug": "cohere",
+    "category": "ai_lab",
+    "headquarters_country": "CA",
+    "founded_year": 2019,
+    "plans": [],
+    "models": [
+      {
+        "id": "command-a-plus",
+        "provider_id": "cohere",
+        "display_name": "Command A+",
+        "context_length_k": null,
+        "strengths": [
+          "reasoning"
+        ],
+        "released_date": "2026-05-20",
+        "benchmarks": [
+          {
+            "name": "AA Intelligence Index",
+            "score": 29.3,
+            "unit": "normalized",
+            "higher_is_better": true,
+            "provenance": {
+              "url": "https://artificialanalysis.ai/models/command-a-plus",
+              "accessed_date": "2026-06-23",
+              "method": "automated",
+              "confidence": "observed",
+              "notes": "Artificial Analysis evaluation, accessed via AA API."
+            }
+          }
+        ],
+        "provenance": {
+          "url": "https://artificialanalysis.ai/models/command-a-plus",
+          "accessed_date": "2026-06-23",
+          "method": "automated",
+          "confidence": "observed",
+          "notes": "Model sourced from Artificial Analysis API; release_date and AA indices observed, context window not provided by AA (null)."
+        }
+      }
+    ],
+    "last_verified": "2026-06-23",
+    "provenance": {
+      "url": "https://cohere.com",
+      "accessed_date": "2026-06-23",
+      "method": "automated",
+      "confidence": "observed",
+      "notes": "Models sourced from the Artificial Analysis API."
+    }
+  },
+  {
+    "id": "microsoft",
+    "name": "Microsoft",
+    "display_name": "Microsoft",
+    "website": "https://azure.microsoft.com/en-us/products/ai-services",
+    "pricing_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service",
+    "description": "Microsoft develops the Phi family of small language models optimized for reasoning and coding. Available via Azure AI and GitHub Models. No dedicated developer subscription — models appear here for radar comparison only.",
+    "logo_slug": "microsoft",
+    "category": "ai_lab",
+    "headquarters_country": "US",
+    "founded_year": 1990,
+    "plans": [],
+    "models": [],
+    "last_verified": "2026-06-23",
+    "provenance": {
+      "url": "https://azure.microsoft.com",
+      "accessed_date": "2026-06-23",
+      "method": "automated",
+      "confidence": "observed",
+      "notes": "Models sourced from the Artificial Analysis API."
     }
   }
 ]
