@@ -15,11 +15,11 @@
           "modelDisplayName": "GPT-5.4",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 66.9,
+          "weightedModelQuality": 69,
           "estimatedMonthlyTokens": 6000000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 4014000,
-          "valueScoreRaw": 200700,
+          "qualityAdjustedMonthlyUsage": 4140000,
+          "valueScoreRaw": 207000,
           "valueScore": 100,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -43,11 +43,11 @@
           "modelDisplayName": "GPT-5.5",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 69.9,
+          "weightedModelQuality": 72.4,
           "estimatedMonthlyTokens": 6000000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 4194000,
-          "valueScoreRaw": 209700,
+          "qualityAdjustedMonthlyUsage": 4344000,
+          "valueScoreRaw": 217200,
           "valueScore": 100,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -71,11 +71,11 @@
           "modelDisplayName": "Claude Opus 4.7",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 68.9,
+          "weightedModelQuality": 71.2,
           "estimatedMonthlyTokens": 90000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 62010,
-          "valueScoreRaw": 3100.5,
+          "qualityAdjustedMonthlyUsage": 64080,
+          "valueScoreRaw": 3204,
           "valueScore": 8,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -99,11 +99,11 @@
           "modelDisplayName": "Claude Opus 4.8",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 69.4,
+          "weightedModelQuality": 71.9,
           "estimatedMonthlyTokens": 90000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 62460,
-          "valueScoreRaw": 3123,
+          "qualityAdjustedMonthlyUsage": 64710,
+          "valueScoreRaw": 3235.5,
           "valueScore": 8,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -127,11 +127,11 @@
           "modelDisplayName": "Claude Sonnet 4.6",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 60.4,
+          "weightedModelQuality": 61.7,
           "estimatedMonthlyTokens": 90000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 54360,
-          "valueScoreRaw": 2718,
+          "qualityAdjustedMonthlyUsage": 55530,
+          "valueScoreRaw": 2776.5,
           "valueScore": 7,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -157,11 +157,11 @@
           "modelDisplayName": "Claude Fable 5",
           "monthlyPriceUsd": 100,
           "priceBand": "high",
-          "weightedModelQuality": 71.2,
+          "weightedModelQuality": 73.9,
           "estimatedMonthlyTokens": 450000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 320400,
-          "valueScoreRaw": 3204,
+          "qualityAdjustedMonthlyUsage": 332550,
+          "valueScoreRaw": 3325.5,
           "valueScore": 8,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -185,11 +185,11 @@
           "modelDisplayName": "Claude Opus 4.7",
           "monthlyPriceUsd": 100,
           "priceBand": "high",
-          "weightedModelQuality": 68.9,
+          "weightedModelQuality": 71.2,
           "estimatedMonthlyTokens": 450000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 310050,
-          "valueScoreRaw": 3100.5,
+          "qualityAdjustedMonthlyUsage": 320400,
+          "valueScoreRaw": 3204,
           "valueScore": 8,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -213,11 +213,11 @@
           "modelDisplayName": "Claude Opus 4.8",
           "monthlyPriceUsd": 100,
           "priceBand": "high",
-          "weightedModelQuality": 69.4,
+          "weightedModelQuality": 71.9,
           "estimatedMonthlyTokens": 450000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 312300,
-          "valueScoreRaw": 3123,
+          "qualityAdjustedMonthlyUsage": 323550,
+          "valueScoreRaw": 3235.5,
           "valueScore": 8,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -241,11 +241,11 @@
           "modelDisplayName": "Claude Sonnet 4.6",
           "monthlyPriceUsd": 100,
           "priceBand": "high",
-          "weightedModelQuality": 60.4,
+          "weightedModelQuality": 61.7,
           "estimatedMonthlyTokens": 450000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 271800,
-          "valueScoreRaw": 2718,
+          "qualityAdjustedMonthlyUsage": 277650,
+          "valueScoreRaw": 2776.5,
           "valueScore": 7,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -273,7 +273,7 @@
           "modelDisplayName": "GPT-5.5",
           "monthlyPriceUsd": 8.33,
           "priceBand": "low",
-          "weightedModelQuality": 69.9,
+          "weightedModelQuality": 72.4,
           "estimatedMonthlyTokens": null,
           "modelAdjustedMonthlyTokens": null,
           "qualityAdjustedMonthlyUsage": null,
@@ -281,10 +281,8 @@
           "valueScore": null,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": null,
-          "confidence": "inferred",
-          "caveats": [
-            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-          ],
+          "confidence": "observed",
+          "caveats": [],
           "sourceDates": {
             "aa": "2026-06-23",
             "pricing": "2026-06-14",
@@ -301,7 +299,7 @@
           "modelDisplayName": "GPT-5.5",
           "monthlyPriceUsd": 8.33,
           "priceBand": "low",
-          "weightedModelQuality": 69.9,
+          "weightedModelQuality": 72.4,
           "estimatedMonthlyTokens": null,
           "modelAdjustedMonthlyTokens": null,
           "qualityAdjustedMonthlyUsage": null,
@@ -309,10 +307,8 @@
           "valueScore": null,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": null,
-          "confidence": "inferred",
-          "caveats": [
-            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-          ],
+          "confidence": "observed",
+          "caveats": [],
           "sourceDates": {
             "aa": "2026-06-23",
             "pricing": "2026-06-14",
@@ -329,7 +325,7 @@
           "modelDisplayName": "Kimi K2.6",
           "monthlyPriceUsd": 8,
           "priceBand": "low",
-          "weightedModelQuality": 54.8,
+          "weightedModelQuality": 55.4,
           "estimatedMonthlyTokens": null,
           "modelAdjustedMonthlyTokens": null,
           "qualityAdjustedMonthlyUsage": null,
@@ -337,10 +333,8 @@
           "valueScore": null,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": null,
-          "confidence": "inferred",
-          "caveats": [
-            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-          ],
+          "confidence": "observed",
+          "caveats": [],
           "sourceDates": {
             "aa": "2026-06-23",
             "pricing": "2026-06-14",
@@ -359,7 +353,7 @@
           "modelDisplayName": "GPT-5.5",
           "monthlyPriceUsd": 33,
           "priceBand": "mid",
-          "weightedModelQuality": 69.9,
+          "weightedModelQuality": 72.4,
           "estimatedMonthlyTokens": null,
           "modelAdjustedMonthlyTokens": null,
           "qualityAdjustedMonthlyUsage": null,
@@ -367,10 +361,8 @@
           "valueScore": null,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": null,
-          "confidence": "inferred",
-          "caveats": [
-            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-          ],
+          "confidence": "observed",
+          "caveats": [],
           "sourceDates": {
             "aa": "2026-06-23",
             "pricing": "2026-06-17",
@@ -387,7 +379,7 @@
           "modelDisplayName": "GPT-5.5",
           "monthlyPriceUsd": 16,
           "priceBand": "mid",
-          "weightedModelQuality": 69.9,
+          "weightedModelQuality": 72.4,
           "estimatedMonthlyTokens": null,
           "modelAdjustedMonthlyTokens": null,
           "qualityAdjustedMonthlyUsage": null,
@@ -395,10 +387,8 @@
           "valueScore": null,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": null,
-          "confidence": "inferred",
-          "caveats": [
-            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-          ],
+          "confidence": "observed",
+          "caveats": [],
           "sourceDates": {
             "aa": "2026-06-23",
             "pricing": "2026-06-14",
@@ -415,7 +405,7 @@
           "modelDisplayName": "GPT-5.5",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 69.9,
+          "weightedModelQuality": 72.4,
           "estimatedMonthlyTokens": null,
           "modelAdjustedMonthlyTokens": null,
           "qualityAdjustedMonthlyUsage": null,
@@ -423,10 +413,8 @@
           "valueScore": null,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": null,
-          "confidence": "inferred",
-          "caveats": [
-            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-          ],
+          "confidence": "observed",
+          "caveats": [],
           "sourceDates": {
             "aa": "2026-06-23",
             "pricing": "2026-06-14",
@@ -443,7 +431,7 @@
           "modelDisplayName": "Claude Opus 4.8",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 69.4,
+          "weightedModelQuality": 71.9,
           "estimatedMonthlyTokens": null,
           "modelAdjustedMonthlyTokens": null,
           "qualityAdjustedMonthlyUsage": null,
@@ -451,10 +439,8 @@
           "valueScore": null,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": null,
-          "confidence": "inferred",
-          "caveats": [
-            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-          ],
+          "confidence": "observed",
+          "caveats": [],
           "sourceDates": {
             "aa": "2026-06-23",
             "pricing": "2026-06-14",
@@ -471,7 +457,7 @@
           "modelDisplayName": "Gemini 3.5 Flash",
           "monthlyPriceUsd": 19.99,
           "priceBand": "mid",
-          "weightedModelQuality": 66.1,
+          "weightedModelQuality": 68.1,
           "estimatedMonthlyTokens": null,
           "modelAdjustedMonthlyTokens": null,
           "qualityAdjustedMonthlyUsage": null,
@@ -479,10 +465,8 @@
           "valueScore": null,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": null,
-          "confidence": "inferred",
-          "caveats": [
-            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-          ],
+          "confidence": "observed",
+          "caveats": [],
           "sourceDates": {
             "aa": "2026-06-23",
             "pricing": "2026-06-14",
@@ -499,7 +483,7 @@
           "modelDisplayName": "Kimi K2.7 Code",
           "monthlyPriceUsd": 27,
           "priceBand": "mid",
-          "weightedModelQuality": 58.6,
+          "weightedModelQuality": 59.7,
           "estimatedMonthlyTokens": null,
           "modelAdjustedMonthlyTokens": null,
           "qualityAdjustedMonthlyUsage": null,
@@ -507,10 +491,8 @@
           "valueScore": null,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": null,
-          "confidence": "inferred",
-          "caveats": [
-            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-          ],
+          "confidence": "observed",
+          "caveats": [],
           "sourceDates": {
             "aa": "2026-06-23",
             "pricing": "2026-06-14",
@@ -529,7 +511,7 @@
           "modelDisplayName": "Claude Fable 5",
           "monthlyPriceUsd": 100,
           "priceBand": "high",
-          "weightedModelQuality": 71.2,
+          "weightedModelQuality": 73.9,
           "estimatedMonthlyTokens": null,
           "modelAdjustedMonthlyTokens": null,
           "qualityAdjustedMonthlyUsage": null,
@@ -537,10 +519,8 @@
           "valueScore": null,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": null,
-          "confidence": "inferred",
-          "caveats": [
-            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-          ],
+          "confidence": "observed",
+          "caveats": [],
           "sourceDates": {
             "aa": "2026-06-23",
             "pricing": "2026-06-14",
@@ -557,7 +537,7 @@
           "modelDisplayName": "GPT-5.5",
           "monthlyPriceUsd": 100,
           "priceBand": "high",
-          "weightedModelQuality": 69.9,
+          "weightedModelQuality": 72.4,
           "estimatedMonthlyTokens": null,
           "modelAdjustedMonthlyTokens": null,
           "qualityAdjustedMonthlyUsage": null,
@@ -565,10 +545,8 @@
           "valueScore": null,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": null,
-          "confidence": "inferred",
-          "caveats": [
-            "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-          ],
+          "confidence": "observed",
+          "caveats": [],
           "sourceDates": {
             "aa": "2026-06-23",
             "pricing": "2026-06-17",
@@ -901,7 +879,168 @@
         }
       }
     ],
-    "byAgentic": [],
+    "byAgentic": [
+      {
+        "rank": 1,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-fable-5",
+        "modelDisplayName": "Claude Fable 5",
+        "metric": "agentic",
+        "metricValue": 76.5,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-23",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 2,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-5",
+        "modelDisplayName": "GPT-5.5",
+        "metric": "agentic",
+        "metricValue": 74.9,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-23",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 3,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-opus-4-8",
+        "modelDisplayName": "Claude Opus 4.8",
+        "metric": "agentic",
+        "metricValue": 74.3,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-23",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 4,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-opus-4-7",
+        "modelDisplayName": "Claude Opus 4.7",
+        "metric": "agentic",
+        "metricValue": 73.6,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-23",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 5,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-4",
+        "modelDisplayName": "GPT-5.4",
+        "metric": "agentic",
+        "metricValue": 71.1,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-23",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 6,
+        "providerId": "google",
+        "providerName": "Google",
+        "modelId": "gemini-3-5-flash",
+        "modelDisplayName": "Gemini 3.5 Flash",
+        "metric": "agentic",
+        "metricValue": 70.1,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-23",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 7,
+        "providerId": "google",
+        "providerName": "Google",
+        "modelId": "gemini-3-1-pro-preview",
+        "modelDisplayName": "Gemini 3.1 Pro Preview",
+        "metric": "agentic",
+        "metricValue": 68.8,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-23",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 8,
+        "providerId": "anthropic",
+        "providerName": "Anthropic",
+        "modelId": "claude-sonnet-4-6-adaptive",
+        "modelDisplayName": "Claude Sonnet 4.6",
+        "metric": "agentic",
+        "metricValue": 63,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-23",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 9,
+        "providerId": "kimi",
+        "providerName": "Kimi",
+        "modelId": "kimi-k2-7-code",
+        "modelDisplayName": "Kimi K2.7 Code",
+        "metric": "agentic",
+        "metricValue": 60.8,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-23",
+          "pricing": null,
+          "usage": null
+        }
+      },
+      {
+        "rank": 10,
+        "providerId": "openai",
+        "providerName": "OpenAI",
+        "modelId": "gpt-5-4-mini",
+        "modelDisplayName": "GPT-5.4 mini",
+        "metric": "agentic",
+        "metricValue": 56.1,
+        "confidence": "observed",
+        "caveats": [],
+        "sourceDates": {
+          "aa": "2026-06-23",
+          "pricing": null,
+          "usage": null
+        }
+      }
+    ],
     "byWeightedQuality": [
       {
         "rank": 1,
@@ -910,11 +1049,9 @@
         "modelId": "claude-fable-5",
         "modelDisplayName": "Claude Fable 5",
         "metric": "wmq",
-        "metricValue": 71.2,
-        "confidence": "inferred",
-        "caveats": [
-          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-        ],
+        "metricValue": 73.9,
+        "confidence": "observed",
+        "caveats": [],
         "sourceDates": {
           "aa": "2026-06-23",
           "pricing": null,
@@ -928,11 +1065,9 @@
         "modelId": "gpt-5-5",
         "modelDisplayName": "GPT-5.5",
         "metric": "wmq",
-        "metricValue": 69.9,
-        "confidence": "inferred",
-        "caveats": [
-          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-        ],
+        "metricValue": 72.4,
+        "confidence": "observed",
+        "caveats": [],
         "sourceDates": {
           "aa": "2026-06-23",
           "pricing": null,
@@ -946,11 +1081,9 @@
         "modelId": "claude-opus-4-8",
         "modelDisplayName": "Claude Opus 4.8",
         "metric": "wmq",
-        "metricValue": 69.4,
-        "confidence": "inferred",
-        "caveats": [
-          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-        ],
+        "metricValue": 71.9,
+        "confidence": "observed",
+        "caveats": [],
         "sourceDates": {
           "aa": "2026-06-23",
           "pricing": null,
@@ -964,11 +1097,9 @@
         "modelId": "claude-opus-4-7",
         "modelDisplayName": "Claude Opus 4.7",
         "metric": "wmq",
-        "metricValue": 68.9,
-        "confidence": "inferred",
-        "caveats": [
-          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-        ],
+        "metricValue": 71.2,
+        "confidence": "observed",
+        "caveats": [],
         "sourceDates": {
           "aa": "2026-06-23",
           "pricing": null,
@@ -982,11 +1113,9 @@
         "modelId": "gpt-5-4",
         "modelDisplayName": "GPT-5.4",
         "metric": "wmq",
-        "metricValue": 66.9,
-        "confidence": "inferred",
-        "caveats": [
-          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-        ],
+        "metricValue": 69,
+        "confidence": "observed",
+        "caveats": [],
         "sourceDates": {
           "aa": "2026-06-23",
           "pricing": null,
@@ -1000,11 +1129,9 @@
         "modelId": "gemini-3-5-flash",
         "modelDisplayName": "Gemini 3.5 Flash",
         "metric": "wmq",
-        "metricValue": 66.1,
-        "confidence": "inferred",
-        "caveats": [
-          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-        ],
+        "metricValue": 68.1,
+        "confidence": "observed",
+        "caveats": [],
         "sourceDates": {
           "aa": "2026-06-23",
           "pricing": null,
@@ -1018,11 +1145,9 @@
         "modelId": "gemini-3-1-pro-preview",
         "modelDisplayName": "Gemini 3.1 Pro Preview",
         "metric": "wmq",
-        "metricValue": 65,
-        "confidence": "inferred",
-        "caveats": [
-          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-        ],
+        "metricValue": 66.9,
+        "confidence": "observed",
+        "caveats": [],
         "sourceDates": {
           "aa": "2026-06-23",
           "pricing": null,
@@ -1036,11 +1161,9 @@
         "modelId": "claude-sonnet-4-6-adaptive",
         "modelDisplayName": "Claude Sonnet 4.6",
         "metric": "wmq",
-        "metricValue": 60.4,
-        "confidence": "inferred",
-        "caveats": [
-          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-        ],
+        "metricValue": 61.7,
+        "confidence": "observed",
+        "caveats": [],
         "sourceDates": {
           "aa": "2026-06-23",
           "pricing": null,
@@ -1054,11 +1177,9 @@
         "modelId": "kimi-k2-7-code",
         "modelDisplayName": "Kimi K2.7 Code",
         "metric": "wmq",
-        "metricValue": 58.6,
-        "confidence": "inferred",
-        "caveats": [
-          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-        ],
+        "metricValue": 59.7,
+        "confidence": "observed",
+        "caveats": [],
         "sourceDates": {
           "aa": "2026-06-23",
           "pricing": null,
@@ -1072,11 +1193,9 @@
         "modelId": "gpt-5-4-mini",
         "modelDisplayName": "GPT-5.4 mini",
         "metric": "wmq",
-        "metricValue": 54.9,
-        "confidence": "inferred",
-        "caveats": [
-          "Data confidence: inferred — not directly observed from the provider source; figures are proxied or assumed."
-        ],
+        "metricValue": 55.5,
+        "confidence": "observed",
+        "caveats": [],
         "sourceDates": {
           "aa": "2026-06-23",
           "pricing": null,
@@ -1088,7 +1207,7 @@
       {
         "modelId": "claude-fable-5",
         "modelDisplayName": "Claude Fable 5",
-        "weightedModelQuality": 71.2,
+        "weightedModelQuality": 73.9,
         "bestLowCost": null,
         "bestMidCost": null,
         "bestHighCost": {
@@ -1101,11 +1220,11 @@
           "modelDisplayName": "Claude Fable 5",
           "monthlyPriceUsd": 100,
           "priceBand": "high",
-          "weightedModelQuality": 71.2,
+          "weightedModelQuality": 73.9,
           "estimatedMonthlyTokens": 450000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 320400,
-          "valueScoreRaw": 3204,
+          "qualityAdjustedMonthlyUsage": 332550,
+          "valueScoreRaw": 3325.5,
           "valueScore": 8,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -1127,7 +1246,7 @@
       {
         "modelId": "gpt-5-5",
         "modelDisplayName": "GPT-5.5",
-        "weightedModelQuality": 69.9,
+        "weightedModelQuality": 72.4,
         "bestLowCost": null,
         "bestMidCost": {
           "rank": 1,
@@ -1139,11 +1258,11 @@
           "modelDisplayName": "GPT-5.5",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 69.9,
+          "weightedModelQuality": 72.4,
           "estimatedMonthlyTokens": 6000000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 4194000,
-          "valueScoreRaw": 209700,
+          "qualityAdjustedMonthlyUsage": 4344000,
+          "valueScoreRaw": 217200,
           "valueScore": 100,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -1166,7 +1285,7 @@
       {
         "modelId": "claude-opus-4-8",
         "modelDisplayName": "Claude Opus 4.8",
-        "weightedModelQuality": 69.4,
+        "weightedModelQuality": 71.9,
         "bestLowCost": null,
         "bestMidCost": {
           "rank": 1,
@@ -1178,11 +1297,11 @@
           "modelDisplayName": "Claude Opus 4.8",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 69.4,
+          "weightedModelQuality": 71.9,
           "estimatedMonthlyTokens": 90000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 62460,
-          "valueScoreRaw": 3123,
+          "qualityAdjustedMonthlyUsage": 64710,
+          "valueScoreRaw": 3235.5,
           "valueScore": 8,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -1206,11 +1325,11 @@
           "modelDisplayName": "Claude Opus 4.8",
           "monthlyPriceUsd": 100,
           "priceBand": "high",
-          "weightedModelQuality": 69.4,
+          "weightedModelQuality": 71.9,
           "estimatedMonthlyTokens": 450000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 312300,
-          "valueScoreRaw": 3123,
+          "qualityAdjustedMonthlyUsage": 323550,
+          "valueScoreRaw": 3235.5,
           "valueScore": 8,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -1231,7 +1350,7 @@
       {
         "modelId": "claude-opus-4-7",
         "modelDisplayName": "Claude Opus 4.7",
-        "weightedModelQuality": 68.9,
+        "weightedModelQuality": 71.2,
         "bestLowCost": null,
         "bestMidCost": {
           "rank": 1,
@@ -1243,11 +1362,11 @@
           "modelDisplayName": "Claude Opus 4.7",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 68.9,
+          "weightedModelQuality": 71.2,
           "estimatedMonthlyTokens": 90000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 62010,
-          "valueScoreRaw": 3100.5,
+          "qualityAdjustedMonthlyUsage": 64080,
+          "valueScoreRaw": 3204,
           "valueScore": 8,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -1271,11 +1390,11 @@
           "modelDisplayName": "Claude Opus 4.7",
           "monthlyPriceUsd": 100,
           "priceBand": "high",
-          "weightedModelQuality": 68.9,
+          "weightedModelQuality": 71.2,
           "estimatedMonthlyTokens": 450000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 310050,
-          "valueScoreRaw": 3100.5,
+          "qualityAdjustedMonthlyUsage": 320400,
+          "valueScoreRaw": 3204,
           "valueScore": 8,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -1296,7 +1415,7 @@
       {
         "modelId": "gpt-5-4",
         "modelDisplayName": "GPT-5.4",
-        "weightedModelQuality": 66.9,
+        "weightedModelQuality": 69,
         "bestLowCost": null,
         "bestMidCost": {
           "rank": 1,
@@ -1308,11 +1427,11 @@
           "modelDisplayName": "GPT-5.4",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 66.9,
+          "weightedModelQuality": 69,
           "estimatedMonthlyTokens": 6000000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 4014000,
-          "valueScoreRaw": 200700,
+          "qualityAdjustedMonthlyUsage": 4140000,
+          "valueScoreRaw": 207000,
           "valueScore": 100,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -1335,7 +1454,7 @@
       {
         "modelId": "claude-sonnet-4-6-adaptive",
         "modelDisplayName": "Claude Sonnet 4.6",
-        "weightedModelQuality": 60.4,
+        "weightedModelQuality": 61.7,
         "bestLowCost": null,
         "bestMidCost": {
           "rank": 1,
@@ -1347,11 +1466,11 @@
           "modelDisplayName": "Claude Sonnet 4.6",
           "monthlyPriceUsd": 20,
           "priceBand": "mid",
-          "weightedModelQuality": 60.4,
+          "weightedModelQuality": 61.7,
           "estimatedMonthlyTokens": 90000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 54360,
-          "valueScoreRaw": 2718,
+          "qualityAdjustedMonthlyUsage": 55530,
+          "valueScoreRaw": 2776.5,
           "valueScore": 7,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
@@ -1375,11 +1494,11 @@
           "modelDisplayName": "Claude Sonnet 4.6",
           "monthlyPriceUsd": 100,
           "priceBand": "high",
-          "weightedModelQuality": 60.4,
+          "weightedModelQuality": 61.7,
           "estimatedMonthlyTokens": 450000,
           "modelAdjustedMonthlyTokens": null,
-          "qualityAdjustedMonthlyUsage": 271800,
-          "valueScoreRaw": 2718,
+          "qualityAdjustedMonthlyUsage": 277650,
+          "valueScoreRaw": 2776.5,
           "valueScore": 7,
           "costPerTaskUsd": null,
           "efficiencyMultiplier": 1,
