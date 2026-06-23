@@ -1,9 +1,10 @@
 {
   "name": "code-smart",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "bash scripts/download-logos.sh",
     "build": "pnpm generate:rankings && pnpm generate:static-api && next build",
     "start": "next start",
     "lint": "next lint",

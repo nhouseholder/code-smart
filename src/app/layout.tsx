@@ -5,6 +5,7 @@ import { getMethodologyMeta } from "@/lib/data-loader";
 
 const NAV = [
   { href: "/", label: "Home" },
+  { href: "/providers", label: "Providers" },
   { href: "/models", label: "Models" },
   { href: "/compare", label: "Compare" },
   { href: "/methodology", label: "Methodology" },

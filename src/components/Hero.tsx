@@ -1,5 +1,7 @@
+import Link from "next/link";
 import type { Provider } from "@/types";
 import { ArrowRight, Database, RefreshCcw, Shield } from "lucide-react";
+import { ProviderLogo } from "./ProviderLogo";
 
 interface Props {
   providers: Provider[];
@@ -7,7 +9,6 @@ interface Props {
 }
 
 export function Hero({ providers, totalPlans }: Props) {
-  const providerNames = providers.map((p) => p.display_name);
   const lastVerified = providers
     .map((p) => p.last_verified)
     .sort()
@@ -48,19 +49,27 @@ export function Hero({ providers, totalPlans }: Props) {
               Real pricing, honest limits, provenance-tracked data — not marketing copy.
             </p>
 
-            <div className="flex flex-wrap gap-3 mb-8">
-              {providerNames.slice(0, 5).map((name) => (
-                <span
-                  key={name}
-                  className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium"
+            <div className="flex flex-wrap gap-2 mb-8">
+              {[...providers]
+                .sort((a, b) => b.plans.length - a.plans.length)
+                .slice(0, 8)
+                .map((p) => (
+                  <Link
+                    key={p.id}
+                    href={`/providers/${p.id}`}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+                  >
+                    <ProviderLogo providerId={p.id} name={p.display_name} size={16} />
+                    <span className="text-xs font-medium text-gray-700">{p.display_name}</span>
+                  </Link>
+                ))}
+              {providers.length > 8 && (
+                <Link
+                  href="/providers"
+                  className="inline-flex items-center px-3 py-1 bg-gray-100 text-xs text-gray-400 rounded-full hover:bg-gray-200 transition-colors"
                 >
-                  {name}
-                </span>
-              ))}
-              {providerNames.length > 5 && (
-                <span className="px-3 py-1 bg-gray-100 text-gray-400 rounded-full text-xs">
-                  +{providerNames.length - 5} more
-                </span>
+                  +{providers.length - 8} more →
+                </Link>
               )}
             </div>
 
