@@ -17,3 +17,4 @@
 - **[2026-06-17]** [2026-06-17_v1.8.1_session-close.md](2026-06-17_v1.8.1_session-close.md) — v1.8.1 — session-close
 
 - **[2026-06-22]** [2026-06-22_efficiency-and-radar.md](2026-06-22_efficiency-and-radar.md) — /efficiency cost table + /radar SVG spider chart live at code-smart.pages.dev
+- **[2026-06-23]** [2026-06-23_provider-catalog-logos.md](2026-06-23_provider-catalog-logos.md) — v1.11.0: /providers page with brand logos, category sections, tier-column cards, Hero logo strip
